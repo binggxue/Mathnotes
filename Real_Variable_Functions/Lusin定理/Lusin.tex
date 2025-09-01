@@ -1,0 +1,84 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,color,enumerate}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+%remove the dot after the theoremstyle
+%\makeatletter
+%\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}
+%\makeatother
+
+%article info
+\title{\vspace{-2em}\textbf{Lusin定理}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	
+	Lusin定理刻画了可测函数与连续函数之间的关系. 为证明需要，首先定义特征函数和简单函数.
+	\begin{definition}[特征函数]
+		设集合$A\subset X$，定义函数
+		\begin{equation*}
+			\chi_A(x)=\left\{\begin{aligned}
+				&1,\ x\in A,\\
+				&0,\ x\in X\backslash A.
+			\end{aligned}\right.
+		\end{equation*}
+		称$\chi_A(x)$为定义在$X$上的$A$的\textbf{特征函数}.
+	\end{definition}
+	\begin{definition}[简单函数]
+		设定义在$D$上的$f(x)=c_i,\ x\in D_i$，$i\in I$使得至多可数个集合$D_i$满足
+		$$\bigsqcup_{i\in I}D_i=D,$$
+		则称$f(x)$为\textbf{简单函数}.
+	\end{definition}
+	\begin{remark}
+		简单来说，简单函数是有有限个取值或可列个取值的函数.
+	\end{remark}
+	简单函数可以用特征函数的语言描述，即
+	$$f(x)=\sum_{i\in I}c_i\chi_{D_i}(x),\qquad f(x)=c_i,\ x\in D_i$$
+	\begin{theorem}[简单函数逼近定理]
+		\ 
+		
+		\begin{enumerate}
+			\item 若$f(x)$是$E$上的非负可测函数，则存在非负可测的简单函数渐升列：
+			$$\varphi_k(x)\leqslant\varphi_{k+1}(x),\ k=1,2,\cdots,$$
+			使得
+			$$\lim\limits_{k\to\infty}\varphi_k(x)=f(x),\ x\in E.$$
+			\item 若$f(x)$是$E$上的可测函数，则存在可测的简单函数列$\{\varphi_k(x)\}$，使得$|\varphi_k(x)|\leqslant|f(x)|$，且
+			$$\lim\limits_{k\to\infty}\varphi_k(x)=f(x),\ x\in E.$$
+			若$f(x)$还是有界的，则简单函数列是一致收敛的.
+		\end{enumerate}
+	\end{theorem}
+	\begin{remark}
+		为节省篇幅和突出主题，该定理证明从略.
+	\end{remark}
+	\begin{theorem}[Lusin定理]
+		设$f(x)$是定义在$E\subset\mathbb{R}^n$上的几乎处处有限的可测函数，则对任意$\delta>0$，存在闭集$F\subset E$满足$m(E\backslash F)<\delta$，使得$f(x)$是$F$上的连续函数.
+	\end{theorem}
+	\begin{proof}
+		不妨设$f(x)$处处有限.
+		
+		首先考虑$f(x)$为可测有限简单函数.即
+		$$f(x)=\sum_{i=1}^{p}c_i\chi_{E_i}(x),\ x\in E=\bigsqcup_{i=1}^{p}E_i,$$
+		对任意$\delta>0$，在每个$E_i$中，可以取闭集$F_i$使得
+		$$m(E_i\backslash F_i)<\frac{\delta}{p},\qquad i=1,2,\cdots,p.$$ 
+		对任意$x\in F_i$，$f(x)=c_i$为连续函数，又$F_i$两两不交，故$f(x)$在$F=\bigcup F_i$上连续. 显然$F$为闭集，且
+		$$m(E\backslash F)=\sum_{i=1}^{p}m(E_i\backslash F_i)<\sum_{i=1}^{p}\frac{\delta}{p}<\delta.$$
+		
+		其次考虑$f(x)$为一般可测函数. 不妨设为有界函数. 由简单函数逼近定理，存在简单函数列$\{\varphi_k(x)\}$，在$E$上一致收敛于$f(x)$. 故对任意$\delta>0$，可作闭集$F_k$，$m(E\backslash F_k)<\dfrac{\delta}{2^k}$，使得$\varphi_k(x)$在$F_k$上连续. 令$F=\bigcap_{k=1}^{\infty}F_k$，则$F\subset E$，且
+		$$m(E\backslash F)<\sum_{k=1}^{\infty}m\left(E\backslash F_k\right)<\sum_{k=1}^{\infty}\frac{\delta}{2^k}<\delta.$$
+		由于每个$\varphi_k(x)$在$F$上都是连续的，由一致收敛性，$f(x)$在$F$上连续.
+		
+		
+	\end{proof}
+\end{document}

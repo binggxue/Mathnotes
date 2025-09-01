@@ -1,0 +1,219 @@
+\chapter{反常积分}
+在讨论Riemann积分时有两个最基本的限制：积分区间的有穷性和被积函数的有界性.但在很多实际问题中要突破这些限制，考虑无穷区间上的积分或无界函数的积分，这便是本章的主题.
+\section{反常积分概念}
+第一类，我们考虑无穷区间上的积分.
+\begin{definition}[无穷积分]
+	设函数$f$定义在无穷区间$\left[a,+\infty\right)$上，且在任何有限区间$\left[a,u\right]$上可积.如果存在极限
+	$$\lim\limits_{u\to +\infty}\int_{a}^{u}f(x)\d x=J,$$
+	则称此极限$J$为函数$f$在$\left[a,+\infty\right)$上的{\heiti 无穷限反常积分}（简称{\heiti 无穷积分}），记作
+	$$J=\int_{a}^{+\infty}f(x)\d x,$$
+	并称$\displaystyle\int_{a}^{+\infty}f(x)\d x${\heiti 收敛}.如果极限不存在，则称$\displaystyle\int_{a}^{+\infty}f(x)\d x${\heiti 发散}.
+\end{definition}
+类似地，可定义$f$在$\left(-\infty,b\right]$上的无穷积分：
+$$\int_{-\infty}^{b}f(x)\d x=\lim\limits_{u\to -\infty}\int_{u}^{b}f(x)\d x.$$
+
+对于$f$在$(-\infty,+\infty)$上的无穷积分，用前面两种积分来定义：
+$$\int_{-\infty}^{+\infty}f(x)\d x=\int_{-\infty}^{a}f(x)\d x+\int_{a}^{+\infty}f(x)\d x,\quad a\in\mathbb{R}.$$
+当且仅当等号右边两个无穷积分都收敛时它才是收敛的.
+
+可以根据函数极限的性质与定积分的性质，导出无穷积分的一些相应性质.
+\begin{proposition}
+	对于任意$i=1,2,\cdots,n$，若$\displaystyle\int_{a}^{+\infty}f_i(x)\d x$都收敛，$k_i$是任意常数，则$\displaystyle\int_{a}^{+\infty}\displaystyle\sum_{i=1}^{n}k_if_i(x)\d x$也收敛，且
+	$$\int_{a}^{+\infty}\sum_{i=1}^{n}k_if_i(x)\d x=\sum_{i=1}^{n}k_i\int_{a}^{+\infty}f_i(x)\d x.$$
+\end{proposition}
+\begin{proposition}
+	若$f$在任何有限区间$\left[a,u\right]$上可积，$a<b$，则$\displaystyle\int_{a}^{+\infty}f(x)\d x$与$\displaystyle\int_{b}^{+\infty}f(x)\d x$同敛态，且有
+	$$\int_{a}^{+\infty}f(x)\d x=\int_{a}^{b}f(x)\d x+\int_{b}^{+\infty}f(x)\d x.$$
+	其中右边第一项为Riemann积分.
+\end{proposition}
+第二类，我们考虑无界函数的积分.
+\begin{definition}[瑕积分]
+	设函数$f$定义在区间$\left(a,b\right]$上，在点$a$的任一右邻域上无界，但在任何内闭区间$\left[u,b\right]\subset\left(a,b\right]$上有界且可积.如果存在极限
+	$$\lim\limits_{u\to a^+}\int_{u}^{b}f(x)\d x=J,$$
+	则称此极限为无界函数$f$在$\left(a,b\right]$上的反常积分，记作
+	$$J=\int_{a}^{b}f(x)\d x,$$
+	其中，$f$在$a$近旁是无界的，这时我们称$a$为$f$的{\heiti 瑕点}，无界函数的反常积分又称为{\heiti 瑕积分}.
+\end{definition}
+类似地，可定义瑕点为$b$时的瑕积分：
+$$\int_{a}^{b}f(x)\d x=\lim\limits_{u\to b^-}\int_{a}^{u}f(x)\d x.$$
+
+若$f$的瑕点$c\in(a,b)$，则定义瑕积分
+$$\int_{a}^{b}f(x)\d x=\int_{a}^{c}f(x)\d x+\int_{c}^{b}f(x)\d x=\lim\limits_{u\to c^-}f(x)\d x+\lim\limits_{u\to c^+}f(x)\d x$$
+当且仅当等号右边两个瑕积分都收敛时它才是收敛的.
+
+若$a,b$两点都是$f$的瑕点，而$f$在任何$\left[u,v\right]\in\left(a,b\right)$上可积，这时定义瑕积分
+$$\int_{a}^{b}f(x)\d x=\int_{a}^{c}f(x)\d x+\int_{c}^{b}f(x)\d x=\lim\limits_{u\to a^+}\int_{u}^{c}f(x)\d x+\lim\limits_{v\to b^-}\int_{c}^{v}f(x)\d x.$$
+其中$c$为$(a,b)$上任一实数.当且仅当等号右边两个瑕积分都收敛时它才是收敛的.
+
+同样可以根据函数极限的性质与定积分的性质，导出瑕积分的一些相应性质.
+\begin{proposition}
+	对于任意$i=1,2,\cdots,n$，设函数$f_i$的瑕点都是$x=a$，$k_i$为常数，则当瑕积分$\displaystyle\int_{a}^{b}f_i(x)\d x$都收敛时，$\displaystyle\int_{a}^{b}\displaystyle\sum_{i=1}^{n}k_if_i(x)\d x$必定收敛，且
+	$$\int_{a}^{b}\sum_{i=1}^{n}k_if_i(x)\d x=\sum_{i=1}^{n}k_i\int_{a}^{b}f_i(x)\d x.$$
+\end{proposition}
+\begin{proposition}
+	设函数$f$的瑕点为$x=a$，$c\in(a,b)$为任一常数.则瑕积分$\displaystyle\int_{a}^{b}f(x)\d x$与$\int_{a}^{c}f(x)\d x$同敛态，并有
+	$$\int_{a}^{b}f(x)\d x=\int_{a}^{c}f(x)\d x+\int_{c}^{b}f(x)\d x.$$
+	其中等号右边第二项为Riemann积分.
+\end{proposition}
+\section{无穷积分的敛散判别}
+\subsection{无穷积分收敛的Cauchy准则}
+由定义可知，无穷积分$\displaystyle\int_{a}^{+\infty}f(x)\d x$收敛与否，取决于函数$F(u)=\displaystyle\int_{a}^{u}f(x)\d x$在$u\to +\infty$时是否存在极限.因此可由函数极限的Cauchy准则导出无穷积分收敛的Cauchy准则.
+\begin{theorem}[无穷积分收敛的Cauchy准则]
+	无穷积分收敛的充要条件是：任给$\varepsilon>0$，存在$G\geqslant a$，只要$u_1,u_2>G$，便有
+	$$\bigg|\int_{a}^{u_2}f(x)\d x-\int_{a}^{u_1}f(x)\d x\bigg|=\bigg|\int_{u_1}^{u_2}f(x)\d x\bigg|<\varepsilon.$$
+\end{theorem}
+\begin{proposition}
+	若$f$在任何有限区间$\left[a,u\right]$上可积，且有$\displaystyle\int_{a}^{+\infty}|f(x)|\d x$收敛，则$\displaystyle\int_{a}^{+\infty}f(x)\d x$亦必收敛，并有
+	$$\bigg|\int_{a}^{+\infty}f(x)\d x\bigg|\leqslant\int_{a}^{+\infty}|f(x)|\d x.$$
+\end{proposition}
+\begin{proof}
+	由$\displaystyle\int_{a}^{+\infty}|f(x)|\d x$收敛，根据Cauchy准则（必要性），任给$\varepsilon>0$，存在$G\geqslant a$，当$u_2>u_1>G$时，总有
+	$$\bigg|\int_{u_1}^{u_2}|f(x)|\d x\bigg|=\int_{u_1}^{u_2}|f(x)|\d x<\varepsilon.$$
+	利用定积分的绝对值不等式，又有
+	$$\bigg|\int_{u_1}^{u_2}f(x)\d x\bigg|\leqslant\int_{u_1}^{u_2}|f(x)|\d x<\varepsilon.$$
+	再由Cauchy准则（充分性），证得$\displaystyle\int_{a}^{+\infty}f(x)\d x$收敛.
+	
+	又因为$\bigg|\displaystyle\int_{a}^{u}f(x)\d x\bigg|\leqslant\int_{a}^{u}|f(x)|\d x\ (u>a)$，令$u\to +\infty$，得
+	$$\bigg|\int_{a}^{+\infty}f(x)\d x\bigg|\leqslant\int_{a}^{+\infty}|f(x)|\d x.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	当$\displaystyle\int_{a}^{+\infty}|f(x)|\d x$收敛时，称$\displaystyle\int_{a}^{+\infty}f(x)\d x$为{\heiti 绝对收敛}.由上述命题我们知道，绝对收敛的无穷积分，其自身也一定收敛.但是，收敛的无穷积分不一定绝对收敛.我们称收敛而不绝对收敛者为{\heiti 条件收敛}.
+\end{remark}
+\subsection{非负函数无穷积分敛散判别}
+\begin{theorem}[比较原则]
+	设定义在$\left[a,+\infty\right)$上的两个非负函数$f$和$g$都在任何有限区间$\left[a,u\right]$上可积，且满足
+	$$f(x)\leqslant g(x),\ x\in \left[a,+\infty\right),$$
+	则
+
+		(i)当$\displaystyle\int_{a}^{+\infty}g(x)\d x$收敛时，$\displaystyle\int_{a}^{+\infty}f(x)\d x$必收敛；
+		
+		(ii)当$\displaystyle\int_{a}^{+\infty}f(x)\d x$发散时，$\displaystyle\int_{a}^{+\infty}g(x)\d x$必发散.
+
+	
+\end{theorem}
+\begin{proof}
+	只需证明(i).由于$\displaystyle\int_{a}^{u}g(x)\d x$关于上界$u$是单调递增的，因此$\displaystyle\int_{a}^{+\infty}g(x)\d x$收敛的充要条件是$\displaystyle\int_{a}^{u}g(x)\d x$在$\left[a,+\infty\right)$上存在上界$M$.
+	
+	由$f(x)\leqslant g(x)$且$f,g$非负，有
+	$$\int_{a}^{u}f(x)\d x\leqslant\int_{a}^{u}g(x)\d x\leqslant M.$$
+	因此$\displaystyle\int_{a}^{+\infty}f(x)\d x$收敛.$\hfill\blacksquare$
+\end{proof}
+\begin{corollary}[比较原则的极限形式]
+	若$f$和$g$都在任何有限区间$\left[a,u\right]$上可积，当$x\in\left[a,+\infty\right)$时，$f(x)\geqslant 0,\ g(x)>0$，且$\lim\limits_{x\to +\infty}\dfrac{f(x)}{g(x)}=c$，则有：
+	
+	(i)当$0<c<+\infty$时，$\displaystyle\int_{a}^{+\infty}f(x)\d x$与$\displaystyle\int_{a}^{+\infty}g(x)\d x$同敛态；
+	
+	(ii)当$c=0$时，由$\displaystyle\int_{a}^{+\infty}g(x)\d x$收敛可推知$\displaystyle\int_{a}^{+\infty}f(x)\d x$也收敛；
+	
+	(iii)当$c=+\infty$时，由$\displaystyle\int_{a}^{+\infty}g(x)\d x$发散可推知$\displaystyle\int_{a}^{+\infty}f(x)\d x$也发散.
+\end{corollary}
+特别地，如果选用$\displaystyle\int_{a}^{+\infty}\frac{\d x}{x^p}$作为比较对象，则有下面的{\heiti Cauchy判别法}及其极限形式.
+\begin{corollary}[Cauchy判别法]
+	设$f$定义于$\left[a,+\infty\right)\ (a>0)$，且在任何有限区间$\left[a,u\right]$上可积，则有：
+	
+	(i)当$0\leqslant f(x)\leqslant\dfrac{1}{x^p},\ x\in\left[a,+\infty\right)$，且$p>1$时，$\displaystyle\int_{a}^{+\infty}f(x)\d x$收敛；
+	
+	(ii)当$f(x)\geqslant\dfrac{1}{x^p},\ x\in\left[a,+\infty\right)$，且$p\leqslant 1$时，$\displaystyle\int_{a}^{+\infty}f(x)\d x$发散.
+\end{corollary}
+\begin{corollary}[Cauchy判别法的极限形式]
+	设$f$是定义于$\left[a,+\infty\right)$上的非负函数，在任何有限区间$\left[a,u\right]$上可积，且
+	$$\lim\limits_{x\to +\infty}x^pf(x)=\lambda.$$
+	则有
+	
+	(i)当$p>1,\ 0\leqslant\lambda<+\infty$时，$\displaystyle\int_{a}^{+\infty}f(x)\d x$收敛；
+	
+	(ii)当$p\leqslant 1,\ 0<\lambda\leqslant +\infty$时，$\displaystyle\int_{a}^{+\infty}f(x)\d x$发散.
+\end{corollary}
+\subsection{一般无穷积分的敛散判别法}
+\begin{theorem}[Dirichlet判别法]
+	若$F(u)=\displaystyle\int_{a}^{u}f(x)\d x$在$\left[a,+\infty\right)$上有界，$g(x)$在$\left[a,+\infty\right)$上当$x\to +\infty$时单调趋于$0$，则$\displaystyle\int_{a}^{+\infty}f(x)g(x)\d x$收敛.
+\end{theorem}
+\begin{proof}
+	设$\bigg|\displaystyle\int_{a}^{u}f(x)\d x\bigg|\leqslant M,\ u\in\left[a,+\infty\right)$.任给$\varepsilon>0$，由于$\lim\limits_{x\to +\infty}g(x)=0$，因此存在$G\geqslant a$，当$x>G$时，有
+	$$|g(x)|<\frac{\varepsilon}{4M}.$$
+	又因为$g$是单调函数，由积分第二中值定理的推论，对于任何$u_2>u_1>G$，存在$\xi\in\left[u_1,u_2\right]$，使得
+	$$\int_{u_1}^{u_2}f(x)g(x)\d x=g(u_1)\int_{u_1}^{\xi}f(x)\d x+g(u_2)\int_{\xi}^{u_2}f(x)\d x.$$
+	于是有
+	\begin{align*}
+		\bigg|\int_{u_1}^{u_2}f(x)g(x)\d x\bigg|
+		&\leqslant|g(u_1)|\cdot\bigg|\int_{u_1}^{\xi}f(x)\d x\bigg|+|g(u_2)|\cdot\bigg|\int_{\xi}^{u_2}f(x)\d x\bigg|\\
+		&=|g(u_1)|\cdot\bigg|\int_{a}^{\xi}f(x)\d x-\int_{u_1}^{a}f(x)\d x\bigg|+|g(u_2)|\cdot\bigg|\int_{a}^{u_2}f(x)\d x-\int_{a}^{\xi}f(x)\d x\bigg|\\
+		&<\frac{\varepsilon}{4M}\cdot 2M+\frac{\varepsilon}{4M}\cdot 2M=\varepsilon.
+	\end{align*}
+	根据Cauchy准则，证得$\displaystyle\int_{a}^{+\infty}f(x)g(x)\d x$收敛.
+	$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}[Abel判别法]
+	若$\displaystyle\int_{a}^{+\infty}f(x)\d x$收敛，$g(x)$在$\left[a,+\infty\right)$上单调有界，则$\displaystyle\int_{a}^{+\infty}f(x)g(x)\d x$收敛.
+\end{theorem}
+\begin{proof}
+	由于$\displaystyle\int_{a}^{+\infty}f(x)\d x$收敛，即$\lim\limits_{u\to +\infty}\displaystyle\int_{a}^{u}f(x)\d x$存在，则$\displaystyle\int_{a}^{u}f(x)\d x$在$\left[0,+\infty\right)$上有界，又$g(x)$在$\left[a,+\infty\right)$上单调有界，则必有极限.设$\lim\limits_{x\to +\infty}g(x)=a$，即有
+	$$\lim\limits_{x\to +\infty}\left[g(x)-a\right]=0.$$
+	由Dirichlet判别法知，$\displaystyle\int_{a}^{+\infty}f(x)\left[g(x)-a\right]\d x$收敛，即
+	$$\displaystyle\int_{a}^{+\infty}\left[f(x)g(x)-af(x)\right]\d x=\displaystyle\int_{a}^{+\infty}f(x)g(x)\d x-a\displaystyle\int_{a}^{+\infty}f(x)\d x.$$
+	由于$\displaystyle\int_{a}^{+\infty}f(x)\d x$收敛，故$\displaystyle\int_{a}^{+\infty}f(x)g(x)\d x$收敛.$\hfill\blacksquare$
+\end{proof}
+\hspace*{\fill}
+
+\begin{remark}
+	上述证明利用了Dirichlet判别法，当然，这里也可利用积分第二中值定理证明，在此不再赘述.
+\end{remark}
+\section{瑕积分的敛散判别}
+瑕积分与无穷积分的敛散判别法相类似，我们只是给出陈述，不再加以证明.
+\subsection{瑕积分收敛的Cauchy准则}
+\begin{theorem}[瑕积分收敛的Cauchy准则]
+	瑕积分$\displaystyle\int_{a}^{b}f(x)\d x$（瑕点为$a$）收敛的充要条件是：任给$\varepsilon>0$，存在$\delta>0$，只要$u_1,u_2\in(a,a+\delta)$，总有
+	$$\bigg|\int_{u_1}^{b}f(x)\d x-\int_{u_2}^{b}f(x)\d x\bigg|=\bigg|\int_{u_1}^{u_2}f(x)\d x\bigg|<\varepsilon.$$
+\end{theorem}
+\begin{proposition}
+	设函数$f$的瑕点为$a$，$f$在$\left(a,b\right]$的任一内闭区间$\left[u,b\right]$上可积.则当$\displaystyle\int_{a}^{b}|f(x)|\d x$收敛时，$\displaystyle\int_{a}^{b}f(x)\d x$也必定收敛，并有
+	$$\bigg|\int_{a}^{b}f(x)\d x\bigg|\leqslant\int_{a}^{b}|f(x)|\d x.$$
+\end{proposition}
+\begin{remark}
+	同样地，当$\displaystyle\int_{a}^{b}|f(x)|\d x$收敛时，称$\displaystyle\int_{a}^{b}f(x)\d x$为{\heiti 绝对收敛}，称收敛而不绝对收敛者为{\heiti 条件收敛}.
+\end{remark}
+\subsection{非负函数瑕积分敛散判别}
+\begin{theorem}[比较原则]
+	设定义在$\left(a,b\right]$上的两个非负函数$f$和$g$瑕点都为$a$，在任何区间$\left[u,b\right]\subset\left(a,b\right]$上都可积，且满足
+	$$f(x)\leqslant g(x),\ x\in \left(a,b\right],$$
+	则有：
+
+		(i)当$\displaystyle\int_{a}^{b}g(x)\d x$收敛时，$\displaystyle\int_{a}^{b}f(x)\d x$必收敛；
+		
+		(ii)当$\displaystyle\int_{a}^{b}f(x)\d x$发散时，$\displaystyle\int_{a}^{b}g(x)\d x$必发散.
+
+\end{theorem}
+\begin{corollary}[比较原则的极限形式]
+	$f(x)\geqslant 0,\ g(x)>0$，且$\lim\limits_{x\to +\infty}\dfrac{f(x)}{g(x)}=c$时，有：
+	
+	(i)当$0<c<+\infty$时，$\displaystyle\int_{a}^{b}f(x)\d x$与$\displaystyle\int_{a}^{b}g(x)\d x$同敛态；
+	
+	(ii)当$c=0$时，由$\displaystyle\int_{a}^{b}g(x)\d x$收敛可推知$\displaystyle\int_{a}^{b}f(x)\d x$也收敛；
+	
+	(iii)当$c=+\infty$时，由$\displaystyle\int_{a}^{b}g(x)\d x$发散可推知$\displaystyle\int_{a}^{b}f(x)\d x$也发散.
+\end{corollary}
+特别地，如果选用$\displaystyle\int_{a}^{+\infty}\frac{\d x}{(x-a)^p}$作为比较对象，则有下面的{\heiti Cauchy判别法}及其极限形式.
+\begin{corollary}[Cauchy判别法]
+	设$f$定义于$\left(a,b\right]$上，且在任何区间$\left[u,b\right]\subset\left(a,b\right]$上可积，则有：
+	
+	(i)当$0\leqslant f(x)\leqslant\dfrac{1}{(x-a)^p}$，且$0<p<1$时，$\displaystyle\int_{a}^{b}f(x)\d x$收敛；
+	
+	(ii)当$f(x)\geqslant\dfrac{1}{(x-a)^p}$，且$p\geqslant 1$时，$\displaystyle\int_{a}^{b}f(x)\d x$发散.
+\end{corollary}
+\begin{corollary}[Cauchy判别法的极限形式]
+	设$f$是定义于$\left(a,b\right]$上的非负函数，$a$是其瑕点，且在任何区间$\left[u,b\right]\subset\left(a,b\right]$上可积，若
+	$$\lim\limits_{x\to a^+}(x-a)^pf(x)=\lambda.$$
+	则有
+	
+	(i)当$0<p<1,\ 0\leqslant\lambda<+\infty$时，$\displaystyle\int_{a}^{b}f(x)\d x$收敛；
+	
+	(ii)当$p\geqslant 1,\ 0<\lambda\leqslant +\infty$时，$\displaystyle\int_{a}^{b}f(x)\d x$发散.
+\end{corollary}
+\subsection{一般瑕积分的敛散判别法}
+\begin{theorem}[Dirichlet判别法]
+	设$a$为$f(x)$的瑕点，函数$F(u)=\displaystyle\int_{a}^{b}f(x)\d x$在$\left(a,b\right]$上有界，函数$g(x)$在$\left(a,b\right]$上单调且$\lim\limits_{x\to a^+}g(x)=0$，则瑕积分$\displaystyle\int_{a}^{b}f(x)g(x)\d x$收敛.
+\end{theorem}
+\begin{theorem}[Abel判别法]
+	设$a$是$f(x)$的瑕点，瑕积分$\displaystyle\int_{a}^{b}f(x)\d x$发散，函数$g(x)$在$\left(a,b\right]$上单调且有界，则瑕积分$\displaystyle\int_{a}^{b}f(x)g(x)\d x$收敛.
+\end{theorem}

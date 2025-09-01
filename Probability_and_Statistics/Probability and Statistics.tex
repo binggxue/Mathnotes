@@ -1,0 +1,374 @@
+\documentclass[lang=cn,10pt]{elegantbook}
+
+\usepackage{amsfonts,amssymb,fixdif}
+
+\title{概率论与数理统计讲义}
+\subtitle{Probability and Statistics}
+
+\author{薛冰}
+\date{\today}
+
+%table of content depth,目录显示的深度
+\setcounter{tocdepth}{3} 
+
+% 修改封面的颜色带
+\definecolor{customcolor}{RGB}{255,185,0}
+\colorlet{coverlinecolor}{customcolor}
+
+\cover{Cover.png}
+
+\begin{document}
+	\maketitle
+	
+	\frontmatter
+	\tableofcontents
+	\mainmatter
+
+\input{chapter1}
+\newpage
+
+\chapter{随机变量及其分布}
+\section{基本概念}
+\subsection{随机变量的定义}
+\begin{definition}[随机变量]
+	定义在样本空间$\varOmega$上的实值函数$X=X(\omega)$称为{\heiti 随机变量}，常用大写字母$X,Y,Z$等表示随机变量，其取值用小写字母$x,y,z$等表示.
+	
+	假如一个随机变量仅可能取有限个值或可列个值，则称其为{\heiti 离散随机变量}. 假如一个随机变量的可能取值充满数轴上的一个区间$(a,b)$，则称其为{\heiti 连续随机变量}，其中$a$可以是$-\infty$，$b$可以是$+\infty$.
+\end{definition}
+由定义，随机变量$X$是样本点$\omega$的一个映射. 这个映射的原像（定义域）可以是数，也可以不是数，但像一定是实数.
+
+与微积分中的变量不同，概率论中的随机变量$X$是一种“随机取值的变量且伴随一个分布”. 以离散随机变量为例，我们不仅要知道$X$可能的取值，而且还要知道去这些值的概率各是多少，这就需要分布的概念. 有没有分布也是区分一般变量和随机变量的主要标志.
+\subsection{分布函数}
+\begin{definition}[分布函数]
+	设$X$是一个随机变量，对任意实数$x$，称
+	$$F(x)=P(X\leqslant x)$$
+	为随机变量$X$的{\heiti 分布函数}. 且称$X$服从$F(x)$，记为$X\sim F(x)$. 有时也用$F_X(x)$以表明是$X$的分布函数.
+\end{definition}
+由定义可知，{\heiti 任一随机变量$X$(离散的或连续的)都有一个分布函数}. 有了分布函数，就可据此计算与随机变量$X$有关的事件的概率.
+
+下面给出了分布函数的三个性质.
+\begin{theorem}[分布函数的基本性质]
+	设分布函数$F(x)$，则它有基本性质：
+	\begin{enumerate}[(1)]
+		\item {\heiti 单调性}\qquad $F(x)$是定义在整个实轴$(-\infty,+\infty)$上的单调增函数，即对任意$x_1<x_2$，有$F(x_1)\leqslant f(x_2)$.
+		\item {\heiti 有界性}\qquad 对任意$x$，有$0\leqslant F(x)\leqslant 1$，且
+		$$F(-\infty)=\lim\limits_{x\to -\infty}F(x)=0.$$
+		$$F(+\infty)=\lim\limits_{x\to +\infty}F(x)=1.$$
+		\item {\heiti 右连续性}\qquad $F(x)$是$x$的右连续函数，即对任意的$x_0$，有
+		$$\lim\limits_{x\to x_0+0}F(x)=F(x_0).$$
+		即
+		$$F(x_0+0)=F(x_0)$$
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	(1)是显然的. 下证(2).
+	
+	由于$F(x)$是事件$\{X\leqslant x\}$的概率，所以$0\leqslant F(x)\leqslant 1$. 由$F(x)$的单调性知，对任意整数$m$和$n$，有
+	$$\lim\limits_{x\to -\infty}F(x)=\lim\limits_{m\to -\infty}F(m),\quad \lim\limits_{x\to +\infty}F(x)=\lim\limits_{n\to +\infty}F(n)$$
+	都存在. 又由概率的可列可加性得
+	\begin{align*}
+		1&=P(-\infty<X<+\infty)=P\left(\bigcup_{i=-\infty}^{+\infty}\{i-1<X\leqslant i\}\right)\\
+		&=\sum_{i=-\infty}^{+\infty}P(i-1<X\leqslant i)=\lim_{\substack{n\to +\infty\\ m\to -\infty}}\sum_{i=m}^{n}P(i-1<X\leqslant i)\\
+		&=\lim\limits_{n\to +\infty}F(n)-\lim\limits_{m\to -\infty}F(m),
+	\end{align*}
+	由此可得
+	$$\lim\limits_{x\to -\infty}F(x)=0,\quad \lim\limits_{x\to +\infty}F(x)=1.$$
+	
+	再证(3). 因为$F(x)$是单调有界增函数，所以其任一点$x_0$的右极限$F(x_0+0)$必存在. 为证右连续性，只要对任意单调减的数列$x_1>x_2>\cdots>x_n>\cdots>x_0$，当$x_n\to x_0\ (n\to\infty)$时，证明$\lim\limits_{n\to\infty}F(x_n)=F(x_0)$成立即可. 因为
+	\begin{align*}
+		F(x_1)-F(x_0)&=P(x_0<X\leqslant x_1)=P\left(\bigcup_{i=1}^{\infty}\{x_{i+1}<X\leqslant x_i\}\right)\\
+		&=\sum_{i=1}^{\infty}P(x_{i+1}<X\leqslant x_i)=\sum_{i=1}^{\infty}\left[F(x_i)-F(x_{i+1})\right]\\
+		&=\lim\limits_{n\to\infty}\left[F(x_1)-F(x_n)\right]=F(x_1)-\lim\limits_{n\to\infty}F(x_n),
+	\end{align*}
+	由此得
+	$$F(x_0)=\lim\limits_{n\to\infty}F(x_n)=F(x_0+0).$$
+	至此三条基本性质证毕.$\hfill\blacksquare$
+\end{proof}
+我们还可以证明满足上述三条性质的函数是某个随机变量的分布函数. 从而这三条基本性质是某个函数是分布函数的充要条件.
+\begin{example}
+	函数
+	$$F(x)=\frac{1}{\pi}\left(\arctan x+\frac{\pi}{2}\right),\ -\infty<x<+\infty$$
+	满足分布函数的三条基本性质，所以它是一个分布函数，特别地，它称为{\heiti Cauchy分布函数}.
+\end{example}
+\subsection{离散随机变量的概率分布列}
+\begin{definition}[概率分布列]
+	设$X$是一个离散随机变量，如果$X$的所有可能取值是$x_1,x_2,\cdots,x_n,\cdots$，则称$X$取$x_i$的概率
+	$$p_i=p(x_i)=P(X=x_i),\ i=1,2,\cdots,n,\cdots$$
+	为$X$的{\heiti 概率分布列}或{\heiti 分布列}，记为$X\sim \{P_i\}$.
+\end{definition}
+分布列也可用如下列表的方式来表示.
+
+\begin{tabular}{c|ccccc}
+	$X$ & $x_1$ & $x_2$ & $\cdots$ & $x_n$ & $\cdots$\\
+	\hline
+	$P$ & $p(x_1)$ & $p(x_2)$ & $\cdots$ & $p(x_n)$ & $\cdots$\\
+\end{tabular}
+
+\begin{theorem}
+	分布列有以下基本性质：
+	\begin{enumerate}[(1)]
+		\item {\heiti 非负性}\quad $p(x_i\geqslant 0),\ i=1,2,\cdots.$
+		\item {\heiti 正则性}\quad $\displaystyle\sum_{i=1}^{\infty}p(x_i)=1$.
+	\end{enumerate}
+\end{theorem}
+由离散随机变量$X$的分布列很容易写出$X$的分布函数
+$$F(x)=\sum_{x_j\leqslant x}p(x_i).$$
+它的图形是至多可数级的阶梯函数. 不过在离散场合，常用来描述分布的是分布列，很少用到分布函数.
+
+特别地，常量$c$可看作仅取一个值的随机变量$X$，即
+$$P(X=c)=1.$$
+这个分布常称为{\heiti 单点分布}或{\heiti 退化分布}，它的分布函数是
+\begin{equation*}
+	F(x)=
+	\left\{
+	\begin{aligned}
+		&0,\quad x<c\\
+		&1,\quad x\geqslant c.
+	\end{aligned}
+	\right.
+\end{equation*}
+在具体求随机变量$X$的分布列时，关键是求出$X$的所有可能取值及取这些值的概率.
+\subsection{连续随机变量的概率密度函数}
+\begin{definition}
+	设随机变量$X$的分布函数为$F(x)$，如果存在实数轴上的一个非负可积函数$p(x)$，使得对任意实数$x$有
+	$$F(x)=\int_{-\infty}^{x}p(t)\d t,$$
+	则称$p(x)$为$X$的{\heiti 概率密度函数}(probability density function)，简称{\heiti 密度函数}或{\heiti 密度}. 同时称$X$为{\heiti 连续随机变量}，称$F(x)$为{\heiti 连续分布函数}.
+\end{definition}
+在$F(x)$的可导点上有
+$$F'(x)=p(x).$$
+其中$F(x)$是(累积)概率函数，其导函数$F'(x)$是概率密度函数，这也是$p(x)$被称为概率密度函数的理由.
+\begin{theorem}[密度函数基本性质]
+	\begin{enumerate}[(1)]
+		\item {\heiti 非负性}\quad $p(x)\geqslant 0$.
+		\item {\heiti 正则性}\quad $\displaystyle\int_{-\infty}^{+\infty}p(x)]\d x=1$.
+	\end{enumerate}
+\end{theorem}
+\section{数学期望}
+\subsection{数学期望的定义}
+下面我们先定义离散随机变量的数学期望.
+\begin{definition}[离散随机变量的数学期望]
+	设离散随机变量$X$的分布列为
+	$$p(x_i)=P(X=x_i),\ i=1,2,\cdots,n,\cdots.$$
+	如果
+	$$\sum_{i=1}^{\infty}|x_i|p(x_i)<\infty,$$
+	则称
+	$$E(X)=\sum_{i=1}^{\infty}x_ip(x_i)$$
+	为随机变量$X$的{\heiti 数学期望}(expectation)，或称为该分布的数学期望，简称{\heiti 期望}或{\heiti 均值}. 若级数$\displaystyle\sum_{i=1}^{\infty}|x_i|p(x_i)$不收敛，则称$X$的数学期望不存在.
+\end{definition}
+\begin{remark}
+	以上定义中，要求级数绝对收敛的目的在于使数学期望唯一. 因为随机变量的取值可正可负，取值次序可先可后，由无穷级数理论可知，如果无穷级数绝对收敛，则可保证其和不受次序变动的影响. 
+\end{remark}
+\begin{remark}
+	由于有限项的和不受次序变动的影响，故取有限个可能值的随机变量的数学期望总是存在的.
+\end{remark}
+类似地，我们可以定义连续随机变量的数学期望.
+\begin{definition}[连续随机变量的数学期望]
+	设连续随机变量$X$的密度函数为$p(x)$. 如果
+	$$\int_{-\infty}^{+\infty}|x|p(x)\d x<\infty,$$
+	则称
+	$$E(x)=\int_{-\infty}^{+\infty}xp(x)\d x$$
+	为$X$的{\heiti 数学期望}(expectation)，或称为该分布$p(x)$的数学期望，简称{\heiti 期望}或{\heiti 均值}. 若$\displaystyle\int_{-\infty}^{+\infty}|x|p(x)\d x$不收敛，则称$X$的数学期望不存在.
+\end{definition}
+
+数学期望的理论意义是深刻的，它是消除随机性的主要手段.
+\subsection{数学期望的性质}
+下面均假设所涉及的数学期望存在，给出数学期望的一些性质.
+\begin{theorem}
+	若随机变量$X$的分布用分布列$p(x_i)$或用密度函数$p(x)$表示，则$X$的某一函数$g(X)$的数学期望为
+	\begin{equation}\label{expectation}
+		E\left[g(X)\right]=
+		\left\{
+		\begin{aligned}
+			&\sum_{i}g(x_i)p(x_i),\quad&\text{在离散场合},\\
+			&\int_{-\infty}^{+\infty}g(x)p(x)\d x,\quad&\text{在连续场合}.
+		\end{aligned}
+		\right.
+	\end{equation}
+\end{theorem}
+\begin{proof}
+	
+\end{proof}
+\begin{theorem}
+	若$c$是常数，则$E(c)=c$.
+\end{theorem}
+\begin{proof}
+	如果将$c$看作仅取一个值的随机变量$X$，则有$P(X=c)=1$，从而其数学期望$E(c)=E(X)=c\times 1=c$.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}
+	对任意常数$a$，有
+	$$E(aX)=aE(X).$$
+\end{theorem}
+\begin{proof}
+	在\ref{expectation}式中令$g(x)=ax$，然后把$a$从求和号或积分号中提出来即得.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}
+	对任意的两个函数$g_1(x)$和$g_2(x)$，有
+	$$E\left[g_1(X)\pm g_2(X)\right]=E\left[g_1(X)\right]\pm E\left[g_2(X)\right].$$
+\end{theorem}
+\begin{proof}
+	在\ref{expectation}式中令$g(x)=g_1(x)\pm g_2(x)$，然后把和式分解成两个和式，或把积分分解成两个积分即得.$\hfill\blacksquare$
+\end{proof}
+\subsection{Markov不等式}
+\begin{theorem}[Markov不等式]
+	设非负随机变量$X$的数学期望$E(X)$存在，则对任意常数$a>0$，有
+	$$P(X\geqslant a)\leqslant\frac{E(X)}{a}.$$
+\end{theorem}
+\begin{proof}
+	设连续的非负随机变量$X$的密度函数为$p(x)$，数学期望为$E(X)$，则
+	\begin{align*}
+		E(X)&=\int_{-\infty}^{\infty}xp(x)\d x=\int_{0}^{\infty}xp(x)\d x=\int_{0}^{a}xp(x)\d x+\int_{a}^{\infty}xp(x)\d x\\
+		&\geqslant\int_{a}^{\infty}xp(x)\d x\geqslant\int_{a}^{\infty}ap(x)\d x=a\int_{a}^{\infty}p(x)\d x=aP(X\geqslant a).
+	\end{align*}
+	即
+	$$P(X\geqslant a)\leqslant\frac{E(X)}{a}.$$
+	$\hfill\blacksquare$
+\end{proof}
+Markov不等式的一个实际应用是，超过$n$倍平均工资的人数不会超过总人数的$\dfrac{1}{n}$.
+\section{方差与标准差}
+\subsection{方差与标准差的定义}
+方差和标准差是度量随机变量取值波动大小最重要的两个特征数.
+\begin{definition}[方差与标准差的定义]
+	若随机变量$X^2$的数学期望$E(X^2)$存在，则称偏差平方$(X-E(X))^2$的数学期望$E(X-E(X))^2$为随机变量$X$或相应分布的{\heiti 方差}(variance)，记为
+	\begin{equation*}
+		\text{Var}(X)=E(X-E(X))^2=
+		\left\{
+		\begin{aligned}
+			&\sum_{i}(x_i-E(X))^2p(x_i),\quad&\text{在离散场合,}\\
+			&\int_{-\infty}^{+\infty}(x-E(X))^2p(x)\d x,\quad&\text{在连续场合}.
+		\end{aligned}
+		\right.
+	\end{equation*}
+	称方差的正平方根$\sqrt{\text{Var}(X)}$为随机变量的{\heiti 标准差}(standrad deviation)，记为$\sigma(X)$或$\sigma_X$.
+\end{definition}
+方差与标准差功能相似，它们都可以用来描述随机变量取值的集中和分散程度的两个特征数. 方差和标准差越小，随机变量的取值越集中；反之，方差和标准差越大，随机变量的取值就越分散.
+
+方差和标准差之间的差别主要在量纲上. 由于标准差与数学期望有相同的量纲，因此$E(x)\pm k\sigma$是有意义的($k$为正实数)，所以在实际中，人们比较乐意选用标准差，但标准差的计算必须通过方差才能算得.
+
+\subsection{方差的性质}
+以下均假定随机变量的方差是存在的.
+\begin{theorem}
+	$\mathrm{Var}(X)=E(X^2)-\left[E(X)\right]^2$.
+\end{theorem}
+\begin{proof}
+	因为
+	$$\mathrm{Var}(X)=E\left[X-E(X)\right]^2=E\left(X^2-2X\cdot E(X)+\left[E(X)\right]^2\right),$$
+	由数学期望的性质，得
+	$$\mathrm{Var}(X)=E(X^2)-2E(X)\cdot E(X)+\left[E(X)\right]^2=E(X^2)-\left[E(X)\right]^2.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	在实际计算方差时，这个性质往往比定义$\mathrm{Var}(X)=E\left[X-E(X)\right]^2$更常用.
+\end{remark}
+\begin{theorem}
+	常数的方差为$0$.
+\end{theorem}
+\begin{proof}
+	设$c$为常数，则
+	$$\mathrm{Var}(c)=E\left[c-E(c)\right]^2=E(c-c)^2=0.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}
+	若$a,b$是常数，则$\mathrm{Var}(aX+b)=a^2\mathrm{Var}(X)$.
+\end{theorem}
+\begin{proof}
+	因$a,b$是常数，则
+	$$\mathrm{Var}(aX+b)=E\left[aX+b-E(aX+b)\right]^2=E\left[a(X-E(X))\right]^2=a^2\mathrm{Var}(X).$$
+	$\hfill\blacksquare$
+\end{proof}
+\subsection{Chebyshev不等式}
+前面我们介绍了Markov不等式，实际上它给出的界太过宽松，为进一步精细化，我们介绍下面的Chebyshev不等式. 事实上，它是Markov不等式的一种特殊情形.
+\begin{theorem}[Chebyshev不等式]
+	设随机变量$X$的数学期望和方差都存在，则对任意常数$\varepsilon>0$，有
+	$$P(|X-E(X)|\geqslant\varepsilon)\leqslant\frac{\mathrm{Var}(X)}{\varepsilon^2},$$
+	或
+	$$P(|X-E(X)|<\varepsilon)\geqslant 1-\frac{\mathrm{Var}(X)}{\varepsilon^2}.$$
+\end{theorem}
+\begin{proof}
+	只需证第一个不等式. 设$X$是一个连续型随机变量，其密度函数为$p(x)$. 记$E(X)=a$，$A=\{x:|x-a|\geqslant\varepsilon\}$. 我们有
+	$$P(|X-a|\geqslant\varepsilon)=\int_{A}p(x)\d x\leqslant\int_{A}\frac{(x-a)^2}{\varepsilon^2}p(x)\d x\leqslant\frac{1}{\varepsilon^2}\int_{-\infty}^{\infty}(x-a)^2p(x)\d x=\frac{\mathrm{Var}(X)}{\varepsilon^2}.$$
+	对于离散型随机变量亦可类似进行证明.$\hfill\blacksquare$
+\end{proof}
+在概率论中，事件$\{|X-E(X)|\geqslant\varepsilon\}$称为{\heiti 大偏差}，其概率$P(|X-E(X)|\geqslant\varepsilon)$称为{\heiti 大偏差发生概率}. Chebyshev不等式给出了大偏差发生概率的上界，这个上界与方差成正比，方差越大上界也越大.
+
+下面定理进一步说明了方差为$0$就意味着随机变量的取值几乎集中在一点上.
+\begin{theorem}
+	若随机变量$X$的方差存在，则$\mathrm{Var}(X)=0$的充要条件是$X$几乎处处为某个常数$a$，即$P(X=a)=1$.
+\end{theorem}
+\begin{proof}
+	充分性显然成立. 下证必要性.
+	
+	设$\mathrm{Var}(X)=0$，这时$E(X)$存在. 因为
+	$$\{|X-E(X)|>0\}=\bigcup_{n=1}^{\infty}\left\{|X-E(X)|\geqslant\frac{1}{n}\right\},$$
+	所以有
+	\begin{align*}
+		P(|X-E(X)|>0)&=P\left(\bigcup_{n=1}^{\infty}\left\{|X-E(X)|\geqslant\frac{1}{n}\right\}\right)\\
+		&\leqslant\sum_{n=1}^{\infty}P\left(|X-E(X)|\geqslant\frac{1}{n}\right)\\
+		&\leqslant\sum_{n=1}^{\infty}\frac{\mathrm{Var}(X)}{(1/n)^2}=0,
+	\end{align*}
+	其中最后一个不等式用到了Chebyshev不等式. 由此可知
+	$$P(|X-E(X)|>0)=0,$$
+	因而有
+	$$P(|X-E(X)|=0)=1,$$
+	即
+	$$P(X=E(X))=1,$$
+	这就证明了结论，且其中的常数$a$就是$E(X)$.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	设零测集$E_0\subseteq E$，$P$是关于$E$中元素的命题，若对$\forall x\in E\backslash E_0$，命题$P$成立，那么我们说命题$P$在$E$上{\heiti 几乎处处}(almost everywhere)成立.
+\end{remark}
+\subsection{随机变量的中心化与标准化}
+下面我们介绍随机变量的中心化和标准化.
+\begin{definition}[随机变量的中心化]
+	已知$X$是任意的随机变量，当$E(x)$和$\mathrm{Var}(x)$存在时，对$X$作变换
+	$$X_{*}=X-E(x),$$
+	这个变换称为{\heiti 随机变量的中心化}.
+\end{definition}
+由期望和方差的性质推得：
+$$E(X_{*})=E\left[X-E(X)\right]=E(X)-E\left[E(X)\right]=0,$$
+$$\mathrm{Var}(X_{*})=\mathrm{Var}\left[X-E(X)\right]=\mathrm{Var}(X).$$
+即中心化后的随机变量，期望为$0$，方差不变.
+
+中心化的性质解释：
+\begin{enumerate}[(1)]
+	\item 期望归零化：中心化随机变量将其中心点（期望点）平移至原点，使其分布不偏左也不偏右，其期望为零.
+	\item 分布波动不变性：平移不影响波动的分布程度，方差不变.
+\end{enumerate}
+\begin{definition}[随机变量的标准化]
+	已知$X$是任意的随机变量，当$E(X)$和$\mathrm{Var}(X)$存在且$\mathrm{Var}(X)\neq 0$时，对$X$作变换
+	$$X^{*}=\frac{X-E(x)}{\sqrt{\mathrm{Var}(X)}},$$
+	这个变换称为随机变量的标准化.
+\end{definition}
+由期望和方差的性质推得：
+$$E(X^{*})=E\left[\frac{X-E(X)}{\sqrt{\mathrm{Var}(X)}}\right]=\frac{E\left[X-E(X)\right]}{E\left(\mathrm{Var}(x)\right)}=0,$$
+$$\mathrm{Var}(X^{*})=\mathrm{Var}\left[\frac{X-E(X)}{\sqrt{\mathrm{Var}(X)}}\right]=\left(\frac{1}{\sqrt{\mathrm{Var}(X)}}\right)^2\mathrm{Var}(X)=1.$$
+即标准化后的随机变量，期望为$0$，方差为$1$.
+
+标准化的性质解释：
+\begin{enumerate}[(1)]
+	\item 期望归零化：标准化随机变量将其中心点（期望点）平移至原点，使其分布不偏左也不偏右，其期望为$0$.
+	\item 分布波动归一化：标准化将随机变量的取值按照标准差等比压缩，使其分布不疏也不密，压缩改变了分布的波动程度，方差变为$1$.
+\end{enumerate}
+\section{常用离散分布}
+\subsection{Bernoulli分布}
+\begin{definition}[Bernoulli分布]
+	如果$X$只取值$0$或$1$，概率分布是
+	$$P(X=1)=p,\quad P(X=0)=q,\quad p+q=1,$$
+	就称$X$服从{\heiti Bernoulli 分布}(Bernoulli Distribution)，或称{\heiti 二点分布}或{\heiti 0-1分布}记作$X\sim b(1,p)$.
+\end{definition}
+任何试验,当只考虑成功与否时,就可以用Bernoulli分布的随机变量描述.
+\subsection{二项分布}
+\begin{definition}[二项分布]
+	如果随机变量有如下的概率分布：
+	$$P(X=k)=\mathrm{C}$$
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,75 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+%article info
+\title{\vspace{-2em}\textbf{商空间}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}[分划]
+		设$X$为拓扑空间，$\mathcal{P}=\left\{M_i:M_i\cap M_j=\varnothing, i\neq j,\bigcup_{i\in I}M_i=X\right\}$则称$\mathcal{P}$为$X$的一个\textbf{分划}.
+	\end{definition}
+	\begin{definition}[商拓扑]
+		设$\mathcal{P}$是$X$的一个分划，$Y$中的元素是$\mathcal{P}$中的若干集合，定义满射$\pi:X\to Y$，$\pi(x)=M_{i_x}\ni x$，$Y$带有的拓扑是满足$\pi$连续的最大的拓扑. 即对任意$O\subset Y$，$O$是开集当且仅当$\pi^{-1}(O)\subset X$是开集，则称$Y$带有的拓扑为\textbf{商拓扑}.
+	\end{definition}
+	商拓扑空间$Y$就是把$X$分划后的每一类的点黏合为一个点得到的空间.
+	\begin{theorem}\label{natrual}
+		设$Y$为商空间，$Z$为任意拓扑空间，则$f:Y\to Z$连续当且仅当$f\circ\pi:X\to Z$连续.
+	\end{theorem}
+	\begin{proof}
+		设开集$U\subset Z$，$f^{-1}(U)$是开集当且仅当$\pi^{-1}\circ f^{-1}(U)=\left(f\circ\pi\right)^{-1}(U)$是开集.
+	\end{proof}
+	\begin{definition}[商映射]
+		设$f:X\to Y$是连续满射，$Y$上的拓扑是满足$f$连续的最大拓扑，即$O\subset Y$是开集当且仅当$f^{-1}(O)\subset X$是开集，则称$f$是\textbf{商映射}.
+	\end{definition}
+	下面推论可由\ref{natrual}推广得到.
+	\begin{corollary}
+		设$f:X\to Y$是商映射，$Z$是任意拓扑空间，则$g:Y\to Z$连续当且仅当$g\circ f:X\to Z$连续.
+	\end{corollary}
+	自然映射$\pi$是特殊的商映射，将$X$映为它的一个分划生成的商空间$Y_{*}$.
+	\begin{theorem}
+		设$f:X\to Y$是商映射，则$Y_{*}$和$Y$同胚.
+	\end{theorem}
+	\begin{proof}
+		$\{f^{-1}(y):y\in Y\}$构成$X$的一个划分. 设$h:Y_{*}\to Y$，$h(f^{-1}(y))=y$. 则$h$是双射，$h=\pi\circ f^{-1}$连续，$h^{-1}=f\circ\pi^{-1}$连续，于是$h$为同胚映射.
+	\end{proof}
+	\begin{remark}
+		为便于理解，画出交换图如下. 
+	\end{remark}
+	\begin{displaymath}
+		\xymatrix{ 
+			X \ar[r]^f \ar[dr]_{\pi} & Y \ar[d]^h \\
+					 		& Y_{*}  
+		}
+	\end{displaymath}
+	\begin{theorem}
+		设$f:X\to Y$是连续满射，若$f$将开集映为开集，或将闭集映为闭集，则$f$是商映射.
+	\end{theorem}
+	\begin{proof}
+		不妨设$f$将开集映为开集，设$U\subset Y$，$f^{-1}(U)\subset X$为开集当且仅当$U=f\circ f^{-1}(U)\subset Y$为开集，于是$f$是商映射，闭集时也可类似证明.
+	\end{proof}
+	\begin{corollary}
+		设连续满射$f:X\to Y$，$X$为紧空间，$Y$为Hausdorff空间，则$f$是商映射.
+	\end{corollary}
+	\begin{proof}
+		只需证明$f$将闭集映为闭集. 设闭集$C\subset X$，则$C$为紧的，$f(C)$为紧的，而$Y$是Hausdorff空间，于是$f(C)$是闭的.
+	\end{proof}
+	\begin{definition}
+		若映射$f$将开集映为开集，则$f$称为\textbf{开映射}，若映射$g$将闭集映为闭集，则称$g$为\textbf{闭映射}.
+	\end{definition}
+	由上可知，开或闭连续满射都是商映射，但商映射不一定是开的或闭的. 例如，存在商映射，既不是开的也不是闭的.
+\end{document}

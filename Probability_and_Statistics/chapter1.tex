@@ -1,0 +1,532 @@
+\chapter{随机事件与概率}
+\section{随机事件及其运算}
+在一定的条件下，并不总是出现相同结果的现象称为{\heiti 随机现象}.反之，只有一个结果的现象称为确定性现象.
+
+对在相同条件下可以重复的随机现象的观察、记录、实验称为{\heiti 随机试验}.
+\begin{definition}[样本空间]
+	随机现象的一切可能基本结果组成的集合称为{\heiti 样本空间}，记为$\varOmega=\{\omega_i\}$，其中$\omega$表示基本结果，称为{\heiti 样本点}.$i$是指标值，不同的样本空间中样本点的个数不一定相同，指标$i$的取值范围就不同.
+\end{definition}
+\begin{remark}
+	\begin{enumerate}[(1)]
+		\item 样本点可以是数，也可以不是数；
+		\item 随机现象的样本空间至少含有两个样本点；
+		\item 样本空间中样本点的个数为至多可数个时，称为{\heiti 离散样本空间}，样本点个数不可数时，称为{\heiti 连续样本空间}.
+	\end{enumerate}
+\end{remark}
+随机现象的某些样本点组成的集合称为{\heiti 随机事件}，简称{\heiti 事件}，常用$A,B,C,\cdots$表示.
+
+由样本空间$\varOmega$中的单个元素组成的子集称为{\heiti 基本事件}.样本空间$\varOmega$的最大子集（即$\varOmega$本身）称为{\heiti 必然事件}.样本空间$\varOmega$的最小子集（即空集$\varnothing$）称为{\heiti 不可能事件}.
+
+用来表示随机现象结果的变量称为{\heiti 随机变量}，常用$X,Y,Z$表示.
+
+事件是一类集合，因此对事件间的关系和事件间的运算，可由集合间的关系和集合间的运算推知.
+\begin{definition}[包含关系]
+	如果属于$A$的样本点必属于$B$，则称$A$被包含在$B$中，或称$B$包含$A$，记作$A\subset B$或$B\supset A$.
+\end{definition}
+\begin{remark}
+	用概率论的语言说：事件$A$的发生必然导致事件$B$发生.
+\end{remark}
+\begin{remark}
+	对任一事件$A$，必有
+	$$\varnothing\subset A\subset\varOmega.$$
+\end{remark}
+\begin{definition}[相等关系]
+	如果事件$A$与事件$B$满足：
+	$$A\subset B\text{且}B\subset A,$$
+	则称事件$A$与$B$相等，记作$A=B$.
+\end{definition}
+\begin{definition}[互不相容]
+	如果事件$A$和$B$没有相同的样本点，则称$A$与$B$互不相容.
+\end{definition}
+\begin{remark}
+	用概率论的语言说：$A$与$B$不可能同时发生.
+\end{remark}
+
+事件$A$与$B$的并，记作$A\cup B$，含义为“由事件$A$与$B$中所有的样本点组成的新事件”.或用概率论的语言说：$A$与$B$至少有一个发生.
+
+事件$A$与$B$的交，记作$A\cap B$或$AB$，含义为“由事件$A$与$B$中公共的样本点组成的新事件”.或用概率论的语言说：$A$与$B$同时发生.
+
+事件$A$对$B$的差，记作$A-B$，含义为“由在事件$A$中而不在事件$B$中的样本点组成的新事件”.或用概率论的语言说：事件$A$发生而$B$不发生.
+
+事件$A$的对立事件，记作$\overline{A}$，含义为“由在$\varOmega$中而不在$A$中的样本点组成的新事件”.或用概率论的语言说：$A$不发生.
+
+\begin{remark}
+	\begin{enumerate}[(1)]
+		\item 对立事件一定互不相容，但互不相容的事件不一定对立.
+		\item $A-B=A-AB=A\overline{B}$
+	\end{enumerate}
+\end{remark}
+
+集合的运算性质一样可以迁移到事件中来.
+\begin{theorem}
+	\begin{enumerate}[(1)]
+		\item (交换律)$A\cup B=B\cup A,\ A\cap B=B\cap A$.
+		\item (结合律)$A\cup(B\cup C)=(A\cup B)\cup C$，$A\cap(B\cap C)=(A\cap B)\cap C$.
+		\item (分配律)$A\cap (B\cup C)=(A\cap B)\cup(A\cap C)$，$A\cap(\bigcup\limits_{\alpha\in\Lambda}B_\alpha)=\bigcup\limits_{\alpha\in\Lambda}(A\cap B_\alpha)$.
+		\item $A\cup A=A,\ A\cap A=A,\ \overline{\overline{A}}=A$.
+	\end{enumerate}
+\end{theorem}
+\begin{theorem}[De\ Morgan公式]
+	若$\{A_\alpha|\alpha\in \Lambda\}$是至多可数个事件，则
+	\begin{enumerate}[(1)]
+		\item $\overline{(\bigcup\limits_{\alpha\in\Lambda}A_\alpha)}=\bigcap\limits_{\alpha\in\Lambda}\overline{A_\alpha}$;
+		\item $\overline{(\bigcap\limits_{\alpha\in\Lambda}A_\alpha)}=\bigcup\limits_{\alpha\in\Lambda}\overline{A_\alpha}$.
+	\end{enumerate}
+\end{theorem}
+\begin{definition}[事件域]
+	设$\varOmega$为一样本空间，$\mathscr{F}$为$\varOmega$的某些子集所组成的集族.如果$\mathscr{F}$满足：
+	\begin{enumerate}
+		\item $\varOmega\in\mathscr{F}$；
+		\item 若$A\in\mathscr{F}$，则$\overline{A}\in\mathscr{F}$；
+		\item 若$A_n\in\mathscr{F},\ n=1,2,\cdots$，则$\bigcup\limits_{n=1}^{\infty}A_n\in\mathscr{F}$，
+	\end{enumerate}
+	则称$\mathscr{F}$为一个{\heiti 事件域}.显然，它是一个$\sigma$代数.
+\end{definition}
+在概率论中，又称$(\varOmega,\mathscr{F})$为{\heiti 可测空间}，在可测空间上才定义概率.
+
+对于含有全体实数的样本空间$\varOmega=(-\infty,\infty)=\mathbb{R}$，我们可以取Borel代数的一维情形来定义事件域.由测度论相关知识，Borel集都是Lebesgue可测的.
+
+\begin{definition}[样本空间的分割]
+	对样本空间$\varOmega$，如果有$n$个互不相容的事件$D_1,D_2,\cdots,D_n$满足：
+	$$\bigcup_{i=1}^{n}D_i=\varOmega,$$
+	则称$\{D_i|i=1,2,\cdots,n\}$为样本空间$\varOmega$的一组分割.这里的事件个数也可以是可数个.
+\end{definition}
+一般场合，若分割$\mathscr{D}=\{D_1,D_2,\cdots,D_n\}$由$n$个事件组成，则其产生的事件域$\sigma(\mathscr{D})$共含有$2^n$个不同的事件.
+
+\section{概率的定义及其确定方法}
+\subsection{概率的公理化定义}
+\begin{definition}[概率的公理化定义]
+	设$\varOmega$为一个样本空间，$\mathscr{F}$为$\varOmega$的某些子集组成的一个事件域.如果对任一事件$A\in\mathscr{F}$，定义在$\mathscr{F}$上的一个实值函数$P(A)$满足：
+	\begin{enumerate}[(1)]
+		\item 非负性：若$A\in\mathscr{F}$，则$P(A)\geqslant 0$；
+		\item 正则性：$P(\varOmega)=1$；
+		\item 可列可加性：若$A_1,A_2,\cdots,A_n$互不相容，则
+		$$P\left(\bigcup_{i=1}^{\infty}A_i\right)=\sum_{i=1}^{\infty}P(A_i).$$
+	\end{enumerate}
+	则称$P(A)$为事件$A$的{\heiti 概率}，称$(\varOmega,\mathscr{F},P)$为{\heiti 概率空间}.
+\end{definition}
+\begin{remark}
+	显然，概率是一类测度，概率空间是一类测度空间.
+\end{remark}
+\begin{remark}
+	不可能事件概率一定为零，但概率为零的事件不一定是不可能事件.
+\end{remark}
+\subsection{排列组合公式}
+下面我们介绍排列与组合公式.首先，介绍下面两条计数原理.
+
+乘法原理：如果某件事需经$k$个步骤才能完成，做第$i\ (i=1,2,\cdots,k)$步有$m_i$种方法，那么完成这件事共有$m_1\times m_2\times\cdots\times m_k$种方法.
+
+加法原理：如果某件事可由$k$类不同途径之一去完成，在第$i\ (i=1,2,\cdots,k)$类途径中有$m_i$种方法，那么完成这件事共有$m_1+m_2+\cdots+m_k$种方法.
+\begin{definition}[排列]
+	从$n$个不同元素中任取$r\ (r\leqslant n)$个元素排成一列（考虑元素先后出现次序），称此为一个{\heiti 排列}.此种排列的总数记为$\mathrm{P}_n^r$.按乘法原理，取出的第一个元素有$n$种取法，取出的第二个元素有$n-1$种取法，以此类推，取出的第$r$个元素有$n-r+1$种取法，所以有
+	$$\mathrm{P}_n^r=n\times(n-1)\times\cdots\times(n-r+1)=\frac{n!}{(n-r)!}.$$
+	若$r=n$，则称为{\heiti 全排列}，记为$\mathrm{P}_n$.显然，$\mathrm{P}_n=n!$.
+\end{definition}
+\begin{definition}[重复排列]
+	从$n$个不同元素中每次取出一个，放回后再取下一个，如此连续取$r$次所得的排列称为{\heiti 重复排列}，此种重复排列数共有$n^r$个.注意：这里的$r$允许大于$n$.
+\end{definition}
+\begin{definition}[组合]
+	从$n$个不同元素中任取$r\ (r\leqslant n)$个元素并成一组（不考虑元素间的先后次序），称此为一个{\heiti 组合}，此种组合的总数记为${n \choose r}$或$\mathrm{C}_n^r$. 按乘法原理此种组合的总数为
+	$${n\choose 2}=\frac{\mathrm{P}_n^r}{r!}=\frac{n!}{r!(n-r)!}.$$
+	在此规定$0!=1$与${n\choose 0}=1$.组合具有性质：
+	$${n\choose r}={n\choose n-r}.$$
+\end{definition}
+\begin{definition}[重复组合]
+	从$n$个元素中每次取出一个，放回后再取下一个，如此连续取$r$次所得的组合称为{\heiti 重复组合}，此种组合总数为${n+r-1\choose r}$.注意：这里的$r$也允许大于$n$.
+\end{definition}
+\subsection{确定概率的频率方法}
+确定概率的频率方法是在大量重复试验中，用频率的稳定性去获得概率的一种方法，其基本思想是：
+\begin{enumerate}[(1)]
+	\item 与考察事件$A$有关的随机现象可大量重复进行.
+	\item 在$n$次重复试验中，记$n(A)$为事件$A$出现的次数，又称$n(A)$为事件$A$的{\heiti 频数}.称
+	$$f_n(A)=\frac{n(A)}{n}$$
+	为事件$A$出现的{\heiti 频率}.
+	\item 长期实践表明：随着试验重复次数$n$的增加，频率$f_n(A)$会稳定在某一常数$a$附近，我们称这个常数为{\heiti 频率的稳定值}.这个频率的稳定值就是我们所求的概率.
+\end{enumerate}
+
+容易验证：用频率方法确定的概率满足公理化定义，它的非负性与正则性是显然的，而可加性只需注意到：当$A$与$B$互不相容时，计算$A\cup B$的频数可以分别计算$A$的频数和$B$的频数，然后再相加，这意味着$n(A\cup B)=n(A)+n(B)$，从而有
+\begin{align*}
+	f_n(A\cup B)&=\frac{n(A\cup B)}{n}=\frac{n(A)+n(B)}{n}\\
+	&=\frac{n(A)}{n}+\frac{n(B)}{n}=f_n(A)+f_n(B).
+\end{align*}
+\subsection{确定概率的古典方法}
+确定概率的古典方法是概率论历史上最先开始研究的情形.其基本思想是：
+\begin{enumerate}[(1)]
+	\item 所涉及的随机现象只有有限个样本点，譬如有$n$个.
+	\item 每个样本点发生的可能性相等（称为等可能性）.
+	\item 若事件$A$含有$k$个样本点，则事件$A$的概率为
+	$$P(A)\frac{\text{事件}A\text{所含样本点的个数}}{\varOmega\text{中所有样本点的个数}}=\frac{k}{n}.$$
+\end{enumerate}
+
+容易验证：用古典方法确定的概率满足公理化定义，它的非负性与正则性是显然的，而满足可加性的理由与频率方法类似.当$A$和$B$互不相容时，计算$A\cup B$的样本点个数可以分别计算$A$的样本点个数和$B$的样本点个数，然后再相加，从而有可加性$P(A\cup B)=P(A)+P(B)$.
+\subsection{确定概率的几何方法}
+确定概率的几何方法，其基本思想是：
+\begin{enumerate}[(1)]
+	\item 如果一个随机现象的样本空间$\varOmega$充满某个区域，其度量可用$S_{\varOmega}$表示.
+	\item 任意一点落在度量相同的子区域内是等可能的.
+	\item 若事件$A$为$\varOmega$中某个子区域，且其度量大小可用$S_A$表示，则事件$A$的概率为
+	$$P(A)=\frac{S_A}{S_{\varOmega}}.$$
+\end{enumerate}
+这个概率称为{\heiti 几何概率}，它满足概率的公理化定义.
+\subsection{确定概率的主观方法}
+在现实世界中有一些随机现象是不能重复的或不能大量重复的，这时有关事件的概率该如何确定呢？
+
+统计界的贝叶斯学派认为：{\heiti 一个事件的概率是人们根据经验对该事件发生的可能性所给出的个人信念}.这样给出的概率称为{\heiti 主观概率}.
+
+人们常用自己的经验或者他人的经验来确定主观概率. 主观给定的概率也要符合公理化的定义.
+
+\section{概率的性质}
+概率是一种测度，所以概率的很多性质都可以由测度的性质迁移过来.
+\begin{theorem}
+	$P(\varnothing)=0$.
+\end{theorem}
+\begin{proof}
+	由于任何事件与不可能事件之并仍是此事件本身，于是
+	$$\varOmega=\varOmega\cup\varnothing\cup\cdots\cup\varnothing\cup\cdots.$$
+	因为不可能事件与任何事件是互不相容的，故由可列可加性公理得
+	$$P(\varOmega)=P(\varOmega\cup\varnothing\cup\cdots\cup\varnothing\cup\cdots),$$
+	从而由$P(\varOmega)=1$得
+	$$P(\varnothing)+P(\varnothing)+\cdots=0,$$
+	再由非负性公理，必有
+	$$P(\varnothing)=0.$$
+	$\hfill\blacksquare$
+\end{proof}
+\subsection{概率的可加性}
+\begin{theorem}[有限可加性]
+	若有限个事件$A_1,A_2,\cdots,A_n$互不相容，则有
+	$$P\left(\bigcup_{i=1}^{n}A_i\right)=\sum_{i=1}^{n}P(A_i).$$
+\end{theorem}
+\begin{proof}
+	对$A_1,A_2,\cdots,A_n,\varnothing,\varnothing,\cdots$应用可列可加性即得.$\hfill\blacksquare$
+\end{proof}
+由有限可加性，我们就可以得到下面求对立事件概率的公式.
+\begin{theorem}
+	对任一事件$A$，有
+	$$P(\overline{A})=1-P(A).$$
+\end{theorem}
+\begin{proof}
+	由概率的正则性和有限可加性即得.$\hfill\blacksquare$
+\end{proof}
+\subsection{概率的单调性}
+\begin{theorem}
+	若$A\supset B$，则
+	$$P(A-B)=P(A)-P(B).$$
+\end{theorem}
+\begin{proof}
+	因为$A\supset B$，所以
+	$$A=B\cup(A-B).$$
+	又$B$与$A-B$互不相容，因此
+	$$P(A)=P(B)+P(A-B),$$
+	即
+	$$P(A-B)=P(A)-P(B).$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{corollary}[单调性]
+	若$A\supset B$，则$P(A)\geqslant P(B)$.
+\end{corollary}
+\begin{theorem}
+	对任意两个事件$A,B$，有
+	$$P(A-B)=P(A)-P(AB).$$
+\end{theorem}
+\begin{proof}
+	$P(A-B)=P(A-AB)$，且$AB\subset A$，由上条性质即得结论.$\hfill\blacksquare$
+\end{proof}
+\subsection{概率的加法公式}
+\begin{theorem}
+	对任意两个事件$A,B$，有
+	$$P(A\cup B)=P(A)+P(B)-P(AB).$$
+	对任意$n$个事件$A_1,A_2,\cdots,A_n$，有
+	\begin{align*}
+		P\left(\bigcup_{i=1}^{n}A_i\right)=
+		&\sum_{i=1}^{n}P(A_i)-\sum_{1\leqslant i<j\leqslant n}P(A_iA_j)+\\
+		&\sum_{1\leqslant i<j<k\leqslant n}P(A_iA_jA_k)+\cdots+(-1)^{n-1}P(A_1A_2\cdots A_n).
+	\end{align*}
+\end{theorem}
+\begin{proof}
+	因为
+	$$A\cup B=A\cup (B-AB),$$
+	且$A$和$B-AB$互不相容，由有限可加性得
+	$$P(A\cup B)=P(A)+P(B-AB)=P(A)+P(B)-P(AB).$$
+	由归纳法可以证明任意$n$个事件的情况.$\hfill\blacksquare$
+\end{proof}
+\begin{corollary}[半可加性]
+	对任意两个事件$A,B$，有
+	$$P(A\bigcup B)\leqslant P(A)+P(B).$$
+	对任意$n$个事件$A_1,A_2,\cdots,A_n$，有
+	$$P\left(\bigcup_{i=1}^{n}A_i\right)=\sum_{i=1}^{n}P(A_i).$$
+\end{corollary}
+\subsection{概率的连续性}
+中学时期我们已经学习了离散的概率，对于连续概率我们前所未闻. 为了讨论概率的连续性，我们先对事件序列的极限给出定义（类比于集合列的极限）.
+\begin{definition}[极限事件]
+	对$\mathscr{F}$中任一增的事件序列$F_1\subset F_2\subset\cdots F_n\subset\cdots$，称可列并$\displaystyle\bigcup_{n=1}^{\infty}F_n$为$\{F_n\}$的{\heiti 极限事件}，记为
+	$$\lim\limits_{n\to\infty}F_n=\bigcup_{n=1}^{\infty}F_n.$$
+	
+	对$\mathscr{F}$中任一减的事件序列$E_1\supset E_2\supset\cdots E_n\supset\cdots$，称可列交$\displaystyle\bigcap_{n=1}^{\infty}E_n$为$\{E_n\}$的{\heiti 极限事件}，记为
+	$$\lim\limits_{n\to\infty}E_n=\bigcap_{n=1}^{\infty}E_n.$$
+\end{definition}
+有了以上极限事件的定义，我们就可给出概率函数的连续性定义.
+\begin{definition}
+	对$\mathscr{F}$上的一个概率$P$，
+	若它对$\mathscr{F}$中任一增的事件序列$\{F_n\}$均成立
+	$$\lim\limits_{n\to\infty}P(F_n)=P(\lim\limits_{n\to\infty}F_n),$$
+	则称概率$P$是{\heiti 下连续}的.
+	
+	若它对$\mathscr{F}$中任一减的事件序列$\{E_n\}$均成立
+	$$\lim\limits_{n\to\infty}P(E_n)=P(\lim\limits_{n\to\infty}E_n),$$
+	则称概率$P$是{\heiti 上连续}的.
+\end{definition}
+有了以上的定义，我们就可以证明概率的连续性了.
+\begin{theorem}[概率的连续性]
+	若$P$为事件域$\mathscr{F}$上的概率，则$P$既是下连续的，又是上连续的.
+\end{theorem}
+\begin{proof}
+	先证$P$的下连续性. 设$\{F_n\}$是$\mathscr{F}$中一个单调增的事件序列，即
+	$$\bigcup_{i=1}^{\infty}F_i=\lim\limits_{n\to\infty}F_n.$$
+	若定义$F_0=\varnothing$，则
+	$$\bigcup_{i=1}^{\infty}F_i=\bigcup_{i=1}^{\infty}(F_i-F_{i-1}).$$
+	由于$F_{i-1}\subset F_{i}$，显然诸$(F_i-F_{i-1})$两两不相容，再由可列可加性得
+	$$P\left(\bigcup_{i=1}^{\infty}(F_i-F_{i-1})\right)=\lim\limits_{n\to\infty}\sum_{i=1}^{n}P(F_i-F_{i-1}).$$
+	又由有限可加性得
+	$$\sum_{i=1}^{n}P(F_i-F_{i-1})=P\left(\bigcup_{i=1}^{n}(F_i-F_{i-1})\right)=P(F_n).$$
+	所以
+	$$P(\lim\limits_{n\to\infty}F_n)=\lim\limits_{n\to\infty}P(F_n).$$
+	这就证得了$P$的下连续性.
+	
+	再证$P$的上连续性. 设$\{E_n\}$是减的事件序列，则$\{\overline{E_n}\}$为单调增的事件序列，由概率的下连续性得
+	\begin{align*}
+		1-\lim\limits_{n\to\infty}P(E_n)
+		&=\lim\limits_{n\to\infty}\left[1-P(E_n)\right]=\lim\limits_{n\to\infty}P(\overline{E_n})\\
+		&=P\left(\bigcup_{i=1}^{\infty}\overline{E_n}\right)=P\left(\overline{\bigcap_{i=1}^{\infty}E_n}\right)\\
+		&=1-P\left(\bigcap_{i=1}^{\infty}E_n\right).
+	\end{align*}
+	故
+	$$\lim\limits_{n\to\infty}P(E_n)=P\left(\bigcap_{i=1}^{\infty}E_n\right).$$
+	$\hfill\blacksquare$
+\end{proof}
+从上面的讨论可知，由可列可加性可以推出有限可加性和下连续性，但仅由有限可加性并不能推出可列可加性，于是我们会想，缺少的条件是否就是下连续性？答案是肯定的，下面定理说明了这一性质.
+\begin{theorem}
+	若$P$是$\mathscr{F}$上满足$P(\varOmega)=1$的非负集合函数，则它具有可列可加性的充要条件是它是有限可加的且是下连续的.
+\end{theorem}
+\begin{proof}
+	必要性前面已证，下证充分性.
+	
+	设$A_i\in\mathscr{F},\ i=1,2,\cdots$是两两不相容的事件序列，由有限可加性，有
+	$$P\left(\bigcup_{i=1}^{n}A_i\right)=\sum_{i=1}^{n}P(A_i).$$
+	这个等式的左边不超过$1$，因此正项级数$\sum\limits_{i=1}^{\infty}P(A_i)$收敛，即
+	$$\lim\limits_{n\to\infty}P\left(\bigcup_{i=1}^{n}A_i\right)=\lim\limits_{n\to\infty}\sum_{i=1}^{n}P(A_i)=\sum_{i=1}^{\infty}P(A_i).$$
+	记
+	$$F_n=\bigcup_{i=1}^{n}A_i,$$
+	则$\{F_n\}$为增的事件序列，所以由下连续性得
+	$$\lim\limits_{n\to\infty}P\left(\bigcup_{i=1}^{n}A_i\right)=\lim\limits_{n\to\infty}P(F_n)=P\left(\bigcup_{n=1}^{\infty}F_n\right)=P\left(\bigcup_{n=1}^{\infty}A_n\right).$$
+	综上，即得可列可加性.$\hfill\blacksquare$
+\end{proof}
+可见，概率的公理化定义可以将可列可加性改为有限可加性和下连续性.
+\section{条件概率}
+\subsection{条件概率的定义}
+\begin{definition}[条件概率]
+	设$A$与$B$是样本空间$\varOmega$中的两事件，若$P(B)>0$，则称
+	$$P(A|B)=\frac{P(AB)}{P(B)}$$
+	为在$B$发生下$A$的条件概率，简称{\heiti 条件概率}.
+\end{definition}
+\begin{remark}
+	由定义易见，所谓条件概率，是指在$B$发生的条件下$A$发生的概率.
+\end{remark}
+我们定义了条件概率，需要说明这是一类概率. 即我们通过验证概率的公理化定义来证明条件概率是概率.
+\begin{theorem}
+	条件概率是概率，即若设$P(B)>0$，则满足
+	\begin{enumerate}[(1)]
+		\item 非负性：$P(A|B)\geqslant 0,\ A\in\mathscr{F}$.
+		\item 正则性：$P(\varOmega|B)=1$.
+		\item 可列可加性：若$\mathscr{F}$中的$A_1,A_2,\cdots A_n,\cdots$互不相容，则
+		$$P\left(\bigcup_{n=1}^{\infty}A_n|B\right)=\sum_{n=1}^{\infty}P(A_n|B).$$
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	用条件概率的定义易证(1)(2)，下面来证明(3).
+	
+	因为$A_1,A_2,\cdots A_n,\cdots$互不相容，所以$A_1B,A_2B,\cdots A_nB,\cdots$也互不相容，故
+	\begin{align*}
+		P\left(\bigcup_{n=1}^{\infty}A_n|B\right)
+		&=\frac{P\left(\left(\displaystyle\bigcup_{n=1}^{\infty}A_n\right)B\right)}{P(B)}=\frac{P\left(\displaystyle\bigcup_{n=1}^{\infty}(A_nB)\right)}{P(B)}\\
+		&=\sum_{n=1}^{\infty}\frac{P(A_nB)}{P(B)}=\sum_{n=1}^{\infty}P(A_n|B)
+	\end{align*}
+	故满足可列可加性，于是条件概率是概率.$\hfill\blacksquare$
+\end{proof}
+下面我们给出条件概率特有的三个实用公式：乘法公式、全概率公式和Bayes公式.
+\subsection{乘法公式}
+\begin{theorem}[乘法公式]
+	\begin{enumerate}
+		\item 若$P(B)>0$，则
+		$$P(AB)=P(B)P(A|B).$$
+		\item 若$P(A_1A_2\cdots A_{n-1})>0$，则
+		$$P(A_1A_2\cdots A_n)=P(A_1)P(A_2|A_1)P(A_3|A_1A_2)\cdots P(A_n|A_1A_2\cdots A_{n-1}).$$
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	(1)可由条件概率的定义直接推出，下证(2).
+	
+	因为
+	$$P(A_1)\geqslant P(A_1A_2)\geqslant\cdots\geqslant P(A_1A_2\cdots A_{n-1})>0,$$
+	所以式中的条件概率均有意义，且按条件概率的定义，等号右边等于
+	$$P(A_1)\cdot\frac{P(A_1A_2)}{P(A_1)}\cdot\frac{P(A_1A_2A_3)}{P(A_1A_2)}\cdot\cdots\cdot\frac{P(A_1A_2\cdots A_n)}{P(A_1A_2\cdots A_{n-1})}=P(A_1A_2\cdots A_n).$$
+	从而(2)中等式成立.$\hfill\blacksquare$
+\end{proof}
+\subsection{全概率公式}
+\begin{theorem}[全概率公式]
+	设$B_1,B_2,\cdots B_n$为样本空间$\varOmega$的一个分割，即$B_1,B_2,\cdots B_n$互不相容，且$\bigcup\limits_{i=1}^{n}B_i=\varOmega$，如果$P(B_i)>0,\ i=1,2,\cdots,n$，则对任一事件$A$有
+	$$P(A)=\sum_{i=1}^{n}P(B_i)P(A|B_i).$$
+\end{theorem}
+\begin{proof}
+	因为
+	$$A=A\varOmega=A\left(\bigcup_{i=1}^{n}B_i\right)=\bigcup_{i=1}^{n}(AB_i),$$
+	且$AB_1,AB_2,\cdots,AB_n$互不相容，所以由可加性得
+	$$P(A)=P\left(\bigcup_{i=1}^{n}(AB_i)\right)=\sum_{i=1}^{n}P(AB_i),$$
+	再将$P(AB_i)=P(B_i)P(A|B_i),\ i=1,2,\cdots,n$代入上式即得.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	全概率公式的最简单形式：如果$0<P(B)<1$，则
+	$$P(A)=P(B)P(A|B)+P(\overline{B})P(A|\overline{B}).$$
+\end{remark}
+\begin{remark}
+	条件$B_1,B_2,\cdots B_n$为样本空间$\varOmega$的一个分割可改成$B_1,B_2,\cdots B_n$互不相容，且$A\subset\bigcup\limits_{i=1}^{n}B_i$，全概率公式仍然成立.
+\end{remark}
+\begin{remark}
+	对可列个事件$B_1,B_2,\cdots,B_n,\cdots$互不相容，且$A\subset\bigcup\limits_{i=1}^{\infty}$，全概率公式仍然成立，只需将等式右边写成可列项之和.
+\end{remark}
+\subsection{Bayes公式}
+在乘法公式和全概率公式的基础上立即可推得下面的公式.
+\begin{theorem}[Bayes公式]
+	设$B_1,B_2,\cdots B_n$是样本空间$\varOmega$的一个分割，如果$P(A)>0$，$P(B_i)>0,\ i=1,2,\cdots,n$，则
+	$$P(B_i|A)=\frac{P(B_i)P(A|B_i)}{\displaystyle\sum\limits_{j=1}^{n}P(B_j)P(A|B_j)}.$$
+\end{theorem}
+\begin{proof}
+	由条件概率的定义
+	$$P(B_i|A)=\frac{P(AB_i)}{P(A)}.$$
+	对上式的分子用乘法公式，分母用全概率公式即得.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	在Bayes公式中，如果称$P(B_i)$为$B_i$的{\heiti 先验概率}，称$P(B_i|A)$为$B_i$的{\heiti 后验概率}，则Bayes公式是专门用于计算后验概率的，也就是通过$A$的发生这个新信息，来对$B_i$的概率作出的修正.
+\end{remark}
+
+条件概率的三个公式中，乘法公式是求事件交的概率，全概率公式是求一个复杂事件的概率，Bayes公式是求一个条件概率.
+
+\begin{example}[Monty Hall Problem三门问题]
+	假设有三个门，标号为1、2、3. 门后分别藏有一辆车，两只羊，选手选定其中一扇门，主持人打开另外两扇门中其中一扇藏有羊的门，请问选手是否要换另一扇门？
+\end{example}
+
+\begin{solution}
+	
+\end{solution}
+
+\section{独立性}
+独立性是概率论中又一个重要概念，利用独立性可以简化概率的计算.
+\subsection{两个事件的独立性}
+两个事件之间的独立性是指：一个事件的发生不影响另一个事件的发生. 另外，从概率的角度看，事件$A$的条件概率$P(A|B)$与无条件概率$P(A)$的差别在于：事件$B$的发生改变了事件$A$发生的概率，如果事件$A$与$B$是相互独立的，则有$P(A|B)=P(A)$，$P(B|A)=P(B)$，它们都等价于
+$$P(AB)=P(A)P(B).$$
+另外对$P(B)=0$或$P(A)=0$上式仍然成立，为此我们用上式来定义两个事件相互独立.
+\begin{definition}[独立]
+	如果$P(AB)=P(A)P(B)$，则称事件$A$与$B${\heiti 相互独立}，简称$A$与$B${\heiti 独立}. 否则称$A$与$B${\heiti 不独立}或{\heiti 相依}.
+\end{definition}
+在许多实际问题中，两个事件相互独立大多是根据经验（相互有无影响）来判断的. 但在某些问题中有时也用定义来判断.
+
+注意：独立和互不相容没有必然的联系，请勿混淆.
+
+\begin{theorem}
+	概率为零的事件与任意事件相互独立，概率为$1$的事件与任意事件相互独立.
+\end{theorem}
+\begin{proof}
+	设任意事件$A$，事件$B,C$，且$P(B)=0$，$P(C)=1$，则
+	$$0\leqslant P(AB)\leqslant P(B)=0,$$
+	故由定义可知$A$与$B$是独立的.
+	
+	由加法公式，有
+	$$P(A\cup C)=P(A)+P(C)-P(AC),$$
+	而$P(A\cup C)=P(C)$，故有
+	$$P(AC)=P(A)\times 1=P(A)P(C),$$
+	故由定义可知$A$与$C$是独立的.$\hfill\blacksquare$
+	
+\end{proof}
+
+
+\begin{theorem}
+	以下四个命题等价：事件$A$与$B$独立，$A$与$\overline{B}$独立，$\overline{A}$与$B$独立，$\overline{A}$与$\overline{B}$独立.
+\end{theorem}
+\begin{proof}
+	由概率的性质知
+	$$P(A\overline{B})=P(A)-P(AB).$$
+	又由$A$与$B$的独立性知
+	$$P(AB)=P(A)P(B),$$
+	所以
+	$$P(A\overline{B})=P(A)-P(A)P(B)=P(A)\left[1-P(B)\right]=P(A)P(\overline{B}).$$
+	这表明$A$与$\overline{B}$独立. 类似可证其余结论.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	对上述性质的理解是直观的：$A$与$B$独立，则$A$的发生不影响$B$的发生与不发生，$A$的不发生也不会影响$B$的发生与不发生.
+\end{remark}
+\subsection{多个事件的相互独立性}
+首先研究三个事件的相互独立性，我们先给出以下的定义.
+\begin{definition}
+	设$A,B,C$是三个事件，如果有
+	\begin{equation}\label{e1}
+		\left\{
+		\begin{aligned}
+			&P(AB)=P(A)P(B),\\
+			&P(AC)=P(A)P(C),\\
+			&P(BC)=P(B)P(C),\\
+		\end{aligned}
+		\right.
+	\end{equation}
+	则称$A,B,C${\heiti 两两独立}. 若还有
+	\begin{equation}\label{e2}
+		P(ABC)=P(A)P(B)P(C),
+	\end{equation}
+	则称$A,B,C${\heiti 相互独立}.
+\end{definition}
+\begin{remark}
+	由\ref{e1}式不一定能推出\ref{e2}式，同样由\ref{e2}式不一定能推出\ref{e1}式.
+\end{remark}
+
+由此我们可以定义三个以上事件的相互独立性.
+\begin{definition}[相互独立]
+	设有$n$个事件$A_1,A_2,\cdots,A_n$，对任意的$1\leqslant i<j<k<\cdots\leqslant n$，如果以下等式
+	\begin{equation}
+		\left\{
+		\begin{aligned}
+			&P(A_iA_j)=P(A_i)P(A_j),\\
+			&P(A_iA_jA_k)=P(A_i)P(A_j)P(A_k),\\
+			&\cdots\cdots\cdots\cdots\\
+			&P(A_1A_2\cdots A_n)=P(A_1)P(A_2)\cdots P(A_n),
+		\end{aligned}
+		\right.
+	\end{equation}
+	均成立，则称此$n$个事件$A_1,A_2,\cdots,A_n${\heiti 相互独立}.
+\end{definition}
+\begin{remark}
+	由上述定义可以看出，$n$个相互独立的事件中的任意一部分内仍是相互独立的，而且任意一部分与另一部分也是独立的. 可以证明：将相互独立事件中的任一部分换为对立事件，所得的各个事件仍为相互独立的.
+\end{remark}
+\begin{proposition}
+	设$A,B,C$三事件相互独立，则$A\cup B$与$C$独立，$AB$与$C$独立，$A-B$与$C$独立.
+\end{proposition}
+\begin{proof}
+	只证$A\cup B$与$C$独立，其余情况类似可证明.
+	
+	因为
+	\begin{align*}
+		P((A\cup B)C)&=P(AC\cup BC)=P(AC)+P(BC)-P(ABC)\\
+		&=P(A)P(C)+P(B)P(C)-P(A)P(B)P(C)\\
+		&=(P(A)+P(B)-P(A)P(B))P(C)=P(A\cup B)P(C),
+	\end{align*}
+	所以$A\cup B$与$C$独立.$\hfill\blacksquare$
+\end{proof}
+\section{试验的独立性}
+利用事件的独立性可以定义两个或更多个试验的独立性.
+\begin{definition}[两个试验的独立性]
+	设有两个试验$E_1$和$E_2$，假如试验$E_1$的任一结果（事件）与试验$E_2$的任一结果（事件）都是相互独立的事件，则称这两个{\heiti 试验相互独立}.
+\end{definition}
+类似地可以定义$n$个试验的独立性.
+\begin{definition}[$n$个试验的独立性]
+	设有$n$个试验$E_1,E_2,\cdots,E_n$,如果$E_i\ i=1,2,\cdots,n$的任一结果都是相互独立的事件，则称试验$E_1,E_2,\cdots,E_n${\heiti 相互独立}.
+\end{definition}
+\begin{remark}
+	如果这$n$个独立试验还是相同的，则称其为{\heiti $n$重独立重复试验}. 如果在$n$重独立重复试验中，每次试验的可能结果为两个：$A$或$\overline{A}$，则称这种试验为{\heiti $n$重Bernouli试验}.
+\end{remark}

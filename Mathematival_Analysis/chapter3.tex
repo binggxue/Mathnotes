@@ -1,0 +1,569 @@
+\chapter{函数极限}
+\section{函数的概念}
+关于函数概念，在中学数学中我们已经有了初步的了解，本节仅对此作一定的复习与补充.
+\subsection{函数的定义}
+\begin{definition}[函数]
+	给定两个实数集$D$和$M$，若有对应法则$f$，使对每一个$x\in D$，都有唯一的$y\in M$与它相对应，则称$f$是定义在数集$D$上的{\heiti 函数}(function)，记作
+	$$f:D\to M,$$
+	$$x\mapsto y.$$
+	数集$D$称为函数$f$的{\heiti 定义域}(domain of definition)，$x$所对应的$y$称为$f$在点$x$的函数值，常记为$f(x)$.全体函数值的集合
+	$$f(D)=\{y|y=f(x),x\in D\}(\subset M)$$
+	称为函数$f$的{\heiti 值域}(range).
+\end{definition}
+关于函数的定义，做如下说明：
+\begin{enumerate}
+	\item 习惯上我们称上述函数定义中的$x$为{\heiti 自变量}(independent variable)，$y$为{\heiti 因变量}(dependent variable).
+	\item 用数学运算式子表示函数时，我们将使该运算式子有意义的自变量值的全体称为{\heiti 存在域}(domain of existence).
+	\item 在函数定义中，对每一个$x\in D$，只能有唯一的一个$y$值与它对应，这样定义的函数称为{\heiti 单值函数}(single-valued function).若同一个$x$值可以对应多于一个的$y$值，则称这种函数为{\heiti 多值函数}(multi-valued function).在本书范围内，我们只讨论单值函数.
+\end{enumerate}
+\subsection{复合函数}
+\begin{definition}[复合函数]
+	
+	设有两函数
+	$$y=f(u)$$
+	$$u=g(x)$$
+	
+	对每一个$x$都通过函数$g$对应了唯一的$u$，而$u$又通过函数$f$对应了唯一的$y$.这就确定了一个以$x$为自变量，$y$为因变量的函数，记作$y=f(g(x))$或$y=(f\circ g)(x)$，称为{\heiti 复合函数}(composite function).$u$称为中间变量，函数$f$和$g$的复合运算可以简单写为$f\circ g$.
+\end{definition}
+\subsection{初等函数}
+我们已经熟悉的基本初等函数有常量函数、幂函数、指数函数、对数函数、三角函数、反三角函数六类.
+\begin{definition}[初等函数]
+	由基本初等函数经过\textbf{有限次}四则运算与复合运算所得到的函数，统称为{\heiti 初等函数}(elementary function).
+\end{definition}
+\section{函数的性质}
+\subsection{有界性}
+\begin{definition}[上界和下界]
+	设$f$是定义在$D$上的函数.
+	
+	若存在数$M$，使得$\forall x\in D$，有
+	$$f(x)\leqslant M,$$
+	则称$f$在$D$上有上界，$M$为$f$在$D$上的一个{\heiti 上界}(upper bound).
+	
+	若存在数$L$，使得$\forall x\in D$,
+	$$f(x)\geqslant M,$$
+	则称$f$在$D$上有下界，$L$为$f$在$D$上的一个{\heiti 下界}(lower bound).
+\end{definition}
+\begin{definition}[有界函数]
+	设$f$是定义在$D$上的函数.若存在正数$M$，使得$\forall x\in D$，有
+	$$|f(x)|\leqslant M,$$
+	则称$f$是$D$上的{\heiti 有界函数}(bounded function).
+\end{definition}
+根据定义，$f$有界的充要条件是$f$既有上界也有下界.
+\subsection{单调性}
+\begin{definition}[单调函数]
+	设$f$为定义在$D$上的函数.若对任何$x_1,x_2\in D$，当$x_1<x_2$时，总有
+	
+	(i)$f(x_1)\leqslant f(x_2)$，则称$f$为$D$上的{\heiti 增函数}(increasing function)，特别当成立严格不等式$f(x_1)<f(x_2)$时，称$f$为$D$上的{\heiti 严格增函数}(strictly increasing function)；
+	
+	(ii)$f(x_1)\geqslant f(x_2)$，则称$f$为$D$上的{\heiti 减函数}(decreasing function)，特别当成立严格不等式$f(x_1)>f(x_2)$时，称$f$为$D$上的{\heiti 严格减函数}(strictly decreasing function).
+\end{definition}
+\subsection{奇偶性}
+\begin{definition}[奇偶函数]
+	设$D$是对称于原点的数集，$f$为定义在$D$上的函数.
+	
+	若对每一个$x\in D$，有
+	$$f(-x)=-f(x)$$
+	则称$f$是$D$上的{\heiti 奇函数}(odd function)；
+	
+	若对每一个$x\in D$，有
+	$$f(-x)=f(x)$$
+	则称$f$是$D$上的{\heiti 偶函数}(even function).
+\end{definition}
+\subsection{周期性}
+\begin{definition}[周期函数]
+	设$f$为定义在$D$上的函数.若存在$\sigma>0$，使得对一切$x\in D$，$x\pm \sigma\in D$，有$f(x\pm\sigma)=f(x)$，则称$f$为{\heiti 周期函数}(periodic function)，$\sigma$称为$f$的一个{\heiti 周期}(period).在$f(x)$所有的正周期中，最小的正周期就称为$f$的{\heiti 最小正周期}.
+\end{definition}
+\section{函数极限的定义}
+\subsection{$x$趋于$\infty$时函数的极限}
+\begin{definition}
+	设$f$为定义在$\left[a,+\infty \right)$上的函数，$A$为定数.若对任给的$\varepsilon>0$，存在正数$M(\geqslant a)$，使得当$x>M$时，有
+	$$|f(x)-A|<\varepsilon,$$
+	则称{\heiti 函数$f$当$x$趋于$+\infty$时以$A$为极限}，记作
+	$$\lim\limits_{x\to +\infty}f(x)=A\text{或}f(x)\to A(x\to +\infty).$$
+\end{definition}
+定义中正数$M$的作用与数列定义中的$N$相类似，表明$x$充分大的程度；但这里考虑的是比$M$大的所有实数$x$，而不仅仅是正整数$n$.因此，当$x\to +\infty$时函数$f$以$A$为极限意味着：$A$的任意小邻域内必含有$f$在$+\infty$的某邻域上的全部函数值.
+
+现在我们设$f$为定义在$U(-\infty)$或$U(\infty)$上的函数，当$x\to -\infty$或$x\to\infty$时，若函数值$f(x)$能无限地接近某定数$A$，则称$f$当$x\to -\infty$或$x\to\infty$时以$A$为极限，分别记作
+$$\lim\limits_{x\to -\infty}f(x)=A\text{或}f(x)\to A(x\to -\infty);$$
+$$\lim\limits_{x\to \infty}f(x)=A\text{或}f(x)\to A(x\to \infty).$$
+这两种函数极限的精确定义与上述定义相仿，只需把上述定义中的“$x>M$”分别改为“$x<-M$”或"$|x|>M$"即可.
+
+不难发现，若$f$是定义在$U(\infty)$上的函数，则
+$$\lim\limits_{x\to\infty}f(x)=A\iff \lim\limits_{x\to +\infty}f(x)=\lim\limits_{x\to -\infty}f(x)=A.$$
+\subsection{$x$趋于$x_0$时函数的极限}
+\begin{definition}[函数极限的$\varepsilon-\delta$定义]
+	设函数$f$在点$x_0$的某个空心邻域$\mathring{U}(x_0;\delta')$内有定义，$A$为定数.若对任给的$\varepsilon>0$，存在正数$\delta(<\delta')$，使得当$0<|x-x_0|<\delta$时，有
+	$$|f(x)-A|<\varepsilon,$$
+	则称{\heiti 函数$f$当$x$趋于$x_0$时以$A$为极限}，记作
+	$$\lim\limits_{x\to x_0}f(x)=A\text{或}f(x)\to A(x\to x_0).$$
+\end{definition}
+\subsection{单侧极限}
+有些函数在其定义域上的某些点左侧与右侧的解析式不同（如分段函数定义域上的某些点），或函数只在某些点的一侧有定义（如定义域的区间端点处），这时函数在那些点上的极限只能单侧地给出定义.
+\begin{definition}
+	设函数$f$在$\mathring{U}_+(x_0;\delta')$内有定义，$A$为定数.若对任给的$\varepsilon>0$，存在正数$\delta(<\delta')$，使得当$x_0<x<x_0+\delta$时，有
+	$$|f(x)-A|<\varepsilon,$$
+	则称$A$为函数$f$当$x$趋于$x_0^+$时的右极限，记作
+	$$\lim\limits_{x\to x_0^+}f(x)=A\text{或}f(x)\to A(x\to x_0^+).$$
+\end{definition}
+类似地，我们可以定义函数的左极限.
+
+右极限和左极限统称为单侧极限.$f$在点$x_0$处的右极限和左极限 又分别记为
+$$f(x_0+0)=\lim\limits_{x\to x_0^+}f(x)\text{与}f(x_0-0)=\lim\limits_{x\to x_0^-}f(x).$$
+
+关于函数极限与单侧极限的关系有如下定理.
+\begin{theorem}
+	$$\lim\limits_{x\to x_0}f(x)=A\iff \lim\limits_{x\to x_0^+}f(x)=\lim\limits_{x\to x_0^-}f(x)=A.$$
+\end{theorem}
+\section{函数极限的性质}
+在上一节中，我们引入了下面六种类型的极限：
+\begin{enumerate}
+	\item $\lim\limits_{x\to\infty}f(x);$
+	\item $\lim\limits_{x\to+\infty}f(x);$
+	\item $\lim\limits_{x\to-\infty}f(x);$
+	\item $\lim\limits_{x\to x_0}f(x);$
+	\item $\lim\limits_{x\to x_0^+}f(x);$
+	\item $\lim\limits_{x\to x_0^-}f(x).$
+\end{enumerate}
+
+它们具有与数列极限相类似的一些性质，下面以第4种类型的极限为代表来叙述并证明这些性质.至于其他类型极限的性质及证明，只要相应地做些修改即可.
+\begin{theorem}[唯一性]
+	若极限$\lim\limits_{x\to x_0}f(x)$存在，则此极限是唯一的.
+\end{theorem}
+\begin{proof}
+	设$A,B$都是$f$当$x\to x_0$时的极限，则对任给的$\varepsilon>0$，分别存在正数$\delta_1$和$\delta_2$，使得当$0<|x-x_0|<\delta_1$时，有
+	$$|f(x)-A|<\varepsilon,$$
+	当$0<|x-x_0|<\delta_2$时，有
+	$$|f(x)-B|<\varepsilon.$$
+	取$\delta=\min\{\delta_1,\delta_2\}$，则当$0<|x-x_0|<\delta$时，上述两式同时成立，故有
+	\begin{align*}
+		|A-B|&=|(f(x)-A)-(f(x)-B)|\\
+		&\leqslant|f(x)-A|+|f(x)-B|<2\varepsilon.
+	\end{align*}
+	由$\varepsilon$的任意性得$A=B$.这就证明了极限的唯一性.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}[局部有界性]
+	若$\lim\limits_{x\to x_0}f(x)$存在，则$f$在$x_0$的某空心邻域$\mathring{U}(x_0)$上有界.
+\end{theorem}
+\begin{proof}
+	设$\lim\limits_{x\to x_0}f(x)=A$.取$\varepsilon=1$，则存在$\delta>0$，使得对一切$x\in \mathring{U}(x_0;\delta)$，有
+	$$|f(x)-A|<1\Rightarrow|f(x)|<|A|+1.$$
+	这就证明了$f$在$\mathring{U}(x_0)$上有界.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}[局部保号性]
+	若$\lim\limits_{x\to x_0}f(x)=A>0$，则对任何正数$r<A$，存在$\mathring{U}(x_0)$，使得对一切$x\in \mathring{U}(x_0)$，有
+	$$f(x)>r>0.$$
+	$A<0$的情况类似.
+\end{theorem}
+\begin{proof}
+	设$A>0$，对任何$r\in (0,A)$，取$\varepsilon=A-r$，则存在$\delta>0$，使得对一切$x\in \mathring{U}(x_0;\delta)$，有
+	$$f(x)>A-\varepsilon=r,$$
+	这就证得结论.对于$A<0$的情形可类似证明.
+\end{proof}
+\begin{theorem}[保序性]
+	设$\lim\limits_{x\to x_0}f(x)$和$\lim\limits_{x\to x_0}g(x)$都存在，且在某邻域$\mathring{U}(x_0;\delta')$上有$f(x)\leqslant g(x)$，则
+	$$\lim\limits_{x\to x_0}f(x)\leqslant \lim\limits_{x\to x_0}g(x).$$
+\end{theorem}
+\begin{proof}
+	设$\lim\limits_{x\to x_0}f(x)=A$，$\lim\limits_{x\to x_0}g(x)=B$，则对任意$\varepsilon>0$，分别存在正数$\delta_1$和$\delta_2$，使得当$0<|x-x_0|<\delta_1$时，有
+	$$A-\varepsilon<f(x),$$
+	当$0<|x-x_0|<\delta_2$时，有
+	$$g(x)<B+\varepsilon.$$
+	令$\delta=\min\{\delta',\delta_1,\delta_2\}$，则当$0<|x-x_0|<\delta$时，有
+	$$A-\varepsilon<f(x)\leqslant g(x)<B+\varepsilon,$$
+	从而$A<B+2\varepsilon$.由$\varepsilon$的任意性推出$A\leqslant B$，即
+	$$\lim\limits_{x\to x_0}f(x)\leqslant \lim\limits_{x\to x_0}g(x).$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}[迫敛性]
+	设$\lim\limits_{x\to x_0}f(x)=\lim\limits_{x\to x_0}g(x)=A$，且在某$\mathring{U}(x_0;\delta')$上有
+	$$f(x)\leqslant h(x)\leqslant g(x),$$
+	则$\lim\limits_{x\to x_0}h(x)=A$.
+\end{theorem}
+\begin{proof}
+	对任意$\varepsilon>0$，分别存在正数$\delta_1$和$\delta_2$，使得当$0<|x-x_0|<\delta_1$时，有
+	$$A-\varepsilon<f(x),$$
+	当$0<|x-x_0|<\delta_2$时，有
+	$$g(x)<A+\varepsilon.$$
+	令$\delta=\min\{\delta',\delta_1,\delta_2\}$，则当$0<|x-x_0|<\delta$时，有
+	$$A-\varepsilon<f(x)\leqslant h(x)\leqslant g(x)<A+\varepsilon,$$
+	由此得$|h(x)-A|<\varepsilon$，所以$\lim\limits_{x\to x_0}h(x)=A$.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}[四则运算法则]
+	若极限$\lim\limits_{x\to x_0}f(x)$与$\lim\limits_{x\to x_0}g(x)$都存在，则函数$f\pm g$，$f\cdot g$当$x\to x_0$时极限也存在，且
+	$$\lim\limits_{x\to x_0}\left[f(x)\pm g(x)\right]=\lim\limits_{x\to x_0}f(x)\pm \lim\limits_{x\to x_0}g(x);$$
+	$$\lim\limits_{x\to x_0}\left[f(x)g(x)\right]=\lim\limits_{x\to x_0}f(x)\cdot \lim\limits_{x\to x_0}g(x);$$
+	又若$\lim\limits_{x\to x_0}g(x)\neq 0$，则$f/g$当$x\to x_0$时极限存在，且
+	$$\lim\limits_{x\to x_0}\frac{f(x)}{g(x)}=\frac{\lim\limits_{x\to x_0}f(x)}{\lim\limits_{x\to x_0}g(x)}.$$
+\end{theorem}
+这个定理的证明类似于数列极限的四则运算法则，不再赘述.
+
+\section{函数极限存在的条件}
+\begin{theorem}[Heine归结原理]
+	设函数$f(x)$在$\mathring{U}(x_0)$上有定义.则$\lim\limits_{x\to x_0}f(x)=A$的充要条件是$\mathring{U}(x_0)$中的任一趋于$x_0$的数列$\{x_n\}$都有$\lim\limits_{n\to \infty}f(x_n)=A$.
+\end{theorem}
+\begin{proof}
+	必要性\qquad 若$\lim\limits_{x\to x_0}f(x)=A$，则$\forall \varepsilon>0,\ \exists\delta>0\ s.t.\text{当}x\in \mathring{U}(x_0,\delta)\text{时，}f(x)\in \mathring{U}(A,\varepsilon)$.\\
+	若$\lim\limits_{n\to\infty}x_n=x_0\text{，则}\exists N>0\text{，当}n\in N\text{时，都有}x_n\in \mathring{U}(x_0,\delta).\text{则}\lim\limits_{n\to\infty}f(x_n)=A.$
+	
+	充分性\qquad 假设$\lim\limits_{x\to x_0}f(x)\neq A$，则$\exists \varepsilon_0>0$，对$\forall\delta>0$，都存在一个$x\in \mathring{U}(x,\delta)$使$f(x')\notin \mathring{U}(A,\varepsilon_0)$.我们依次取$\delta=\delta_0,\frac{\delta_0}{2},\cdots,\frac{\delta_0}{n},\cdots$，则存在相应的点$x_1,x_2,\cdots,x_n,\cdots$，使得
+	$$\{x_n\}\subset\mathring{U}(x_0;\delta_0)\qquad\text{而}\qquad\lim\limits_{n\to\infty}f(x_n)\neq A.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	在求证充分性时，直接进行求证涉及数列$\{x_n\}$的任意性，我们不能将所有的$\{x_n\}$列举出来，由于逆否命题和原命题等价，因此我们只需证明其逆否命题，即证明
+	$$\text{若}\lim\limits_{x\to x_0}f(x)\neq A\text{，则}\mathring{U}(x_0)\text{中存在趋于}x_0\text{数列}\{x_n\}\text{使}\lim\limits_{n\to\infty}f(x_n)\neq A.$$
+	关键在于我们构造了这样一个趋于$x_0$的数列$\{x_n\}$.
+\end{remark}
+\begin{remark}
+	若可找到一个以$x_0$为极限的数列$\{x_n\}$，使$\lim\limits_{n\to \infty}f(x_n)$不存在，或找到两个都以$x_0$为极限的数列$\{x_n'\}$与$\{x_n''\}$，使$\lim\limits_{n\to\infty}f(x_n')$与$\lim\limits_{n\to\infty}f(x_n'')$都存在而不相等，则$\lim\limits_{x\to x_0}f(x)$不存在.
+\end{remark}
+\begin{example}
+	证明极限$\lim\limits_{x\to 0}\sin\frac{1}{x}$不存在.
+\end{example}
+\begin{proof}
+	设$x_n'=\frac{1}{n\pi},\ x_n''=\frac{1}{2n\pi+\frac{\pi}{2}}(n=1,2,\cdots)$，则显然有
+	$$x_n'\to 0,\ x_n''\to 0(n\to \infty),$$
+	$$\sin\frac{1}{x_n'}=0\to 0,\ \sin\frac{1}{x_n''}=1\to 1(n\to \infty).$$
+	故由归结原理即得结论.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}[Cauchy准则]
+	设函数$f$在$\mathring{U}(x_0,\delta')$上有定义.$\lim\limits_{x\to x_0}f(x)$存在的充要条件是：任给$\varepsilon>0$，存在正数$\delta(<\delta')$，使得对任何$x',x''\in\mathring{U}(x_0,\delta)$，有$|f(x')-f(x'')|<\varepsilon$.
+\end{theorem}
+\begin{proof}
+	必要性\qquad 设$\lim\limits_{x\to x_0}f(x)=A$，则对任给的$\varepsilon>0$，存在正数$\delta(<\delta')$，使得对任何$x\in \mathring{U}(x_0,\delta)$，有$|f(x)-A|<\frac{\varepsilon}{2}$.于是对任何$x',x''\in\mathring{U}(x_0,\delta)$，有
+	$$|f(x')-f(x'')|\leqslant|f(x')-A|+|f(x'')-A|<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.$$
+	充分性\qquad 设数列$\{x_n\}\subset \mathring{U}(x_0;\delta)$且$\lim\limits_{n\to \infty}x_n=x_0$.按假设，对任给的$\varepsilon>0$，存在正数$\delta(<\delta')$，使得对任何$x',x''\in\mathring{U}(x_0,\delta)$，有$|f(x')-f(x'')|<\varepsilon$.由于$x_n\to x_0(n\to \infty)$，对上述的$\delta>0,\ \exists N>0$，当$n,m>N$时，有$x_n,x_m\in \mathring{U}(x_0;\delta)$，从而有
+	$$|f(x_n)-f(x_m)|<\varepsilon.$$
+	于是，按数列的柯西收敛准则，数列$f(x_n)$的极限存在，由Heine归结原则，$\lim\limits_{x\to x_0}f(x)$也存在.$\hfill\blacksquare$
+\end{proof}
+按照函数极限的柯西准则，我们能写出极限$\lim\limits_{x\to x_0}f(x)$不存在的充要条件：存在$\varepsilon_0>0$，对任何$\delta>0$，总可找到$x',x''\in\mathring{U}(x_0,\delta)$，使得$|f(x')-f(x'')|\geqslant\varepsilon_0$.
+\section{两个重要极限}
+\subsection{$\lim\limits_{x\to 0}\dfrac{\sin x}{x}=1$}
+\begin{proof}
+	在中学数学的学习中，我们已经知道如下不等式：
+	$$\sin x<x<\tan x(0<x<\frac{\pi}{2}),$$
+	除以$\sin x$，得到
+	$$1<\frac{x}{\sin x}<\frac{1}{\cos x},$$
+	由此得
+	$$\cos x<\frac{\sin x}{x}<1.$$
+	易知$\cos x$和$\frac{\sin x}{x}$都是偶函数，因此当$-\frac{\pi}{2}<x<0$时上式也成立.由$\lim\limits_{x\to 0}\cos x=1$及函数极限的迫敛性，可得
+	$$\lim\limits_{x\to 0}\frac{\sin x}{x}=1.$$
+	$\hfill\blacksquare$
+\end{proof}
+\subsection{$\lim\limits_{x\to\infty}(1+\frac{1}{x})^x=\text{e}$}
+\begin{proof}
+	所求证的极限等价于同时成立以下两个极限：
+	$$\lim\limits_{x\to +\infty}(1+\frac{1}{x})^x=\text{e},$$
+	$$\lim\limits_{x\to -\infty}(1+\frac{1}{x})^x=\text{e}.$$
+	
+	先利用数列极限$\lim\limits_{n\to \infty}(1+\frac{1}{n})^n=\text{e}$证明第一个极限成立.
+	
+	因为$\lim\limits_{n\to \infty}(1+\frac{1}{n+1})^n=\lim\limits_{n\to \infty}(1+\frac{1}{n})^{n+1}=\text{e}$，所以对$\forall\varepsilon>0,\ \exists N\in \mathbb{Z}_+$，当$n>N$时，有
+	$$\text{e}-\varepsilon<(1+\frac{1}{n+1})^n<(1+\frac{1}{n})^{n+1}<\text{e}+\varepsilon.$$
+	取$X=N$，当$x>X$时，令$n=\left[x\right]$，那么
+	$$(1+\frac{1}{n+1})^n<(1+\frac{1}{x})^x<(1+\frac{1}{n})^{n+1}.$$
+	所以有
+	$$\text{e}-\varepsilon<(1+\frac{1}{x})^x<\text{e}+\varepsilon.$$
+	这就证明了$\lim\limits_{x\to +\infty}(1+\frac{1}{x})^x=\text{e}.$
+	
+	\hspace*{\fill}
+	
+	下面证明第二个极限成立.为此做代换$x=-y$，则
+	$$(1+\frac{1}{x})^x=(1-\frac{1}{y})^{-y}=(1+\frac{1}{y-1})^y,$$
+	且当$x\to -\infty$时$y\to +\infty$，从而有
+	$$\lim\limits_{x\to -\infty}(1+\frac{1}{x})^x=\lim\limits_{y\to +\infty}(1+\frac{1}{y-1})^{y-1}\cdot (1+\frac{1}{y-1})=\text{e}.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	以后还常用到e的另一种极限形式：
+	$$\lim\limits_{\alpha\to 0}(a+\alpha)^{\frac{1}{\alpha}}=\text{e}.$$
+	事实上，令$\alpha=\frac{1}{x}$，则$x\to\infty\iff\alpha\to 0$，所以
+	$$\text{e}=\lim\limits_{x\to\infty}(1+\frac{1}{x})^x=\lim\limits_{\alpha\to 0}(a+\alpha)^{\frac{1}{\alpha}}.$$
+\end{remark}
+\section{无穷小量与无穷大量}
+\subsection{无穷小量}
+\begin{definition}
+	设函数$f$在某$\mathring{U}(x_0)$上有定义.若
+	$$\lim\limits_{x\to x_0}f(x)=0,$$
+	则称$f$为当$x\to x_0$时的{\heiti 无穷小量}(infinitesimal).
+	若函数$g$在某$\mathring{U}(x_0)$上有界，则称$g$为当$x\to x_0$时的{\heiti 有界量}(bounded).
+\end{definition}
+
+类似地，我们可以定义$x\to x_0^+$，$x\to x_0^-$，$x\to +\infty$，$x\to -\infty$以及$x\to \infty$时的无穷小量和有界量.特别地，任何无穷小量也必都是有界量.
+
+由函数极限、无穷小量和有界量的定义可以立刻推得以下性质：
+\begin{enumerate}
+	\item 两个（相同类型的）无穷小量之和、差、积仍为无穷小量.
+	\item 无穷小量与有界量的乘积为无穷小量.
+	\item $\lim\limits_{x\to x_0}f(x)=A\iff f(x)-A$是当$x\to x_0$时的无穷小量.
+\end{enumerate}
+\subsection{无穷小量阶的比较}
+无穷小量是以$0$为极限的函数，而不同的无穷小量收敛于$0$的速度有快有慢，为此，我们考察两个无穷小量的比，以便对它们的收敛速度做出判断.
+
+设当$x\to x_0$时，$f$和$g$均为无穷小量.
+\begin{definition}[不同阶无穷小量]
+	若$\lim\limits_{x\to x_0}\frac{f(x)}{g(x)}=0$，则称当$x\to x_0$时$f$为$g$的{\heiti 高阶无穷小量}(infinitemal of higher order)，或称$g$为$f$的{\heiti 低阶无穷小量}(infinitemal of lower order),记作
+	$$f(x)=o(g(x))(x\to x_0).$$
+	特别地，$f$为当$x\to x_0$时的无穷小量记作
+	$$f(x)=o(1)(x\to x_0).$$
+\end{definition}
+\begin{definition}[同阶无穷小量]
+	若存在正数$K$和$L$，使得在某$\mathring{U}(x_0)$上有
+	$$K\leqslant\left|\frac{f(x)}{g(x)}\right|\leqslant L,$$
+	则称$f$与$g$为当$x\to x_0$时的{\heiti 同阶无穷小量}(infinitemal of the same order).特别当
+	$$\lim\limits_{x\to x_0}\frac{f(x)}{g(x)}=c\neq 0$$
+	时，$f$和$g$必为同阶无穷小量.
+	
+	若无穷小量$f$与$g$满足关系式
+	$$\left|\frac{f(x)}{g(x)}\right|\leqslant L,$$
+	则记作
+	$$f(x)=O(g(x))(x\to x_0)$$
+	特别地，若$f$在某$\mathring{U}(x_0)$上有界，则记为
+	$$f(x)=O(1)(x\to x_0).$$
+\end{definition}
+\begin{remark}
+	这里的等式$f(x)=o(g(x))(x\to x_0)$与$f(x)=O(g(x))(x\to x_0)$等，与通常的等式的含义是不同的.这里等式左边是一个函数，右边是一个函数类（函数的集合），而中间的等号的含义是“属于”.例如$f(x)=o(g(x))(x\to x_0)$时，
+	$$o(g(x)=\left\{f\big|\lim\limits_{x\to x_0}\frac{f(x)}{g(x)}=0\right\}.$$
+\end{remark}
+\begin{definition}[等价无穷小量]
+	若$\lim\limits_{x\to x_0}\frac{f(x)}{g(x)}=1$，则称$f$与$g$是当$x\to x_0$时的{\heiti 等价无穷小量}(equivalent infinitesimal).记作
+	$$f(x)\sim g(x)\quad (x\to x_0).$$
+\end{definition}
+可以看出，等价无穷小量是同阶无穷小量的一种特殊情况.
+
+以上讨论了两个无穷小量阶的比较.但应指出，并不是任何两个无穷小量都能进行这种阶的比较，只有在两个无穷小量的比是有界量时才能进行阶的比较.
+
+下面的定理显示了等价无穷小量在求极限问题中的作用.
+\begin{theorem}
+	设函数$f,g,h$在$\mathring{U}(x_0)$上有定义，且有
+	$$f(x)\sim g(x)\quad (x\to x_0).$$
+	(i)若$\lim\limits_{x\to x_0}f(x)h(x)=A$，则$\lim\limits_{x\to x_0}g(x)h(x)=A$；\\
+	(ii)若$\lim\limits_{x\to x_0}\frac{h(x)}{f(x)}=B$，则$\lim\limits_{x\to x_0}\frac{h(x)}{g(x)}=B$.
+\end{theorem}
+\begin{proof}
+	(i)$\lim\limits_{x\to x_0}g(x)h(x)=\lim\limits_{x\to x_0}\dfrac{g(x)}{f(x)}\cdot \lim\limits_{x\to x_0}f(x)h(x)=1\cdot A=A.$
+	
+	\hspace*{\fill}
+	
+	(ii)$\lim\limits_{x\to x_0}\dfrac{h(x)}{g(x)}=\lim\limits_{x\to x_0}\dfrac{f(x)}{g(x)}\cdot \lim\limits_{x\to x_0}\dfrac{h(x)}{f(x)}=1\cdot B=B.$
+\end{proof}
+
+\hspace*{\fill}
+
+下面给出一些等价无穷小量，供读者证明与参考.
+\begin{enumerate}
+	\item $x\sim \sin x\sim \tan x\sim \arcsin x\sim \arctan x\sim \text{e}^x-1\sim \ln (1+x)\qquad(x\to 0);$
+	\item $1-\cos x\sim \frac{1}{2}x^2\qquad(x\to 0);$
+	\item $(1+x)^\alpha-1\sim \alpha x\qquad(x\to 0)(\alpha\text{为非零实数});$
+	\item $\alpha^x-1\sim x\ln \alpha\qquad(x\to 0)(\alpha>0\text{且}\alpha\neq 1).$
+\end{enumerate}
+
+\hspace*{\fill}
+
+\begin{example}
+	求$\lim\limits_{x\to 0}\dfrac{\sqrt{1+x^2}-1}{1-\cos x}.$
+\end{example}
+
+\hspace*{\fill}
+
+\begin{solution}
+	由于$\sqrt{1+x}-1\sim \frac{1}{2}x$，$1-\cos x\sim \frac{1}{2}x^2$，
+	故
+	
+	\hspace*{\fill}
+	$$\lim\limits_{x\to 0}\frac{\sqrt{1+x^2}-1}{1-\cos x}=\dfrac{\frac{1}{2}x^2}{\frac{1}{2}x^2}=1.$$
+	$\hfill\blacksquare$
+\end{solution}
+\begin{remark}
+	在利用等价无穷小量代换求极限时，应注意只有对所求极限式中相乘除的因式才能用等价无穷小量来替代.
+\end{remark}
+\subsection{无穷大量}
+\begin{definition}
+	设函数$f$在某$\mathring{U}(x_0,\delta')$上有定义.若对任给的$M>0$,存在$\delta>0$，使得当$x\in\mathring{U}(x_0;\delta)(\delta<\delta')$时，有
+	$|f(x)|>M$，则称$f$当$x\to x_0$时有{\heiti 非正常极限$\infty$}，记作
+	$$\lim\limits_{x\to x_0}f(x)=\infty.$$
+	对于$f(x)>M$或$f(x)<-M$，我们称$f$当$x\to x_0$时有非正常极限$+\infty$或$-\infty$，记作
+	$$\lim\limits_{x\to x_0}f(x)=+\infty\text{或}\lim\limits_{x\to x_0}f(x)=-\infty$$
+\end{definition}
+\begin{definition}[无穷大量]
+	以$\infty,+\infty$或$-\infty$为极限的函数或数列都称为{\heiti 无穷大量}(infinity).
+\end{definition}
+\begin{remark}
+	无穷大量是无界的，但无无界的不一定是无穷大量，比如在$+\infty$和$\-\infty$中振荡的无界函数不是无穷大量.
+\end{remark}
+对两个无穷大量也可定义高阶无穷大量、同阶无穷大量的概念.由于对无穷大量的研究可以归结到对无穷小量的讨论，因此在此不再详述高阶无穷大量、同阶无穷大量的概念.以下定理展示了无穷小量和无穷大量之间的关系.
+\begin{theorem}
+	设$f,g$在$\mathring{U}(x_0)$上有定义且不等于$0$.
+	
+	(i)若$f$为$x\to x_0$时的无穷小量，则$\dfrac{1}{f}$为$x\to x_0$时的无穷大量.
+	
+	(ii)若$g$为$x\to x_0$时的无穷大量，则$\dfrac{1}{g}$为$x\to x_0$时的无穷小量.
+\end{theorem}
+\begin{proof}
+	仅对$f,g>0$讨论即可，其余情形类似.
+	
+	(i)$\lim\limits_{x\to x_0}f(x)=0$，则$\forall\varepsilon>0,\ \exists\delta>0$\ s.t.\ $x\in \mathring{U}(x_0;\delta)$时，
+	$$f(x)\in\mathring{U}(x_0;\varepsilon),$$
+	
+	则$\dfrac{1}{f}\in(\frac{1}{\varepsilon},+\infty)$.
+	
+	令$M=\frac{1}{\varepsilon}$，则$\exists\delta>0$\ s.t.\ $x\in \mathring{U}(x_0;\delta)$时，
+	$$\frac{1}{f}>M.$$
+	
+	故$\lim\limits_{x\to x_0}\dfrac{1}{f}=+\infty.$
+	
+	(ii)$\lim\limits_{x\to x_0}g(x)=+\infty$，则$\forall M>0,\ \exists\delta>0$\ s.t.\ $x\in \mathring{U}(x_0;\delta)$时，
+	$$g(x)>M.$$
+	
+	令$\varepsilon=\frac{1}{M}$，则$\exists\delta>0$\ s.t.\ $x\in \mathring{U}(x_0;\delta)$时，
+	$$\frac{1}{g}\in (0,\varepsilon).$$
+	
+	故$\lim\limits_{x\to x_0}\dfrac{1}{g}=0.$
+	$\hfill\blacksquare$
+\end{proof}
+\section{曲线的渐近线}
+作为函数极限的一个应用，我们讨论曲线的渐近线问题.
+\begin{definition}[渐近线]
+	若曲线$C$上的动点$P$沿着曲线无限地远离原点时，点$P$与某定直线$L$的距离趋于$0$，则称直线$L$为曲线$C$的{\heiti 渐近线}(asymptote).
+	
+	渐近线分为{\heiti 斜渐近线}(oblique asymptote)和{\heiti 垂直渐近线}(vertical asymptote).
+\end{definition}
+假设曲线$y=f(x)$有斜渐近线$y=kx+b$，则当$x\to \infty$时，有
+$$\lim\limits_{x\to \infty}\left[f(x)-(kx+b)\right]=0,$$
+即
+\begin{equation}{\label{b}}
+	\lim\limits_{x\to \infty}\left[f(x)-kx\right]=b
+\end{equation}
+又由
+$$\lim\limits_{x\to \infty}\left[\frac{f(x)}{x}-k\right]=\lim\limits_{x\to \infty}\frac{1}{x}\left[f(x)-kx\right]=0\cdot b=0,$$
+得
+\begin{equation}{\label{k}}
+	\lim\limits_{x\to \infty}\frac{f(x)}{x}=k
+\end{equation}
+
+由上面的讨论可知，如果曲线$y=f(x)$有斜渐近线$y=kx+b$，则$k$和$b$可分别由式\ref{k}和式\ref{b}确定.
+
+若函数$f$满足$$\lim\limits_{x\to x_0(\text{或}x_0^\pm)}f(x)=\infty,$$
+则按渐近线的定义可知，曲线$y=f(x)$有垂直渐近线$x=x_0$.
+\section{部分函数定义补叙}
+\section{函数的上极限和下极限}
+在研究数列时我们介绍了上极限和下极限，并非每个数列都有极限，但是任何数列都有上极限和下极限.类似地，我们引入函数的上极限和下极限.
+
+设函数$f$在$x_0$附近有定义且有界.根据Heine归结原则，若$\lim\limits_{x\to x_0}f(x)=a$，则对于任一趋于$x_0$的数列$\{x_n\}\subseteq \mathring{U}(x_0)$，都满足$f(x_n)\to a$.若$\lim\limits_{x\to x_0}$不存在，我们也可以取一个趋于$x_0$的数列$\{x_n\}\subseteq U(x_0;\delta)$，对应地可以得到数列$f(x_n)$.由于$f(x)$在$x_0$附近有界，故$f(x_n)$有界.由Bolzano-Weierstrass定理可知，$f(x_n)$存在一个收敛子列$f(x_{k_n})$.而$\{x_{k_n}\}$是$\{x_n\}$的一个子列，由于$x_n\to x_0$，故$x_{k_n}\to x_0$.对于在$x_0$附近上无界的函数，则可以找到一个趋于$x_0$的数列$\{x_n\}\subseteq U(x_0;\delta)$使得$f(x_n)\to\pm\infty$.
+
+以上讨论表明，对于在$x_0$附近有定义的函数，总存在一个趋于$x_0$的数列$\{x_n\}\subseteq \mathring{U}(x_0)$使得$\lim\limits_{n\to\infty}f(x_n)=l$，其中$l\in\widetilde{\mathbb{R}}$.于是我们可以用这样的$l$组成的集合的上确界和下确界来定义函数的上极限和下极限.
+\begin{definition}
+	设函数$f$在$\mathring{U}(x_0)$有定义.令
+	$$E=\left\{a\in \widetilde{\mathbb{R}}|\text{存在}x_n\in\mathring{U}(x_0;\delta),\ x_n\to x_0\text{时}f(x_n)\to a\right\}.$$
+	令
+	$$\limsup\limits_{x\to x_0}f(x)\coloneqq\sup E,\ \liminf\limits_{x\to x_0}f(x)\coloneqq\inf E.$$
+	我们称$\limsup\limits_{x\to x_0}f(x)$为$f(x)$的{\heiti 上极限}(limit superior)，称$\liminf\limits_{x\to x_0}f(x)$为$f(x)$的{\heiti 下极限}(limit inferior).
+\end{definition}
+\begin{remark}
+	对其他的极限过程，上极限和下极限也可类似定义.
+\end{remark}
+\begin{proposition}
+	设函数$f$在$x_0$的一个去心邻域$\mathring{U}(x_0;\delta)$内有定义.令
+	$$E=\left\{a\in \widetilde{\mathbb{R}}|\text{存在}x_n\in\mathring{U}(x_0;\delta),\ x_n\to x_0\text{时}f(x_n)\to a\right\}.$$
+	则$\limsup\limits_{x\to x_0}f(x),\ \liminf\limits_{x\to x_0}f(x)\in E$.
+\end{proposition}
+\begin{proof}
+	只证明上极限的情况即可.
+	
+	(i)若$\limsup\limits_{x\to x_0}f(x)=+\infty$，则$E$无上界，因此对于任一$n\in\mathbb{N}_+$都存在$l_n\in E$使得$l_n>n$.即对于任一$n\in\mathbb{N}_+$都存在$x_n$满足$0<|x_n-x_0|<1/n$且$f(x_n)>n$.令$n\to \infty$，则$x_n\to x_0$且$f(x_n)\to +\infty$.于是可知$+\infty\in E$.
+	
+	(ii)若$\limsup\limits_{x\to x_0}f(x)=-\infty$，则$E=\{-\infty\}$，因此$-\infty\in E$.
+	
+	(iii)若$\limsup\limits_{x\to x_0}f(x)=a\in\mathbb{R}$，由于$a=\sup E$，故对于任一$n\in \mathbb{N}_+$都存在$l_n\in E$使得
+	$$a-\frac{1}{n}<l_n<a+\frac{1}{n}.$$
+	因此对于任一$n\in \mathbb{N}_+$都存在$x_n$满足
+	$$0<|x_n-x_0|<\frac{1}{n},\qquad a-\frac{1}{n}<f(x_n)<a+\frac{1}{n}.$$
+	令$n\to \infty$，则$x_n\to x_0$且$f(x_n)\to a$，于是可知$a\in E$.
+	$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}
+	设函数在某邻域$\mathring{U}(x_0)$上有定义.则
+	$$\liminf\limits_{x\to x_0}f(x)\leqslant \limsup\limits_{x\to x_0}f(x).$$
+	等号成立当且仅当$f(x)$在$x\to x_0$时有极限，即
+	$$\liminf\limits_{x\to x_0}f(x)= \limsup\limits_{x\to x_0}f(x)=\lim\limits_{x\to x_0}f(x).$$
+\end{theorem}
+与数列上极限和下极限类似，我们也可以用$\varepsilon-\delta$语言来刻画函数的上极限和下极限.
+\begin{theorem}
+	设函数$f$在$x_0$的一个去心邻域$\mathring{U}(x_0;\delta')$内有定义.令
+	$$E=\{a\in\mathbb{R}:\forall\varepsilon>0,\exists \delta>0(\delta<\delta'),\text{当}x\in\mathring{U}(x_0;\delta)\text{时},f(x)<a+\varepsilon\};$$
+	$$F=\{a\in\mathbb{R}:\forall\varepsilon>0,\exists \delta>0(\delta<\delta'),\text{当}x\in\mathring{U}(x_0;\delta)\text{时},f(x)>a-\varepsilon\};$$
+	则$\limsup\limits_{x\to x_0}f(x)=\inf E,\ \liminf\limits_{x\to x_0}f(x)=\sup F$.
+\end{theorem}
+\begin{proof}
+	只需证明上极限的情况.令$\limsup\limits_{x\to x_0}f(x)=L$.
+	
+	(i)当$f(x)$在$x_0$的任一去心邻域中都无上界时，$L=+\infty$，此时$E=\{+\infty\}$，因此$\inf E=L$.
+	
+	(ii)当$f(x)$在$x_0$的一个去心邻域中有界时.
+	
+	证明$L\geqslant \inf E$.只需证明$L\in E$.假设$L\notin E$，即存在$\varepsilon>0$使得$x_0$的任一去心邻域内都存在$x$满足$f(x)\geqslant L+\varepsilon$.这表明$\mathring{U}(x_0)$中存在数列$x_n\to x_0$使得$f(x_n)\to l>L$，这与$L=\limsup\limits_{x\to x_0}f(x)$矛盾.于是可知$L\in E$.
+	
+	证明$L\leqslant\inf E$.任取$a\in E$，假设$a<L$，则存在$\varepsilon>0$使得$a+\varepsilon<L$，此时存在$\delta$使得当$x\in \mathring{U}(x_0;\delta)$时，$f(x)<a+\varepsilon$，这表明不存在数列$\{x_n\}\in\mathring{U}(x_0;\delta)$使得$f(x_n)\to L$，出现矛盾.于是可知$a\geqslant L$，即$L\leqslant\inf E$.
+	
+	综上所述，得$\limsup\limits_{x\to x_0}f(x)=\inf E$.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	为了让上极限是$+\infty$下极限是$-\infty$的情况也能用上面的语言刻画，可以令
+	$$E=\{a\in\widetilde{\mathbb{R}}:\forall m>a,\exists \delta>0,\text{当}x\in\mathring{U}(x_0;\delta)\text{时},f(x)<m\},$$
+	$$F=\{a\in\widetilde{\mathbb{R}}:\forall m<a,\exists \delta>0,\text{当}x\in\mathring{U}(x_0;\delta)\text{时},f(x)>m\}.$$
+	则$\limsup\limits_{n\to\infty}f(x)=\inf E,\liminf\limits_{n\to\infty}f(x)=\sup F.$
+\end{remark}
+类似地，我们给出函数上极限和下极限的第三种定义.
+\begin{theorem}
+	设函数$f$在$x_0$的某去心邻域内有定义.则
+	
+	(1)$\limsup\limits_{x\to x_0}f(x)=\lim\limits_{\delta\to 0^+}\left(\sup\limits_{x\in \mathring{U}(x_0;\delta)}f(x)\right)$；
+	
+	(2)$\liminf\limits_{x\to x_0}f(x)=\lim\limits_{\delta\to 0^+}\left(\inf\limits_{x\in \mathring{U}(x_0;\delta)}f(x)\right)$.
+\end{theorem}
+\begin{proof}
+	只证明上极限的情况即可.令
+	$$\varphi(\delta)=\sup\limits_{x\in \mathring{U}(x_0;\delta)}f(x),\quad L=\limsup\limits_{x\to x_0}f(x)$$
+	容易验证$\varphi(\delta)$单调递增.
+	
+	(i)当$L=+\infty$时，在$x_0$的一个去心邻域中存在一个数列$x_n\to x_0$使得$f(x_n)\to +\infty$.因此$\varphi(\delta)=\sup\limits_{x\in \mathring{U}(x_0;\delta)}f(x)=+\infty$.于是可知$\lim\limits_{\delta\to 0^+}\varphi(\delta)=+\infty$.
+	
+	(ii)当$L=-\infty$时，对于$x_0$的去心邻域中任一极限为$x_0$的数列$x_n$，都有$f(x_n)\to -\infty$，即$\lim\limits_{x\to x_0}f(x)=-\infty$.故对于任一$M>0$都存在$\delta_1>0$使得当$x\in\mathring{U}(x_0;\delta_1)$时$f(x)<-M$，因此
+	$$\varphi(\delta_1)=\sup\limits_{x\in \mathring{U}(x_0;\delta)}f(x)<-M.$$
+	由于$\varphi(\delta)$单调递增，因此当$\delta\in(0,\delta_1)$时$\varphi(\delta)\leqslant\varphi(\delta_1)<-E$.这表明$\lim\limits_{\delta\to 0}\varphi(\delta)=-\infty$.
+	
+	(iii)当$L\in\mathbb{R}$时，任取
+	$$l\in E=\{a\in\mathbb{R}|\exists x_n\in\mathring{U}(x_0;\delta),\ x_n\to x_0\ s.t.\ f(x_n)\to a\}.$$
+	则在$x_0$的一个去心邻域中存在一个数列$x_n\to x_0$使得$f(x_n)\to l$.取$f(x_n)$的一个子列$f(x_{k_n})$使得$\{x_{k_n}\}\in\mathring{U}(x_0;\delta)$.于是
+	$$f(x_{k_n})\leqslant \sup\limits_{x\in \mathring{U}(x_0;\delta)}f(x)=\varphi(\delta),\quad i=1,2,\cdots.$$
+	令$i\to\infty$得$l\leqslant\varphi(\delta)$.再令$\delta\to 0^+$得$l\leqslant\lim\limits_{\delta\to 0^+}\varphi(\delta)$.于是$L\leqslant\lim\limits_{\delta\to 0^+}\varphi(\delta)$.
+	
+	另一方面，由函数上极限和下极限的$\varepsilon-\delta$定义可知，对任意$\varepsilon>0$都存在$\delta_2$>0使得当$x\in\mathring{U}(x_0;\delta_2)$时$f(x)<L+\varepsilon$.因此$\varphi(\delta_2)<L+\varepsilon$.由于$\varphi(\delta)$单调递增，因此当$\delta\in(0,\delta_2)$时，$\varphi(\delta)\leqslant\varphi(\delta_2)\leqslant L+\varepsilon$.令$\delta\to 0^+$，则
+	$$\lim\limits_{\delta\to 0^+}\varphi(\delta)\leqslant L+\varepsilon.$$
+	令$\varepsilon\to 0$，则
+	$$L\geqslant\lim\limits_{\delta\to 0^+}\varphi(\delta).$$
+	于是可知$L=\lim\limits_{\delta\to 0^+}\varphi(\delta)$.
+	$\hfill\blacksquare$
+\end{proof}
+函数的上极限和下极限也有保序性.
+\begin{theorem}[保序性]
+	设函数$f(x)$和$g(x)$在$\mathring{U}(x_0;\delta)$中满足$f(x)\leqslant g(x)$，则
+	
+	(1)$\limsup\limits_{x\to x_0}f(x)\leqslant\limsup\limits_{x\to x_0}g(x),$
+	
+	(2)$\liminf\limits_{x\to x_0}f(x)\leqslant\liminf\limits_{x\to x_0}g(x).$
+\end{theorem}
+\begin{proof}
+	只需证明(1).记$\limsup\limits_{x\to x_0}f(x)=A,\ \limsup\limits_{x\to x_0}g(x)=B.$
+	
+	(i)当$B=+\infty$或$A=-\infty$时，命题显然成立；
+	
+	(ii)当$A=+\infty$时，在$\mathring(x_0;\delta)$中存在数列$x_n\to x_0$使得$\lim\limits_{n\to \infty}g(x_{k_n})=+\infty.$由于在$\mathring{U}(x_0;\delta)$中满足$f(x)\leqslant g(x)$，故$\{x_n\}$中存在一个子列$\{x_{k_n}\}$使得$\lim\limits_{n\to\infty}g(x_{k_n})=+\infty$.
+	$$\lim\limits_{n\to\infty}f(x_{k_n})=A\leqslant\lim\limits_{n\to\infty}g(x_{k_n})\leqslant B.$$
+	于是可知$A=B$，类似可证$B=-\infty$时$A=B$.
+	
+	(iii)当$A,B\in\mathbb{R}$时，在$\mathring{U}(x_0;\delta)$中存在数列$x_n\to x_0$使得$f(x_n)\to A$.由于在$\mathring{U}(x_0;\delta)$中满足$f(x)\leqslant g(x)$，故$\{x_n\}$中存在一个子列$\{x_{k_n}\}$使得
+	$$\lim\limits_{n\to\infty}g(x_{k_n})\geqslant A=\lim\limits_{n\to\infty}f(x_{k_n}).$$
+	于是可知$A\leqslant B$.$\hfill\blacksquare$
+\end{proof}
+

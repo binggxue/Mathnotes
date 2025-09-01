@@ -1,0 +1,77 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+%article info
+\title{\vspace{-2em}\textbf{等价关系与集合分类}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}[关系]
+		设集合$R\subset A\times A$，$a,b\in A$，若$(a,b)\in R$，则称$a$和$b$有\textbf{关系}$R$，记作$aRb$；若$(a,b)\notin R$，则称$a$与$b$没有关系.
+	\end{definition}
+	\begin{definition}[等价关系]
+		若关系$R$满足
+		\begin{enumerate}
+			\item 反身性：$aRa,\ \forall a\in A$;
+			\item 对称性：$aRb$，则$bRa$，$\forall a,b\in A$;
+			\item 传递性：$aRb,bRc$则$aRc$，$\forall a,b,c\in A$.
+		\end{enumerate}
+		则称$R$为\textbf{等价关系}.
+	\end{definition}
+	\begin{definition}[集合的分类]
+		非空集合$A$可以分成若干不交非空子集，即$A=\bigcup_{i\in I}M_i$，$M_i\cap M_j=\varnothing,\ i\neq j$，则$\{M_i|i\in I\}$称为$A$的一个\textbf{分类}或\textbf{分划}.
+	\end{definition}
+	\begin{theorem}
+		集合$A$的一个分类决定$A$中的一个等价关系.
+	\end{theorem}
+	\begin{proof}
+		设关系$R$满足
+		$$aRb\iff a\ \text{和}\ b\ \text{在同一类},$$
+		则根据定义易得$R$是等价关系.
+	\end{proof}
+	\begin{definition}[等价类]
+		设在集合$A$上定义了一个等价关系$R$，$a\in A$，则所有与$a$有关系的元素构成一个集合$\{b\in A\ |\ bRa\}$，称为$a$所在的\textbf{等价类}，记作$\overline{a}$，$a$称为这个等价类的\textbf{代表元}.
+	\end{definition}
+	\begin{definition}[商集]
+		设集合$A$中有等价关系$R$，则以$R$为前提的所有等价类的集合$\{\overline{a}\}$称为$A$对$R$的\textbf{商集}，记作$A/R$.
+	\end{definition}
+	\begin{definition}[自然映射]
+		称从非空集合$A$到它的商集合$A/R$的映射$\pi:A\to A/R,\ \pi(a)=\overline{a}$为\textbf{自然映射}.
+	\end{definition}
+	容易验证$\pi$是映射，且是满射，但未必是单射，因为以$a$为代表元的等价类不一定只有$a$这一个元素，如果$b\in\overline{a}$，那么$\pi(a)=\pi(b)=\overline{a}$.
+	\begin{theorem}
+		集合$A$中的一个等价关系决定$A$的一个分类.
+	\end{theorem}
+	\begin{proof}
+		对任意$a\in A$，$\pi(a)$是$a$所在的等价类，于是$A$中的任何元素都有所在的等价类，这些等价类互不相交，于是构成了$A$的一个分类.
+	\end{proof}
+	\begin{definition}[同余关系]
+		设集合$A$中有等价关系$R$，并带有二元运算“$\circ$”，若满足
+		$$aRb,\ cRd\Rightarrow (a\circ b)R(c\circ d),\quad\forall a,b,c,d\in A,$$
+		则称$R$是\textbf{同余关系}，相应地，$a$的等价类也称为$a$的\textbf{同余类}.
+	\end{definition}
+	\begin{theorem}
+		设“$\circ$”是$A$中的二元运算，并定义“$\overline{\circ}$”：$\overline{a}\overline{\circ}\overline{c}=\overline{a\circ c}$，则“$\overline{\circ}$”是$A$中的二元运算当且仅当$R$是同余关系.
+	\end{theorem}
+	\begin{proof}
+		若“$\overline{\circ}$”是二元运算，则对任意$\overline{a},\overline{c}\in A/R$，有$\overline{a}\ \overline{\circ}\ \overline{c}\in A/R$，于是$\overline{a\circ c}\in A/R$，设$aRb$，$cRd$，则
+		$$\overline{a}\ \overline{\circ}\ \overline{c}=\overline{b}\ \overline{\circ}\ \overline{d}=\overline{b\circ d}=\overline{a\circ c},$$
+		故$(a\circ c)R(b\circ d)$.
+		
+		若$R$是同余关系，则对任意$aRb$，$cRd$，有$(a\circ c)R(b\circ d)$，进而$\overline{a\circ c}=\overline{b\circ d}$，故$\overline{a}\ \overline{\circ}\ \overline{c}=\overline{b}\ \overline{\circ}\ \overline{d}\in A/R$，所以“$\circ$”是二元运算.
+	\end{proof}
+\end{document}

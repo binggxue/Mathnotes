@@ -1,0 +1,491 @@
+\chapter{函数项级数}
+前面我们用收敛数列或数项级数来表示或定义一个数. 本章将讨论怎样用函数列或函数项级数来表示或定义一个函数，并研究这个函数的性质.
+\section{一致收敛性}
+\subsection{函数列及其一致收敛性}
+\begin{definition}[函数列]
+	设
+	$$f_1,f_2,\cdots,f_n,\cdots$$
+	是一列定义在同一数集$E$上的函数，称为定义在$E$上的{\heiti 函数列}. 也记作
+	$$\{f_n\}\ \text{或}\ f_n,\ n=1,2,\cdots.$$
+\end{definition}
+\begin{definition}[函数列极限]
+	对每一固定的$x\in D$，任给$\varepsilon>0$，恒存在$N(\varepsilon,x)>0$，使得当$n>N$时，总有
+	$$|f_n(x)-f(x)|<\varepsilon,$$
+	则称函数列$f_n(x)${\heiti 在数集$D$上收敛}，记作
+	$$\lim\limits_{n\to\infty}f_n(x)=f(x),\qquad x\in D$$
+	或
+	$$f_n(x)\to f(x),\qquad (n\to\infty)\qquad x\in D.$$
+	称$x$是$\{f_n\}$的{\heiti 收敛点}，$f(x)$为函数列$\{f_n\}$的{\heiti 极限函数}. 
+	
+	使函数列$\{f_n\}$收敛的全体收敛点的集合，称为函数列$\{f_n\}$的{\heiti 收敛域}.
+\end{definition}
+对于函数列，我们不仅要讨论它在哪些点上收敛，而更重要的是要研究极限函数所具有的解析性质. 比如能否由函数列的每项的连续性判断出极限函数的连续性. 又如极限函数的导数或积分，是否分别是函数列每项导数或积分的极限. 我们涉及到换序问题. 只要求函数列在数集$D$上收敛是不够的，必须对它在$D$上的收敛性提出更高的要求才行. 这就是以下所要讨论的一致收敛性问题.
+\begin{definition}[一致收敛]
+	设函数列$\{f_n\}$与函数$f$定义在同一数集$D$上，若对任给的$\varepsilon>0$，总存在$N(\varepsilon)>0$，使得当$n>N$时，对一切$x\in D$，都有
+	$$|f_n(x)-f(x)|<\varepsilon,$$
+	则称函数列$\{f_n\}$在$D$上{\heiti 一致收敛}于$f$，记作
+	$$f_n(x)\rightrightarrows f(x)\ (n\to\infty),\ x\in D.$$
+\end{definition}
+\begin{remark}
+	一致收敛的定义中，$N$的选取仅与$\varepsilon$有关，与$x$的取值无关. 而在收敛的定义中，$N$的取值既与$\varepsilon$有关，又与$x$有关. 由此，函数列$\{f_n\}$在$D$上一致收敛，则在$D$的每一点都收敛. 反之则不一定成立.
+\end{remark}
+\begin{theorem}[函数列一致收敛的Cauchy准则]
+	函数列$\{f_n\}$在数集$D$上一致收敛的充要条件是：对任意$\varepsilon>0$，总存在$N>0$，使得当$n,m>N$时，对一切$x\in D$，都有
+	$$|f_n(x)-f_m(x)|<\varepsilon.$$
+\end{theorem}
+\begin{proof}
+	{\heiti 必要性}\qquad 设$f_n(x)\rightrightarrows f(x)\ (n\to\infty),\ x\in D$，即对任意$\varepsilon>0$，存在$N>0$，使得当$n>N$时，对一切$x\in D$，都有
+	$$|f_n(x)-f(x)|<\frac{\varepsilon}{2}.$$
+	于是当$n,m>N$时有
+	\begin{align*}
+		|f_n(x)-f_m(x)|&\leqslant |f_n(x)-f(x)|+|f(x)-f_m(x)|\\
+		&<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.
+	\end{align*}
+	
+	{\heiti 充分性}\qquad 若
+	$$|f_n(x)-f_m(x)|<\varepsilon$$
+	成立，由数列收敛的Cauchy准则，$\{f_n\}$在$D$上任一点都收敛，记其极限函数为$f(x),\ x\in D$. 现固定$n$，让$m\to\infty$，于是当$n>N$时，对一切$x\in D$，都有
+	$$|f_n(x)-f(x)|\leqslant \varepsilon.$$
+	由一致收敛的定义即得
+	$$f_n(x)\rightrightarrows f(x)\ (n\to\infty),\ x\in D.$$
+	$\hfill\blacksquare$
+\end{proof}
+
+根据一致收敛的定义可推出下述定理.
+\begin{theorem}\label{chy}
+	函数列$\{f_n\}$在区间$D$上一致收敛于$f$的充要条件是：
+	$$\lim\limits_{n\to\infty}\sup\limits_{x\in D}|f_n(x)-f(x)|=0.$$
+\end{theorem}
+\begin{proof}
+	{\heiti 必要性}\qquad 若$f_n(x)\rightrightarrows f(x)\ (n\to\infty),\ x\in D$，则对任意$\varepsilon>0$，存在$N(\varepsilon)>0$，当$n>N$时，有
+	$$|f_n(x)-f(x)|<\varepsilon,\quad x\in D.$$
+	由上确界的定义，有
+	$$\sup\limits_{x\in D}|f_n(x)-f(x)|\leqslant\varepsilon.$$
+	由极限定义，即得
+	$$\lim\limits_{n\to\infty}\sup\limits_{x\in D}|f_n(x)-f(x)|=0.$$
+	
+	{\heiti 充分性}\qquad 由假设，对任给$\varepsilon>0$，存在$N>0$，使得当$n>N$时，有
+	$$\sup\limits_{x\in D}|f_n(x)-f(x)|<\varepsilon.$$
+	因为对一切$x\in D$，总有
+	$$|f_n(x)-f(x)|\leqslant\sup\limits_{x\in D}|f_n(x)-f(x)|,$$
+	所以有
+	$$|f_n(x)-f(x)|<\varepsilon.$$
+	于是$\{f_n\}$在$D$上一致收敛于$f$.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	在判断函数列是否一致收敛时上述定理更为方便一些，但必须事先知道它的极限函数.
+\end{remark}
+\begin{corollary}
+	函数列$\{f_n\}$在$D$上不一致收敛于$f$的充要条件是：存在$\{x_n\}\in D$，使得$\{f_n(x_n)-f(x_n)\}$不收敛于$0$.
+\end{corollary}
+\begin{definition}[内闭一致收敛]
+	设函数列$\{f_n\}$与$f$定义在区间$I$上，若对任意闭区间$\left[a,b\right]\subset I$，$\{f_n\}$在$\left[a,b\right]$上一致收敛于$f$，则称$\{f_n\}$在$I$上{\heiti 内闭一致收敛}于$f$.
+\end{definition}
+\begin{remark}
+	若$I=\left[\alpha,\beta\right]$是有界闭区间，显然$\{f_n\}$在$I$上内闭一致收敛于$f$与$\{f_n\}$在$I$上一致收敛于$f$是一致的.
+\end{remark}
+\subsection{函数项级数及其一致收敛性}
+\begin{definition}[函数项级数]
+	设$\{u_n(x)\}$是定义在数集$E$上的一个函数列，表达式
+	$$u_1(x)+u_2(x)+\cdots+u_n(x)+\cdots,\quad x\in E$$
+	称为定义在$E$上的{\heiti 函数项级数}，简记为$\displaystyle\sum_{n=1}^{\infty}u_n(x)$或$\sum u_n(x)$. 称
+	$$S_n(x)=\sum_{k=1}^{n}u_k(x),\quad x\in E,\quad n=1,2,\cdots$$
+	为函数项级数$\sum u_n(x)$的{\heiti 部分和函数列}.
+\end{definition}
+\begin{definition}[函数项级数的收敛]
+	若$x_0\in E$，数项级数
+	$$u_1(x_0)+u_2(x_0)+\cdots+u_n(x_0)+\cdots$$
+	收敛，即部分和$S_n(x_0)$当$n\to\infty$时极限存在，则称函数项级数$\sum u_n(x)$在点$x_0${\heiti 收敛}，称$x_0$是级数的{\heiti 收敛点}. 反之，称级数在点$x_0${\heiti 发散}. 若级数$\sum u_n(x)$在$E$的某个子集$D$上每点都收敛，则称级数$\sum u_n(x)$在$D$上收敛. 
+	
+	使函数项级数$\sum u_n(x)$收敛的全体收敛点的集合，称为函数项级数的{\heiti 收敛域}. 函数项级数$\sum u_n(x)$在收敛域上的每一点$x$与其所对应的数项级数的和$S(x)$构成一个定义在收敛域上的函数，称为函数项级数$\sum u_n(x)$的{\heiti 和函数}，并写作
+	$$u_1(x)+u_2(x)+\cdots+u_n(x)+\cdots=S(x),\quad x\in D,$$
+	即
+	$$\lim\limits_{n\to\infty}S_n(x)=S(x),\quad x\in D.$$
+\end{definition}
+\begin{definition}
+	设$\{S_n(x)\}$是函数项级数$\sum u_n(x)$的部分和函数列. 若$\{S_n(x)\}$在数集$D$上一致收敛于$S(x)$，则称$\sum u_n(x)$在$D$上一致收敛于$S(x)$. 若$\sum u_n(x)$在任意闭区间$\left[a,b\right]\subset I$上一致收敛，则称$\sum u_n(x)$在$I$上{\heiti 内闭一致收敛}.
+\end{definition}
+由于函数项级数的一致收敛性由它的部分和函数列来确定，所以由前段中有关函数列一致收敛的定理，都可推出相应的有关函数项级数的定理.
+\begin{theorem}[一致收敛的Cauchy准则]
+	函数项级数$\sum u_n(x)$在数集$D$上一致收敛的充要条件为：对任意$\varepsilon>0$，总存在$N>0$，使得当$n>N$时，对一切$x\in D$和一切正整数$p$，都有
+	$$|S_{n+p}(x)-S_n(x)|<\varepsilon$$
+	或
+	$$|u_{n+1}(x)+u_{n+2}(x)+\cdots+u_{n+p}(x)|<\varepsilon.$$
+\end{theorem}
+当$p=1$时，我们就有下述推论.
+\begin{corollary}
+	函数项级数$\sum u_n(x)$在数集$D$上一致收敛的必要条件是函数列$\{u_n(x)\}$在$D$上一致收敛于零.
+\end{corollary}
+与数项级数类似，我们也可以定义函数项级数的余项.
+\begin{definition}[余项]
+	设函数项级数$\sum u_n(x)$在$D$上的和函数为$S(x)$，称
+	$$R_n(x)=S(x)-S_n(x)$$
+	为函数项级数$\sum u_n(x)$的{\heiti 余项}.
+\end{definition}
+\begin{theorem}
+	函数项级数$\sum u_n(x)$在数集$D$上一致收敛于$S(x)$的充要条件是
+	$$\lim\limits_{n\to\infty}\sup\limits_{x\in D}|R_n(x)|=\lim\limits_{n\to\infty}\sup\limits_{x\in D}|S(x)-S_n(x)|=0.$$
+\end{theorem}
+\begin{remark}
+	这里将$\{S_n(x)\}$作为函数列即转化为定理\ref{chy}的结论.
+\end{remark}
+\subsection{函数项级数的一致收敛性判别法}
+\begin{theorem}[Weierstrass判别法]
+	设函数项级数$\sum u_n(x)$定义在数集$D$上，$\sum M_n$为收敛的正项级数，若对一切$x\in D$，有
+	$$|u_n(x)|\leqslant M_n,\quad n=1,2,\cdots,$$
+	则函数项级数$\sum u_n(x)$在$D$上一致收敛.
+\end{theorem}
+\begin{proof}
+	由假设，$\sum M_n$收敛，由数项级数的Cauchy准则，对任意$\varepsilon>0$，存在$N>0$，使得当$n>N$时，对一切正整数$p$，都有
+	$$|M_{n+1}+\cdots+M_{n+p}|=M_{n+1}+\cdots+M_{n+p}<\varepsilon.$$
+	对一切$x\in D$，有
+	\begin{align*}
+		|u_{n+1}(x)+\cdots+u_{n+p}(x)|\leqslant |u_{n+1}(x)|+\cdots+|u_{n+p}(x)|\leqslant M_{n+1}+\cdots+M_{n+p}<\varepsilon.
+	\end{align*}
+	根据函数项级数一致收敛的Cauchy准则，级数$\sum u_n(x)$在$D$上一致收敛.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	上述判别法也称为$M${\heiti 判别法}或{\heiti 优级数判别法}.当级数$\sum u_n(x)$和级数$\sum M_n$在区间$\left[a,b\right]$上成立
+	$$|u_n(x)|\leqslant M_n,\quad n=1,2,\cdots$$
+	时，称级数$\sum M_n$在区间$\left[a,,b\right]$上优于级数$\sum u_n(x)$，或称$\sum M_n$为$\sum u_n(x)$的{\heiti 优级数}.
+\end{remark}
+下面讨论定义在区间$I$上形如
+$$\sum u_n(x)v_n(x)=u_1(x)v_1(x)+u_2(x)v_2(x)+\cdots+u_n(x)v_n(x)+\cdots$$
+的函数项级数的一致收敛性判别法. 与数项级数一样，我们介绍Abel判别法和Dirichlet判别法.
+\begin{theorem}[Abel判别法]
+	设
+	\begin{enumerate}[(1)]
+		\item $\sum u_n(x)$在区间$I$上一致收敛；
+		\item 对于每一个$x\in I$，$\{v_n(x)\}$是单调的；
+		\item $\{v_n(x)\}$在$I$上一致有界，即存在$M>0$，使得对一切$x\in I$和正整数$n$，有
+		$$|v_n(x)|\leqslant M,$$
+	\end{enumerate}
+	则级数$\sum u_n(x)v_n(x)$在$I$上一致收敛.
+\end{theorem}
+\begin{proof}
+	由(1)，任给$\varepsilon>0$，存在$N>0$，使得当$n>N$时，对一切正整数$p$和一切$x\in I$，有
+	$$|u_{n+1}(x)+\cdots+u_{n+p}(x)|<\varepsilon.$$
+	又由(2)(3)及Abel引理，得
+	$$|u_{n+1}(x)v_{n+1}(x)+\cdots+u_{n+p}(x)v_{n+p}(x)|\leqslant (|v_{n+1}(x)|+2|v_{n+p}(x)|)\varepsilon\leqslant 3M\varepsilon.$$
+	由函数项级数一致收敛的Cauchy准则即得.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}[Dirichlet判别法]
+	设
+	\begin{enumerate}[(1)]
+		\item $\sum u_n(x)$的部分和函数列
+		$$S_n(x)=\sum_{k=1}^{n}u_k(x)\quad (n=1,2,\cdots)$$
+		在$I$上一致有界；
+		\item 对于每一个$x\in I$，$\{v_n(x)\}$是单调的；
+		\item 在$I$上$v_n(x)\rightrightarrows 0\ (n\to\infty)$，
+	\end{enumerate}
+	则级数$\sum u_n(x)v_n(x)$在$I$上一致收敛.
+\end{theorem}
+\begin{proof}
+	由(1)，存在$M>0$，对一切$x\in I$，有$S_n(x)\leqslant M$. 因此当$n,p$为任何正整数时，
+	$$|u_{n+1}(x)+\cdots+u_{n+p}(x)|=|S_{n+p}(x)-S_n(x)|\leqslant 2M.$$
+	对任何一个$x\in I$，再由(2)及Abel引理，得
+	$$|u_{n+1}(x)v_{n+1}(x)+\cdots+u_{n+p}(x)v_{n+p}(x)|\leqslant 2M(|v_{n+1}(x)|+2|v_{n+p}(x)|).$$
+	再由(3)，对任意$\varepsilon>0$，存在$N>0$使得当$n>N$时，对一切$x\in I$，有
+	$$|v_n(x)|<\varepsilon,$$
+	所以
+	$$|u_{n+1}(x)v_{n+1}(x)+\cdots+u_{n+p}(x)v_{n+p}(x)|<2M(\varepsilon+2\varepsilon)=6M\varepsilon.$$
+	由函数项级数一致收敛的Cauchy准则即得.$\hfill\blacksquare$
+\end{proof}
+\section{一致收敛函数列与函数项级数的性质}
+本节讨论由函数列和函数项级数所确定的函数的连续性、可积性和可微性.
+\begin{theorem}[极限可交换性]\label{limcommutative}
+	设函数列$\{f_n\}$在$(a,x_0)\cup(x_0,b)$上一致收敛于$f(x)$，且对每个$n$，$\lim\limits_{x\to x_0}f_n(x)=a_n$，则$\lim\limits_{n\to\infty}a_n$和$\lim\limits_{x\to x_0}f(x)$均存在且相等.
+\end{theorem}
+\begin{proof}
+	先证$\{a_n\}$是收敛数列. 对任意$\varepsilon>0$，由于$\{f_n\}$一致收敛，故有$N>0$，当$n>N$时，对任意正整数$p$和一切$x\in(a,x_0)\cup(x_0,b)$，有
+	$$|f_n(x)-f_{n+p}(x)|<\varepsilon.$$
+	从而
+	$$|a_n-a_{n+p}|=\lim\limits_{x\to x_0}|f_n(x)-f_{n+p}(x)|\leqslant\varepsilon.$$
+	这样由Cauchy准则可知$\{a_n\}$是收敛数列.
+	
+	\hspace*{\fill}
+	
+	设$\lim\limits_{n\to\infty}a_n=A$. 再证$\lim\limits_{x\to x_0}f(x)=A$.
+	
+	\hspace*{\fill}
+	
+	由于$f_n(x)$一致收敛于$f(x)$及$a_n$收敛于$A$，因此对任意$\varepsilon>0$，存在正数$N$，当$n>N$时，对任意$x\in (a,x_0)\cup(x_0,b)$，
+	$$|f_n(x)-f(x)|<\frac{\varepsilon}{3}\quad\text{和}\quad |a_n-A|<\frac{\varepsilon}{3}$$
+	同时成立. 特别取$n=N+1$，有
+	$$|f_{N+1}(x)-f(x)|<\frac{\varepsilon}{3},\quad |a_{N+1}-A|<\frac{\varepsilon}{3}.$$
+	又$\lim\limits_{x\to x_0}f_{N+1}(x)=a_{N+1}$，故存在$\delta>0$，当$0<|x-x_0|<\delta$时，
+	$$|f_{N+1}(x)-a_{N+1}|<\frac{\varepsilon}{3}.$$
+	这样，当$x$满足$0<|x-x_0|<\delta$时，
+	$$|f(x)-A|\leqslant |f(x)-f_{N+1}(x)|+|f_{N+1}(x)-a_{N+1}|+|a_{N+1}-A|<\frac{\varepsilon}{3}+\frac{\varepsilon}{3}+\frac{\varepsilon}{3}=\varepsilon.$$
+	即$\lim\limits_{x\to x_0}f(x)=A$.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	这个定理指出：在一致收敛的条件下，$\{f_n(x)\}$中两个独立变量$x$与$n$，在分别求极限时其求极限的顺序可以交换，即
+	$$\lim\limits_{x\to x_0}\lim\limits_{n\to\infty}f_n(x)=\lim\limits_{n\to\infty}\lim\limits_{x\to x_0}f_n(x).$$
+\end{remark}
+\begin{remark}
+	类似地，对于$f$中$x$的左极限和右极限，我们也可交换其与$n$求极限的顺序，即在一致收敛和相应极限存在的条件下，有
+	$$\lim\limits_{x\to a^+}\lim\limits_{n\to\infty}f_n(x)=\lim\limits_{n\to\infty}\lim\limits_{x\to a^+}f_n(x),$$
+	$$\lim\limits_{x\to b^-}\lim\limits_{n\to\infty}f_n(x)=\lim\limits_{n\to\infty}\lim\limits_{x\to b^-}f_n(x).$$
+\end{remark}
+由上述定理可得到极限函数的连续性定理.
+\begin{theorem}[连续性]
+	若函数列$\{f_n\}$在区间$I$上一致收敛，且每一项都连续，则其极限函数$f$在$I$上也连续.
+\end{theorem}
+\begin{proof}
+	设$x_0$为$I$上任一点. 由于$\lim\limits_{x\to x_0}f_n(x)=f_n(x_0)$，于是由定理$\ref{limcommutative}$知$\lim\limits_{x\to x_0}f(x)$也存在，且
+	$$\lim\limits_{x\to x_0}f(x)=\lim\limits_{x\to x_0}\lim\limits_{n\to\infty}f_n(x)=\lim\limits_{n\to\infty}\lim\limits_{x\to x_0}f_n(x)=\lim\limits_{n\to\infty}f_n(x_0)=f(x_0),$$
+	因此$f(x)$在$x_0$上连续.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	我们可以得到极限函数连续性定理的逆否命题. 即若各项为连续函数的函数列在区间$I$上其极限函数不连续，则此函数列在区间$I$上不一致收敛.
+\end{remark}
+\begin{remark}
+	一致收敛性是极限函数连续的充分条件，而非必要条件.
+\end{remark}
+由于函数的连续性是函数的局部性质，因此上述定理中的一致收敛条件可以减弱为内闭一致收敛.
+\begin{corollary}
+	若连续函数列$\{f_n\}$在区间$I$上内闭一致收敛于$f$，则$f$在$I$上连续.
+\end{corollary}
+由连续性定理我们可以进一步证明可积性定理.
+\begin{theorem}[可积性]
+	若函数列$\{f_n\}$在$\left[a,b\right]$上一致收敛，且每一项都连续，则
+	$$\int_{a}^{b}\lim\limits_{n\to\infty}f_n(x)\d x=\lim\limits_{n\to\infty}\int_{a}^{b}f_n(x)\d x.$$
+\end{theorem}
+\begin{proof}
+	设$f$为函数列$\{f_n\}$在$\left[a,b\right]$上的极限函数. 由极限函数的连续性定理，$f$在$\left[a,b\right]$上连续，从而$f_n(n=1,2,\cdots)$与$f$在$\left[a,b\right]$上都可积.
+	
+	因为在$\left[a,b\right]$上$f_n\rightrightarrows f\ (n\to\infty)$，故对任意$\varepsilon>0$，存在$N$，当$n>N$时，对一切$x\in \left[a,b\right]$，都有
+	$$|f_n(x)-f(x)|<\varepsilon.$$
+	再根据定积分的性质，当$n>N$时有
+	$$\left|\int_{a}^{b}f_n(x)\d x-\int_{a}^{b}f(x)\d x\right|\leqslant\int_{a}^{b}|f_n(x)-f(x)|\d x<\varepsilon(b-a).$$
+	即
+	$$\lim\limits_{n\to\infty}\int_{a}^{b}f_n(x)\d x=\int_{a}^{b}f_n(x)\d x=\int_{a}^{b}\lim\limits_{n\to\infty}f_n(x)\d x.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	这个定理指出：在一致收敛的条件下，极限运算与积分运算的顺序可以交换.
+\end{remark}
+\begin{remark}
+	一致收敛性是极限运算与积分运算交换的充分条件，而不是必要条件.
+\end{remark}
+由可积性定理我们可以进一步证明可微性定理.
+\begin{theorem}[可微性]
+	设$\{f_n\}$为定义在$\left[a,b\right]$上的函数列，若$x_0\in\left[a,b\right]$为$\{f_n\}$的收敛点，$\{f_n\}$的每一项在$\left[a,b\right]$上有连续的导数，且$\{f'_n\}$在$\left[a,b\right]$上一致收敛，则
+	$$\frac{\d}{\d x}\left(\lim\limits_{n\to\infty}f_n(x)\right)=\lim\limits_{n\to\infty}\frac{\d}{\d x}f_n(x).$$
+\end{theorem}
+\begin{proof}
+	设$f_n(x_0)\to A\ (n\to\infty)$，$f'_n\rightrightarrows g\ (n\to\infty),\ x\in\left[a,b\right]$. 我们要证明函数列$\{f_n\}$在区间$\left[a,b\right]$上收敛，且其极限函数的导数存在且等于$g$.
+	
+	由定理条件，对任一$x\in\left[a,b\right]$，总有
+	$$f_n(x)=f_n(x_0)+\int_{x_0}^{x}f'_n(t)\d t.$$
+	当$n\to\infty$时，右边第一项极限为$A$，由可积性定理，第二项极限为$\displaystyle\int_{x_0}^{x}g(t)\d t$，所以左边极限存在，记为$f$，则
+	$$f(x)=\lim\limits_{n\to\infty}f_n(x)=f(x_0)+\int_{x_0}^{x}g(t)\d t,$$
+	其中$f(x_0)=A$. 由$g$的连续性及微积分学基本定理有
+	$$f'=g.$$
+	$\hfill\blacksquare$
+\end{proof}
+与连续性类似，函数的可微性也是函数的局部性质，因此一致收敛条件可以减弱为内闭一致收敛.
+\begin{corollary}
+	设函数列$\{f_n\}$定义在区间$I$上，若$x_0\in I$为$\{f_n\}$的收敛点，且$\{f'_n\}$在$I$上内闭一致收敛，则$f$在$I$上可导，且$f'(x)=\lim\limits_{n\to\infty}f'_n(x)$.
+\end{corollary}
+下面讨论定义在区间$\left[a,b\right]$上的函数项级数$\sum u_n(x)$的连续性、逐项求积和逐项求导的性质，这些性质可由函数列的相应性质推出，故不再证明.
+\begin{theorem}[连续性]
+	若函数项级数$\sum u_n(x)$在区间$\left[a,b\right]$上一致收敛，且每一项都连续，则其和函数在$\left[a,b\right]$上也连续.
+\end{theorem}
+\begin{remark}
+	这个定理指出，在一致收敛条件下，（无限项）求和运算与求极限运算可以交换顺序，即
+	$$\sum\left(\lim\limits_{x\to x_0}u_n(x)\right)=\lim\limits_{x\to x_0}\left(\sum u_n(x)\right).$$
+\end{remark}
+\begin{theorem}[逐项求积]
+	若函数项级数$\sum u_n(x)$在$\left[a,b\right]$上一致收敛，且每一项$u_n(x)$都连续，则
+	$$\sum\int_{a}^{b}u_n(x)\d x=\int_{a}^{b}\sum u_n(x)\d x.$$
+\end{theorem}
+\begin{theorem}[逐项求导]
+	若函数项级数$\sum u_n(x)$在$\left[a,b\right]$上每一项都有连续的导函数，$x_0\in\left[a,b\right]$为$\sum u_n(x)$的收敛点，且$\sum u'_n(x)$在$\left[a,b\right]$上内闭一致收敛，则
+	$$\sum\left(\frac{\d}{\d x}u_n(x)\right)=\frac{\d}{\d x}(\sum u_n(x)).$$
+\end{theorem}
+\begin{remark}
+	上述两个定理指出，在一致收敛条件下，逐项求积或求导后求和等于求和后再求积或求导.
+\end{remark}
+\begin{remark}
+	与函数列的情况相同，函数项级数的连续性定理与逐项求导定理中的一致收敛条件也可减弱为内闭一致收敛.
+\end{remark}
+最后，我们指出，本节中六个定理的意义不只是检验函数列或函数项级数是否满足定理中的关系式，更重要的是根据定理的条件，即使没有求出极限函数或和函数，也能由函数列或函数项级数本身获得极限函数或和函数的解析性质.
+\section{幂级数}
+本章将讨论由幂函数序列$\{a_n(x-x_0)^n\}$所产生的函数项级数
+\begin{equation}\label{mi1}
+	\sum_{n=0}^{\infty}a_n(x-x_0)^n=a_0+a_1(x-x_0)+a_2(x-x_0)^2+\cdots+a_n(x-x_0)^n+\cdots,
+\end{equation}
+它称为{\heiti 幂级数}，是一类最简单的函数项级数，从某种意义上说，它也可以看作是多项式函数的延伸.
+
+下面将着重讨论$x_0=0$，即
+\begin{equation}\label{mi2}
+	\sum_{n=0}^{\infty}a_nx^n=a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots
+\end{equation}
+的情形，因为只要把\ref{mi2}中的$x$换成$x-x_0$，就得到\ref{mi1}.
+\subsection{幂级数的收敛区间}
+首先讨论幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$的收敛性问题. 显然它在$x=0$处总是收敛的. 此外，我们有以下定理.
+\begin{theorem}[Abel定理]
+	若幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$在$x=\overline{x}$收敛，则它在区间$|x|<|\overline{x}|$中绝对收敛；反之，幂级数在$x=\overline{x}$处发散，则它在$|x|>|\overline{x}|$中均发散.
+\end{theorem}
+\begin{proof}
+	设级数$\displaystyle\sum_{n=0}^{\infty}a_n\overline{x}^n$收敛，则存在$M$，对任意$n>1$，有
+	$$|a_n\overline{x}^n|\leqslant M.$$
+	于是
+	$$\sum_{n=0}^{\infty}|a_nx^n|=\sum_{n=0}^{\infty}\left|a_n\overline{x}^n\cdot\frac{x^n}{\overline{x}^n}\right|=M\cdot\sum_{n=0}^{\infty}\left|\frac{x^n}{\overline{x}^n}\right|.$$
+	因此当$|x|<|\overline{x}|$时，$\displaystyle\sum_{n=0}^{\infty}a_nx^n$绝对收敛.$\hfill\blacksquare$
+\end{proof}
+
+由上述定理，我们知道，幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$的收敛域是以原点为中心的区间. 若以$2R$表示区间的长度，则称$R$为幂级数的{\heiti 收敛半径}，显然$R\geqslant 0$. 实际上，它就是使得幂级数收敛的那些收敛点的绝对值的上确界. 所以有
+\begin{enumerate}[(1)]
+	\item 当$R=0$时，幂级数仅在$x=0$处收敛；
+	\item 当$R=+\infty$时，幂级数在$(-\infty,+\infty)$上收敛；
+	\item 当$0<R<+\infty$时，幂级数在$(-R,R)$上收敛，在$(-\infty,-R)$和$(R,+\infty)$上都发散；至于在$x=\pm R$处，幂级数可能收敛也可能发散.
+\end{enumerate}
+我们称$(-R,R)$为幂级数的{\heiti 收敛区间}.
+
+\begin{remark}
+	对于收敛域和收敛区间的区别，收敛域是全体收敛点的集合，它可能是开区间，也可能是闭区间，而收敛区间就是$(-R,R)$，它是一个开区间.
+\end{remark}
+对于如何求得幂函数的收敛半径，我们有以下定理.
+\begin{theorem}[Cauchy-Hadamard定理]
+	对于幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$，设
+	$$\rho=\varlimsup\limits_{n\to\infty}\sqrt[n]{|a_n|},$$
+	则当
+	\begin{enumerate}[(1)]
+		\item $0<\rho<+\infty$时，收敛半径$R=\frac{1}{\rho}$；
+		\item $\rho=0$时，$R=+\infty$；
+		\item $\rho=+\infty$时，$R=0$.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	对于幂级数$\displaystyle\sum_{n=0}^{\infty}|a_nx^n|$，由于
+	$$\varlimsup\limits_{n\to\infty}\sqrt[n]{|a_nx^n|}=\varlimsup\limits_{n\to\infty}\sqrt[n]{|a_n|}|x|=\rho |x|,$$
+	根据级数的Cauchy根式判别法，当$\rho |x|<1$时，幂级数收敛；当$\rho |x|>1$时，幂级数发散. 于是，
+	\begin{enumerate}[(1)]
+		\item 当$0<\rho<+\infty$时，由$\rho |x|<1$得收敛半径$R=\dfrac{1}{\rho}$；
+		\item 当$\rho=0$时，对任意$x$都有$\rho |x|<1$，所以$R=+\infty$；
+		\item 当$\rho=+\infty$时，则对除$x=0$外的任何$x$都有$\rho |x|>1$，所以$R=0$.
+	\end{enumerate}
+	$\hfill\blacksquare$
+\end{proof}
+由D'Alembert比式判别法和Cauchy根式判别法的关系，我们知道，若$\lim\limits_{n\to\infty}\dfrac{|a_{n+1}|}{a_n}=\rho$，则有$\lim\limits_{n\to\infty}\sqrt[n]{|a_n|}=\rho$. 因此，我们也常用级数的D'Alembert判别法来推出幂级数的收敛半径.
+
+下面讨论幂级数的一致收敛性问题.
+\begin{theorem}
+	若幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$的收敛半径为$R$，则它在它的收敛区间$(-R,R)$上内闭一致收敛.
+\end{theorem}
+\begin{proof}
+	即证幂级数在它的收敛区间内的任一闭区间$\left[a,b\right]$上都一致收敛. 设$\overline{x}=\max\{|a|,|b|\}\in(-R,R)$，那么对于$\left[a,b\right]$上任一点$x$，都有
+	$$|a_nx^n|\leqslant|a_n\overline{x}^n|.$$
+	由于幂级数在点$\overline{x}$绝对收敛，由Weierstrass判别法可得它在$\left[a,b\right]$上一致收敛. 由$\left[a,b\right]$的任意性，可得幂级数在收敛区间上内闭一致收敛.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}
+	若幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$的收敛半径为$R$，且在$x=R$（或$x=-R$）时收敛，则幂级数在$\left[0,R\right]$（或$\left[-R,0\right]$）上一致收敛.
+\end{theorem}
+\begin{proof}
+	只需证$x=R$时收敛的情形，$x=-R$时收敛可类似证明.
+	
+	设幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$在$x=R$时收敛，对于$x\in\left[0,R\right]$有
+	$$\sum_{n=0}^{\infty}a_nx^n=\sum_{n=0}^{\infty}a_nR^n\left(\frac{x}{R}\right)^n.$$
+	已知级数$\displaystyle\sum_{n=0}^{\infty}a_nR^n$收敛，函数列$\left\{\left(\frac{x}{R}\right)^n\right\}$在$\left[0,R\right]$上递减且一致有界，即
+	$$1\geqslant\frac{x}{R}\geqslant\left(\frac{x}{R}\right)^2\geqslant\cdots\geqslant\left(\frac{x}{R}\right)^n\geqslant\cdots\geqslant 0.$$
+	故由函数项级数的Abel判别法可知幂级数在$\left[0,R\right]$上一致收敛.$\hfill\blacksquare$
+\end{proof}
+
+\subsection{幂级数的性质}
+作为函数项级数的具体化，幂级数的性质也包括连续性、逐项求积和逐项求导. 下面我们先来看幂级数的连续性.
+\begin{theorem}[连续性]
+	幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$的和函数是$(-R,R)$上的连续函数；若幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$在收敛区间的左（右）端点上收敛，则其和函数在这一端点上右（左）连续.
+\end{theorem}
+\begin{proof}
+	由函数项级数的连续性定理立即可得.$\hfill\blacksquare$
+\end{proof}
+在讨论幂级数的逐项求导和逐项求积之前，我们要确保逐项求导或求积后的幂级数的收敛区间与原幂级数的收敛区间的一致性. 即先来讨论
+\begin{equation}\label{dif}
+	\sum_{n=0}^{\infty}na_nx^{n-1}=a_1+2a_2x+3a_3x^2+\cdots+na_nx^{n-1}+\cdots
+\end{equation}
+与
+\begin{equation}\label{int}
+	\sum_{n=0}^{\infty}\frac{a_n}{n+1}x^{n+1}=a_0x+\frac{a_1}{2}x^2+\frac{a_2}{3}x^3+\cdots+\frac{a_n}{n+1}x^{n+1}+\cdots
+\end{equation}
+的收敛区间.
+\begin{theorem}
+	幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$与幂级数\ref{dif}、\ref{int}具有相同的收敛区间.
+\end{theorem}
+\begin{proof}
+	这里只要证明$\displaystyle\sum_{n=0}^{\infty}a_nx^n$与\ref{dif}有相同的收敛区间就可以了，因为对\ref{int}逐项求导就得到$\displaystyle\sum_{n=0}^{\infty}a_nx^n$.
+	
+	设
+	$$\varlimsup\limits_{n\to\infty}\sqrt[n]{|a_n|}=\rho,$$
+	则
+	$$\varlimsup\limits_{n\to\infty}\sqrt[n]{(n+1)|a_{n+1}|}=\varlimsup\limits_{n\to\infty}\sqrt[n]{|a_{n+1}|}=\rho.$$
+	
+	因此两个级数的收敛半径相同.$\hfill\blacksquare$	
+\end{proof}
+\begin{theorem}[任意次可微]
+	设幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$收敛半径为$R$，则它的和函数$f(x)=\displaystyle\sum_{n=0}^{\infty}a_nx^n$在$(-R,R)$中任意次可微，且
+	$$f^{(k)}=\sum_{n=k}^{\infty}n(n-1)\cdots(n-k+1)a_nx^{n-k}.$$
+\end{theorem}
+\begin{proof}
+	以$k=1$为例. 首先，幂级数$\displaystyle\sum_{n=0}^{\infty}(a_nx^n)'=\displaystyle\sum_{n=1}^{\infty}na_nx^{n-1}$的收敛半径仍为$R$，故它在区间$(-R,R)$上内闭一致收敛. 由函数项级数逐项求导定理，$\displaystyle\sum_{n=0}^{\infty}a_nx^n$在任意闭区间$I\subset (-R,R)$中可微，且
+	$$\left(\sum_{n=0}^{\infty}a_nx^n\right)'=\sum_{n=0}^{\infty}(a_nx^n)'=\sum_{n=1}^{\infty}na_nx^{n-1}.$$
+	$f(x)$的高阶可微性的证明是完全类似的.$\hfill\blacksquare$
+\end{proof}
+\begin{corollary}[幂级数系数与各阶导数的关系]\label{relation}
+	设$f(x)$是幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$在点$x=0$的某邻域上的和函数，则有
+	$$a_n=\frac{f^{(n)}}{n!}\ (n=0,1,2,\cdots).$$
+\end{corollary}
+\begin{theorem}[逐项积分]
+	设幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$的收敛半径$R\neq 0$，则
+	$$\int_{0}^{x}\left(\sum_{n=0}^{\infty}a_nt^n\right)\d t=\sum_{n=0}^{\infty}\int_{0}^{x}a_nt^n\d t=\sum_{n=0}^{\infty}\frac{a_n}{n+1}x^{n+1},\quad \forall x\in(-R,R).$$
+\end{theorem}
+\begin{proof}
+	不妨设$x>0$，则根据前面的讨论，$\displaystyle\sum_{n=0}^{\infty}a_nt^n$在$t\in\left[0,x\right]$中一致收敛，因此可以逐项积分.$\hfill\blacksquare$
+\end{proof}
+下面关于幂级数的求和与求极限运算次序的可交换性是数项级数和函数项级数相应结果的直接应用，这里不再证明.
+\begin{theorem}[求和可交换性]
+	设$\displaystyle\sum_{n=0}^{\infty}|a_{ij}|=s_j$，$\displaystyle\sum_{j=0}^{\infty}s_jx^j$在$(-R,R)$中收敛，则
+	$$\sum_{i=0}^{\infty}\sum_{j=0}^{\infty}a_{ij}x^j=\sum_{j=0}^{\infty}\left(\sum_{i=0}^{\infty}a_{ij}\right)x^j,\quad x\in(-R,R).$$
+\end{theorem}
+\begin{theorem}[求极限可交换性]
+	设$\lim\limits_{m\to\infty}a_{mn}=a_n$，$|a_{mn}|\leqslant A_n$. 如果$\displaystyle\sum_{n=0}^{\infty}A_nx^n$在$(-R,R)$中收敛，则
+	$$\lim\limits_{m\to\infty}\sum_{n=0}^{\infty}a_{mn}x^n=\sum_{n=0}^{\infty}a_nx^n,\quad x\in(-R,R).$$
+\end{theorem}
+\subsection{幂级数的运算}
+首先我们给出两个幂级数相等的定义.
+\begin{definition}[幂级数相等]
+	若两个幂级数在$x=0$的某邻域内有相同的和函数，则称这两个幂级数在该邻域内相等.
+\end{definition}
+\begin{theorem}
+	若幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$与$\displaystyle\sum_{n=0}^{\infty}b_nx^n$在$x=0$的某邻域内相等，则它们同次幂项的系数相等，即
+	$$a_n=b_n\ (n=0,1,2,\cdots).$$
+\end{theorem}
+\begin{proof}
+	由推论\ref{relation}可直接得到.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	进一步我们可推得，若幂级数的和函数为奇（偶）函数，则展开式中不出现偶（奇）次幂的项.
+\end{remark}
+\begin{theorem}[运算法则]
+	设幂级数$\displaystyle\sum_{n=0}^{\infty}a_nx^n$与$\displaystyle\sum_{n=0}^{\infty}b_nx^n$的收敛半径分别为$R_a$和$R_b$，设$\lambda$为常数，$R=\min\{R_a,R_b\}$，则
+	$$\lambda\sum_{n=0}^{\infty}a_nx^n=\sum_{n=0}^{\infty}\lambda a_nx^n,\ x\in(-R_a,R_a),$$
+	$$\sum_{n=0}^{\infty}a_nx^n\pm\sum_{n=0}^{\infty}b_nx^n=\sum_{n=0}^{\infty}(a_n\pm b_n)x^n,\ x\in(-R,R),$$
+	$$\left(\sum_{n=0}^{\infty}a_nx^n\right)\left(\sum_{n=0}^{\infty}b_nx^n\right)=\sum_{n=0}^{\infty}\left(\sum_{i+j=n}a_ib_j\right)x^n,\ x\in(-R,R).$$
+\end{theorem}
+\begin{proof}
+	由数项级数的相应性质可直接推出.$\hfill\blacksquare$
+\end{proof}
+下面我们介绍幂级数的除法运算，并拓展一些应用与示例.
+\begin{theorem}[幂级数的除法]
+	内容...
+\end{theorem}
+\subsubsection{Bernoulli数}
+\subsubsection{Euler数}
+\section{函数的幂级数展开}
+\section{母函数方法}
+\section{用级数构造函数}
+\subsection{处处连续但处处不可导的函数}
+\subsection{Peano曲线}
+\subsection{光滑函数的Taylor展开的系数可以为任意实数列}

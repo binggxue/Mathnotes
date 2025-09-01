@@ -1,0 +1,146 @@
+\chapter{基本概念}
+\section{微分方程及其解的定义}
+\begin{definition}[常微分方程]
+	已知$F(z_0,z_1,\cdots,z_{n+1})$为关于$z_0,z_1,\cdots,z_{n+1}$的已知函数，则关于$y=y(x)$的方程
+	$$F\left(x,y,\frac{\d y}{\d x},\frac{\d^2y}{\d x^2},\cdots,\frac{\d^n y}{\d x^n}\right)=0$$
+	或
+	$$F(x,y,y',\cdots,y^{(n)})=0$$
+	称为{\heiti 常微分方程}(Ordinary Differential Equation，简称ODE).称$x$为{\heiti 自变量}，$y$为{\heiti 未知函数}.
+\end{definition}
+\begin{remark}
+	导数实际出现的最高阶数$n$称为常微分方程的{\heiti 阶}.
+\end{remark}
+\begin{remark}
+	若$F$关于$z_1,\cdots,z_{n+1}$为线性函数，则ODE为{\heiti 线性的}，若$F$关于$z_{n+1}$为线性函数，则ODE为{\heiti 拟线性的}.
+\end{remark}
+\begin{remark}
+	若$\dfrac{\partial F}{\partial z_0}\equiv 0$，则ODE是{\heiti 自治的}.
+\end{remark}
+\begin{example}
+	例如，下面的方程都是常微分方程：
+	\begin{align*}
+		&(1)y''=-\frac{1}{y^2},\\
+		&(2)y''=ky,\\
+		&(3)y'=\alpha y,\\
+		&(4)y'=x^2+y^2,\\
+		&(5)\frac{\d^2 y}{\d x^2}=1+y^2,\\
+		&(6)y''+yy'=x,\\
+		&(7)\frac{\d^2\theta}{\d t^2}+a^2\theta=0.
+	\end{align*}
+\end{example}
+\begin{example}
+	例如，下面的方程都不是常微分方程：
+	\begin{align*}
+		&(1)y'(x)=y(y(x)),\\
+		&(2)y'(x)=y(x-1),\\
+		&(3)\int_{0}^{x}y(t)\d t+y(x)=x.
+	\end{align*}
+\end{example}
+在ODE的例子中，(1)(2)(3)是线性的，除(5)外都是拟线性的.可见，所有线性ODE都是拟线性的，但不是拟线性的ODE都是线性的，也就是说，线性是拟线性的一种特殊情形.
+
+从自治性来看，(1)(2)(3)(5)(7)都是自治的，其余是非自治的.我们可以看出，自治的ODE是不含关于$x$的项的.
+
+对未知函数的个数进行推广，我们就得到了常微分方程组：
+$$\mathbf{F}(x,\mathbf{y},\mathbf{y}',\cdots,\mathbf{y}^{(n)})=\mathbf{0}.$$
+其中$\mathbf{F}=(F_1,F_2,\cdots,F_m)$，$\mathbf{y}=(y_1,y_2,\cdots,y_m)$.这里$m\geqslant 2$，因为当$m=1$时就是ODE的定义.例如$m=2$的情形，有
+\begin{equation*}
+	\left\{
+	\begin{aligned}
+		&F_1(x,y_1,y_2,y_1',y_2',\cdots,y_1^{(n)},y_2^{(n)})=0\\
+		&F_2(x,y_1,y_2,y_1',y_2',\cdots,y_1^{(n)},y_2^{(n)})=0
+	\end{aligned}
+	\right.
+\end{equation*}
+
+对自变量的个数进行推广，我们就得到了{\heiti 偏微分方程}(Partial Differential Equation).例如
+$$x\frac{\partial f}{\partial x}+y\frac{\partial f}{\partial y}+z\frac{\partial f}{\partial z}+f=0$$
+是一阶线性偏微分方程. 其中$x,y$和$z$为自变量，$f=f(x,y,z)$为未知函数.本课程主要讲述常微分方程，有时简称其为微分方程或方程.
+
+\begin{definition}
+	设函数$y=\varphi(x)$在区间$J$上连续，且有直到$n$阶的导数.如果把$y=\varphi(x)$及其相应的各阶导数代入$F(x,y,y',\cdots,y^{(n)})=0$，得到关于$x$的恒等式，即
+	$$F(x,\varphi(x),\varphi(x)',\cdots,\varphi(x)^{(n)})=0$$
+	对一切$x$都成立，则称$y=\varphi(x)$为微分方程在$J$上的一个{\heiti 解}.
+\end{definition}
+\begin{example}
+	$$\frac{\d^2\theta}{\d t^2}+a^2\theta=0.$$
+\end{example}
+\begin{solution}
+	对任意的常数$C_1,C_2$，
+	$$\theta=C_1\sin at+C_2\cos at$$
+	是$(-\infty,+\infty)$上的一个解.
+\end{solution}
+微分方程的解可以包含一个或几个任意常数（与方程的阶数有关），而有的解不包含任意常数. 为了确切表达任意常数的个数，我们定义通解和特解的概念.
+\begin{definition}[通解与特解]
+	设$n$阶微分方程$F(x,y,y',\cdots,y^{(n)})=0$的解
+	$$y=\varphi(x,C_1,C_2,\cdots,C_n)$$
+	包含$n$个{\heiti 独立的}任意常数$C_1,C_2,\cdots,C_n$，则称它为{\heiti 通解}.如果方程的解不包含任意常数，则称它为{\heiti 特解}.
+\end{definition}
+\begin{remark}
+	当任意常数一旦确定之后，通解也就变成了特解.
+\end{remark}
+\begin{remark}
+	这里所说的$n$个任意常数$C_1,C_2,\cdots,C_n$是独立的，其含义是Jacobi行列式不为$0$.
+\end{remark}
+定解问题：我们简单介绍Cauchy初值条件以及边值条件.
+\begin{definition}[Cauchy初值条件]
+	对于函数$y$，如果它满足：
+	\begin{enumerate}[(1)]
+		\item 它是微分方程$F(x,y,y',\cdots,y^{(n)})=0$的解；
+		\item 它在同一点$x_0$处满足初始条件，取给定的值，即
+		$$y(x_0)=y_0,\ y'(x_0)=y_1,\cdots,y^{(n-1)}(x_0)=y_{n-1}.$$
+	\end{enumerate}
+	则称$y$满足Cauchy初值条件.
+\end{definition}
+\begin{definition}[边值条件]
+	边值条件是在求解微分方程时使用的一类条件，它们指定了方程解在定义域边界上的行为.
+\end{definition}
+在常微分方程情况下，边值条件通常涉及以下两种类型：
+\begin{enumerate}[(1)]
+	\item Dirichlet条件：直接指定了未知函数在边界上的值.例如对于区间上的二阶ODE，Dirichlet条件形如
+	$$y(a)=\alpha,\quad y(b)=\beta,$$
+	这里$\alpha,\beta$是给定的常数.
+	\item Neumann条件：指定了未知函数在边界上的导数值.例如对于区间上的二阶ODE，Neumann条件形如
+	$$y'(a)=\gamma,\quad y'(b)=\delta,$$
+	这里$\gamma,\delta$也是给定的常数.
+\end{enumerate}
+除此以外，还有其他类型的边值条件，如混合边值条件（同时包含函数值和导数值的条件）和周期性边值条件（对于周期函数）.
+
+\section{几何解释}
+考虑一阶微分方程
+$$\frac{\d y}{\d x}=f(x,y),$$
+其中$f(x,y)$是平面区域$G$内的连续函数. 假设
+$$y=\varphi(x)\quad(x\in I)$$
+是方程的解，（其中$I$是解的存在区间），则$y=\varphi(x)$在$Oxy$平面上是一条光滑的曲线$\varGamma$，称它为微分方程的{\heiti 积分曲线}或{\heiti 解曲线}.
+
+由于$y=\varphi(x)$，我们可以将微分方程改写为
+$$\varphi'(x)=f(x,y),$$
+亦即$\varGamma$在其上任一点$P_0(x_0,y_0)$的切线斜率为$f(x_0,y_0)$，则切线方程为
+$$y=y_0+f(x_0,y_0)(x-x_0),$$
+即使我们并不知道积分曲线$\varGamma:y=\varphi(x)$是什么.
+
+这样，在区域$G$内的每一点$P(x,y)$，我们可以做一个以$f(P)$为斜率的短小的直线段$l(P)$，来标明积分曲线（如果存在）在该点的切线方向. 称$l(P)$为微分方程在$P$点的{\heiti 线素}，称区域$G$联同上述全体线素为微分方程的{\heiti 线素场}或{\heiti 方向场}.
+
+由此可见，微分方程的任何积分曲线$\varGamma$与它的线素场是吻合的，即积分曲线所到之处与线素均相切. 反之，如果一条连续可微的曲线$\Lambda$与微分方程的线素场吻合，则$\Lambda$是微分方程的一条积分曲线.
+
+\hspace*{\fill}
+
+在构造方程$\frac{\d y}{\d x}=f(x,y)$的线素场时，通常利用由关系式$f(x,y)=k$确定的曲线$L_k$，称它为线素场的{\heiti 等斜线}. 显然，等斜线上各点线素的斜率都等于$k$，因此，等斜线简化了线素场逐点构造的方法.
+
+\hspace*{\fill}
+
+这里需指出，一阶微分方程$\dfrac{\d y}{\d x}=f(x,y)$在许多情况下取如下形式：
+$$\frac{\d y}{\d x}=-\frac{P(x,y)}{Q(x,y)},$$
+其中，$P(x,y)$和$Q(x,y)$是区域$G$内的连续函数.
+
+当$Q(x_0,y_0)\neq 0$时，方程的右端函数$\dfrac{P(x,y)}{Q(x,y)}$在$(x_0,y_0)$点的近旁是连续的. 因此，方程的线素场在$(x_0,y_0)$点附近是完全确定的. 然而，如果$Q(x_0,y_0)=0$，那么线素场在$(x_0,y_0)$点就失去意义.
+
+但是，只要$P(x_0,y_0)\neq 0$，我们就可以把方程改写为
+$$\frac{\d y}{\d x}=-\frac{Q(x,y)}{P(x,y)},$$
+这里需要把$x=x(y)$看作未知函数. 此时，微分方程的右端函数$\dfrac{Q(x,y)}{P(x,y)}$在$(x_0,y_0)$点近旁是连续的. 因此它在那里的线素场也是确定的.
+
+这样，当$P(x_0,y_0)$和$Q(x_0,y_0)$不同时为零时，我们可以在$(x_0,y_0)$近旁考虑上述两个微分方程，虽然它们的未知函数略有不同. 此时，我们可以把它们统一写成下面的对称形式：
+$$P(x,y)\d x+Q(x,y)\d y=0.$$
+
+只是当$P(x_0,y_0)=Q(x_0,y_0)=0$时，上述的三个微分方程在$(x_0,y_0)$点都是不定式，因此线素场在$(x_0,y_0)$点没有意义. 我们称这样的点为相应微分方程的{\heiti 奇异点}.
+
+虽然在奇异点微分方程是不定式，但是在积分曲线族的分布中奇异点是关键性的点. 之后我们引入动力系统的概念，这里的奇异点将称为相应动力系统的奇点.

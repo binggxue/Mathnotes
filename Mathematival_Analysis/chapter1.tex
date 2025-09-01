@@ -1,0 +1,314 @@
+\chapter{实数理论}
+
+数学分析研究的基本对象是定义在实数集上的函数.
+\section{实数的定义}%或许可以改成“有理数的扩充”
+\subsection{建立实数的原则}
+\begin{definition}[数域]\label{def:field}
+	设$P$是由一些复数组成的集合，其中包括0和1，如果$P$中任意两个数的和、差、积、商（除数不为0）仍为$P$中的数，则称$P$为一个{\heiti 数域}.
+\end{definition}
+由定义\ref{def:field}可知，数域对加、减、乘、除（除数不为0）四则运算具有封闭性，即结果仍在数域本身中。例如，全体有理数所构成的集合$\mathbb{Q}$是一个数域，称为有理数域.此外，常见的数域还有复数域$\mathbb{C}$，读者可自行验证.
+\begin{example}
+	证明全体有理数所构成的集合$\mathbb{Q}$是一个数域.
+	\begin{proof}
+		对$\forall a=\frac{p}{q},\ b=\frac{s}{t}$，其中$p,q,s,t\in \mathbb{Z}$且$st\neq0$，则由有理数的定义知，$a,b\in \mathbb{Q}$
+		
+		显然$0,1\in\mathbb{Q}$，
+		
+		$a+b=\frac{pt+qs}{qt}\in \mathbb{Q}$
+		
+		$a-b=\frac{pt-qs}{qt}\in \mathbb{Q}$
+		
+		$a\cdot b=\frac{ps}{qt}\in \mathbb{Q}$
+		
+		$\frac{a}{b}=\frac{pt}{qs}\in \mathbb{Q}$
+		
+		故$\mathbb{Q}$是一个数域.$\hfill\blacksquare$
+	\end{proof}
+\end{example}
+\begin{definition}[阿基米德有序域]
+	集合$F$构成一个{\heiti 阿基米德有序域}，是说它满足以下三个条件：
+	\begin{enumerate}
+		\item $F$是域\qquad 在$F$中定义了加法“$+$”和乘法“$\cdot$”两种运算，使得对于$F$中任意元素$a$，$b$，$c$成立：\par
+		加法的结合律:\ $(a+b)+c=a+(b+c)$；\par
+		加法的交换律:\ $a+b=b+a$；\par
+		乘法的结合律:\
+		$(a\cdot b)\cdot c=a\cdot (b\cdot c)$；\par
+		乘法的交换律:\ $a\cdot b=b\cdot a$；\par
+		乘法关于加法的分配律:
+		$(a+b)\cdot c=a\cdot c+b\cdot c$；\par
+		$F$中对加法存在{\heiti 零元素}和{\heiti 负元素}（即存在加法的逆运算减法）；
+		
+		$F$中对乘法存在{\heiti 单位元素}和{\heiti 逆元素}（即存在乘法的逆运算除法）.
+		\item $F$是有序域\qquad
+		在$F$中定义了{\heiti 序}关系“\textless”具有如下{\heiti 全序}的性质：\par
+		传递性:$\forall a,b,c \in F$,若$a<b$，$b<c$，则$a<c$；\par
+		三歧性:$\forall a,b \in F$，$a>b$，$a<b$，$a=b$三者必居其一，也只居其一；\par
+		加法保序性：$\forall a,b,c \in F$，若$a<b$，则$a+c<b+c$；\par
+		乘法保序性：$\forall a,b,c \in F$，若$a<b$，则$ac<bc$\ (c>0).
+		\item $F$中元素满足阿基米德性\qquad 对$F$中两个正元素$a$，$b$，必存在自然数$n$，使得$na>b$.
+	\end{enumerate}
+\end{definition}
+\subsection{Dedekind分割}
+设$A/B$是有理数域$\mathbb{Q}$上的一个分割，即把$\mathbb{Q}$中的元素分为$A$、$B$两个集合，使得$\forall a \in A,\ b \in B$有$a<b$成立.则从逻辑上分为下列四种情况：
+\begin{enumerate}
+	\item $A$有最大值$a_0$，$B$有最小值$b_0$；
+	\item $A$有最大值$a_0$，$B$无最小值；
+	\item $A$无最大值，$B$有最小值$b_0$；
+	\item $A$无最大值，$B$无最小值.
+\end{enumerate}	
+
+而对于第1种情况，取$\frac{a_0+b_0}{2}\in \mathbb{Q}$，它将不属于集合$A$、$B$中的任何一个.\par 
+对于第4种情况，说明分割到的数不在$\mathbb{Q}$内（我们将这种划分称为{\heiti 无端划分}），因此这是我们通过“切割”构造出来的“新数”.将所有这样切割出来的新数与原来的$\mathbb{Q}$取并集，并设新的集合为$\mathbb{R}$.将$\mathbb{R}$中的元素再次进行分割，设$A'/B'$为$\mathbb{R}$上的一个分割，则$\forall a \in A',\ b \in B'$有$a<b$成立.同理，在排除上述的第1种情况后，对$\mathbb{R}$的分割分为以下三种情况：
+\begin{enumerate}
+	\item $A'$有最大值$a_0$，$B'$无最小值；
+	\item $A'$无最大值，$B'$有最小值$b_0$；
+	\item $A'$无最大值，$B'$无最小值.
+\end{enumerate}	
+
+由此，我们给出Dedekind定理.
+\begin{theorem}[Dedekind定理]
+	设$A'$、$B'$是$\mathbb{R}$的两个子集，且满足：
+	\begin{enumerate}
+		\item $A'$和$B'$均不为空集；
+		\item $A'\cup B'=\mathbb{R}$；
+		\item $\forall a\in A',\ b\in B'$有$a<b$.
+	\end{enumerate}
+	则或者$A'$有最大元素，或者$B'$有最小元素.
+\end{theorem}
+Dedikind定理指出，我们在上述对$\mathbb{R}$进行分割时，只会出现第1种或第2种情况，而不可能$A'$无最大值且$B'$也无最小值。
+\begin{proof}
+	设$A$是$A'$中所有有理数的集合，设$B$是$B'$中所有有理数的集合，则$A/B$有三种情况：
+	\begin{enumerate}
+		\item $A$有最大值$a_0$，$B$无最小值；
+		\item $A$无最大值，$B$有最小值$b_0$；
+		\item $A$无最大值，$B$无最小值；
+	\end{enumerate}	
+	
+	对于第1种情况，设$a'\in A'$，使得$a'>a_0$，则在$(a_0,a')$之间必定存在有理数$a$，这与$A$有最大值$a_0$矛盾.因此$a_0$也是$A'$的最大值；
+	
+	同理，对于第2种情况，我们可以得到$b_0$也是$B'$的最小值；
+	
+	对于第3种情况，设$c$是由$A/B$得到的无理数，则$a_0<c<b_0$，可知$c$或者是$A'$中的元素，或者是$B'$中的元素.不妨设$c\in A'$，可以证明c为$A'$的最大元素，因为如果存在$a$是$A$的最大元素，那么区间$(c,a)$之间必定存在有理数大于$a_0$，这与$A$的最大值是$a_0$矛盾.
+	
+	以上我们就证明了或者$A'$有最大元素，或者$B'$有最小元素.$\hfill\blacksquare$
+\end{proof}
+\subsection{实数的公理化定义}
+由前两节的理论基础，我们可以定义{\heiti 实数}构成一个阿基米德有序域，且满足Dedekind定理.实数分为有理数和无理数，其中无理数由有理数的无端划分产生.
+\section{确界原理}
+确界原理是极限理论的基础.
+\subsection{确界的定义}
+\begin{definition}
+	设$S$为$\mathbb{R}$中的一个数集，若存在数$M(L)$，使得对一切$x\in S$，都有$x\leqslant M(x\geqslant L)$，则称$S$为{\heiti 有上界（下界）的数集}，数$M(L)$称为$S$的一个{\heiti 上界（下界）}.
+\end{definition}
+\begin{definition}[上确界]
+	设$S$是$\mathbb{R}$中的一个数集，若数$\eta$满足：
+	
+	(i)$\eta$是$S$的上界；
+	
+	(ii)$\forall \alpha < \eta,\ \exists x_0\in S,\ s.t.x_0>\alpha$，即$\eta$又是$S$的最小上界，\\
+	则称$\eta$为数集$S$的{\heiti 上确界}，记作$\eta=\sup S$
+\end{definition}
+\begin{definition}[下确界]
+	设$S$是$\mathbb{R}$中的一个数集，若数$\xi$满足：
+	
+	(i)$\xi$是$S$的下界；
+	
+	(ii)$\forall \beta > \xi,\ \exists x_0\in S,\ s.t.x_0<\beta$，即$\xi$又是$S$的最小下界，\\
+	则称$\xi$为数集$S$的{\heiti 下确界}，记作$\xi=\inf S$
+\end{definition}
+上（下）确界也可以由$\varepsilon$语言定义.
+\begin{definition}[上确界的$\varepsilon$语言定义]
+	设$S$为$\mathbb{R}$中的一个数集，若S的一个上界$M$，$\forall \varepsilon>0$，$\exists a\in S$，s.t.\ $a>M-\varepsilon$，则数$M$称为$S$的一个{\heiti 上确界}.
+\end{definition}
+\begin{definition}[下确界的$\varepsilon$语言定义]
+	设$S$为$\mathbb{R}$中的一个数集，若S的一个下界$L$，$\forall \varepsilon>0$，$\exists b\in S$，s.t.\ $b<L+\varepsilon$，则数$L$称为$S$的一个{\heiti 下确界}.
+\end{definition}
+上确界和下确界统称为确界.
+\subsection{确界原理及其证明}
+\begin{theorem}[确界原理]
+	设$S$为$\mathbb{R}$中的一个数集，若$S$有上界，则必有上确界；若$S$有下界，则必有下确界.
+\end{theorem}
+\begin{proof}
+	设数集$S$有上界，下面证明$S$有上确界.
+	
+	设$B$是数集$S$所有上界组成的集合，记$A=\mathbb{R}\textbackslash B$.若$B$有最小元素，则$B$的最小元素$b_0$即为$S$的上确界.
+	
+	设$x\in A$，$x$不是$S$的上界，则$\exists t\in S,\ s.t.\ x<t$,取$x'=\frac{x+t}{2}$，则$x'>x$，因此对$A$中任何一个元素$x$，都有$x'>x$存在，即$A$没有最大元素.由Dedekind定理，$B$一定有最小元素，即$S$必有上确界.$\hfill\blacksquare$
+\end{proof}
+\begin{example}
+	利用确界原理证明Dedekind定理，即证明二者的等价关系.
+\end{example}
+\begin{proof}
+	设$\mathbb{R}$上任意一个Dedekind分割为$A/B$，易知$B$中的每个元素都是$A$的一个上界.由确界原理，$A$一定有上确界.设$m=\sup A$，
+	
+	若$m\in B$，则$A$中无最大元素，假设$B$中无最小元素，则$\exists m'\in B\ s.t.\ m'<m$，由于$m=\sup A$，推出$m'\in A$，这与$m'\in B$矛盾.故$B$中有最小元素.
+	
+	若$m\in A$，则$A$中有最大元素$m$，假设$B$中有最小元素$n$，则$\frac{m+n}{2}$不属于$A$和$B$，这与$A\cup B=\mathbb{R}$是矛盾的，故$B$中无最小元素.
+	
+	于是我们就证明了Dedekind定理.$\hfill\blacksquare$
+\end{proof}
+\section{实数的完备性}
+本节内容是基于第二章中数列极限的前提下展开的，建议在学完第二章后进行学习.数列极限的定义与基本性质在此不再赘述.
+
+\subsection{关于实数集完备性的基本定理}
+前面我们已经学习了Dedekind分割与确界原理，从不同的角度反映了实数集的特性，通常称为{\heiti 实数的完备性}或{\heiti 实数的连续性}公理.下面我们将介绍另外的几个实数的完备性公理.
+
+\begin{theorem}[单调有界收敛定理]
+	在实数系中，有界的单调数列必有极限.
+\end{theorem}
+\begin{proof}
+	不妨设$\left\{a_n\right\}$为有上界的递增数列，由确界原理，$\left\{a_n\right\}$必有上确界，设$a=\sup \left\{a_n\right\}$，根据上确界的定义，
+	
+	$\forall \varepsilon>0,\ \exists a_N \ s.t.\ a_N>a-\varepsilon$
+	
+	由$\left\{a_n\right\}$的递增性，当$n\geqslant N$时，有
+	$$a-\varepsilon<a_N\leqslant a_n$$
+	
+	又因为$$a_n\leqslant a<a+\varepsilon$$
+	
+	故$$a-\varepsilon<a_n<a+\varepsilon$$
+	
+	即$${\lim_{n \to +\infty}a_n}=a$$
+	$\hfill\blacksquare$
+\end{proof}
+
+\begin{theorem}[致密性定理]
+	任何有界数列必定有收敛的子列.
+\end{theorem}
+要证明此定理，可以先证明以下引理.
+\begin{lemma}\label{zilie}
+	任何数列都存在单调子列.
+\end{lemma}
+\begin{proof}
+	设数列为$\left\{a_n\right\}$，下面分两种情况讨论：
+	\begin{enumerate}
+		\item 若$\forall k\in \mathbb{Z}_+$，$\left\{a_{k+n}\right\}$都有最大项，记$\left\{a_{1+n}\right\}$的最大项为$a_{n_1}$，则$a_{{n_1}+n}$也有最大项，记作$a_{n_2}$，显然有$a_{n_1}\geqslant a_{n_2}$，同理，有$$a_{n_2}\geqslant a_{n_3}$$
+		$$.........$$
+		由此得到一个单调递减的子列$\left\{a_{n_k}\right\}$
+		\item 若至少存在一个正整数$k$，使得$\left\{a_{k+n}\right\}$没有最大项，先取$n_1=k+1$，总存在$a_{n_1}$后面的项$a_{n_2}$（$n_2>n_1$）使得$$a_{n_2}>a_{n_1}$$，同理，总存在$a_{n_2}$后面的项$a_{n_3}$（$n_3>n_2$）使得$$a_{n_3}>a_{n_2}$$
+		$$.........$$
+		由此得到一个严格递增的子列$\left\{a_{n_k}\right\}$
+	\end{enumerate}
+	
+	综上，命题得证.$\hfill\blacksquare$
+\end{proof}
+下面是对致密性定理的证明：
+\begin{proof}
+	设数列$\left\{a_n\right\}$有界，由引理\ref{zilie}，数列$\left\{a_n\right\}$存在单调且有界的子列，由单调有界收敛定理得出该子列是收敛的.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}[柯西（Cauchy）收敛准则]
+	数列$\left\{a_n\right\}$收敛的充要条件是：\par 
+	$\forall \varepsilon>0,\ \exists N\in \mathbb{Z}_+,\ s.t.\ n,\ m>N$时，有
+	$$\lvert a_n - a_m \rvert<\varepsilon$$
+\end{theorem}
+单调有界只是数列收敛的充分条件，而柯西收敛准则给出了数列收敛的充要条件.
+\begin{proof}
+	{\heiti 必要性}\qquad 设$\lim\limits_{n \to +\infty}a_n=A$，则$\forall \varepsilon>0,\ \exists N\in \mathbb{Z}_+\ s.t.\ n,\ m>N$时，有$$\lvert a_n-A\rvert <\frac{\varepsilon}{2},\ \lvert a_n-A\rvert <\frac{\varepsilon}{2}$$
+	
+	因而$$\lvert a_n-a_m\rvert \leqslant \lvert a_n-A\rvert + \lvert a_m-A\rvert=\varepsilon$$
+	
+	{\heiti 充分性}\qquad 先证明该数列必定有界.取$\varepsilon=1$，因为$\left\{a_n\right\}$满足柯西收敛准则的条件，所以$\exists N_0,\ \forall n>N_0$，有
+	$$\lvert a_n-a_{N_0+1}\rvert <1$$
+	
+	取$M=\max\left\{\lvert a_1 \rvert,\ \lvert a_2 \rvert,\ \cdot\cdot\cdot\,\ \lvert a_{N_0} \rvert,\ \lvert a_{N_0+1} \rvert+1\right\}$，则对一切$n$，成立$$\lvert a_n \rvert\leqslant M$$
+	
+	由致密性原理，在$\left\{a_n\right\}$中必有收敛子列$$\lim_{k \to +\infty}a_{n_k}=\xi$$
+	
+	由条件，$\forall \varepsilon>0,\ \exists N$，当$n,\ m>N$时，有$$\lvert a_n-a_m\rvert <\frac{\varepsilon}{2}$$
+	
+	在上式中取$a_m=a_{n_k}$，其中$k$充分大，满足$n_k>N$，并且令$k \to \infty$，于是得到
+	$$\lvert a_n-\xi \rvert\leqslant \frac{\varepsilon}{2}< \varepsilon $$
+	
+	即数列$\left\{a_n\right\}$收敛.$\hfill\blacksquare$
+\end{proof}
+\begin{definition}[闭区间套]
+	设闭区间列$\left\{\left[a_n,b_n\right]\right\}$具有如下性质：
+	\begin{enumerate}
+		\item $\left[a_n,b_n\right]\supset \left[a_n+1,b_n+1\right],\ n=1,2,\cdots$；
+		\item $\lim\limits_{n \to +\infty}(b_n-a_n)=0$.
+	\end{enumerate}
+	则称$\left\{\left[a_n,b_n\right]\right\}$为{\heiti 闭区间套}，或简称{\heiti 区间套}.
+\end{definition}
+
+由性质1，构成闭区间套的闭区间列是前一个套着后一个的，即各闭区间端点满足如下不等式：
+\begin{equation}\label{chuan}
+	a_1\leqslant a_2\leqslant \cdots\leqslant a_n\leqslant\cdots\leqslant b_n\leqslant\cdots\leqslant b_2\leqslant b_1.
+\end{equation}
+\begin{theorem}[闭区间套定理]
+	若$\left\{\left[a_n,b_n\right]\right\}$是一个闭区间套，则在实数系中存在唯一的一点$\xi$，使得$\xi\in\left[a_n,b_n\right],\ n=1,2,\cdots$，即$$a_n\leqslant\xi\leqslant b_n,\ n=1,2,\cdots.$$
+\end{theorem}
+\begin{proof}
+	由式\ref{chuan}可以看出，数列$\left\{a_n\right\}$是递增数列且有界，$\left\{b_n\right\}$是递减数列且有界，由单调有界收敛定理，可知$\left\{a_n\right\}$和$\left\{b_n\right\}$都收敛.设$\lim\limits_{n\to \infty}a_n=\xi$，由闭区间套的第2条性质，得$\lim\limits_{n\to \infty}b_n=\xi.$
+	
+	$\left\{a_n\right\}$是递增数列，有$a_n\leqslant\xi,\ n=1,2,\cdots;$
+	
+	$\left\{b_n\right\}$是递减数列，有$b_n\geqslant\xi,\ n=1,2,\cdots.$\\
+	所以有$a_n\leqslant\xi\leqslant b_n,\ n=1,2,\cdots.$\\
+	下面证明$\xi$的唯一性：\\
+	假设存在$\xi'$满足$a_n\leqslant\xi'\leqslant b_n,\ n=1,2,\cdots.$，则\\
+	$$\lvert\xi'-\xi\rvert\leqslant b_n-a_n,\ n=1,2,\cdots,$$\\
+	由闭区间套的第2条性质，有
+	$$\lvert\xi'-\xi\rvert\leqslant \lim\limits_{n\to\infty}(b_n-a_n)=0,\ n=1,2,\cdots,$$\\
+	故$\xi'=\xi$.$\hfill\blacksquare$
+\end{proof}
+\begin{definition}
+	设$S$为数轴上的点集，$H$为开区间的集合（即$H$的每一个元素都是形如$(\alpha,\beta)$的开区间）.若$S$中的任何一点都含在$H$中至少一个开区间内，则称$H$为$S$的一个{\heiti 开覆盖}，或称$H$覆盖$S$.若$H$中开区间的个数是无限（有限）的，则称$H$为$S$的一个{\heiti 无限开覆盖（有限开覆盖）}.若存在$S$的开覆盖$H'\subseteq H$,则称$H'$是$H$的{\heiti 子覆盖}，特别地，当$H'$中含有的开区间的个数为有限个时，称$H'$为$H$的{\heiti 有限子覆盖}.
+\end{definition}
+\begin{theorem}[Heine-Borel有限覆盖定理]
+	设$H$是闭区间$\left[a,b\right]$的一个（无限）开覆盖，则从$H$中能选出有限个开区间来覆盖$\left[a,b\right]$.
+	
+	即：有限闭区间的任一开覆盖都存在一个有限子覆盖.
+\end{theorem}
+\begin{proof}
+	设$H$是闭区间$\left[a,b\right]$的一个开覆盖，定义集合
+	$$S=\left\{x|x\in \left(a,b \right],\ \mbox{且}\left[a,x\right]\mbox{存在开覆盖}H\mbox{的一个有限子覆盖} \right\}.$$
+	
+	因为$H$是$\left[a,b\right]$的一个开覆盖，所以存在一个区间$I_0\in H$使得$a\in I_0$，则存在$x_0\in I_0$满足$x_0>a$，所以$S\neq\varnothing$.显然$b$是$S$的一个上界，由确界原理，$S$一定有上确界.设$M=\sup S\leqslant b$，下面证明$M=b$:
+	
+	反证法\qquad 假设$M<b$，则$M\in \left(a,b \right]$，$\left[a,M\right]$存在$H$的一个有限子覆盖.假设开区间$I_1$包含$M$，则存在$\delta >0$使得$(M-\delta,M+\delta)\subseteq I_1$，因为$M$是$S$的上确界，所以$M-\delta\in S$，记$\left[a,M-\delta\right]$的有限开覆盖为$H'$，则$\left[a,M+\delta\right]$也有有限开覆盖$H'\cup I_1$，得$M+\delta\in S$这与$M$是$S$的上确界矛盾.所以$M=b$，即$\left[a,b\right]$的开覆盖$H$存在一个有限子覆盖.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	法国数学家Borel于1895年第一次陈述并证明了现代形式的Heine-Borel定理.此定理只对有限闭区间成立，而对开区间则不一定成立.例如开区间集合$$\left\{(\frac{1}{n+1},1)\right\},\ (n=1,2,\cdots)$$构成了开区间$(0,1)$的开覆盖，但不能从中选出有限个开区间覆盖住$(0,1)$.
+\end{remark}
+从上面的讨论我们发现，如果从数轴上取下一段“紧致无缝”的集合（含端点），那么就可以从它的任意开覆盖中取出一个有限子覆盖，否则就不行.这表明我们找到了一个刻画实数集完备性的新方法，我们形象地将这个性质称为“紧致性”.
+\begin{definition}[紧致集]
+	设集合$E\in\mathbb{R}$，若集合$E$的任一开覆盖都存在一个有限子覆盖，则称$E$为$\mathbb{R}$上的一个{\heiti 紧致集}.
+\end{definition}
+\begin{remark}
+	紧致集也称紧集，是一个重要的拓扑概念.
+\end{remark}
+\begin{remark}
+	以后我们会将以上条件称为"Heine-Borel条件".
+\end{remark}
+我们可以重新表述Heine-Borel有限覆盖定理.
+\begin{theorem}[Heine-Borel有限覆盖定理]
+	$\mathbb{R}$中的任一有限闭区间都是紧致集.
+\end{theorem}
+\begin{definition}[邻域]
+	设$a\in\mathbb{R},\ \delta>0$，将满足$\lvert x-a\rvert<\delta$的全体$x$的集合称为{\heiti $a$的$\delta$邻域}，记作$U(a,\delta)$.将满足$0<\lvert x-a\rvert<\delta$的全体$x$的集合称为{\heiti $a$的$\delta$去心邻域}，记作$\mathring{U}(a,\delta)$.
+\end{definition}
+显然，邻域与去心邻域的区别在于去心邻域不包含中心点$a$.
+\begin{definition}[聚点]
+	设$S$是数轴上的点集，$\xi$是一个定点(可以在$S$中也可以不在$S$中)，若$\xi$的任一邻域中都含有$S$中无穷多个点，则称$\xi$为$S$的一个聚点.
+\end{definition}
+聚点的另一定义如下：
+\begin{definition}
+	若存在各项互异的收敛数列$\left\{x_n\right\}\subset S$，则其极限$\lim\limits_{n\to \infty}x_n=\xi$是$S$的一个聚点.
+\end{definition}
+\begin{theorem}[Weierstrass聚点定理]
+	实轴上任一有界无限点集$S$至少有一个聚点.
+\end{theorem}
+由聚点的等价定义，该定理也可叙述为：{\heiti 有界数列必有收敛子列}，即致密性定理.
+\subsection{实数集完备性定理的等价关系}
+通过前面的学习，我们共有以下8个基本定理来叙述实数的完备性：
+\begin{enumerate}
+	\item Dedekind定理；
+	\item 确界原理；
+	\item 单调有界收敛定理；
+	\item 致密性定理；
+	\item 柯西收敛准则；
+	\item 闭区间套定理；
+	\item Heine-Borel有限覆盖定理；
+	\item Weierstrass聚点定理.
+\end{enumerate}
+可以证明，这8个基本定理都是等价的.(证明会在后续修正时给出)

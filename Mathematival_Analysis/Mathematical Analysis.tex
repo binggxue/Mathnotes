@@ -1,0 +1,118 @@
+\documentclass[lang=cn,10pt]{elegantbook}
+
+\usepackage{amsfonts,amssymb,mathtools,derivative,fixdif,hyperref}
+
+\title{数学分析讲义}
+\subtitle{Mathematical Analysis}
+
+\author{薛冰}
+\date{\today}
+
+\extrainfo{衣带渐宽终不悔，为伊消得人憔悴.}
+
+%table of content depth,目录显示的深度
+\setcounter{tocdepth}{2} 
+
+% 修改封面的颜色带
+\definecolor{customcolor}{RGB}{32,178,170}
+\colorlet{coverlinecolor}{customcolor}
+
+\cover{Cover.png}
+%\addbibresource[location=local]{reference.bib} % 参考文献，不要删除
+\begin{document}
+	\maketitle
+	
+\input{chapter-1}
+\newpage
+	
+\tableofcontents
+\mainmatter
+	
+\input{chapter0}
+\newpage
+
+\part{一元函数微积分}
+
+\input{chapter1}
+\newpage
+
+\input{chapter2}
+\newpage
+
+\input{chapter3}
+\newpage
+
+\input{chapter4}
+\newpage
+
+\input{chapter5}
+\newpage
+
+\input{chapter6}
+\newpage
+
+\input{chapter7}
+\newpage
+
+\input{chapter8}
+\newpage
+
+\input{chapter9}
+\newpage
+
+\part{级数}
+
+\input{chapter10}
+\newpage
+
+\input{chapter11}
+\newpage
+
+\part{多元函数微积分}
+
+\chapter{平面点集与多元函数}
+\section{$n$元函数}
+所有有序实数组$(x_1,x_2,\cdots,x_n)$的全体称为$n${\heiti 维实向量空间}，简称{\heiti $n$维空间}，记作$\mathbb{R}^n$. 其中每个有序实数组$(x_1,x_2,\cdots,x_n)$称为$\mathbb{R}^n$中的一个点，$n$个实数$x_1,x_2,\cdots,x_n$是这个点的坐标.
+\begin{definition}[$n$元函数]
+	设$E$为$\mathbb{R}^n$中的点集，若有某个对应法则$f$，使$E$中每一点$P(x_1,x_2,\cdots,x_n)$都有唯一的一个实数$y$与之对应，则称$f$为定义在$E$上的$n$元函数，记作
+	$$f:E\to\mathbb{R},$$
+	$$P\mapsto y.$$
+\end{definition}
+常把$n$元函数简写成
+$$y=f(x_1,x_2,\cdots,x_n),\quad (x_1,x_2,\cdots,x_n)\in E$$
+或
+$$y=f(P),\quad P\in E.$$
+其中，后一种写法被称为“点函数”，它使多元函数和一元函数在形式上尽量保持一致，以便仿照一元函数的办法来处理多元函数中的许多问题. 对于多元函数，我们将着重讨论二元函数. 在掌握了二元函数的有关理论和研究方法之后，我们可以把它推广到一般的多元函数中去. 下面我们给出二元函数的定义.
+\section{二元函数}
+\begin{definition}[二元函数]
+	设平面点集$D\subset\mathbb{R}^2$，若按照某对应法则$f$，$D$中每一点$P(x,y)$都有唯一确定的实数$z$与之对应，则称$f$为定义在$D$上的{\heiti 二元函数}，记作
+	$$f:D\to\mathbb{R},$$
+	$$P\mapsto z.$$
+	称$D$为$f$的定义域，$P\in D$所对应的$z$为$f$在点$P$的函数值，记作$z=f(P)$或$z=f(x,y)$. 全体函数值的集合为$f$的值域，记作$f(D)\subset\mathbb{R}$. 通常还把$P$的坐标$x$与$y$称为$f$的{\heiti 自变量}，把$z$称为{\heiti 因变量}.
+\end{definition}
+在映射意义下，上述$z=f(P)$称为$P$的{\heiti 象}，$P$称为$z$的{\heiti 原象}. 当把$(x,y)\in D$和它所对应的象$z=f(x,y)$一起组成三维数组$(x,y,z)$时，三维Euclid空间$\mathbb{R}^3$中的点集
+$$S=\{(x,y,z)|z=f(x,y),(x,y)\in D\}\subset\mathbb{R}^3$$
+便是二元函数$f$的{\heiti 图像}. 通常$z=f(x,y)$的图像是一空间曲面，$f$的定义域$D$便是该曲面在$xOy$平面上的投影.
+
+若二元函数的值域是有界数集，则称该函数为{\heiti 有界函数}，若值域是无界数集，则称该函数为{\heiti 无界函数}.
+
+\chapter{多元函数的极限与连续}
+\section{重极限}
+\begin{definition}[重极限]
+	设$f$为定义在$D\subset\mathbb{R}^2$上的二元函数，$P_0$为$D$的一个聚点，$A$是一个确定的实数. 若对任意$\varepsilon>0$，存在$\delta>0$，使得当$P\in\mathring{U}(P_0;\delta)\cap D$时，都有
+	$$|f(P)-A|<\varepsilon,$$
+	则称$f$在$D$上当$P\to P_0$时以$A$为极限，记作
+	$$\lim\limits_{P\to P_0\atop P\in D}f(P)=A.$$
+	在对于$P\in D$不致产生误解时，也可简单写作
+	$$\lim\limits_{P\to P_0}f(P)=A.$$
+	当$P,P_0$分别用坐标$(x,y),(x_0,y_0)$表示时，也写作
+	$$\lim\limits_{(x,y)\to(x_0,y_0)}f(x,y)=A.$$
+\end{definition}
+\chapter{多元函数微分学}
+\chapter{多元函数积分学}
+\chapter{曲线积分与曲面积分}
+
+
+
+
+\end{document}

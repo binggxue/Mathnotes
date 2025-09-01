@@ -1,0 +1,83 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,color,enumerate}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+%remove the dot after the theoremstyle
+%\makeatletter
+%\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}
+%\makeatother
+
+%article info
+\title{\vspace{-2em}\textbf{连续映射}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}[连续映射]
+		设拓扑空间$X$和$Y$，映射$f:X\to Y$，若对$Y$中的任一开集$U$，$f^{-1}(U)$为$X$中的开集，则称$f$为从$X$到$Y$的\textbf{连续映射}.
+	\end{definition}
+	\begin{definition}[同胚映射]
+		设映射$f:X\to Y$满足以下条件：
+		\begin{enumerate}
+			\item $f$是双射；
+			\item $f$是连续映射；
+			\item $f^{-1}$是连续映射.
+		\end{enumerate}
+		则称$f$为从$X$到$Y$的\textbf{同胚映射}，称拓扑空间$X$和$Y$\textbf{同胚}.
+	\end{definition}
+	\begin{theorem}
+		两个连续映射的复合仍为连续映射.
+	\end{theorem}
+	\begin{proof}
+		设$f:X\to Y$，$g:Y\to Z$为两个连续映射，则对$Z$中任意开集$U$，$g^{-1}(U)$为$Y$中的开集，$f^{-1}\left(g^{-1}(U)\right)$为$X$中的开集. 于是$g\circ f$为连续映射.
+	\end{proof}
+	\begin{theorem}
+		设连续映射$f:X\to Y$，$A\subset X$，并有$A$上的子空间拓扑，则$f$在$A$上的限制映射$f\big|_A:A\to Y$也是连续映射.
+	\end{theorem}
+	\begin{proof}
+		设开集$O\subset Y$，注意到$(f\big|_A)^{-1}(O)=f^{-1}(O)\cap A$为开集.
+	\end{proof}
+	\begin{definition}[恒等映射]
+		设映射$\mathrm{id}:X\to X$，$\mathrm{id}(x)=x,\ x\in X$，称$\mathrm{id}$为$X$上的\textbf{恒等映射}.
+	\end{definition}
+	\begin{definition}[嵌入映射]
+		设$A\subset X$，定义映射$i:A\to X$，$i(x)=x,\ x\in A$，称为$X$的\textbf{嵌入映射}.
+	\end{definition}
+	\begin{theorem}
+		下面五个命题等价.
+		\begin{enumerate}
+			\item $f:X\to Y$是一个连续映射；
+			\item 若$\beta$是$Y$的一个拓扑基，则$\beta$的任意元素的原像都是开的；
+			\item 对任意$A\subset X$，$f(\overline{A})\subset\overline{f(A)}$；
+			\item 对任意$B\subset Y$，$\overline{f^{-1}(B)}\subset f^{-1}(\overline{B})$；
+			\item $Y$中任意闭集的原像都是闭的.
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		1$\to$ 2 : $f$为连续映射，则开集的原像都是开集，而$\beta$中的元素为开集，则原像仍为开集.
+		
+		2$\to$ 3 :设$A\subset X$，显然$f(A)\subset\overline{f(A)}$，考虑$x\in \overline{A}\backslash A$，$f(x)\notin f(A)$，即证$f(x)$为$f(A)$的极限点. 考虑$Y$的拓扑基$\beta$，对$B\in \beta$，存在邻域$N$，使得$f(x)\in B\subset N$，下证$N\backslash\{f(x)\}\cap f(A)\neq\varnothing$.
+		
+		由于$B$的原像仍为开的，故$x\in f^{-1}(B)$为一开集，又$x$为$A$的极限点，故$f^{-1}(B)\backslash\{x\}\cap A\neq \varnothing$，于是$B\backslash\{f(x)\}\cap f(A)\neq\varnothing$，而$B\subset N$，故有$N\backslash\{x\}\cap f(A)\neq\varnothing$.
+		
+		3$\to$ 4 : $f^{-1}(B)\in X$，则$f\left(\overline{f^{-1}(B)}\right)\subset\overline{f\left(f^{-1}(B)\right)}\subset\overline{B}$，则
+		$$\overline{f^{-1}(B)}= f^{-1}\circ f\left(\overline{f^{-1}(B)}\right)\subset f^{-1}(\overline{B}).$$
+		
+		4$\to$ 5 : 对任意闭集$B\subset Y$，有$B=\overline{B}$，则由命题4，有
+		$$f^{-1}(B)=f^{-1}(\overline{B})\supset\overline{f^{-1}(B)},$$
+		而显然$f^{-1}(B)\subset\overline{f^{-1}(B)}$，于是$f^{-1}(B)=\overline{f^{-1}(B)}$，故$f^{-1}(B)$为闭集.
+		
+		5$\to$ 1 : 对任意闭集$B\subset Y$，有$f^{-1}(B)$为闭集，则$Y\backslash B$和$X\backslash f^{-1}(B)$均为开集，而$f^{-1}(Y\backslash B)=X\backslash f^{-1}(B)$为开集，故$f$为连续映射.
+	\end{proof}
+\end{document}

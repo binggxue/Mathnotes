@@ -1,0 +1,77 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,graphicx,caption,color,xpatch}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+%define color 'orange'
+\definecolor{orange}{RGB}{255,127,0}
+
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{property}{性质}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{\textcolor{green}{Soln}}
+\newtheorem*{remark}{\textcolor{orange}{Rmk}}
+\geometry{a4paper,scale=0.8}
+
+%remove the dot after the theoremstyle
+%\makeatletter
+%\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}
+%\makeatother
+
+%article info
+\title{\vspace{-2em}\textbf{Egorov定理}\vspace{-2em}}
+\date{ }
+
+\begin{document}
+	\maketitle
+	首先定义逐点收敛、一致收敛、几乎处处收敛和近一致收敛.
+	\begin{definition}[逐点收敛]
+		对于定义在$D\subset \mathbb{R}^n$上的一列函数$f,f_1,f_2,\cdots,f_n,\cdots$，对每一个$x\in D$，对$\forall \varepsilon>0$，$\exists N>0$，当$n>N$时，有
+		$$|f_n(x)-f(x)|<\varepsilon,\qquad x\in D,$$
+		则称函数列$\{f_n\}$在$D$上\textbf{逐点收敛}于$f$，记作
+		$$\lim\limits_{n\to\infty}f_n(x)=f(x),\qquad x\in D.$$
+	\end{definition}
+	\begin{definition}[一致收敛]
+		对于定义在$D\subset \mathbb{R}^n$上的一列函数$f,f_1,f_2,\cdots,f_n,\cdots$，对$\forall \varepsilon>0$，$\exists N>0$，当$n>N$时，有
+		$$|f_n(x)-f(x)|<\varepsilon,\qquad x\in D,$$
+		则称函数列$\{f_n\}$在$D$上\textbf{一致收敛}于$f$.
+	\end{definition}
+	上述定义在数学分析课程中已介绍，在此回顾一下，下面介绍测度意义下的收敛.
+	\begin{definition}[几乎处处收敛]
+		对于定义在$E\subset \mathbb{R}^n$上的一列广义实值函数$f,f_1,f_2,\cdots,f_n,\cdots$，若存在点集$Z\subset E$，满足$m(Z)=0$，使得
+		$$\lim\limits_{n\to\infty}f_n(x)=f(x),\qquad x\in E\backslash Z,$$
+		则称函数列$\{f_n(x)\}$在$E$上\textbf{几乎处处收敛}于$f(x)$，记作
+		$$f_n(x)\to f(x),\qquad a.e.\ x\in E.$$
+	\end{definition}
+	\begin{definition}[近一致收敛]
+		对于定义在$E\subset \mathbb{R}^n$上的一列可测函数$f,f_1,f_2,\cdots,f_n,\cdots$，若对$\forall\delta>0$，存在可测点集$E_{\delta}\subset E$，满足$m(E_{\delta})\leqslant\delta$，使得$f_n(x)$在$E\backslash E_{\delta}$上一致收敛，则称函数列$\{f_n(x)\}$在$E$上\textbf{近一致收敛}于$f(x)$.
+	\end{definition}
+	Egorov定理指出在测度意义下，函数列的逐点收敛与一致收敛“差不多”.下面先给出一个引理.
+	\begin{lemma}
+		对于定义在$\mathbb{R}^n$上的一列实值函数$f,f_1,f_2,\cdots,f_n,\cdots$，记$\{f_n(x)\}$不收敛于$f(x)$的点集$x$的全体组成的集合为$D$，则
+		$$D=\bigcup_{k=1}^{\infty}\bigcap_{N=1}^{\infty}\bigcup_{n=N}^{\infty}\left\{x:\left|f_n(x)-f(x)\right|\geqslant\frac{1}{k}\right\}.$$
+	\end{lemma}
+	\begin{proof}
+		对某不收敛点$x_0$，存在$\varepsilon_0>0$，对任意正整数$N>0$，必存在$n>N$，使得
+		$$\left|f_n(x_0)-f(x_0)\right|\geqslant\varepsilon_0.$$
+		记$E_{N,k}=\displaystyle\bigcup_{n=N}^{\infty}\left\{x:\left|f_n(x)-f(x)\right|\geqslant\dfrac{1}{k}\right\}$，则表示$n\geqslant N$时的全体不收敛点，$\displaystyle\bigcap_{N=1}^{\infty}E_{N,k}$表示取遍$N$的全体不收敛点，即对每个$N$，都存在不收敛点，$\displaystyle\bigcup_{k=1}^{\infty}$覆盖所有可能的$\varepsilon>0$，确保包含所有不收敛点.
+	\end{proof}
+	\begin{theorem}[Egorov定理]
+		对于定义在$E\subset \mathbb{R}^n$上的一列可测函数$f,f_1,f_2,\cdots,f_n,\cdots$几乎处处有限，$m(E)<+\infty$，若$\{f_n(x)\}$在$E$上几乎处处收敛于$f(x)$，则$\{f_n(x)\}$在$E$上近一致收敛于$f(x)$.
+	\end{theorem}
+	\begin{proof}
+		不妨假设这些函数在$E$上处处有限. 对任意$\delta>0$，先构造$E_{\delta}$.记$f_n(x)$不收敛于$f(x)$的点的全体组成的集合为$D$，则
+		$$m\left(\bigcap_{N=1}^{\infty}\bigcup_{n=N}^{\infty}\left\{x:\left|f_n(x)-f(x)\right|\geqslant\frac{1}{k}\right\}\right)\leqslant m(D)=0.$$
+		记$E_{N,k}=\displaystyle\bigcup_{n=N}^{\infty}\left\{x:\left|f_n(x)-f(x)\right|\geqslant\dfrac{1}{k}\right\}$，由递减集列测度与极限的可交换性，有
+		$$\lim\limits_{N\to\infty}m(E_{N,k})=m\left(\lim\limits_{N\to\infty}E_{N,k}\right)=0,$$
+		于是存在$N_k$，使得
+		$$m(E_{N_k,k})<\frac{\delta}{2^k},$$
+		令$E_{\delta}=\displaystyle\bigcup_{k=1}^{\infty}E_{N_k,k}$，则
+		$$m(E_{\delta})\leqslant\sum_{i=1}^{\infty}m(E_{N_k,k})<\sum_{i=1}^{\infty}\frac{\delta}{2^k}=\delta.$$
+		
+		下面设$x\in E\backslash E_{\delta}$，对任意$\varepsilon>0$，存在正整数$k$使$\dfrac{1}{k}<\varepsilon$. 因为$x\notin E_{N_k,k}$，故当$n\geqslant N_k$时有$\left|f_n(x)-f(x)\right|<\dfrac{1}{k}<\varepsilon$. 所以函数列$\{f_n(x)\}$在$E\backslash E_{\delta}$上一致收敛于$f(x)$.
+	\end{proof}
+\end{document}

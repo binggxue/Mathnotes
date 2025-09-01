@@ -1,0 +1,136 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,color,enumerate}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+%remove the dot after the theoremstyle
+%\makeatletter
+%\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}
+%\makeatother
+
+%article info
+\title{\vspace{-2em}\textbf{拓扑空间}\vspace{-2em}}
+\date{ }
+
+\begin{document}
+	\maketitle
+	拓扑无需保距，研究形状的连续变形性质. 首先定义拓扑空间.
+	\begin{definition}[拓扑空间]
+		设$X$是一非空集合，集类$\mathcal{T}\subset 2^X$，满足以下条件：
+		\begin{enumerate}
+			\item $\varnothing,\ X\in\mathcal{T}$;
+			\item 对任意并封闭：$\forall U_a\in\mathcal{T},a\in I$，则$\bigcup_{a\in I}U_a\in\mathcal{T}$;
+			\item 对有限交封闭：$\bigcap_{a=1}^{n}U_a\in\mathcal{T}$.
+		\end{enumerate}
+		则称$(X,\mathcal{T})$为一个\textbf{拓扑空间}，$\mathcal{T}$为集合$X$上的\textbf{拓扑}. $\mathcal{T}$中的元素$U_a$称为\textbf{开集}.
+	\end{definition}
+	\begin{definition}
+		$2^X$是$X$上最大的拓扑，称为\textbf{离散拓扑}.
+	\end{definition}
+	\begin{definition}
+		$\{\varnothing\ ,X\}$是$X$上最小的拓扑，称为\textbf{平凡拓扑}.
+	\end{definition}
+	有了开集的定义，自然地定义它的补集为闭集.
+	\begin{definition}[闭集]
+		对$X$的子集$A$，若$X\backslash A$为开集，则称$A$为\textbf{闭集}.
+	\end{definition}
+	\begin{definition}[邻域]
+		设$x\in X$，如果集合$N\subset X$满足：存在开集$U$，使得$x\in U\subset N$，则称$N$为$x$的\textbf{邻域}，称$N\backslash\{x\}$为$x$的\textbf{去心邻域}.
+	\end{definition}
+	\begin{definition}[内核]
+		$A$中包含的所有开集的并称为$A$的内核，记作$\mathring{A}$.
+	\end{definition}
+	\begin{theorem}
+		$A$是开集当且仅当$A=\mathring{A}$.
+	\end{theorem}
+	\begin{proof}
+		 设$A$是开集，$\forall x\in A$，$\exists U_a\in A$，使得$x\in U_a\subset\mathring{A}$，于是$A\subset\mathring{A}$； $\mathring{A}=\bigcup_{a\in I}U_a,\ U_a\in A$，因此$\mathring{A}\subset A$. 故$A=\mathring{A}$.
+		
+		反之，设$A=\mathring{A}=\bigcup_{a\in I}U_a$，由拓扑空间定义，开集的任意并仍为开集，即$A$为开集.
+	\end{proof}
+	\begin{definition}[极限点]
+		设$x\in X$，$A\subset X$. 若$x$的任一去心邻域中均有至少一点属于$A$，即包含$x$的任一开集$U$中，有
+		$$\left(U\backslash\{x\}\right)\cap A\neq\varnothing,$$
+		则称$x$为$A$的\textbf{极限点}，又称\textbf{聚点}.
+	\end{definition}
+	\begin{theorem}\label{closeeq}
+		$A$是闭集当且仅当$A$包含了它的全部极限点.
+	\end{theorem}
+	\begin{proof}
+		设$A$是闭集，则$X\backslash A$是开集，由于开集是它的任意元素的邻域，于是$X\backslash A$的任一点都不是$A$的极限点，于是$A$包含了它的全部极限点.
+		
+		反之，设$A$包含了它的全部极限点，则对任意$x\in X\backslash A$，总存在$x$的邻域$N$使得$N\cap A=\varnothing$，于是$N\subset X\backslash A$，故$X\backslash A$是它的任意元素的邻域，故$X\backslash A$为开集，$A$为闭集.
+	\end{proof}
+	\begin{definition}[导集]
+		$A$的极限点的集合称为$A$的\textbf{导集}，记作$A'$.
+	\end{definition}
+	\begin{definition}[闭包]
+		$A$中的元素和它的极限点组成的集合，即$A$本身和$A$的导集的并集，称为$A$的\textbf{闭包}，记作$\overline{A}$.
+	\end{definition}
+	由定义立即有$\overline{A}=A\cup A'$.
+	\begin{theorem}
+		$A$的闭包是包含$A$的最小闭集.
+	\end{theorem}
+	\begin{proof}
+		对$\forall x\in X\backslash \overline{A}$，存在$x$的开邻域$U$不包含$A$的极限点，于是$x\in U\subset X\backslash \overline{A}$，于是$X\backslash\overline{A}$是开集，故$\overline{A}$是闭集. 
+		
+		对任意闭集$B\supset A$，由定理\ref{closeeq}，$B$包含$A$的全部极限点以及$B$的极限点，于是$\overline{A}\subset B$. 故$A$的闭包是包含$A$的最小闭集.
+	\end{proof}
+	\begin{remark}
+		该定理也就是说，$A$的闭包是包含$A$的全体闭集的交.
+	\end{remark}
+	\begin{corollary}
+		$A$是闭集当且仅当$A=\overline{A}$.
+	\end{corollary}
+	\begin{definition}[稠密性]
+		设$X$为拓扑空间，$A\subset X$，若$\overline{A}=X$，即对任意$x\in U\subset X$，$U\backslash\{x\}\cap A\neq\varnothing$，则称$A$是\textbf{稠密的}.
+	\end{definition}
+	\begin{definition}[边界]
+		$A$的闭包与$X\backslash A$的交称为$A$的边界，记作$\partial A$.
+	\end{definition}
+	用数学语言描述，即$\partial A=\overline{A}\cap\overline{X\backslash A}$.
+	\begin{definition}[拓扑子空间]
+		设$(X,\mathcal{T})$为拓扑空间，$Y\subset X$，定义$Y$上的子空间拓扑：
+		$$\mathcal{T}_Y=\{O\cap Y|O\in\mathcal{T}\}.$$
+		称$(Y,\mathcal{T}_Y)$为$X$的\textbf{拓扑子空间}.
+	\end{definition}
+	\begin{definition}[有限补拓扑]
+		设集合$X=\mathbb{R}$，赋予\textbf{有限补拓扑}，对任意开集$U\subset\mathbb{R}$，$X\backslash U$是有限的或者为整个空间$X$.
+	\end{definition}
+	对任一无限集$A\subset X$，$X$中的任意元素$x$都是$A$的极限点. 反之，在这一拓扑下，有限集没有极限点.
+	\begin{definition}[拓扑基]
+		设拓扑空间$(X,\mathcal{T})$，若一族开集$\beta$通过任意的一些并可以得到$X$中的任一开集，则称$\beta$为\textbf{拓扑基}，$\beta$中的元素称为\textbf{基础开集}，也称$\mathcal{T}$为$\beta$\textbf{生成的拓扑}.
+	\end{definition}
+	等价地，我们可以说对任意$x\in X$及其邻域为$N$，都存在开集$O\subset \beta$，使得$x\in O\subset N$.
+	\begin{theorem}
+		设$\beta$是$X$的一个非空子集族，若$\beta$中元素的有限交仍在$\beta$中，$\bigcup\beta\in\beta$，则$\beta$给出$X$上的拓扑，且为其拓扑基.
+	\end{theorem}
+	\begin{proof}
+		设$U,V\in\beta$，令
+		$$\mathcal{T}=\left\{U=\bigcup_{V\in\beta'}V\bigg|\beta'\subset\beta\right\},$$
+		下面证明$\mathcal{T}$是$X$上的拓扑.
+		\begin{enumerate}
+			\item $\varnothing,\ X\in\mathcal{T}$. 令$\beta'=\varnothing$，有$\varnothing=\bigcup_{V\in\beta'}V\in\mathcal{T}$.\ 令$\beta'=X$，有$X=\bigcup_{V\in\beta'}V\in\mathcal{T}$.
+			\item 设$U_a\in\mathcal{T},\ a\in I$. 设$U_a=\bigcup_{V\in\beta_a}V$，其中$\beta_a\subset\beta$.则
+			$$\bigcup_{a\in I}U_a=\bigcup_{a\in I}\left(\bigcup_{V\in\beta_a}V\right)=\bigcup_{V\in\beta_a,a\in I}V=\bigcup_{V\in\bigcup_{a\in I}\beta_a}V\in\mathcal{T}.$$
+			\item 设$U_1=\bigcup_{V\in\beta_1}V$，$U_2=\bigcup_{V\in\beta_2}V$，这里$\beta_1, \beta_2\in\beta$. 有
+			$$U_1\cap U_2=\bigcup_{V_1\in\beta_1,V_2\in\beta_2}V_1\cap V_2.$$
+			对任意$x\in V_1\cap V_2$，存在$W_x\in \beta$，使得$X\in W_x\subset V_1\cap V_2$. 于是有
+			$$V_1\cap V_2\subset\bigcup_{x\in V_1\cap V_2}W_x\subset V_1\cap V_2,$$
+			于是
+			$$V_1\cap V_2=\bigcup_{x\in V_1\cap V_2}W_x\in\mathcal{T}.$$
+		\end{enumerate}
+		所以$\mathcal{T}$是$X$上的拓扑，并且由$\mathcal{T}$的构造，$\beta$是$\mathcal{T}$的拓扑基.
+	\end{proof}
+\end{document}

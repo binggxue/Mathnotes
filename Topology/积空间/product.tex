@@ -1,0 +1,88 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+%article info
+\title{\vspace{-2em}\textbf{积空间}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}[积拓扑]
+		设$X$，$Y$为拓扑空间，任意开集$U\subset X$，$V\subset Y$，则集族$\beta=\{U\times V\}$是一个拓扑基，称$\beta$生成的$X\times Y$上的拓扑为\textbf{积拓扑}.
+	\end{definition}
+	需要说明$\beta$是一个拓扑基，因为$\bigcup \beta=X\times Y$，$\beta$中任意两个集合的交仍在$\beta$中.
+	\begin{definition}[投影映射]
+		对任意$x\in X,\ y\in Y$，映射$p_1:X\times Y\to X,\ (x,y)\to x$和$p_2:X\times Y\to Y,\ (x,y)\to y$称为$X\times Y$上的\textbf{投影映射}.
+	\end{definition}
+	\begin{theorem}
+		设$X\times Y$带有积拓扑，则它的投影映射为连续映射，且把开集映射到开集.
+	\end{theorem}
+	\begin{proof}
+		设开集$U\subset X$，映射$p_1:X\times Y\to X,\ (x,y)\to x$，则$p_1^{-1}(U)=U\cap Y$为开集，故$p_1$为连续映射. 只需考虑基础开集$U\times V\in\beta$，$p_1(U\times V)=U$为$X$中的开集，故$p_1$把开集映射到开集. 对于$p_2$同理.
+	\end{proof}
+	\begin{theorem}
+		$X\times Y$上的积拓扑是满足投影映射连续的最小拓扑.
+	\end{theorem}
+	\begin{proof}
+		设我们在$X\times Y$上有一些拓扑满足投影映射连续，设开集$U\subset X$，$V\subset Y$，则$p_1^{-1}(U)\cap p_2^{-1}(V)=U\times V$是开集. 这个拓扑包含了积拓扑中所有的基础开集，于是这个拓扑至少要和积拓扑一样大.
+	\end{proof}
+	下文中，若无特殊说明，$X\times Y$均指积拓扑空间.
+	\begin{theorem}
+		设$X$，$Y$，$Z$为拓扑空间，映射$f:Z\to X\times Y$连续当且仅当$p_1\circ f:Z\to X$和$p_2\circ f:Z\to Y$都连续.
+	\end{theorem}
+	\begin{proof}
+		若$f$连续，连续映射的复合仍连续，故$p_1\circ f:Z\to X$和$p_2\circ f:Z\to Y$都连续.
+		
+		若$p_1\circ f$和$p_2\circ f$都连续，对任意开集$U\subset X$，$V\subset Y$，有$U\times V$是开集，且
+		$$f^{-1}(U\times V)=(p_1\circ f)^{-1}(U)\cap(p_2\circ f)^{-1}(V),$$
+		其中$(p_1\circ f)^{-1}(U)$和$(p_2\circ f)^{-1}(V)$都是开集，于是$f^{-1}(U\times V)$是开集，$f$连续.
+	\end{proof}
+	\begin{theorem}
+		积空间$X\times Y$是Hausdorff空间当且仅当$X$和$Y$都是Hausdorff空间.
+	\end{theorem}
+	\begin{proof}
+		若$X\times Y$是Hausdorff空间，对不同的$x_1,\ x_2\in X$，$y\in Y$，存在基础开集$U_1\times V_1,\ U_2\times V_2\subset X\times Y$满足$(x_1,y)\in U_1\times V_1$，$(x_2,y)\in U_2\times V_2$，$y\in V_1\cap V_2$，那么$U_1\cap U_2=\varnothing$. 对$y$同理.
+		
+		若$X$和$Y$均是Hausdorff空间，仅考虑$x_1\neq x_2$时即可. 则对不同的$x_1,\ x_2\in X$，有$U_1\ni x_1,\ U_2\ni x_2$，使得$U_1\cap U_2=\varnothing$，那么$\left(U_1\times Y\right)\cap\left(U_2\times Y\right)=\varnothing$.
+	\end{proof}
+	\begin{lemma}
+		设$X$是拓扑空间，$\beta$是$X$的一个拓扑基，则$X$为紧的当且仅当$\beta$中的一些基础开集可以组成$X$的一个开覆盖，且存在有限的子覆盖.
+	\end{lemma}
+	\begin{proof}
+		设$\beta$中的一些基础开集可以组成$X$的一个开覆盖，且存在有限的子覆盖，对$X$的任一开覆盖$\mathcal{F}$，对任意$\mathcal{F}$中的集合，都可以由$\beta$中的若干基础开集生成，取所有用到的基础开集，构成$\beta'$，则$\bigcup\beta'=\bigcup\mathcal{F}=X$，所以$\beta'$是$X$的一个开覆盖，且存在有限子覆盖. 那么对于$\beta'$的有限子覆盖中的基础开集，都能从$\mathcal{F}$中选出一个集合覆盖，这样构造了$\mathcal{F}$的有限子覆盖，故$X$是紧的. 反之显然.
+	\end{proof}
+	\begin{theorem}\label{procom}
+		积拓扑空间$X\times Y$是紧的当且仅当$X$和$Y$都是紧的.
+	\end{theorem}
+	\begin{proof}
+		若$X\times Y$是紧的，由于$p_1:X\times Y\to X$，$p_2:X\times Y\to Y$都是连续映射，于是$X$和$Y$都是紧的.
+		
+		若$X$和$Y$都是紧的，对于任意$x\in X$，考虑$p_2\big|_{\{x\}}:\{x\}\times Y\to Y$，则容易验证这是同胚映射. 由于$Y$是紧的，那么$\{x\}\times Y$是紧的，考虑基础开集组成的任一开覆盖存在有限子覆盖
+		$$U_1^{x}\times V_1^{x},\ U_2^{x}\times V_2^{x},\cdots,\ U_{n_x}^x\times V_{n_x}^x$$
+		覆盖$\{x\}\times Y$，而且这些$U_i^{x}$覆盖了$U^{x}=\bigcap_{i=1}^{n_x}U_i^{x}$.
+		
+		由于$X$是紧的，所以$X$存在有限的开覆盖
+		$$U^{x_1},U^{x_2},\cdots,U^{x_s},$$
+		于是
+		$$X\times Y=\bigcup_{i=1}^sU^{x_i}\times Y\subset\bigcup_{i=1}^{s}\left(\bigcap_{j=1}^{n_{x_i}}U_j^{x_i}\times V_{j}^{x_i}\right)=\bigcup_{i=1}^{s}\bigcap_{j=1}^{n_{x_i}}\left(U_j^{x_i}\times V_{j}^{x_i}\right),$$
+		即由基础开集组成的$X\times Y$的开覆盖存在有限子覆盖，故$X\times Y$是紧的.
+	\end{proof}
+	\begin{theorem}[Tychonoff]
+		任意个紧空间的积空间仍是紧的.
+	\end{theorem}
+	\begin{remark}
+		这里的“任意”包括有限和无限的情形，是定理\ref{procom}的延伸，Tychonoff定理最终被证明与选择公理等价.
+	\end{remark}
+\end{document}

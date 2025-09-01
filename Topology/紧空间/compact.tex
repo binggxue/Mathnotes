@@ -1,0 +1,124 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+%article info
+\title{\vspace{-2em}\textbf{紧空间}\vspace{-2em}}
+\date{ }
+
+\begin{document}
+	\maketitle
+	\begin{definition}[开覆盖]
+		设$X$为拓扑空间，若存在一族开集组成的集族$\mathcal{F}$，使得$\bigcup_{i\in I}O_i=X,\ O_i\in\mathcal{F}$，则称$\mathcal{F}$为$X$的一个\textbf{开覆盖}.
+	\end{definition}
+	\begin{definition}[子覆盖]
+		设$\mathcal{F}$是$X$的一个开覆盖，若存在$\mathcal{F}'\subset\mathcal{F}$，且$\mathcal{F}'$也是$X$的一个开覆盖，则称$\mathcal{F}'$是$\mathcal{F}$的\textbf{子覆盖}.
+	\end{definition}
+	\begin{definition}[紧性]
+		若拓扑空间$X$的任一开覆盖都包含有限子覆盖，则称$X$为\textbf{紧的}.
+	\end{definition}
+	下面给出紧空间的若干性质.
+	\begin{theorem}\label{compact}
+		紧空间在连续映射下的像仍是紧的.
+	\end{theorem}
+	\begin{proof}
+		不妨设连续映射$f:X\to Y$是满射. 设$\mathcal{F}$是$Y$的一族开覆盖，由连续映射的定义，$\left\{f^{-1}(O):O\in\mathcal{F}\right\}$是开集，$f^{-1}(O_i)_{i\in I}$给出了$X$的一个开覆盖，又$X$是紧的，故开覆盖存在有限子覆盖，记为$\left\{f^{-1}(O_i),\ 1\leqslant i\leqslant k\right\}$，有$\bigcup_{i=1}^{k}f^{-1}(O_i)=X$，$f(X)=\bigcup_{i=1}^{k}O_i=Y$，于是存在$\mathcal{F}$的有限子覆盖，故$Y$是紧的.
+	\end{proof}
+	\begin{theorem}\label{close}
+		紧空间的任一闭子集仍是紧的.
+	\end{theorem}
+	\begin{proof}
+		设$X$为紧空间，$C\subset X$为闭集，则$X\backslash C$为开集，存在$C$的一族开覆盖$\mathcal{F}=\left\{O_i:i\in I\right\}$，$C\subset\bigcup_{i\in I}O_i$，于是$\bigcup_{i\in I}O_i\cup(X\backslash C)$是$X$的一个开覆盖，而$X$是紧的，故存在有限子覆盖$\{O_i\ (1\leqslant i\leqslant k),\ X\backslash C\}$，于是$O_i\ (1\leqslant i\leqslant k)$是$C$的一族开覆盖，为$\mathcal{F}$的有限子覆盖，故$C$是紧的.
+	\end{proof}
+	紧空间的任一紧子集却不一定是闭的，有以下结论.
+	\begin{theorem}\label{Hcom}
+		Hausdorff空间的紧子集是闭的.
+	\end{theorem}
+	\begin{proof}
+		设紧集$A$是Hausdorff空间$X$的子集，即证$X\backslash A$为开集.
+		设$x\notin A$，$z_i\in A$，则对任意开集$V_i\ni z_i$，有$U_i\ni x_i$使得$U_i\cap V_i=\varnothing$，由于$A$为紧集，故存在正整数$k$，使得$A\subset\bigcup_{i=1}^{k}V_i$，令$V=\bigcup_{i=1}^{k}V_i$，$U=\bigcap_{i=1}^{k}U_i$，则$U\cap V=\varnothing$，故$U\cap A=\varnothing$，$U\subset X\backslash A$，于是$X\backslash A$为开集，$A$为闭集.
+	\end{proof}
+	同胚映射需要保证双射、连续以及逆映射连续，连续双射未必是同胚映射，在从紧空间到Hausdorff空间的映射却是成立的.
+	\begin{theorem}
+		从紧空间到Hausdorff空间的连续双射是同胚映射.
+	\end{theorem}
+	\begin{proof}
+		设$f:X\to Y$，闭集$C\subset X$，则由定理\ref{close}，$C$为紧集. 由定理\ref{compact}，$f(C)$为紧的，由定理\ref{Hcom}，$f(C)$是闭的，由连续映射等价命题，$f^{-1}$连续，故$f$为同胚映射.
+	\end{proof}
+	\begin{theorem}[Bolzano-Weierstrass]
+		紧空间的任一无限子集必有至少一个极限点.
+	\end{theorem}
+	\begin{proof}
+		设$X$为紧空间，$S\subset X$没有极限点，下证$S$为有限集.
+		
+		对任意$x\in X$，存在开集$O(x)$，满足
+		\begin{equation*}
+			O(x)\cap S=\left\{
+			\begin{aligned}
+				&\varnothing,\ x\notin S,\\
+				&\{x\},\ x\in S,
+			\end{aligned}
+			\right.
+		\end{equation*}
+		否则$S$有极限点. 取遍$x$，可以得到一族$O(x)$构成$X$的开覆盖. 由于$X$是紧的，故开覆盖存在有限子覆盖，有$x_1,\cdots,x_k$，使得$X\subset\bigcup_{i=1}^{k}O(x_i)$，而$O(x_i)$至多包含$S$中的一个点，于是$S$为有限集.
+	\end{proof}
+	\begin{theorem}[Heine-Borel]
+		实数轴上任一闭区间是紧集.
+	\end{theorem}
+	\begin{proof}
+		对任意$\left[a,b\right]\in\mathbb{R}$，定义它的一族开覆盖$\mathcal{F}$. 设$A\subset \left[a,b\right]$，以如下方式定义.
+		$$X=\left\{x\in\left[a,b\right]:\text{存在}\mathcal{F}\text{的有限子覆盖包含}\left[a,x\right]\right\}.$$
+		于是$X$非空($a\in X$)且有界$x\leqslant b$，由确界原理，$X$有上确界. 设$s=\sup X$，下证$s\in X$且$s=b$.
+		
+		设$s\in O\in\mathcal{F}$，由于$O$是开集，故存在$\varepsilon>0$，$\left(s-\varepsilon,s\right]\subset O$，若$s<b$，则有$(s-\varepsilon,s+\varepsilon)\subset O$. 对任意$\varepsilon>0$，有$s-\varepsilon\in X$，于是$\left[a,s-\varepsilon\right]\subset X$，故$\left[a,s-\varepsilon\right]$可被$\mathcal{F}$的有限子覆盖$\bigcup_{i=1}^{k}U_i$包含，又$\left(s-\varepsilon,s\right]\subset O$，于是$\left[a,s\right]$可被$O\cup\bigcup_{i=1}^{k}U_i$包含，故$s\in X$.
+		
+		若$s<b$，则$s+\varepsilon/2\in(s-\varepsilon,s+\varepsilon)\subset O$，有$s+\varepsilon/2\in X$，这与$s$是$X$的上确界矛盾！于是$s=b$.
+	\end{proof}
+	\begin{corollary}
+		Euclidean空间上的有界闭集是紧集.
+	\end{corollary}
+	\begin{proof}
+		由两个紧空间的积空间仍为紧空间即得.
+	\end{proof}
+	\begin{theorem}\label{comclose}
+		Euclidean空间上的紧集是有界闭集.
+	\end{theorem}
+	\begin{proof}
+		设$A\subset\mathbb{R}^n$，Euclidean空间显然是Hausdorff空间，由定理\ref{Hcom}，$A$是闭集. 构造一列开球$\left\{B(0,r_i),\ r_k=k,\ k\in\mathbb{Z}^+\right\}$，是$\mathbb{R}^n$的一个开覆盖，自然是$A$的一个开覆盖. 又$A$是紧集，故该开覆盖存在有限子覆盖，于是$r_i$有限，$A$有界.
+	\end{proof}
+	于是，在Euclidean空间中，有界闭集和紧集是等价的.
+	\begin{theorem}
+		定义在紧空间上的连续实值函数有界且能达到边界.
+	\end{theorem}
+	\begin{proof}
+		设$f:X\to\mathbb{R}$，由定理\ref{compact}，$f(X)\subset\mathbb{R}$是紧的，由定理\ref{comclose}，$f(X)$是有界闭集. 又闭集的性质，存在$x_1,x_2\in X$，$f(x_1)=\inf f(X)$，$f(x_2)=\sup f(X)$，于是函数有界且能达到边界.
+	\end{proof}
+	\begin{theorem}[Lebesgue数引理]
+		设$X$为紧度量空间，$\mathcal{F}$为$X$的一个开覆盖，则存在$\delta>0$(称为Lebesgue数)，使得对任意$x\in X$，存在$U\in\mathcal{F}$，$B(x,\delta)\subset U$.
+	\end{theorem}
+	\begin{proof}
+		反证法，设序列$\{A_n\}$是$X$的一列子集，每一项都不包含于$\mathcal{F}$的任一开集中，且序列的直径趋于$0$. 对每个$n\in\mathbb{Z}^+$，存在$x_n\in A_n$. 对于序列$\{x_n\}$，要么包含有限个离散的点，存在某点无限重复出现，要么包含无限个点，由于$X$是紧的，故存在极限点. 
+		
+		记无限重复出现的点或极限点为$p$，设$U\in\mathcal{F}$是包含$p$的开集，则存在$\varepsilon>0$，$B(p,\varepsilon)\subset U$，存在足够大的正整数$N$，使得$A_N$的直径小于$\varepsilon/2$且$x_N\in B(p,\varepsilon/2)$，于是对$x\in A_N$，有$d(x_N,p)<\varepsilon/2$，$d(x,x_N)<\varepsilon/2$，于是
+		$$d(x,p)<d(x,x_N)+d(x_N,p)<\varepsilon.$$
+		即$A_N\subset U$，这与$A_n$的构造假设矛盾！
+	\end{proof}
+	\begin{definition}[局部紧]
+		若拓扑空间$X$中每一点都有紧的邻域，则称$X$是\textbf{局部紧的}.
+	\end{definition}
+	\begin{definition}[单点紧化]
+		
+	\end{definition}
+\end{document}

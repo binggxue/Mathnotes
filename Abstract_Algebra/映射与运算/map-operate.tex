@@ -1,0 +1,87 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+%article info
+\title{\vspace{-2em}\textbf{映射与运算}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}[映射]
+		设集合$A$，$B$非空，若$A$中的任一元素都能通过某一对应法则$f$唯一地对应到$B$中的一个元素，则称$f$是从$A$到$B$的\textbf{映射}，记作$f:A\to B$. 设$x\in A$，则$y\in B$，称$y$是$x$在$f$下的\textbf{像}，记作$f(x)$；称$x$是$y$在$f$下的\textbf{原像}，记作$f^{-1}(y)$.
+	\end{definition}
+	\begin{definition}[单射]
+		设映射$f:A\to B$，对任意$x_1,x_2\in A,x_1\neq x_2$，有$f(x_1)\neq f(x_2)$，则称$f$是\textbf{单射}.
+	\end{definition}
+	不同元素在单射下的像也不同.
+	\begin{definition}[满射]
+		设映射$f:A\to B$，对任意$y\in B$，都存在原像$f^{-1}(y)$，则称$f$是\textbf{满射}.
+	\end{definition}
+	\begin{definition}[双射]
+		若映射$f$既是单射，又是满射，则称$f$是\textbf{双射}.
+	\end{definition}
+	双射$f:A\to B$是$A$中元素与$B$中元素的一一对应.
+	\begin{definition}[恒等映射]
+		设映射$i:A\to A$，$i(x)=x$，则称$i$为\textbf{恒等映射}.
+	\end{definition}
+	\begin{definition}[嵌入映射]
+		设非空集合$A_0\subset A$，映射$f:A_0\to A$，$i(x)=x$，则称$i$是嵌入映射.
+	\end{definition}
+	嵌入映射有扩大值域的作用.
+	\begin{definition}[开拓与限制]
+		设非空集合$A_0\subset A$，映射$f:A_0\to B$，$g:A\to B$，对任意$x\in A_0$，有$f(x)=g(x)$，则称$g$是$f$的\textbf{开拓}，$f$是$g$的\textbf{限制}.
+	\end{definition}
+	开拓映射有扩大定义域的作用，限制映射有缩小定义域的作用.
+	\begin{definition}[映射的复合]
+		设映射$f:A\to B$，$g:B\to C$，则定义复合映射：$g\circ f=g\left(f\left(x\right)\right):A\to C$.
+	\end{definition}
+	可以用交换图表示这个过程.
+	\begin{displaymath}
+		\xymatrix{
+		A\ar[r]^f \ar[dr]_{g\circ f} & B\ar[d]^g\\
+									 & C\\
+		}
+	\end{displaymath}
+	\begin{definition}[直积]
+		设非空集合$A$，$B$，定义$A$与$B$的\textbf{直积}$A\times B=\left\{(a,b)\ |\ \forall a\in A,b\in B\right\}$.
+	\end{definition}
+	\begin{definition}[代数运算]
+		设非空集合$A$，$B$，$D$，称映射$A\times B\to D$为$A$与$B$到$D$的一个\textbf{代数运算}. 即对任意$a\in A$，$b\in B$，都有唯一的$d\in D$满足$f(a,b)=d$，记作$a\circ b=d$.
+	\end{definition}
+	\begin{definition}[二元运算]
+		设$A$为非空集合. 代数运算$f:A\times A\to A$称为\textbf{二元运算}，简称\textbf{运算}.
+	\end{definition}
+	在二元运算下，$A$中的元素经过运算仍在$A$中，于是二元运算满足\textbf{封闭性}.
+	\begin{definition}[结合性]
+		若在非空集合$A$上定义了一种运算“$\circ$”，对任意$a,b,c\in A$，都有
+		$$(a\circ b)\circ c=a\circ(b\circ c),$$
+		则称运算“$\circ$”是\textbf{结合的}.
+	\end{definition}
+	\begin{definition}[交换性]
+		若在非空集合$A$上定义了一种运算“$\circ$”，对任意$a,b\in A$，都有
+		$$a\circ b=b\circ a,$$
+		则称运算“$\circ$”是\textbf{交换的}.
+	\end{definition}
+	习惯上将运算“$\circ$”称为乘法，并略去不写. 要注意这里的乘法是一种抽象的运算，与数的乘法不是一回事. 那么，结合性可以写为$(ab)c=a(bc)$，交换性可以写为$ab=ba$.
+	\begin{definition}[分配性]
+		若在非空集合$A$上定义了两种运算“$\circ$”和“$+$”，分别称为乘法和加法，对任意$a,b,c\in A$，若有
+		$$a\circ(b+c)=(a\circ b)+(a\circ c),$$
+		则称乘法对加法是\textbf{左分配的}，若有
+		$$(a+b)\circ c=(a\circ c)+(b\circ c),$$
+		则称乘法对加法是\textbf{右分配的}. 若乘法对加法既是左分配的，又是右分配的，则称乘法对加法是\textbf{分配的}.
+	\end{definition}
+	与乘法类似，这里的加法也是一种抽象的运算，不能简单看作数的加法.
+\end{document}

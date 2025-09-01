@@ -1,0 +1,499 @@
+\documentclass[lang=cn,10pt]{elegantbook}
+
+\usepackage{amsfonts,amssymb,fixdif}
+
+\title{常微分方程讲义}
+\subtitle{Ordinary Differential Equations}
+
+\author{薛冰}
+\date{\today}
+
+%table of content depth,目录显示的深度
+\setcounter{tocdepth}{3} 
+
+% 修改封面的颜色带
+\definecolor{customcolor}{RGB}{252,134,150}
+\colorlet{coverlinecolor}{customcolor}
+
+\cover{Cover.png}
+
+\begin{document}
+	\maketitle
+	
+	\frontmatter
+	\tableofcontents
+	\mainmatter
+	
+	\input{chapter1}
+	\newpage
+	
+\chapter{初等积分法}
+所谓微分方程的初等积分法，就是通过初等函数及其有限次积分的表达式求解微分方程的方法.
+\section{恰当方程}
+\begin{definition}[恰当方程]
+	考虑对称形式的一阶微分方程
+	\begin{equation}\label{equ:exactequation}
+		P(x,y)\d x+Q(x,y)\d y=0.
+	\end{equation}
+	如果存在一个可微函数$\varPhi(x,y)$，使得它的全微分为
+	$$\d \varPhi(x,y)=P(x,y)\d x+Q(x,y)\d y,$$
+	则称方程\ref{equ:exactequation}为{\heiti 恰当方程}(exact\ equation)或{\heiti 全微分方程}.
+\end{definition}
+因此，当方程\ref{equ:exactequation}为恰当方程时，可将它改写为全微分的形式
+$$\d\varPhi(x,y)=P(x,y)\d x+Q(x,y)\d y=0,$$
+从而
+\begin{equation}\label{equ:generalint}
+	\varPhi(x,y)=C,
+\end{equation}
+其中$C$为任意常数，我们称\ref{equ:generalint}式为方程\ref{equ:exactequation}的一个{\heiti 通积分}(general integration)或{\heiti 通解}(general solution).
+
+事实上，将任意常数$C$取定后，利用逆推法容易验证：由\ref{equ:generalint}式确定的隐函数$y=u(x)$（或$x=v(y)$）就是方程\ref{equ:exactequation}的一个解. 反之，若$y=u(x)$（或$x=v(y)$）是微分方程\ref{equ:exactequation}的一个解，则有
+$$\d\varPhi(x,y)=P(x,y)\d x+Q(x,y)\d y=0,$$
+其中$y=u(x)$（或$x=v(y)$）. 从而$y=u(x)$（或$x=v(y)$）满足\ref{equ:generalint}式，其中积分常数$C$取决于解$y=u(x)$（或$x=v(y)$）的初值$(x_0,y_0)$，亦即$C=\varPhi(x_0,y_0)$.
+
+在一般情况下，我们需要解决的问题是：
+\begin{enumerate}[(1)]
+	\item 如何判断一个给定的微分方程是否为恰当方程？
+	\item 当它是恰当方程时，如何求出相应全微分的原函数？
+	\item 当它不是恰当方程时，能否将它的求解问题转化为一个与之相关的恰当方程的求解问题？
+\end{enumerate}
+
+下面的定理对问题(1)和(2)给出了完满的解答. 至于问题(3)则是贯穿本章随后各节的一个中心问题.
+\begin{theorem}
+	设函数$P(x,y)$和$Q(x,y)$在区域$R=(\alpha,\beta)\times(\gamma.\delta)$上连续，且有连续的一阶偏导数$\dfrac{\partial P}{\partial y}$与$\dfrac{\partial Q}{\partial x}$，则微分方程
+	$$P(x,y)\d x+Q(x,y)\d y=0$$
+	是恰当方程的充要条件为恒等式
+	$$\frac{\partial}{\partial y}P(x,y)\equiv\frac{\partial}{\partial x}Q(x,y)$$
+	在$R$内成立. 且方程的通积分为
+	$$\int_{x_0}^{x}P(x,y)\d x+\int_{y_0}^{y}Q(x_0,y)\d y=C,$$
+	或者
+	$$\int_{x_0}^{x}P(x,y_0)\d x+\int_{y_0}^{y}Q(x,y)\d y=C,$$
+	其中$(x_0,y_0)$是$R$中任意取定的一点.
+\end{theorem}
+\begin{proof}
+	{\heiti 必要性}\qquad 方程为恰当方程，则存在$\varPhi(x,y)$使得
+	$$\frac{\partial\varPhi}{\partial x}=P(x,y),\qquad\frac{\partial\varPhi}{\partial y}=Q(x,y).$$
+	则
+	$$\frac{\partial P}{\partial y}=\frac{\partial^2\varPhi}{\partial y\partial x},\qquad\frac{\partial Q}{\partial x}=\frac{\partial^2\varPhi}{\partial x\partial y}.$$
+	由偏导数的连续性假设，有
+	$$\frac{\partial^2\varPhi}{\partial y\partial x}=\frac{\partial^2\varPhi}{\partial x\partial y}.$$
+	即
+	$$\frac{\partial P}{\partial y}=\frac{\partial Q}{\partial x}.$$
+	
+	{\heiti 充分性}\qquad 已知$\dfrac{\partial P}{\partial y}=\dfrac{\partial Q}{\partial x}$，我们要构造$\varPhi(x,y)$使
+	$$\frac{\partial\varPhi}{\partial x}=P(x,y),\qquad\frac{\partial\varPhi}{\partial y}=Q(x,y).$$
+	
+	令
+	$$\varPhi(x,y)=\int_{x_0}^{x}P(x,y)\d x+\psi(y),$$
+	则显然$\dfrac{\partial\varPhi}{\partial x}=P(x,y)$.
+	而
+	\begin{align*}
+		\frac{\partial \varPhi}{\partial y}
+		&=\frac{\partial}{\partial y}\int_{x_0}^{x}P(x,y)\d x+\psi'(y)\\
+		&=\int_{x_0}^{x}\frac{\partial P}{\partial y}\d x+\psi'(y)\\
+		&=\int_{x_0}^{x}\frac{\partial Q}{\partial x}\d x+\psi'(y)\\
+		&=Q(x,y)-Q(x_0,y)+\psi'(y).
+	\end{align*}
+	令
+	$$\psi'(y)=Q(x_0,y),$$
+	则有
+	$$\frac{\partial\varPhi}{\partial y}=Q(x,y).$$
+	此时
+	$$\psi(y)=\int_{y_0}^{y}Q(x_0,y)\d y,$$
+	所以有
+	$$\varPhi(x,y)=\int_{x_0}^{x}P(x,y)\d x+\int_{y_0}^{y}Q(x_0,y)\d y.$$
+	同理，我们令
+	$$\varPhi(x,y)=\psi(x)+\int_{y_0}^{y}Q(x,y)\d y$$
+	可类似得到另一个函数
+	$$\varPhi(x,y)=\int_{x_0}^{x}P(x,y_0)\d x+\int_{y_0}^{y}Q(x,y)\d y.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	求解恰当方程的关键是构造相应全微分的原函数$\varPhi(x,y)$,这实际上就是场论中的位势问题. 在单连通区域$R$上，条件
+	$$\frac{\partial P}{\partial y}=\frac{\partial Q}{\partial x}$$
+	保证了曲线积分
+	$$\varPhi(x,y)=\int_{(x_0,y_0)}^{(x,y)}P(x,y)\d x+Q(x,y)\d y$$
+	与积分的路径无关. 因此，上式确定了一个单值函数$\varPhi(x,y)$. 如果区域不是单连通的，那么一般而言$\varPhi(x,y)$也许是多值的.
+\end{remark}
+\begin{remark}
+	事实上，这也可由Green公式简单推出.
+\end{remark}
+\begin{proposition}
+	若函数$p(x),q(x)$在区间$I$上连续可微，则方程
+	$$p(x)\d x+q(x)\d y$$
+	是恰当的，其通解为
+	$$\int_{x_0}^{x}p(x)\d x+\int_{y_0}^{y}q(x)\d y=C.$$
+\end{proposition}
+\section{变量分离方程}
+\begin{definition}[变量分离方程]
+	如果微分方程
+	$$P(x,y)\d x+Q(x,y)\d y=0$$
+	中的函数$P(x,y)$和$Q(x,y)$均能表示为关于$x$的函数与关于$y$的函数的乘积，则称该微分方程为{\heiti 变量分离方程}.
+\end{definition}
+由上述定义，我们可以将$P(x),Q(x)$分别写成
+$$P(x)=X(x)Y_1(y),\quad Q(x)=X_1(x)Y(y).$$
+则变量分离方程可以写成
+$$X(x)Y_1(y)\d x+X_1(x)Y(y)\d y=0.$$
+
+考虑特殊情形：$P(x)=X(x)$和$Q(y)=Y(y)$，则微分方程为
+$$X(x)\d x+Y(y)\d y=0.$$
+这显然是一个恰当方程，且其一个通解为
+$$\int X(x)\d x+\int Y(y)=C.$$
+
+一般而言，变量分离方程不一定是恰当方程. 但它的名字揭示了：我们可以把变量进行分离. 如果我们用因子$X_1(x)Y_1(y)$去除变量分离方程，就得到
+$$\frac{X(x)}{X_1(x)}\d x+\frac{Y(y)}{Y_1(y)}\d y=0.$$
+这是一个恰当方程，它的通解为
+$$\int \frac{X(x)}{X_1(x)}\d x+\int \frac{Y(y)}{Y_1(y)}\d y=C.$$
+
+当$X_1(x)Y_1(y)\neq 0$时，上述方程和变量分离方程是同解的. 假设存在实数$a$使得$X_1(a)=0$，则函数$x=a$也是变量分离方程的解，但不是分离变量后方程的解. 因此，在分离变量后，{\heiti 要注意补上这些可能丢失的解}. 即补上形如
+$$x=a_i\quad (i=1,2,\cdots)$$
+和
+$$y=b_i\quad (i=1,2,\cdots)$$
+的特解. 其中$a_i$是$X_i(x)=0$的根，$b_i$是$Y_1(y)=0$的根.
+\section{一阶线性方程}
+我们先给出一阶线性方程的定义.
+\begin{definition}[一阶线性方程]
+	形如
+	$$\frac{\d y}{\d x}+p(x)y=q(x)$$
+	的微分方程称为{\heiti 一阶线性方程}. 其中$p(x)$和$q(x)$在区间$I=(a,b)$上连续. 
+	
+	当$q(x)\equiv 0$时，即得
+	$$\frac{\d y}{\d x}+p(x)y=0.$$
+	此时我们称一阶线性方程是{\heiti 齐次的}. 当$q(x)$不恒为零时，则称一阶线性方程为{\heiti 非齐次的}.
+\end{definition}
+\begin{remark}
+	这里的“齐次”与“非齐次”指的是有关未知函数$y$的式$(y,y',y'',\cdots)$次数相同(将不含有关$y$的式看作$0$次的).
+\end{remark}
+下面我们首先讨论齐次线性方程
+$$\frac{\d y}{\d x}+p(x)y=0$$
+的解法.
+\begin{solution}
+	改写成对称形式，即
+	$$\d y+p(x)y\d x=0,$$
+	这是一个分离变量方程. 当$y\neq 0$时，方程两侧同除以$y$，得
+	$$\frac{\d y}{y}+p(x)=0.$$
+	积分后，即得齐次线性方程的解
+	$$y=C\mathrm{e}^{-\int p(x)\d x}\quad (C\neq 0).$$
+	当$C=0$时，对应于方程的特解$y=0$，因此，$C$可以是任意常数，我们得到了齐次线性方程的通解.$\hfill\blacksquare$
+\end{solution}
+
+下面我们继续来看非齐次线性方程的解法. 
+\begin{solution}
+	同样地，我们改写成
+	$$\d y+p(x)y\d x=q(x)\d x.$$
+	一般地，上述方程并非恰当方程. 但如果我们将方程两侧同乘以一个非零因子$\mu(x)=\mathrm{e}^{\int p(x)\d x}$，我们得到
+	$$\mathrm{e}^{\int p(x)\d x}\d y+\mathrm{e}^{\int p(x)\d x}p(x)y\d x=\mathrm{e}^{\int p(x)\d x}q(x)\d x,$$
+	它是全微分的形式
+	$$\d (\mathrm{e}^{\int p(x)\d x}y)=\d \int q(x)\mathrm{e}^{\int p(x)\d x}\d x.$$
+	直接积分，得到通积分
+	$$\mathrm{e}^{\int p(x)\d x}y=\int q(x)\mathrm{e}^{\int p(x)\d x}\d x+C.$$
+	得到通解
+	$$y=\mathrm{e}^{-\int p(x)\d x}\left(C+\int q(x)\mathrm{e}^{\int p(x)\d x}\d x\right),$$
+	其中$C$是任意常数.$\hfill\blacksquare$
+\end{solution}
+\begin{remark}
+	上述方法称为{\heiti 积分因子法}. 因为我们用因子$\mu(x)$乘方程的两侧后，他就转化为了一个全微分方程，从而获得它的积分. 此外，我们还有{\heiti 常数变易法}，将在后续学习中提及.
+\end{remark}
+
+为确定起见，通常把一阶线性方程通解中的不定积分写成变上限的定积分，即
+$$y=\mathrm{e}^{-\int_{x_0}^{x} p(t)\d t}\left[C+\int_{x_0}^{x}q(s)\mathrm{e}^{-\int_{x_0}^{s} p(t)\d t}\d s\right]\quad (x_0\in I),$$
+或
+$$y=C\mathrm{e}^{-\int_{x_0}^{x} p(t)\d t}+\int_{x_0}^{x}q(s)\mathrm{e}^{-\int_{s}^{x} p(t)\d t}\d s.$$
+利用这种形式，容易得到Cauchy初值问题
+$$\frac{\d y}{\d x}+p(x)y=q(x),\quad y(x_0)=y_0$$
+的解为
+$$y=y_0\mathrm{e}^{-\int_{x_0}^{x} p(t)\d t}+\int_{x_0}^{x}q(s)\mathrm{e}^{-\int_{s}^{x} p(t)\d t}\d s,$$
+其中$p(x)$和$q(x)$在区间$I$上连续.
+
+下面给出线性微分方程的一些性质.
+\begin{theorem}
+	齐次线性方程的解或者恒等于零，或者恒不等于零.
+\end{theorem}
+\begin{theorem}
+	线性方程的解是整体存在的，即任一解都在$p(x)$和$q(x)$有定义且连续的整个区间$I$上存在.
+\end{theorem}
+\begin{theorem}
+	齐次线性方程的任何解的线性组合仍是它的解；齐次线性方程的任一解与非齐次线性方程的任一解之和是非齐次线性方程的解；非齐次线性方程的任意两解之差必是相应的齐次线性方程的解.
+\end{theorem}
+\begin{theorem}
+	非齐次线性方程的任一解与相应的齐次线性方程的通解之和构成非齐次线性方程的通解.
+\end{theorem}
+\begin{theorem}
+	线性方程的Cauchy初值问题的解存在且唯一.
+\end{theorem}
+
+\section{初等变换法}
+下面介绍几个标准类型的微分方程，它们可以通过适当的初等变换转化为变量分离方程或一阶线性方程.
+\subsection{齐次方程}
+\begin{definition}[齐次方程]
+	如果微分方程
+	$$P(x,y)\d x+Q(x,y)\d y=0$$
+	中的函数$P(x,y)$和$Q(x,y)$都是$x$和$y$的同次（如$m$次）齐次函数，即
+	$$P(tx,ty)=t^mP(x,y),\quad Q(tx,ty)=t^mQ(x,y),$$
+	则称方程为{\heiti 齐次方程}.
+\end{definition}
+\begin{remark}
+	这与上节定义的齐次线性方程不是一回事.
+\end{remark}
+
+对于齐次方程的解法，我们可以作变量替换. 令
+$$y=ux.$$
+其中$u$是新的未知函数，$x$仍为自变量. 则
+\begin{equation*}
+	\left\{
+	\begin{aligned}
+		&P(x,y)=P(x,xu)=x^mP(1,u),\\
+		&Q(x,y)=Q(x,xu)=x^mQ(1,u).
+	\end{aligned}
+	\right.
+\end{equation*}
+代入齐次方程
+$$P(x,y)\d x+Q(x,y)\d y=0,$$
+得
+$$x^m\left[P(1,u)+uQ(1,u)\right]\d x+x^{m+1}Q(1,u)\d u=0,$$
+这就将齐次方程转化为了变量分离方程.
+
+\begin{remark}
+	易知方程
+	$$P(x,y)\d x+Q(x,y)\d y=0$$
+	为齐次方程的一个等价定义是，它可以化为如下形式：
+	$$\frac{\d y}{\d x}=\varPhi\left(\frac{y}{x}\right).$$
+\end{remark}
+\begin{remark}
+	容易看出，$x=0$是我们化为的变量分离方程的一个特解. 但它未必是原方程的解. 这是因为变换$y=ux$在$x=0$时是不可逆的.
+\end{remark}
+\subsection{Bernoulli方程}
+\begin{definition}[Bernoulli方程]
+	形如
+	$$\frac{\d y}{\d x}+p(x)y=q(x)y^n$$
+	的方程称为\textbf{Bernoulli}{\heiti 方程}，其中$n$为常数且$n\neq 0,1$.
+\end{definition}
+对于Bernoulli方程的解法，我们先以$(1-n)y^{-n}$乘方程两边，得到
+$$(1-n)y^{-n}\frac{\d y}{\d x}+(1-n)y^{1-n}p(x)=(1-n)q(x).$$
+令$z=y^{1-n}$，有
+$$\frac{\d z}{\d x}+(1-n)p(x)z=(1-n)q(x),$$
+这就将其转化为了关于未知函数$z$的一阶线性方程.
+\subsection{Riccati方程}
+\begin{definition}[Riccati方程]
+	假如一阶微分方程
+	$$\frac{\d y}{\d x}=f(x,y)$$
+	的右端函数$f(x,y)$是一个关于$y$的二次多项式，即该方程可以写成
+	$$\frac{\d y}{\d x}=p(x)y^2+q(x)y+r(x),$$
+	的形式，其中$p(x),q(x)$和$r(x)$在区间$I$上连续且$p(x)$不恒为零，则称该方程为{\heiti 二次方程}或\textbf{Riccati}{\heiti 方程}. 
+\end{definition}
+\begin{remark}
+	Riccati方程是形式上最简单的非线性方程. 但一般而言，它不能用初等积分法求解.
+\end{remark}
+\begin{theorem}
+	设已知Riccati方程的一个特解$y=\varphi_1(x)$，则可用积分法求得它的通解.
+\end{theorem}
+\begin{proof}
+	对Riccati方程
+	$$\frac{\d y}{\d x}=p(x)y^2+q(x)y+r(x)$$
+	作变换$y=u+\varphi_1(x)$，其中$u$是新的未知函数. 代入Riccati方程，得到
+	$$\frac{\d u}{\d x}+\frac{\d \varphi_1}{\d x}=p(x)\left[u^2+2\varphi_1(x)u+\varphi_1^2(x)\right]+q(x)\left[u+\varphi_1(x)\right]+r(x).$$
+	由于$y=\varphi_1(x)$是Riccati方程的解，从上式消去相关的项后，就有
+	$$\frac{\d u}{\d x}=\left[2p(x)\varphi_1(x)+q(x)\right]u+p(x)u^2,$$
+	这是一个Bernoulli方程，可用积分法求出通解.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}
+	设Riccati方程
+	$$\frac{\d y}{\d x}+ay^2=bx^m,$$
+	其中$a,b,m$都是常数且$a\neq 0$. 又设$x\neq 0$和$y\neq 0$，则当$m$为
+	$$0,\ -2,\ \frac{-4k}{2k+1},\ \frac{-4k}{2k-1}\ (k=1,2,\cdots)$$
+	时，方程可通过适当的变换化为变量分离方程.
+\end{theorem}
+\begin{proof}
+	不妨设$a=1$(否则作自变量变换$\overline{x}=ax$即可)，我们考虑
+	\begin{equation}\label{riccati}
+		\frac{\d y}{\d x}+y^2=bx^m.
+	\end{equation}
+	
+	当$m=0$时，方程\ref{riccati}是一个变量分离方程
+	$$\frac{\d y}{\d x}=b-y^2.$$
+	
+	当$m=-2$时，作变换$z=xy$，其中$z$是新未知函数. 然后代入方程\ref{riccati}，得到
+	$$\frac{\d z}{\d x}=\frac{b+z-z^2}{x}.$$
+	这也是一个变量分离方程.
+	
+	\hspace*{\fill}
+	
+	当$m=\displaystyle\frac{-4k}{2k+1}$时，作变换
+	$$x=\xi^{\frac{1}{m+1}},\quad y=\frac{b}{m+1}\eta^{-1},$$
+	其中$\xi$和$\eta$分别为新的自变量和未知函数，则方程\ref{riccati}变为
+	\begin{equation}\label{transriccati1}
+		\frac{\d \eta}{\d \xi}+\eta^2=\frac{b}{(m+1)^2}\xi^n,
+	\end{equation}
+	其中$n=\dfrac{-4k}{2k-1}$. 再作变换
+	$$\xi=\frac{1}{t},\quad \eta=t-zt^2,$$
+	其中$t$和$z$分别是新的自变量和未知函数，则方程\ref{transriccati1}变为
+	\begin{equation}\label{transriccati2}
+		\frac{\d z}{\d t}+z^2=\frac{b}{(m+1)^2}t^l,
+	\end{equation}
+	其中$l=\dfrac{-4(k-1)}{2(k-1)+1}$.
+	
+	\hspace*{\fill}
+	
+	上述方程与方程\ref{riccati}在形式上一样，只是右端自变量的指数从$m$变为$l$. 比较$m$与$l$对$k$的依赖关系不难看出，只要将上述变换的过程重复$k$次，就能把方程\ref{riccati}化为$m=0$的情形.
+	
+	\hspace*{\fill}
+	
+	当$m=\displaystyle\frac{-4k}{2k-1}$时，原微分方程就是\ref{transriccati1}的类型，因此可以把它化为微分方程\ref{transriccati2}的形式，从而可以化归到$m=0$的情形. 至此证毕.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	此定理由Daniel\ Bernoullli在1725年得到. 这个定理指出，对于Riccati方程能用初等积分法求解，$m$的取值是充分的. 实际上，Liouville在1841年进而证明了这个条件还是一个必要条件.
+\end{remark}
+\begin{remark}
+	Riccati方程在历史上和近代都有重要应用. 例如，它曾用于证明Bessel方程的解不是初等函数，另外它也出现在现代控制论和向量场分支理论的一些问题中.
+\end{remark}
+\subsection{Gronwall不等式}
+Gronwall不等式在一阶常微分方程解的存在唯一性定理的证明过程中起到核心作用，该不等式在PDE和FPDE中也有重要应用，它的作用是给出相关未知函数的上界估计.
+\begin{theorem}[Gronwall-Bellman不等式]
+	设$K$为非负常数，$f(t)$与$g(t)$为区间$\left[\alpha,\beta\right]$上的非负连续函数，且满足
+	$$f(t)\leqslant K+\int_{\alpha}^{t}f(s)g(s)\d s,\qquad \alpha\leqslant t\leqslant\beta,$$
+	则有
+	$$f(t)\leqslant K\mathrm{e}^{\int_{\alpha}^{t}g(s)\d s}.$$
+\end{theorem}
+\begin{proof}
+	设
+	$$V(t)=K+\int_{\alpha}^{t}f(s)g(s)\d s,\qquad \alpha\leqslant\beta,$$
+	则
+	$$V'(t)=f(t)g(t)\leqslant g(t)V(t),$$
+	即$V'(t)-g(t)V(t)\leqslant 0$，两边同乘$\mathrm{e}^{-\int_{\alpha}^{t}g(s)\d s}$，得
+	$$\left[V(t)\mathrm{e}^{-\int_{\alpha}^{t}g(s)\d s}\right]'\leqslant 0.$$
+	由单调性得
+	$$V(t)\mathrm{e}^{-\int_{\alpha}^{t}g(s)\d s}\leqslant V(\alpha)=K.$$
+	故
+	$$f(t)\leqslant V(t)\leqslant K\mathrm{e}^{\int_{\alpha}^{t}g(s)\d s}.$$
+	$\hfill\blacksquare$
+\end{proof}
+	
+\chapter{存在和唯一性定理}
+\section{Picard存在和唯一性定理}
+\begin{definition}[Lipschitz条件]
+	设函数$f(x,y)$在区域$D$内满足不等式
+	$$|f(x,y_1)-f(x,y_2)|\leqslant L|y_1-y_2|,$$
+	其中常数$L>0$，则称函数$f(x,y)$在区域$D$内对$y$满足\textbf{Lipschitz}{\heiti 条件}. 称$L$为Lipschitz常数.
+\end{definition}
+Lipschitz条件是一个比通常连续更强的光滑性条件。直觉上，Lipschitz连续函数限制了函数改变的速度，符合Lipschitz条件的函数的斜率，必小于一个称为Lipschitz常数的实数.
+
+易知，若函数$f(x,y)$在凸区域$D$内对$y$有连续的偏微商，并且$D$是有界闭区域，则$f(x,y)$在$D$内对$y$满足Lipschitz条件；反之，结论不一定正确. 例如$f(x,y)=|y|$对$y$满足Lipschitz条件，但当$y=0$时它对$y$没有微商.
+
+现在，我们要证明下述Picard定理.
+\begin{theorem}[Picard定理]
+	设初值问题
+	$$(E):\ \frac{\d y}{\d x}=f(x,y),\quad y(x_0)=y_0,$$
+	其中$f(x,y)$在矩形区域
+	$$R:\ \left[x_0-a,x_0+a\right]\times\left[y_0-b,y_0+b\right]$$
+	内连续，而且对$y$满足Lipschitz条件. 则$(E)$在区间$I=\left[x_0-h,x_0+h\right]$上有且仅有一个解，其中常数
+	$$h=\min\left\{a,\frac{b}{M}\right\},\quad M>\max\limits_{(x,y)\in R}|f(x,y)|.$$
+\end{theorem}
+为了突出思路，我们把证明分成四步：
+\begin{enumerate}[(1)]
+	\item 将微分方程转化为对应的积分方程.
+	\item 构造Picard序列$\{y_n(x)\}$.
+	\item 证明Picard序列$y_n(x)\rightrightarrows y(x)$是方程的解.
+	\item 证明解的唯一性.
+\end{enumerate}
+\begin{proof}
+	(1) 先证明初值问题$(E)$有解$y=y(x)$，等价于积分方程
+	\begin{equation}\label{inte}
+		y=y_0+\int_{x_0}^{x}f(t,y)\d t
+	\end{equation}
+	有解$y=y(x)$. 
+	
+	设$y=y(x)\ (x\in I)$是$(E)$的解，则有
+	$$y'(x)=f(x,y(x))\ (x\in I)$$
+	和
+	$$y(x_0)=y_0.$$
+	由此，对上述微分方程进行积分并利用初值条件，得到
+	$$y(x)=y_0+\int_{x_0}^{x}f(x,y(x))\d x\ (x\in I),$$
+	即$y=y(x)$是积分方程\ref{inte}的解.
+	
+	反之，设$y=y(x)\ (x\in I)$是积分方程\ref{inte}的解，则只要逆转上面的推导就可知道$y=y(x)$是$(E)$的解.
+	
+	因此，Picard定理的证明等价于证明积分方程\ref{inte}在区间$I$上有且仅有一个解.
+	
+	(2) 采用不动点的思想，用逐次迭代法构造Picard序列
+	$$y_{n+1}(x)=y_0+\int_{x_0}^{x}f(t,y_n(t))\d t\ (x\in I,\ n=0,1,2,\cdots),$$
+	其中$y_0(x)=y_0$.
+	
+	当$n=0$时，注意到$f(x,y_0(x))$是$I$上的连续函数，所以由递推式，有
+	$$y_1(x)=y_0(x)+\int_{x_0}^{x}f(t,y_0(t))\d t\ (x\in I)$$
+	在$I$上是连续可微的，而且满足不等式
+	$$|y_1(x)-y_0(x)|\leqslant\left|\int_{x_0}^{x}|f(t,y_0(t))|\d t\right|\leqslant M|x-x_0|.$$
+	这就是说，在区间$I$上$|y_1(x)-y_0|\leqslant Mh\leqslant b$.
+	
+	因此，$f(x,y_1(x))$在$I$上是连续的. 所以由递推式，有
+	$$y_2(x)=y_0(x)+\int_{x_0}^{x}f(t,y_1(t))\d t\ (x\in I)$$
+	在$I$上是连续可微的，而且满足不等式
+	$$|y_2(x)-y_1(x)|\leqslant\left|\int_{x_0}^{x}|f(t,y_1(t))\d t|\right|\leqslant M|x-x_0|,$$
+	从而我们有：$|y_2(x)-y_0|\leqslant Mh\leqslant b\ (x\in I)$.
+	
+	如此类推，用归纳法不难证明：由递推式给出的Picard序列$\{y_n(x)\}$在$I$上是连续的，而且满足不等式
+	$$|y_n(x)-y_0|\leqslant M|x-x_0|\ (n=0,1,2,\cdots).$$
+	
+	(3)现证：Picard序列$\{y_n(x)\}$在区间$I$上一致收敛到积分方程\ref{inte}的解.
+	
+	序列$\{y_n(x)\}$的收敛性等价于级数
+	$$\sum_{n=1}^{\infty}\left[y_{n+1}(x)-y_n(x)\right]$$
+	的收敛性. 
+	\begin{align*}
+		|y_2(x) - y_1(x)| &= \left|\int_{x_0}^{x}[f(t, y_1(t)) - f(t, y_0(t))]\d t\right|\\
+		&\leqslant \left|\int_{x_0}^{x}|f(t, y_1(t)) - f(t, y_0(t))|\d t\right|\\
+		&\leqslant L\left|\int_{x_0}^{x}|y_1(t) - y_0(t)|\d t\right|\\
+		&\leqslant LM\left|\int_{x_0}^{x}|t - x_0|\d t\right|\\
+		&= \frac{LM}{2}(x-x_0)^2 = \frac{M}{L}\frac{[L(x-x_0)]^2}{2}
+	\end{align*}
+	同理，可得
+	$$|y_{n+1}(x)-y_n(x)|\leqslant L\left|\int_{x_0}^{x}|y_n(t)-y_{n-1}(t)|\d t\right|,$$
+	根据归纳法，可以证明
+	$$|y_{n+1}(x)-y_n(x)|\leqslant\frac{M}{L}\frac{\left[L|x-x_0|\right]^{n+1}}{(n+1)!}\leqslant\frac{M}{L}\frac{(Lh)^{n+1}}{(n+1)!}.$$
+	故
+	$$\sum_{j=0}^{\infty}|y_{j+1}(x)-y_j(x)|\leqslant\frac{M}{L}\sum_{j=0}^{\infty}\frac{(Lh)^{j+1}}{(j+1)!}.$$
+	则根据函数项级数的Weierstrass判别法，可知$\{y_n(x)\}$一致收敛，因此对Picard序列的递推式取极限，得
+	$$y(x)=\lim\limits_{n\to\infty}y_n(x)=y_0+\int_{x_0}^{x}f(t,y(t))\d t.$$
+	故Picard序列的极限$y(x)$是方程的解.
+	
+	(4)最后证明解的唯一性. 若方程有两个互异的解$\varphi(x), \psi(x)$，记$u(x)=\varphi(x)-\psi(x)$，则有
+	\begin{align*}
+		|u(x)|&=\left|\int_{x_0}^{x}f(t,\varphi(t))-f(t,\psi(t))\d t\right|\\
+		&\leqslant L\int_{x_0}^{x}|\varphi(t)-\psi(t)|\d t\\
+		&=L\int_{x_0}^{x}|u(t)|\d t.
+	\end{align*}
+	根据Gronwall不等式可得
+	$$|u(x)|\leqslant 0,$$
+	故$\varphi(x)=\psi(x)$.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	若$f(x,y)$不满足Lipschitz条件，则有Picard序列可能不收敛，解仍存在的情形.
+\end{remark}
+\begin{remark}
+	$f$仅连续但不满足Lipschitz条件时，解可能不唯一. 例如$y'=\dfrac{3}{2}y^{\frac{1}{3}}$.
+\end{remark}
+\hspace*{\fill}
+
+\begin{remark}
+	我们也可以利用压缩映像原理来证明解的唯一性. 下面我们给出该原理但不再证明，感兴趣的读者可以参考泛函分析相关教材.
+\end{remark}
+\begin{theorem}[压缩映像原理]
+	设$X$是完备的度量空间，$T$是$X$上的压缩映射，那么$T$有且仅有一个不动点，即$Tx=x$有且只有一个解.
+\end{theorem}
+下面我们介绍Osgood条件，它是一个比Lipschitz条件更弱的条件.
+\begin{definition}[Osgood条件]
+	设函数$f(x,y)$在区域$G$内连续，而且满足不等式
+	$$|f(x,y_1)-f(x,y_2)|\leqslant F(|y_1-y_2|),$$
+	其中$F(r)>0$是$r>0$的连续函数，且
+	$$\int_{0}^{r_1}\frac{\d r}{F(r)}=+\infty,$$
+	则称$f(x,y)$在$G$内对$y$满足\textbf{Osgood}{\heiti 条件}.
+\end{definition}
+\begin{remark}
+	Lipschitz条件是Osgood条件的特例，因为$F(r)=Lr$满足上述要求.
+\end{remark}
+
+
+
+
+
+	
+\end{document}

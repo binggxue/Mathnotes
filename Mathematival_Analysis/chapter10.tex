@@ -1,0 +1,499 @@
+\chapter{数项级数}
+\section{基本概念}
+\begin{definition}[数项级数]
+	给定一个数列$\{u_n\}$，对它的各项依次用“$+$”号连接起来的表达式
+	$$u_1+u_2+\cdots+u_n+\cdots$$
+	称为{\heiti 常数项无穷级数}或{\heiti 数项级数}（也常简称{\heiti 级数}），其中$\{u_n\}$称为数项级数的{\heiti 通项}或{\heiti 一般项}.
+	
+	记作$\displaystyle\sum_{n=1}^{\infty}u_n$或简单记作$\sum u_n$.
+	
+	级数的前$n$项之和记作
+	$$S_n=\sum_{k=1}^{n}u_k=u_1+u_2+\cdots+u_n,$$
+	称为数项级数的{\heiti 第$n$个部分和}，简称{\heiti 部分和}.
+\end{definition}
+\begin{definition}[收敛与发散]
+	若数项级数的部分和数列$\{S_n\}$收敛于$S$，即$\lim\limits_{n\to\infty}S_n=S$，则称数项级数{\heiti 收敛}，称$S$为数项级数的{\heiti 和}，记作
+	$$S=\sum u_n.$$
+	若$\{S_n\}$是发散数列，则称数项级数{\heiti 发散}.
+\end{definition}
+\begin{example}
+	讨论{\heiti 几何级数}
+	$$\sum_{k=0}^{\infty}aq^{i}\qquad(a\neq 0)$$
+	的敛散性.
+\end{example}
+\begin{solution}
+	$q\neq 1$时，级数的部分和
+	$$S_n=a+aq+\cdots+aq^{n-1}=a\cdot\frac{1-q^n}{1-q}.$$
+	因此，
+	\begin{enumerate}[(1)]
+		\item 当$|q|<1$时，$\lim\limits_{n\to\infty}S_n=\lim\limits_{n\to\infty}a\cdot\dfrac{1-q^n}{1-q}=\dfrac{a}{1-q}$. 此时级数收敛，其和为$\dfrac{a}{1-q}$.
+		\item 当$|q|>1$时，$\lim\limits_{n\to\infty}S_n=\infty$，级数发散.
+		\item 当$q=1$时，$S_{n}=na$，级数发散.
+		\item 当$q=-1$时，$S_{2k}=0,\ S_{2k+1}=a,\ k=1,2,\cdots$，级数发散.
+	\end{enumerate}
+	综上所述，$|q|<1$时级数收敛，$|q|\geqslant 1$时级数发散.
+\end{solution}
+\begin{example}
+	设$p$级数
+	$$\sum_{n=1}^{\infty}\frac{1}{n^p},$$
+	当$p>1$时级数收敛，当$p\leqslant 1$时级数发散，特别地，当$p=1$时称它为{\heiti 调和级数}.
+\end{example}
+依级数收敛和发散的定义，我们得到了第一个用来判别级数敛散的方法. 即求出级数的部分和数列，判断部分和数列的敛散性进而直接推出级数的敛散性. 然而，很多情况下我们是无法求出级数的部分和的，那么我们就需要其他的判别敛散性的方法.
+
+由于级数的敛散性由它的部分和数列确定，因而可以把级数看作部分和数列的另一种表现形式. 反之，任给数列$\{a_n\}$，我们也可以把它看作某一数项级数的部分和数列，我们就有
+$$\sum_{n=1}^{\infty}u_n=a_1+(a_2-a_1)+\cdots+(a_n-a_{n-1})+\cdots.$$
+这时$\{a_n\}$与级数$\sum u_n$同敛态. 基于级数和数列的这种关系，我们有下列一些定理.
+\begin{theorem}[Cauchy准则]
+	$\sum u_n$收敛的充要条件是：任给$\varepsilon>0$，总存在正整数$N$，使得当$m>N$时，对任意的正整数$p$，都有
+	$$|S_{m+p}-S_m|<\varepsilon$$
+	或
+	$$|u_{m+1}+u_{m+2}+\cdots+u_{m+p}|<\varepsilon.$$
+\end{theorem}
+由此可见，一个级数是否收敛与级数前面有限项的取值无关.
+
+此外，我们立即可得下述推论.
+\begin{corollary}
+	若$\sum u_n$收敛，则$\lim\limits_{n\to\infty}u_n=0$.
+\end{corollary}
+\begin{remark}
+	此推论只是级数收敛的必要条件而非充分条件，即$u_n\to 0$并不能推出级数收敛.
+\end{remark}
+\begin{theorem}
+	若级数$\sum u_n$和$\sum v_n$都收敛，则对任意常数$c,d$，级数$\sum(cu_n+dv_n)$也收敛，且
+	$$\sum(cu_n+dv_n)=c\sum u_n+d\sum v_n$$
+\end{theorem}
+\begin{theorem}
+	去掉、增加或改变级数的有限个项并不改变级数的敛散性.
+\end{theorem}
+由此定理知道，若级数$\sum u_n$收敛，其和为$S$，则级数
+$$u_{n+1}+u_{n+2}+\cdots$$
+也收敛，且其和$R_n=S-S_n$. 称为级数$\sum u_n$的{\heiti 第$n$个余项}（或简称{\heiti 余项}），表示以部分和$S_n$代替$S$时产生的误差.
+\begin{theorem}
+	在收敛级数的项中任意加括号，既不改变级数的收敛性，也不改变它的和.
+\end{theorem}
+\begin{proof}
+	设$\sum u_n$为收敛级数，其和为$S$. 记
+	$$v_1=u_1+\cdots+u_{n_1},$$
+	$$v_2=u_{n_1+1}+\cdots+u_{n_2},$$
+	一般地，
+	$$v_k=u_{n_{k-1}+1}+\cdots+u_{n_k},$$
+	现在证明$\sum u_n$加括号后的级数
+	$$\sum_{k=1}^{\infty}(u_{n_{k-1}+1}+\cdots+u_{n_k})=\sum_{k=1}^{\infty}v_k$$
+	也收敛，且其和也是$S$.
+	
+	事实上，设$\{S_n\}$为收敛级数$\sum u_n$的部分和数列，则级数$\sum v_k$的部分和数列$\{S_{n_k}\}$是$\{S_n\}$的一个子列. 由于$\{S_n\}$收敛，且$\lim\limits_{n\to\infty}S_n=S$. 故由子列性质，$\{S_{n_k}\}$也收敛，且$\lim\limits_{k\to\infty}S_{n_k}=S$，即级数$\sum v_k$收敛，且它的和也等于$S$.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	若级数加括号后收敛，并不能说明原级数也收敛. 若级数存在一种使得该级数发散的加括号的方式，则原级数发散.
+\end{remark}
+\section{正项级数}
+\begin{definition}[正项级数]
+	各项都是由非负数组成的级数称为{\heiti 正项级数}.
+\end{definition}
+\begin{remark}
+	实际上，$u_n=0$的项不影响级数的敛散性，在判别正项级数敛散性时可自然排除.
+\end{remark}
+\subsection{一般判别原则}
+\begin{theorem}
+	正项级数$\sum u_n$收敛的充要条件是：部分和数列$\{S_n\}$有界. 即存在某正数$M$，对一切正整数$n$有$S_n<M$.
+\end{theorem}
+\begin{proof}
+	正项级数的每一项都是非负的，因此$\{S_n\}$是递增的，由单调有界收敛定理可知$\{S_n\}$收敛，故$\sum u_n$收敛.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}[比较原则]
+	设$\sum u_n$和$\sum v_n$是两个正项级数，如果存在某正数$N$，对一切$n>N$都有
+	$$u_n\leqslant v_n,$$
+	则
+	\begin{enumerate}[(1)]
+		\item 若$\sum v_n$收敛，则$\sum u_n$也收敛；
+		\item 若$\sum u_n$发散，则$\sum v_n$也发散.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	只需证明(1).因为改变级数的有限项并不会影响原级数的敛散性，不妨设$u_n\leqslant v_n$对一切正整数$n$都成立.
+	
+	记$S_n'$和$S_n''$分别为$\sum u_n$和$\sum v_n$的部分和，则
+	$$S_n'\leqslant S_n'',$$
+	若$\sum v_n$收敛，则对一切$n$，有$S_n'\leqslant\lim\limits_{n\to\infty}S_n''$，即正项级数$\sum u_n$的部分和数列$\{S_n'\}$有界，故$\sum u_n$收敛. 由于(2)是(1)的逆否命题，自然成立.$\hfill\blacksquare$
+\end{proof}
+\begin{corollary}[比较原则的极限形式]
+	设$\sum u_n$和$\sum v_n$是两个正项级数，若
+	$$\lim\limits_{n\to\infty}\frac{u_n}{v_n}=l,$$
+	则
+	\begin{enumerate}[(1)]
+		\item 当$0<l<+\infty$时，$\sum u_n$和$\sum v_n$同敛态；
+		\item 当$l=0$时，由$\sum v_n$收敛可推知$\sum u_n$也收敛；
+		\item 当$l=+\infty$时，由$\sum v_n$发散可推知$\sum u_n$也发散.
+	\end{enumerate}
+\end{corollary}
+\begin{proof}
+	当$0<l<+\infty$时，对任意正数$\varepsilon<l$，存在某正数$N$，当$n>N$时，有
+	$$\left|\frac{u_n}{v_n}-l\right|<\varepsilon,$$
+	即
+	\begin{equation}\label{unvn}
+		(l-\varepsilon)v_n<u_n<(l+\varepsilon).
+	\end{equation}
+	由比较原则可得$\sum u_n$和$\sum v_n$具有相同的敛散性.
+	
+	当$l=0$时，由$\ref{unvn}$式右半部分及比较原则得：若$\sum v_n$收敛，则$\sum u_n$也收敛.
+	
+	当$l=+\infty$时，即对任意正数$M$，存在正数$N$，当$n>N$时，都有
+	$$\frac{u_n}{v_n}>M,$$
+	即$u_n>Mv_n$. 由比较原则得，若$\sum v_n$发散，则$\sum u_n$也发散.$\hfill\blacksquare$
+\end{proof}
+有了上述定理，判断级数的敛散性问题就可以转化为判断它的一个同阶无穷小的敛散性.
+\subsection{比式判别法和根式判别法}
+根据比较原则，可以利用已知收敛或者发散级数作为比较对象来判别其他级数的敛散性. 下面我们介绍的判别法是以等比级数作为比较对象而得到的.
+\begin{theorem}[D'Alembert比式判别法]
+	设$\sum u_n$为正项级数，且存在某正整数$N_0$及常数$q\ (0<q<1)$，对一切$n>N_0$，
+	\begin{enumerate}[(1)]
+		\item 若$\dfrac{u_{n+1}}{u_n}\leqslant q$，则级数$\sum u_n$收敛.
+		\item 若$\dfrac{u_{n+1}}{u_n}\geqslant 1$，则级数$\sum u_n$发散.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	(1)不妨设对一切$n\geqslant 1$都有
+	$$\frac{u_{n+1}}{u_n}\leqslant q$$
+	成立，于是有
+	$$\frac{u_2}{u_1}\leqslant q,\quad \frac{u_3}{u_2}\leqslant q,\cdots,\quad \frac{u_n}{u_{n-1}}\leqslant q,\cdots.$$
+	左右分别相乘，得
+	$$\frac{u_2}{u_1}\cdot\frac{u_3}{u_2}\cdot\cdots\cdot\frac{u_n}{u_{n-1}}\leqslant q^{n-1},$$
+	即
+	$$u_n\leqslant u_1 q^{n-1}.$$
+	当$0<q<1$时，等比级数$\sum\limits_{n=1}^{\infty}q^{n-1}$收敛，根据比较原则可知$\sum u_n$收敛.
+	
+	(2)当$n>N_0$时有
+	$$\frac{u_{n+1}}{u_n}\geqslant 1$$
+	成立，则$u_{n+1}\geqslant u_n\geqslant u_{N_0}$，于是当$n\to\infty$时，$u_n$的极限不可能为零. 由Cauchy收敛准则的推论可知$\sum u_n$发散.$\hfill\blacksquare$
+\end{proof}
+\begin{corollary}[D'Alembert判别法的极限形式]
+	若$\sum u_n$为正项级数，且
+	$$\lim\limits_{n\to\infty}\frac{u_{n+1}}{u_n}=q,$$
+	则
+	\begin{enumerate}[(1)]
+		\item 当$q<1$时，级数$\sum u_n$收敛；
+		\item 当$q>!$或$q=+\infty$时，级数$\sum u_n$发散；
+		\item 当$q=1$时，无法判断级数$\sum u_n$的敛散性.
+	\end{enumerate}
+\end{corollary}
+\begin{proof}
+	对取定的正数$\varepsilon=\dfrac{1}{2}|1-q|$，存在正数$N$，当$n>N$时，都有
+	$$q-\varepsilon<\frac{u_{n+1}}{u_n}<q+\varepsilon.$$
+	
+	当$q<1$时，$\dfrac{u_{n+1}}{u_n}<q+\varepsilon=\dfrac{1}{2}(1+q)<1$，故级数$\sum u_n$收敛.
+	
+	当$q>1$时，$\dfrac{u_{n+1}}{u_n}q-\varepsilon=\dfrac{1}{2}(1+q)>1$，故级数$\sum u_n$发散.
+	
+	当$q=+\infty$时，存在$N$，当$n>N$时有
+	$$\frac{u_{n+1}}{u_n}>1,$$
+	从而$\lim\limits_{n\to\infty}u_n\neq 0$，所以级数$\sum u_n$发散.
+	
+	当$q=1$时，分别取$u_n=\dfrac{1}{n}$和$u_n=\dfrac{1}{n^2}$，前者发散而后者收敛，故并不能以此判别敛散性.$\hfill\blacksquare$
+\end{proof}
+如果上述$\dfrac{u_{n+1}}{u_n}$的极限不存在，则可应用上、下极限来判别.
+\begin{corollary}
+	设$\sum u_n$为正项级数.
+	\begin{enumerate}[(1)]
+		\item 若$\varlimsup\limits_{n\to\infty}\dfrac{u_{n+1}}{u_n}=Q<1$，则级数收敛；
+		\item 若$\varliminf\limits_{n\to\infty}\dfrac{u_{n+1}}{u_n}=q>1$，则级数发散.
+		\item 若$Q=1$或$q=1$或$q<1<Q$，则无法判断其敛散性.
+	\end{enumerate}
+\end{corollary}
+\begin{theorem}[Cauchy根式判别法]
+	设$\sum u_n$为正项级数，且存在某正数$N_0$及正常数$l$，对一切$N_0$，
+	\begin{enumerate}[(1)]
+		\item 若$\sqrt[n]{u_n}\leqslant l<1$，则级数$\sum u_n$收敛；
+		\item 若$\sqrt[n]{u_n}\geqslant 1$，则级数$\sum u_n$发散.
+		\item 若$\sqrt[n]{u_n}=1$，则无法判断级数$\sum u_n$的敛散性.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	对(1)中的不等式变形，得
+	$$u_n\leqslant l^n.$$
+	因为等比级数$\sum l^n$在$0<l<1$时收敛，故由比较原则，这时级数$\sum u_n$也收敛.
+	
+	对(2)中的不等式变形，得
+	$$u_n\geqslant 1^n=1.$$
+	当$n\to\infty$时，显然$u_n$不可能以零为极限，因此级数$\sum u_n$是发散的.
+	
+	(3)中，与D'Alembert判别法极限形式的证明一样，考虑$\dfrac{1}{n}$和$\dfrac{1}{n^2}$.
+	$\hfill\blacksquare$
+\end{proof}
+\begin{corollary}[Cauchy判别法的极限形式]
+	设$\sum u_n$为正项级数，且
+	$$\lim\limits_{n\to\infty}\sqrt[n]{u_n}=l,$$
+	则
+	\begin{enumerate}[(1)]
+		\item 当$l<1$时，级数$\sum u_n$收敛；
+		\item 当$l>1$时，级数$\sum u_n$发散.
+		\item 当$l=1$时，无法判断其敛散性.
+	\end{enumerate}
+\end{corollary}
+\begin{proof}
+	当取$\varepsilon<|1-l|$时，存在某正数$N$，对一切$n>N$，有
+	$$l-\varepsilon<\sqrt[n]{u_n}<l+\varepsilon.$$
+	于是由Cauchy判别法即得.$\hfill\blacksquare$
+\end{proof}
+如果上述$\sqrt[n]{u_n}$的极限不存在，则可根据根式$\sqrt[n]{u_n}$的上极限来判断.
+\begin{corollary}
+	设$\sum u_n$为正项级数，且
+	$$\varlimsup\limits_{n\to\infty}\sqrt[n]{u_n}=l,$$
+	则
+	\begin{enumerate}[(1)]
+		\item 当$l<1$时级数收敛；
+		\item 当$l>1$时级数发散；
+		\item 当$l=1$时无法判断其敛散性.
+	\end{enumerate}
+\end{corollary}
+\subsection{Raabe判别法}
+比式判别法和根式判别法只适用于来判断通项收敛速度比某一等比级数快的级数，如果级数的收敛速度较慢，它们就无能为力了. 我们设法找到收敛速度更慢的级数作为标准. 这就有了Raabe判别法.
+\begin{theorem}[Raabe判别法]
+	设$\sum u_n$为正项级数，且存在某正整数$N_0$及常数$r$，
+	\begin{enumerate}[(1)]
+		\item 若对一切$n>N_0$，成立不等式
+		$$n\left(1-\frac{u_{n+1}}{u_n}\right)\geqslant r>1,$$
+		则级数$\sum u_n$收敛；
+		\item 若对一切$n>N_0$，成立不等式
+		$$n\left(1-\frac{u_{n+1}}{u_n}\right)\leqslant 1,$$
+		则级数$\sum u_n$发散.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}[(1)]
+		\item 由$n\left(1-\frac{u_{n+1}}{u_n}\right)\geqslant r$可得$\dfrac{u_{n+1}}{u_n}<1-\dfrac{r}{n}$. 选$p$使$1<p<r$. 由于
+		$$\lim\limits_{n\to\infty}\frac{1-\left(1-\frac{1}{n}\right)^r}{\frac{r}{n}}=\lim\limits_{x\to 0}\frac{1-(1-x)^p}{rx}=\lim\limits_{x\to 0}\frac{p(1-x)^{p-1}}{r}=\frac{p}{r}<1,$$
+		因此，存在正数$N$，使对任意$n>N$，
+		$$\frac{r}{n}>1-\left(1-\frac{1}{n}\right)^p.$$
+		这样
+		$$\frac{u_{n+1}}{u_n}<1-\left[1-\left(1-\frac{1}{n}\right)^r\right]=\left(1-\frac{1}{n}\right)^p=\left(\frac{n-1}{n}\right)^p.$$
+		于是，当$n>N$时就有
+		\begin{align*}
+			u_{n+1}&=\frac{u_{n+1}}{u_n}\cdot\frac{u_n}{u_{n-1}}\cdot\cdots\cdot\frac{u_{N+1}}{u_N}\cdot u_N\\
+			&\leqslant\left(\frac{n-1}{n}\right)^p\left(\frac{n-2}{n-1}\right)^p\cdot\cdots\cdot\left(\frac{N-1}{N}\right)^p\cdot u_N\\
+			&=\frac{(N-1)^p}{n^p}\cdot u_N.
+		\end{align*}
+		当$p>1$时，$\sum\frac{1}{n^2}$收敛，故级数$\sum u_n$是收敛的.
+		\item 由$n\left(1-\dfrac{u_{n+1}}{u_n}\right)\leqslant 1$可得$\dfrac{u_{n+1}}{u_n}\geqslant 1-\dfrac{1}{n}=\frac{n-1}{n}$，于是
+		\begin{align*}
+			u_{n+1}&=\frac{u_{n+1}}{u_n}\cdot\frac{u_n}{u_{n-1}}\cdot\cdots\cdot\frac{u_3}{u_2}\cdot u_2\\
+			&>\frac{n-1}{n}\cdot\frac{n-2}{n-1}\cdot\cdots\cdot\frac{1}{2}\cdot u_2\\
+			&=\frac{1}{n}\cdot u_2.
+		\end{align*}
+		因为$\sum \frac{1}{n}$是发散的，故$\sum u_n$是发散的.$\hfill\blacksquare$
+	\end{enumerate}
+\end{proof}
+\begin{corollary}[Raabe判别法的极限形式]
+	设$\sum u_n$为正项级数，且极限
+	$$\lim\limits_{n\to\infty}n\left(1-\frac{u_{n+1}}{u_n}\right)=r$$
+	存在，则
+	\begin{enumerate}
+		\item 当$r>1$时，级数$\sum u_n$收敛；
+		\item 当$r<1$时，级数$\sum u_n$发散.
+	\end{enumerate}
+\end{corollary}
+Raabe判别法判别的范围比比式判别法和根式判别法更广泛，但也有其无法判别的情况，如$r=1$时. 没有收敛得最慢的收敛级数，因此任何判别法只能判别一部分级数，当然我们可以继续建立比Raabe判别法更精细的判别法，这个过程是无限的.
+\subsection{积分判别法}
+积分判别法是利用非负函数的单调性和积分性质，并以反常积分为比较对象来判别正项级数的敛散性.
+\begin{theorem}
+	设$f$为$\left[1,+\infty\right)$上的减函数，则级数$\displaystyle\sum_{n=1}^{\infty}f(n)$收敛的充分必要条件是反常积分$\displaystyle\int_{1}^{+\infty}f(x)\d x$收敛.
+\end{theorem}
+\begin{proof}
+	{\heiti 必要性}\quad 设$\displaystyle\sum_{n=1}^{\infty}f(n)$收敛，其和为$S$，则$\lim\limits_{n\to\infty}f(n)=0$. 又因为$f$为$\left[1,+\infty\right)$上的减函数，所以$f(x)\geqslant 0$，从而$\displaystyle\sum_{n=1}^{\infty}f(n)$为正项级数. 于是对任意正整数$m$，有
+	$$\int_{1}^{m}f(x)\d x=\sum_{n=2}^{m}\int_{n-1}^{n}f(x)\d x\leqslant \sum_{n=1}^{m-1}f(n)\leqslant \sum_{n=1}^{\infty}f(n)=S.$$
+	由$f$是非负的减函数，故对任何正数$A$，有
+	$$0\leqslant \int_{1}^{A}f(x)\d x\leqslant \int_{1}^{m+1}f(x)\d x\leqslant \sum_{n=1}^{m}f(n)\leqslant S,\ m<A\leqslant m+1.$$
+	根据比较原则，可知$\displaystyle\int_{1}^{\infty}f(x)$收敛.
+	
+	{\heiti 充分性}\quad 设$\displaystyle\int_{1}^{\infty}f(x)$收敛，则$\lim\limits_{n\to +\infty}f(x)=0$. 又因为$f$是减函数，因此它是非负的减函数，$\displaystyle\sum_{n=1}^{\infty}f(n)$是正项级数. 因此对任意正整数$m$，有
+	$$\sum_{n=1}^{m}f(n)=f(1)+\sum_{n=2}^{m}f(n)\leqslant f(1)+\int_{1}^{m}f(x)\d x\leqslant f(1)+\int_{1}^{+\infty}f(x)\d x.$$
+	因此级数$\displaystyle\sum_{n=1}^{\infty}f(n)$收敛.$\hfill\blacksquare$
+\end{proof}
+\section{一般项级数}
+这里只讨论某些特殊类型的级数的收敛性问题.
+\subsection{交错级数}
+定义{\heiti 交错级数}为各项正负相间的级数. 对于交错级数，我们有Leibnitz判别法.
+\begin{theorem}[Leibnitz判别法]
+	设交错级数
+	$$u_1-u_2+u_3-u_4+\cdots+(-1)^{n+1}u_n+\cdots\quad (u_n>0,\ n=1,2,\cdots),$$
+	如果它满足下面条件(Leibnitz条件)
+	\begin{enumerate}
+		\item 数列$\{u_n\}$单调递减；
+		\item $\lim\limits_{n\to\infty}u_n=0$，
+	\end{enumerate}
+	则交错级数收敛.
+\end{theorem}
+\begin{proof}
+	考察交错级数的部分和数列$\{S_n\}$，它的奇数项和偶数项分别为
+	$$S_{2m-1}=u_1-(u_2-u_3)-\cdots-(u_{2m-2}-u_{2m-1}),$$
+	$$S_{2m}=(u_1-u_2)+(u_3-u_4)+\cdots+(u_{2m-1}-u_{2m}).$$
+	由条件(1)，上述两式中各个括号内的数都是非负的，从而数列$\{S_{2m-1}\}$是递减的，而数列$\{S_{2n}\}$是递增的，又由条件(2)知道
+	$$0<S_{2m-1}-S_{2m}=u_{2m}\to 0\quad (m\to\infty),$$
+	从而$\{\left[S_{2m},S_{2m-1}\right]\}$是一个区间套. 由区间套定理，存在唯一的一个数$S$，使得
+	$$\lim\limits_{m\to\infty}S_{2m-1}=\lim\limits_{m\to\infty}S_{2m}=S.$$
+	所以数列$\{S_n\}$收敛，即交错级数收敛. $\hfill\blacksquare$
+\end{proof}
+\begin{corollary}
+	若交错级数满足Leibnitz条件，则级数的余项估计式为
+	$$|R_n|\leqslant u_{n+1}.$$
+\end{corollary}
+\subsection{绝对收敛级数及其性质}
+\begin{definition}[绝对收敛级数]
+	若级数$\sum u_n$各项的绝对值组成的级数$\sum |u_n|$收敛，则称级数$\sum u_n$为{\heiti 绝对收敛级数}.
+\end{definition}
+\begin{theorem}
+	绝对收敛级数一定收敛.
+\end{theorem}
+\begin{proof}
+	由于级数$\sum |u_n|$收敛，由Cauchy收敛准则，对任意$\varepsilon>0$，存在$N>0$，对$m>N$和任意正整数$r$，有
+	$$|u_{m+1}|+|u_{m+2}|+\cdots+|u_{m+r}|<\varepsilon.$$
+	而
+	$$|u_{m+1}+u_{m+2}+\cdots+u_{m+r}|\leqslant|u_{m+1}|+|u_{m+2}|+\cdots+|u_{m+r}|<\varepsilon,$$
+	因此由Cauchy收敛准则可知$\sum u_n$收敛.
+\end{proof}
+因此，判别一个级数是否收敛，我们可以先判别它是否绝对收敛，这时只需判断其各项绝对值组成的级数的敛散性，也就转化为了判断正项级数的敛散性问题. 但是，一个级数收敛并不能推出它是绝对收敛的. 我们有以下定义.
+\begin{definition}[条件收敛级数]
+	如果级数$\sum u_n$收敛而$\sum |u_n|$不收敛，则称$\sum u_n$为{\heiti 条件收敛级数}.
+\end{definition}
+至此，全体收敛的级数可以分为绝对收敛级数和条件收敛级数两大类. 
+
+下面讨论绝对收敛级数的两个重要性质.
+
+我们先来介绍级数的重排.
+\begin{definition}[重排]
+	我们把正整数列$\{1,2,\cdots,n,\cdots\}$到它自身的一一映射$f:n\to k(n)$称为{\heiti 正整数列的重排}，相应地对于数列$\{u_n\}$按映射$F:u_n\to u_{k_n}$所得到的数列$\{u_{k(n)}\}$称为{\heiti 原数列的重排}. 相应于此，我们也称级数$\sum u_{k(n)}$是级数$\sum u_n$的{\heiti 重排}.
+\end{definition}
+\begin{theorem}
+	设级数$\sum u_n$绝对收敛，其和为$S$，则任意重排后所得到的级数$\sum u_{k(n)}$也绝对收敛，且有相同的和数.
+\end{theorem}
+\begin{proof}
+	为叙述方便，记$v_n=u_{k(n)}$. 先假设$\sum u_n$是正项级数，用$S_n$表示它的第$n$个部分和. 以$\sigma_m=v_1+\cdots+v_m$表示级数$\sum v_n$的第$m$个部分和. 因为$\sum v_n$是$\sum u_n$的重排，所以每一$v_k\ (1\leqslant k\leqslant m)$都等于某一$u_{i_k}\ (1\leqslant k\leqslant m)$. 记
+	$$n=\max\{i_1,i_2,\cdots,i_m\},$$
+	则对任何$m$，都存在$n$，使$\sigma_m\leqslant S_n$.
+	
+	由于$\lim\limits_{n\to\infty}S_n=S$，所以对任何正整数$m$都有$\sigma_m\leqslant S$，即得$\sum v_n$收敛，且其和$\sigma\leqslant S$.
+	
+	同理，级数$\sum u_n$也可看作$\sum v_n$的重排，所以也有$S\leqslant\sigma$，从而推得$\sigma=S$.
+	
+	若$\sum u_n$为一般项级数且绝对收敛，则$\sum |u_n|$是收敛的正项级数. 由上述证明即得$\sum |v_n|$也收敛，即$\sum v_n$是绝对收敛的.
+	
+	下面证明$\sum v_n$的和也等于$S$. 令
+	$$p_n=\frac{|u_n|+u_n}{2},\quad q_n=\frac{|u_n|-u_n}{2}.$$
+	当$u_n\geqslant 0$时，$p_n=u_n\geqslant 0$，$q_n=0$；当$u_n<0$时，$p_n=0$，$q_n=|u_n|=-u_n>0$. 从而有
+	$$0\leqslant p_n\leqslant |u_n|,\quad 0\leqslant q_n\leqslant |u_n|,$$
+	$$p_n+q_n=|u_n|,\quad p_n-q_n=u_n.$$
+	因为$\sum u_n$绝对收敛，由上式可知$\sum p_n,\ \sum q_n$都是收敛的正项级数. 因此
+	$$S=\sum u_n=\sum p_n-\sum q_n.$$
+	对于重排后的级数$\sum v_n$，也可同理表示为两个收敛的正项级数之差
+	$$\sum v_n=\sum p_n'-\sum q_n',$$
+	其中$\sum p_n'$和$\sum q_n'$分别是级数$\sum p_n$和$\sum q_n$的重排，前面已经证明收敛的正项级数重排后，它的和不变，从而有
+	$$\sum v_n=\sum p_n'-\sum q_n'=\sum p_n-\sum q_n=S.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	由条件收敛级数重排后得到的新级数，即使收敛，也不一定收敛于原来的和数. 而且条件收敛级数适当重排后，可得到发散级数，或收敛于任何事先指定的数.
+\end{remark}
+
+我们再来介绍级数的乘积.
+
+设有两个收敛级数
+$$\sum u_n=A,\quad \sum v_n=B.$$
+可以将上述两个级数中的每一项所有可能的乘积列成下表.
+\begin{center}
+	\begin{tabular}{|cccccc}
+		\hline
+		$u_1v_1$ & $u_1v_2$ & $u_1v_3$ & $\cdots$ & $u_1v_n$ & $\cdots$ \\
+		$u_2v_1$ & $u_2v_2$ & $u_2v_3$ & $\cdots$ & $u_2v_n$ & $\cdots$ \\
+		$u_3v_1$ & $u_3v_2$ & $u_3v_3$ & $\cdots$ & $u_3v_n$ & $\cdots$ \\
+		$\vdots$ & $\vdots$ & $\vdots$ & $		$ & $\vdots$ & $	  $ \\
+		$u_nv_1$ & $u_nv_2$ & $u_nv_3$ & $\cdots$ & $u_nv_n$ & $\cdots$ \\
+		$\vdots$ & $\vdots$ & $\vdots$ & $		$ & $\vdots$ & $	  $ \\
+	\end{tabular}
+\end{center}
+
+这些乘积$u_iv_j$可以按各种方法排成不同的级数.比如按正方形顺序依次相加，得到
+$$u_1v_1+u_1v_2+u_2v_2+u_2v_1+u_1v_3+u_2v_3+u_3v_3+u_3v_2+u_3v_1+\cdots,$$
+按对角线顺序依次相加，得到
+$$u_1v_1+u_1v_2+u_2v_1+u_1v_3+u_2v_2+u_3v_1+\cdots.$$
+\begin{theorem}[Cauchy定理]
+	若级数$\sum u_n$和级数$\sum v_n$都绝对收敛，且$\sum |u_n|=A$，$\sum |v_n|=B$，则这两个级数的每一项所有可能的乘积按任意顺序排列得到的级数$\sum w_n$也绝对收敛，且其和等于$AB$.
+\end{theorem}
+\begin{proof}
+	以$S_n$表示级数$\sum |w_n|$的部分和，即
+	$$S_n=|w_1|+|w_2|+\cdots+|w_n|,$$
+	其中$w_k=u_{i_k}+v{j_k}\ (k=1,2,\cdots,n)$，记
+	$$m=\max\{i_1,j_1,i_2,j_2,\cdots,i_n,j_n\},$$
+	$$A_m=|u_1|+|u_2|+\cdots+|u_m|,$$
+	$$B_m=|v_1|+|v_2|+\cdots+|v_m|,$$
+	则必有
+	$$S_n\leqslant A_mB_m.$$
+	级数$\sum u_n$和$\sum v_n$都绝对收敛，因此部分和数列$A_n$和$B_n$都是有界的，所以$\{S_n\}$是有界的，从而级数$\sum w_n$绝对收敛.
+	
+	由于绝对收敛级数具有可重排的性质，也就是说级数的和与采用哪一种排列的次序无关. 为方便求和，采取按正方形顺序求和并对各被加项加括号，即
+	$$u_1v_1+(u_1v_2+u_2v_2+u_2v_1)+(u_1v_3+u_2v_3+u_3v_3+u_3v_2+u_3v_1)+\cdots,$$
+	把每一括号作为一项，得到新的级数
+	$$\sum p_n=p_1+p_2+p_3+\cdots+p_n+\cdots,$$
+	它与级数$\sum w_n$同时收敛且和数相同. 现以$P_n$表示级数$\sum p_n$的部分和，它与级数$\sum u_n$与$\sum v_n$的部分和$A_n$与$B_n$有如下关系式：
+	$$P_n=A_nB_n.$$
+	从而有
+	$$\lim\limits_{n\to\infty}P_n=\lim\limits_{n\to\infty}A_nB_n=\lim\limits_{n\to\infty}A_n\lim\limits_{n\to\infty}B_n=AB.$$
+	$\hfill\blacksquare$
+\end{proof}
+\subsection{Abel判别法和Dirichlet判别法}
+我们先介绍一个公式.
+\begin{lemma}[分部求和公式，Abel变换]
+	设$\varepsilon_i,\ v_i\ (i=1,2,\cdots,n)$为两组实数，若令
+	$$\sigma_k=v_1+v_2+\cdots+v_k\qquad(k=1,2,\cdots,n),$$
+	则有如下分部求和公式成立：
+	$$\sum_{i=1}^{n}\varepsilon_iv_i=(\varepsilon_1-\varepsilon_2)\sigma_1+(\varepsilon_2-\varepsilon_3)\sigma_2+\cdots+(\varepsilon_{n-1}-\varepsilon_n)\sigma_{n-1}+\varepsilon_n\sigma_n.$$
+	即
+	$$\sum_{i=1}^{n}\varepsilon_iv_i=\sum_{i=1}^{n-1}(\varepsilon_i-\varepsilon_{i+1})\sigma_i+\varepsilon_n\sigma_n.$$
+\end{lemma}
+\begin{proof}
+	将右边展开即得.$\hfill\blacksquare$
+\end{proof}
+\begin{lemma}[Abel引理]
+	若
+	\begin{enumerate}[(1)]
+		\item $\varepsilon_1,\varepsilon_2,\cdots,\varepsilon_n$是单调数组；
+		\item 对任一正整数$k\ (1\leqslant k\leqslant n)$有$|\sigma_k|\leqslant A$ (这里$\sigma_k=v_1+\cdots+v_k$)， 
+	\end{enumerate}
+	则记$\varepsilon=\max\limits_k\{|\varepsilon_k|\}$，有
+	$$\left|\sum_{k=1}^{n}\varepsilon_kv_k\right|\leqslant 3\varepsilon A.$$
+\end{lemma}
+\begin{proof}
+	由(1)可知
+	$$\varepsilon_i-\varepsilon_{i+1}\quad (i=1,2,\cdots,n-1)$$
+	都是同号的. 于是由分部求和公式以及条件(2)推得
+	\begin{align*}
+		\left|\sum_{i=1}^{n}\varepsilon_kv_k\right|
+		&=\left|\sum_{i=1}^{n-1}(\varepsilon_i-\varepsilon_{i+1})\sigma_i+\varepsilon_n\sigma_n\right|\\
+		&\leqslant A\left|\sum_{i=1}^{n-1}(\varepsilon_i-\varepsilon_{i+1})\right|+A|\varepsilon_n|\\
+		&=A|\varepsilon_1-\varepsilon_n|+A|\varepsilon_n|\\
+		&\leqslant A(|\varepsilon_1|+2|\varepsilon_n|)\\
+		&\leqslant 3\varepsilon A.
+	\end{align*}
+	$\hfill\blacksquare$
+\end{proof}
+下面讨论级数
+$$\sum a_nb_n=a_1b_1+a_2b_2+\cdots+a_nb_n$$
+敛散性的判别法.
+\begin{theorem}[Abel判别法]
+	若$\{a_n\}$为单调有界数列，且级数$\sum b_n$收敛，则级数$\sum a_nb_n$收敛.
+\end{theorem}
+\begin{proof}
+	$\sum b_n$收敛，由Cauchy准则，对任意$\varepsilon>0$，存在$N>0$，使当$n>N$时对任一正整数$p$，都有
+	$$\left|\sum_{k=n+1}^{n+p}b_k\right|<\varepsilon.$$
+	又由于数列$\{a_n\}$有界，所以存在$M>0$，使$|a_n|\leqslant M$，则由Abel引理可得
+	$$\left|\sum_{k=n+1}^{n+p}a_kb_k\right|\leqslant 3M\varepsilon.$$
+	所以级数$\sum a_nb_n$收敛.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}[Dirichlet判别法]
+	若数列$\{a_n\}$单调，$\lim\limits_{n\to\infty}a_n=0$，且级数$\sum b_n$的部分和数列有界，则级数$\sum a_nb_n$收敛.
+\end{theorem}
+\begin{proof}
+	由$\{a_n\}$单调收敛，则对任意$n\in\mathbb{Z}^+$，有$a_n\leqslant A$. 又因为$\sum b_n$的部分和数列有界，即存在$M>0$，使
+	$$\left|\sum_{k=1}^{n}b_k\right|\leqslant M.$$
+	由Abel引理，有
+	$$\left|\sum_{k=1}^{n}a_kb_k\right|\leqslant 3AM.$$
+	所以级数$\sum a_nb_n$收敛.$\hfill\blacksquare$
+\end{proof}

@@ -1,0 +1,371 @@
+\chapter{导数与微分}
+\section{导数与微分的概念}
+\subsection{导数与微分的定义}
+\begin{definition}[导数]
+	设函数$y=f(x)$在点$x_0$的某邻域内有定义，若极限
+	\begin{equation}{\label{def:derivative}}
+		\lim\limits_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}
+	\end{equation}
+	存在，则称函数$f${\heiti 在点$x_0$可导}，并称该极限为函数$f${\heiti 在点$x_0$的导数}，记作$f'(x)$.
+\end{definition}
+令$x=x_0+\Delta x$，$\Delta y=f(x)-f(x_0)=f(x_0+\Delta x)-f(x_0)$，则式\ref{def:derivative}可改写为
+\begin{equation}{\label{def':derivative}}
+	\lim\limits_{\Delta x\to 0}\frac{\Delta y}{\Delta x}=\lim\limits_{\Delta x\to 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}=f'(x).
+\end{equation}
+
+所以导数是函数增量$\Delta y$与自变量增量$\Delta x$之比$\dfrac{\Delta y}{\Delta x}$的极限.这个增量比称为函数关于自变量的平均变化率（又称{\heiti 差商}），而导数$f'(x)$则为$f$在$x_0$处关于$x$的变化率（又称{\heiti 微商}）.
+
+若式\ref{def:derivative}或式\ref{def':derivative}不存在，则称$f${\heiti 在点$x_0$不可导}.
+\begin{definition}[可微]
+	设函数$y=f(x)$在点$x_0$的某邻域$U(x_0)$上有定义.当给$x_0$一个增量$\Delta x,x_0+\Delta x\in U(x_0)$时，相应地得到函数的增量为
+	$$\Delta y=f(x_0+\Delta x)-f(x_0).$$
+	
+	如果存在常数$A$，使得$\Delta y$能表示成
+	\begin{equation}{\label{def:differential}}
+		\Delta y=A\Delta x+o(x),
+	\end{equation}
+	则称函数$f$在点$x_0${\heiti 可微}
+\end{definition}
+\begin{theorem}
+	函数$f$在点$x_0$处可微的充要条件是$f$在点$x_0$处可导.
+\end{theorem}
+\begin{proof}
+	必要性\qquad 如果
+	$$f(x_0+\Delta x)-f(x_0)=A\Delta x+o(\Delta x),$$
+	那么
+	$$\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}=A+\frac{o(\Delta x)}{\Delta x},$$
+	因而$f(x)$在$x$点可导：
+	$$f'(x)=\lim\limits_{\Delta x\to 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}=A.$$
+	这就证明了$f$在点$x_0$可导且导数等于$A$.
+	充分性\qquad 如果存在极限
+	$$\lim\limits_{\Delta x\to 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}=f'(x),$$
+	那么当$\Delta x\to 0$时，
+	$$\alpha(h)=\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}-f'(x)\to 0,$$
+	并且有
+	$$f(x+\Delta x)-f(x)=f'(x)\Delta x+\alpha(\Delta x)\Delta x.$$
+	这就是说
+	$$f(x+\Delta x)-f(x)=f'(x)\Delta x+o(\Delta x).$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	上述定理说明可导与可微是等价的.因此在现阶段可导与可微可以当作同义词使用，求导数的方法也称为微分法.之后的论述中我们将侧重讨论导数，因为微分的相关概念在此都可以相类比.
+\end{remark}
+\begin{definition}[微分]
+	设函数$y=f(x)$在点$x_0$处可微.我们引入记号
+	$$\odif{x}\coloneqq \Delta x,$$
+	$$\odif{y}\coloneqq f'(x_0)\odif{x}=f'(x_0)\Delta x,$$
+	并把$\odif{y}$叫做函数$y=f(x)$的{\heiti 微分}.
+\end{definition}
+\begin{remark}
+	关于微分的意义，从上面的讨论我们已经得知：
+	\begin{enumerate}
+		\item 从几何的角度来看，微分$\odif{y}=f'(x)\odif{x}$正好是切线函数的增量.
+		\item 从代数的角度来看，微分$\odif{y}=f'(x)\odif{x}$是增量$\Delta y$的线性主部，$\odif{y}$与$\Delta y$仅仅相差一个高阶的无穷小量$o(\Delta x)$，因而当$\Delta x$充分小时，可以用$\odif{y}$作为$\Delta y$的近似值.这一事实是微分的许多实际应用的基础.
+	\end{enumerate}
+\end{remark}
+\subsection{单侧导数}
+\begin{definition}[单侧导数]
+	设函数$y=f(x)$在点$x_0$的某右邻域$\left[x_0,x_0+\delta\right)$上有定义，若右极限
+	$$\lim\limits_{\Delta x\to 0^+}\frac{\Delta y}{\Delta x}=\lim\limits_{\Delta x\to 0^+}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}\qquad(0<\Delta x<\delta)$$
+	存在，则称该极限值为$f$在点$x_0$的{\heiti 右导数}，记作$f'_+(x_0)$.
+	
+	类似地，我们可以定义左导数
+	$$f'_-(x_0)=\lim\limits_{\Delta x\to 0^-}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}.$$
+	
+	右导数和左导数统称为{\heiti 单侧导数}.
+\end{definition}
+\begin{theorem}
+	若函数$y=f(x)$在点$x-0$的某邻域上有定义，则$f'(x_0)$存在（$f(x)$在点$x_0$处可导）的充要条件是$f'_+(x_0)=f'_-(x_0).$
+\end{theorem}
+\subsection{导函数}
+\begin{definition}[导函数]
+	若函数$f$在区间$I$上每一点都可导（对区间端点，仅考虑相应的单侧导数），则称$f$为$I$上的可导函数.此时对每一个$x\in I$，都有$f$的一个导数$f'(x)$（或单侧导数）与之对应.这样就定义了一个在$I$上的函数，称为$f$在$I$上的{\heiti 导函数}，也简称为{\heiti 导数}.记作$f',y'$或$\dfrac{\odif{y}}{\odif{x}}$，即
+	$$f'(x)=\lim\limits_{\Delta x\to 0}\frac{\Delta y}{\Delta x}=\lim\limits_{\Delta x\to 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x},\qquad x\in I.$$
+\end{definition}
+\subsection{导数的几何意义}
+我们已经知道$f(x)$在点$x=x_0$的切线斜率$k$，正是割线斜率在$x\to x_0$时的极限，即
+$$k=\lim\limits_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}.$$
+由导数的定义，$k=f'(x)$，所以曲线$y=f(x)$在点$(x_0,y_0)$的切线方程是
+$$y-y_0=f'(x_0)(x-x_0).$$
+\begin{definition}[极值点]
+	若函数$f$在点$x_0$的某邻域$U(x_0)$上对一切$x\in U(x_0)$有
+	$$f(x_0)\geqslant f(x)$$
+	则称函数$f$在点$x_0$取得{\heiti 极大值}，称点$x_0$为{\heiti 极大值点}；
+	
+	若有
+	$$f(x_0)\leqslant f(x)$$
+	则称函数$f$在点$x_0$取得{\heiti 极小值}，称点$x_0$为{\heiti 极小值点}.
+	
+	极大值点、极小值点统称为{\heiti 极值点}.
+\end{definition}
+\begin{proposition}{\label{prooffermat}}
+	若$f'_+(x_0)>0$，则存在$\delta>0$，对任何$x\in(x_0,x_0+\delta)$，有
+	$$f(x_0)<f(x).$$
+\end{proposition}
+\begin{proof}
+	因为
+	$$f'_+(x_0)=\lim\limits_{x\to x_0^+}\frac{f(x)-f(x_0)}{x-x_0}>0,$$
+	所以由保号性可知，存在正数$\delta$，对一切$x\in(x_0,x_0+\delta)$，有
+	$$\frac{f(x)-f(x_0)}{x-x_0}>0,$$
+	从而不难推得，当$0<x-x_0<\delta$时，有$f(x_0)<f(x).$$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	用类似的方法可讨论$f'_+(x_0)<0$，$f'_-(x_0)>0$和$f'_-(x_0)<0$的情况.
+\end{remark}
+\begin{remark}
+	由上述命题，我们可以得出：若$f'(x_0)$存在且不为零，则$x_0$不是$f(x)$的极值点.
+\end{remark}
+这样我们就得到了著名的Fermat定理.
+\begin{theorem}[Fermat定理]
+	设函数$f$在点$x_0$的某邻域上有定义，且在点$x_0$可导.若点$x_0$为$f$的极值点，则必有
+	$$f'(x_0)=0.$$
+\end{theorem}
+Fermat定理的几何意义：若函数$f(x)$在极值点$x=x_0$可导，那么在该点的切线平行于$x$轴.
+我们称满足方程$f'(x)=0$的点为{\heiti 稳定点}或{\heiti 驻点}.
+需要注意的是，稳定点不一定是极值点（如$x^3$当$x=0$时），极值点也不一定是稳定点（如$|x|$当$x=0$时）.
+\section{求导法则}
+\subsection{导数的四则运算}
+\begin{theorem}[加减法公式]
+	若函数$u(x)$，$v(x)$可导，则$u(x)\pm v(x)$也可导，且
+	$$\left[u(x)\pm v(x)\right]'=u'(x)\pm v'(x).$$
+\end{theorem}
+\begin{proof}
+	\begin{align*}
+		\left[u(x)\pm v(x)\right]'&=\lim\limits_{\Delta x\to 0}\frac{\left[u(x+\Delta x)\pm v(x+\Delta x)\right]-\left[u(x)\pm v(x)\right]}{\Delta x}\\
+		&=\lim\limits_{\Delta x\to 0}\frac{\left[u(x+\Delta x)-u(x)\right]\pm \left[v(x+\Delta x)-v(x)\right]}{\Delta x}\\
+		&=u'(x)+v'(x).
+	\end{align*}
+	$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}[乘法公式]
+	若函数$u(x)$，$v(x)$可导，则$u(x)v(x)$也可导，且
+	$$\left[u(x)v(x)\right]'=u'(x)v(x)+u(x)v'(x).$$
+\end{theorem}
+\begin{proof}
+	\begin{align*}
+		\left[u(x)v(x)\right]'&=\lim\limits_{\Delta x\to 0}\frac{u(x+\Delta x)v(x+\Delta x)-u(x)v(x)}{\Delta x}\\
+		&=\lim\limits_{\Delta x\to 0}\frac{u(x+\Delta x)v(x+\Delta x)-u(x)v(x+\Delta x)+u(x)v(x+\Delta x)-u(x)v(x)}{\Delta x}\\
+		&=\lim\limits_{\Delta x\to 0}\frac{u(x+\Delta x)-u(x)}{\Delta x}v(x+\Delta x)+u(x+\Delta x)\lim\limits_{\Delta x\to 0}\frac{v(x+\Delta x)-v(x)}{\Delta x}\\
+		&=u'(x)v(x)+u(x)v'(x).
+	\end{align*}
+	$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	第二行用了“添项减项”的方法，这是数学分析中经常遇到的一种方法.
+\end{remark}
+\begin{remark}
+	利用数学归纳法可以将这个法则推广到任意有限个函数乘积的情形.例如
+	$$(uvw)'=u'vw+uv'w+uvw'.$$
+\end{remark}
+\begin{corollary}
+	若函数$v(x)$可导，$c$为常数，则
+	$$\left[cv(x)\right]'=cv'(x).$$
+\end{corollary}
+\begin{theorem}[除法公式]
+	若函数$u(x)$，$v(x)$可导，且$v(x)\neq 0$，则$\dfrac{u(x)}{v(x)}$也可导，且
+	$$\frac{u(x)}{v(x)}=\frac{u'(x)v(x)-u(x)v'(x)}{\left[v(x)\right]^2}.$$
+\end{theorem}
+\begin{proof}
+	\begin{align*}
+		\big(\frac{u(x)}{v(x)}\big)'&=\lim\limits_{\Delta x\to 0}\frac{\frac{u(x+\Delta x)}{v(x+\Delta x)}-\frac{u(x)}{v(x)}}{\Delta x}\\
+		&=\lim\limits_{\Delta x\to 0}\frac{u(x+\Delta x)v(x)-u(x)v(x+\Delta x)}{v(x+\Delta x)v(x)\Delta x}\\
+		&=\lim\limits_{\Delta x\to 0}\frac{u(x+\Delta x)v(x)-u(x)v(x)+u(x)v(x)-u(x)v(x+\Delta x)}{v(x+\Delta x)v(x)\Delta x}\\
+		&=\lim\limits_{\Delta x\to 0}\frac{\left[u(x+\Delta x)-u(x)\right]}{\Delta x}\frac{v(x)}{v(x+\Delta x)v(x)}-\lim\limits_{\Delta x\to 0}\frac{\left[v(x+\Delta x)-v(x)\right]}{\Delta x}\frac{u(x)}{v(x+\Delta x)v(x)}\\
+		&=\frac{u'(x)v(x)-u(x)v'(x)}{\left[v(x)\right]^2}.
+	\end{align*}
+	$\hfill\blacksquare$
+\end{proof}
+\subsection{复合函数的导数}
+为证明复合函数的求导公式，我们先证明一个引理.
+\begin{lemma}
+	$f(x)$在点$x_0$可导的充要条件是：在$x_0$的某邻域$U(x_0)$上，存在一个在点$x_0$连续的函数$H(x)$，使得
+	$$f(x)-f(x_0)=H(x)(x-x_0)，$$
+	从而$f'(x)=H(x_0).$
+\end{lemma}
+\begin{proof}
+	必要性\qquad 设$f(x)$在点$x_0$可导，令
+	\begin{equation*}
+		H(x)=\left\{
+		\begin{aligned}
+			&\frac{f(x)-f(x_0)}{x-x_0}, & & x\in \mathring{U}(x_0),\\
+			&f'(x_0), & & x=x_0,
+		\end{aligned}
+		\right.
+	\end{equation*}
+	则因
+	$$\lim\limits_{x\to x_0}H(x)=\lim\limits_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}=f'(x_0)=H(x_0),$$
+	所以$H(x)$在点$x_0$连续，且$f(x)-f(x_0)=H(x)(x-x_0),\ x\in U(x_0).$
+	
+	充分性\qquad 设存在$H(x_0),\ x\in U(x_0)$，它在点$x_0$连续，且
+	$$f(x)-f(x_0)=H(x)(x-x_0),\ x\in U(x_0).$$
+	因存在极限
+	$$\lim\limits_{x\to x_0}\frac{f(x)-f(x_0)}{x-x_0}=\lim\limits_{x\to x_0}H(x)=H(x_0),$$
+	所以$f(x)$在点$x_0$可导，且$f'(x_0)=H(x_0)$.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	引理说明了点$x_0$是函数$g(x)=\dfrac{f(x)-f(x_0)}{x-x_0}$可去间断点的充要条件是$f(x)$在点$x_0$可导.这个结论可以推广到向量函数的导数.
+\end{remark}
+\begin{theorem}
+	设$u=\varphi(x)$在点$x_0$可导，$y=f(u)$在点$u_0=\varphi(x_0)$可导，则复合函数$f\circ \varphi$在点$x_0$可导，且
+	$$(f\circ \varphi)'(x_0)=f'(u_0)\varphi'(x_0)=f'(\varphi(x_0))\varphi'(x_0).$$
+\end{theorem}
+\begin{proof}
+	由$f(u)$在点$u_0$可导，由引理的必要性部分，存在一个在点$u_0$连续的函数$F(u)$，使得$f'(u_0)=F(u_0)$，且
+	$$f(u)-f(u_0)=F(u)(u-u_0),\ u\in U(u_0).$$
+	又由$u=\varphi(x)$在点$x_0$可导，同理存在一个在点$x_0$连续的函数$\varPhi(x)$，使得$\varphi'(x_0)=\varPhi(x_0)$，且
+	$$\varphi(x)-\varphi(x_0)=\varPhi(x)(x-x_0),\ x\in U(x_0).$$
+	于是就有
+	\begin{align*}
+		f(\varphi(x))-f(\varphi(x_0))&=F(\varphi(x))(\varphi(x)-\varphi(x_0))\\
+		&=F(\varphi(x))\varPhi(x)(x-x_0).
+	\end{align*}
+	因为$\varphi,\varPhi$在点$x_0$连续，$F$在点$u_0=\varphi(x_0)$连续，因此$H(x)=F(\varphi(x))\varPhi(x)$在点$x_0$连续.由引理的充分性部分证得$f\circ \varphi$在点$x_0$可导，且
+	$$(f\circ\varphi)'(x_0)=H(x_0)=F(\varphi(x_0))\varPhi(x_0)=f'(u_0)\varphi'(x_0).$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	复合函数的求导公式也称为{\heiti 链式法则}(chainrule)，函数$y=f(u),u=\varphi(x)$的复合函数在点$x$的求导公式一般也写作
+	$$\frac{\odif{y}}{\odif{x}}=\frac{\odif{y}}{\odif{u}}\cdot\frac{\odif{u}}{\odif{x}}.$$
+\end{remark}
+\subsection{反函数的导数}
+\begin{theorem}
+	设$y=f(x)$为$x=\varphi(y)$的反函数，若$\varphi(y)$在点$y_0$的某邻域上连续，严格单调且$\varphi'(y_0)\neq 0$，则$f(x)$在点$x_0(=\varphi(y_0))$可导，且
+	$$f'(x_0)=\frac{1}{\varphi'(y_0)}.$$
+\end{theorem}
+\begin{proof}
+	设$\Delta x=\varphi(y_0+\Delta y)-\varphi(y_0),\ \Delta y=f(x_0+\Delta x)-f(x_0)$.因为$\varphi$在$y_0$的某邻域上连续且严格单调，故$f=\varphi^{-1}$在$x_0$的某邻域上连续且严格单调.从而当且仅当$\Delta y=0$时$\Delta x=0$，并且当且仅当$\Delta y\to 0$时$\Delta x\to 0$.由$\varphi'(y_0)\neq 0$，可得
+	$$f'(x)=\lim\limits_{\Delta x\to 0}\frac{\Delta y}{\Delta x}=\lim\limits_{\Delta y\to 0}\frac{\Delta y}{\Delta x}=\frac{1}{\lim\limits_{\Delta y\to 0}\frac{\Delta x}{\Delta y}}=\frac{1}{\varphi'(y_0)}.$$
+	$\hfill\blacksquare$
+\end{proof}
+\subsection{参变量函数的导数}
+一般地，设有参数表达式
+\begin{equation*}
+	\left\{
+	\begin{aligned}
+		&x=\varphi(t)\\
+		&y=\psi(t)
+	\end{aligned}
+	\qquad t\in J
+	\right.
+\end{equation*}
+其中函数$\varphi$在区间$J$上严格单调并且连续，函数$\psi$在区间$J$上连续.我们可以把$t$表示为$x$的连续函数
+$$t=\varphi^{-1}(x),\ x\in I=\varphi(J),$$
+于是$y$表示为$x$的连续函数
+$$y=\psi(\varphi^{-1}(x)),\ x\in I.$$
+如果函数$\varphi$和$\psi$都在区间$J$的内点$t_0$处可导，并且$\varphi'(t_0)\neq 0$，那么由复合函数与反函数的求导法则可知函数$y=\psi\circ\varphi^{-1}$在$x_0=\varphi(t_0)$处可导，并且有
+\begin{align*}
+	(\psi\circ\varphi^{-1})'(x_0)&=\psi'(\varphi^{-1}(x_0))(\varphi^{-1})(x_0)\\
+	&=\psi'(\varphi^{-1}(x_0))\frac{1}{\varphi'(\varphi^{-1}(x_0))}\\
+	&=\frac{\psi'(t_0)}{\varphi'(t_0)}.
+\end{align*}
+以上我们得到
+$$\frac{\odif{y}}{\odif{x}}=\frac{\odif{y}/\odif{t}}{\odif{x}/\odif{t}}=\frac{\psi'(t)}{\varphi'(t)}.$$
+\subsection{初等函数导数公式}
+由于初等函数由基本初等函数经过有限次四则运算和复合运算得到，因此我们只需考虑基本初等函数的导数公式.对于六类基本初等函数，我们只需讨论常量函数、对数函数和正余弦函数的导数，其余的基本初等函数的导数公式都可由这三类函数的导数公式和四则运算、复合函数与反函数的求导法则得出.
+\begin{proposition}[常量函数]
+	$$(c)'=0\qquad(c\text{为常数}).$$
+\end{proposition}
+\begin{proposition}[对数函数]
+	$$(\log_ax)'=\frac{1}{x\ln a}\qquad(a>0\text{且}a\neq 1).$$
+\end{proposition}
+\begin{proof}
+	\begin{align*}
+		(\log_ax)'
+		&=\lim\limits_{\Delta x\to 0}\dfrac{\log_a(x+\Delta x)-\log_ax}{\Delta x}\\
+		&=\lim\limits_{\Delta x\to 0}\dfrac{\ln(1+\frac{\Delta x}{x})}{\Delta x\ln a}\\
+		&=\lim\limits_{\Delta x\to 0}\dfrac{\frac{\Delta x}{x}}{\Delta x\ln a}\\
+		&=\dfrac{1}{x\ln a}.
+	\end{align*}
+	$\hfill\blacksquare$
+\end{proof}
+\begin{proposition}[正余弦函数]
+	$$(\sin x)'=\cos x,$$
+	$$(\cos x)'=-\sin x.$$
+\end{proposition}
+\begin{proof}
+	\begin{align*}
+		(\sin x)'
+		&=\lim\limits_{\Delta x\to 0}\dfrac{\sin(x+\Delta x)-\sin x}{\Delta x}\\
+		&=\lim\limits_{\Delta x\to 0}\dfrac{\sin x\cos\Delta x+\cos x\sin\Delta x-\sin x}{\Delta x}\\
+		&=\lim\limits_{\Delta x\to 0}\dfrac{\sin x(\cos\Delta x-1)}{\Delta x}+\lim\limits_{\Delta x\to 0}\dfrac{\sin\Delta x}{\Delta x}\cdot\cos x\\
+		&=\lim\limits_{\Delta x\to 0}\dfrac{\sin x\cdot(-\frac{1}{2}\Delta x^2)}{\Delta x}+\cos x\\
+		&=\cos x.
+	\end{align*}
+	\begin{align*}
+		(\cos x)'
+		&=\lim\limits_{\Delta x\to 0}\dfrac{\cos(x+\Delta x)-\cos x}{\Delta x}\\
+		&=\lim\limits_{\Delta x\to 0}\dfrac{\cos x\cos\Delta x-\sin x\sin\Delta x-\cos x}{\Delta x}\\
+		&=\lim\limits_{\Delta x\to 0}\dfrac{\cos x(\cos\Delta x-1)}{\Delta x}-\lim\limits_{\Delta x\to 0}\dfrac{\sin\Delta x}{\Delta x}\cdot\sin x\\
+		&=\lim\limits_{\Delta x\to 0}\dfrac{\cos x\cdot(-\frac{1}{2}\Delta x^2)}{\Delta x}-\sin x\\
+		&=-\sin x.
+	\end{align*}
+	$\hfill\blacksquare$
+\end{proof}
+指数函数可由对数函数和反函数的导数公式求得，幂函数可由指数函数、对数函数通过复合函数求导公式求得，反三角函数可由三角函数和反函数的导数公式求得，在此不展开详述，而是给出相应的导数公式.
+
+综上所述，我们有
+\begin{proposition}[基本初等函数的导数公式]
+	\iffalse
+	$$(c)'=0\qquad(c\text{为常数}).$$
+	$$(x^\alpha)'=\alpha x^{\alpha-1}\qquad(\alpha\text{为任意实数}).$$
+	$$(a^x)'=a^x\ln a\qquad(a>0\text{且}a\neq 1).$$
+	$$(\log_ax)'=\frac{1}{x\ln a}\qquad(a>0\text{且}a\neq 1).$$
+	$$(\sin x)'=\cos x.$$
+	$$(\cos x)'=-\sin x.$$
+	$$(\tan x)'=\sec^2x.$$
+	$$(\cot x)'=-\csc^2x.$$
+	$$(\sec x)'=\sec x\tan x.$$
+	$$(\csc x)'=-\csc x\cot x.$$
+	$$(\arcsin x)'=\frac{1}{\sqrt{1-x^2}}.$$
+	$$(\arccos x)'=-\frac{1}{\sqrt{1-x^2}}.$$
+	$$(\arctan x)'=\frac{1}{1+x^2}.$$
+	$$(\text{arccot} x)'=-\frac{1}{1+x^2}.$$
+	特别地，
+	$$(e^x)'=e^x.$$
+	$$(\ln x)'=\frac{1}{x}$$
+	\fi
+	\begin{align*}
+		&(c)'=0\qquad(c\text{为常数}).\\
+		&(x^\alpha)'=\alpha x^{\alpha-1}\qquad(\alpha\text{为任意实数}).\\
+		&(a^x)'=a^x\ln a\qquad(a>0\text{且}a\neq 1).\\
+		&(\log_ax)'=\frac{1}{x\ln a}\qquad(a>0\text{且}a\neq 1).\\
+		&(\sin x)'=\cos x.\\
+		&(\cos x)'=-\sin x.\\
+		&(\tan x)'=\sec^2x.\\
+		&(\cot x)'=-\csc^2x.\\
+		&(\sec x)'=\sec x\tan x.\\
+		&(\csc x)'=-\csc x\cot x.\\
+		&(\arcsin x)'=\frac{1}{\sqrt{1-x^2}}.\\
+		&(\arccos x)'=-\frac{1}{\sqrt{1-x^2}}.\\
+		&(\arctan x)'=\frac{1}{1+x^2}.\\
+		&(\text{arccot} x)'=-\frac{1}{1+x^2}.\\
+		&\text{特别地，}\\
+		&(e^x)'=e^x.\\
+		&(\ln x)'=\frac{1}{x}.&
+	\end{align*}
+\end{proposition}
+\section{高阶导数}
+\subsection{高阶导数的定义}
+\begin{definition}[二阶导数]
+	若函数$f$的导函数$f'$在点$x_0$可导，则称$f'$在点$x_0$的导数为$f$在点$x_0$的{\heiti 二阶导数}，记作$f''(x_0)$，即
+	$$\lim\limits_{x\to x_0}\frac{f'(x)-f'(x_0)}{x-x_0}=f''(x_0),$$
+	同时称$f$在点$x_0$为{\heiti 二阶可导}.
+	
+	若$f$在区间$I$上的每一点都二阶可导，则得到一个定义在$I$上的函数，这个函数称为$f$的二阶导函数，记作$f''(x),\ x\in I$，或者简单记作$f''$.
+\end{definition}
+由上述过程，我们可以继续推出三阶导数、四阶导数以及$n$阶导数的定义.
+\begin{definition}[n阶导数]
+	一般地，可由$f$的$n-1$阶导数定义$f$的$n$阶导数.即若$f$在区间$I$上的每一点都$(n-1)$阶可导，则得到一个定义在$I$上的函数，这个函数称为$f$的{\heiti $n$阶导函数}.记作
+	$$f^{(n)},y^{(n)}\text{或}\frac{\d^ny}{\odif{x}^n}.$$
+\end{definition}
+\subsection{高阶导数的运算法则}
+\begin{theorem}[加减法则]
+	$$\left[u\pm v\right]^{(n)}=u^{(n)}+v^{(n)}.$$
+\end{theorem}
+这里是显然的，不再证明.
+\begin{theorem}[乘法法则]
+	$$(uv)^{(n)}=\sum_{k=0}^{n}C_n^ku^{(n-k)}v^{(k)}.$$
+\end{theorem}
+\begin{remark}
+	这里可通过数学归纳法证明.该公式又被称为Leibnitz公式.
+\end{remark}

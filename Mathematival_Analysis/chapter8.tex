@@ -1,0 +1,725 @@
+\chapter{Riemann积分}
+\section{Riemann积分的概念}
+\subsection{长度、面积与Euclid空间}
+虽然我们在小学时期就学习了长度、面积等相关概念，但事实上我们从未严格定义过长度、面积和体积.下面我们尝试定义这些概念.
+
+我们可以把“长度”看作是1维实空间$\mathbb{R}$（即实数轴）的一个子集族$X$（$\mathbb{R}$的每个子集不一定都有“长度”）到实数域的一个映射$M$.我们首先规定
+$$M(\left[a,b\right])\coloneqq b-a.$$
+其中$a\leqslant b$.这表明任何闭区间$\left[a,b\right]$的长度为$b-a$，并蕴含了数轴上任意一点的长度为零.然后我们可以列出几条公理（姑且称它们为公理）：对于任意$A,B\in X$，都满足
+\begin{enumerate}
+	\item 非负性：$M(A)\geqslant 0$.
+	\item 单调性：若$A\subseteq B$，则$M(A)\leqslant M(B)$.
+	\item 可加性：若$A\cap B=\varnothing$，则$M(A\cup B)=M(A)+M(B)$.
+\end{enumerate}
+若集合$A$可通过平面上的正交变换（平面的正交变换即为平移、旋转、反射以及它们的乘积）变成了$B$，则称$A$和$B${\heiti 全等}或{\heiti 合同}.我们规定，$M(A)=M(B)$当且仅当$A\cong B$.
+
+由于任意一点的长度都是零，由可加性公理可知开区间$(a,b)$的长度也是$b-a$，半开半闭区间的长度亦然.为了让整个实数轴也有长度，我们规定$M$可以取到$+\infty$.
+
+类似地，我们可以把面积看作是2维实空间$\mathbb{R}^2$（即实平面）的一个子集族$X$到实数域$\mathbb{R}$的一个映射$M$.我们首先规定一个邻边长分别为$a$和$b$的矩形$A$的面积为$a\cdot b,\ a,b\geqslant 0$.这蕴含了线段的面积为零.以上的三条定理可以“原封不动”地来刻画面积.依次下去，还可以进一步把长度、面积的概念推广到体积以及$n$维Euclid空间$\mathbb{R}^n$中.事实上物理中的{\heiti 功}(work)，{\heiti 位移}(displacement)，{\heiti 冲量}(impulse)都满足以上三条公理，我们可以考虑用一个统一的概念来描述它们，这就是{\heiti 测度}(measure).今后我们会专门研究这个主题.
+\subsection{Riemann积分的定义}
+对于任意多边形，我们总能分成若干个三角形从而容易求得其面积.但对于曲边图形，这个方法就失效了，因此我们定义了Riemann积分.
+
+下面我们讨论曲边梯形面积的求解.设$f$是闭区间$\left[a,b\right]$上的连续函数.我们要讨论的就是$x=a$，$x=b$，$y=f(x)$以及与$x$轴围成的曲边梯形的面积.
+
+我们采用“{\heiti 分割，近似求和，取极限}”的方法来求解.下面给出分割的定义.
+\begin{definition}[分割]
+	设闭区间$\left[a,b\right]$上有$n-1$个点，依次为
+	$$a=x_0<x_1<x_2<\cdots <x_{n-1}<x_n=b,$$
+	它们把$\left[a,b\right]$分成$n$个小区间$\Delta_i=\left[x_{i-1},x_i\right],\ i=1,2,\cdots,n$.这些分点或这些闭子区间构成对闭区间$\left[a,b\right]$的一个{\heiti 分割}，记为
+	$$T=\{x_0,x_1,\cdots,x_n\}\text{或}\{\Delta_1,\Delta_2,\cdots,\Delta_n\}.$$
+	小区间$\Delta_i$的长度为$\Delta x_i=x_i-x_{i-1}$，并记
+	$$\| T\|\coloneqq\mathop{\max}_{1\leqslant i\leqslant n}\{\Delta x_i\},$$
+	称为分割$T$的{\heiti 模}.
+\end{definition}
+\begin{definition}[Riemann和]
+	设$f$是定义在$\left[a,b\right]$上的一个函数.对于$\left[a,b\right]$的一个分割$T=\{\Delta_1,\Delta_2,\cdots,\Delta_n\}$，任取点$\xi_i\in\Delta_i,\ i=1,2,\cdots,n$，并作和式
+	$$\sum_{i=1}^{n}f(\xi_i)\Delta x_i.$$
+	称此和式为函数$f$在$\left[a,b\right]$上的一个{\heiti Riemann和}(Riemann sum).
+\end{definition}
+显然Riemann和既与分割$T$有关，又与所选取的点集$\{\xi_i\}$有关.
+\begin{definition}[Riemann积分]
+	设$f$是定义在$J=\left[a,b\right]$上的一个函数，$I$是一个确定的实数.若对任意$\varepsilon>0$，总存在$\delta>0$，使得对$\left[a,b\right]$上的{\heiti 任意}分割$T$，以及在其上{\heiti 任意}选取的点集$\{\xi_i\}$，当$\Vert T\Vert<\delta$时，有
+	$$\big|\sum_{i=1}^{n}f(\xi_i)\Delta x_i-I\big|<\varepsilon,$$
+	即
+	$$\lim\limits_{\|T\|\to 0}\sum_{i=1}^{n}f(\xi_i)\Delta x_i=I$$
+	则称函数$f$在区间$\left[a,b\right]$上{\heiti Riemann可积}（在本章中也可称为可积）;数$I$称为$f$在$\left[a,b\right]$上的{\heiti Riemann积分}或{\heiti 定积分}，记作
+	$$I=\int_{a}^{b}f(x)\d x.$$
+	其中$f$称为{\heiti 被积函数}(integrand)，$f(x)\d x$称为{\heiti 积分表达式}(integrand expression)，$a$和$b$分别称为{\heiti 积分下限}(lower limit of integration)和{\heiti 积分上限}(upper limit of integration).
+\end{definition}
+\begin{remark}
+	由于$f$是定义在区间$J$上的，因此在$J$上的定积分也可以写成
+	$$\int_{J}f(x)\d x.$$
+\end{remark}
+\begin{remark}
+	定积分的几何意义就是曲边梯形的面积，对于在$x$轴上方的部分，面积取正值，在$x$轴下方的部分，面积取负值.对一般的非定号的函数$f$，其定积分的定义记为积分区间上所以曲边梯形的正面积和负面积的代数和.
+\end{remark}
+\begin{remark}
+	要区分Riemann积分定义的$\varepsilon-\delta$语言和极限定义中$\varepsilon-\delta$语言的差别.函数极限可以由Heine归结原理从而由数列极限刻画，而Riemann积分的$\|T\|$趋于$0$的过程是无法这样刻画的.这也是Riemann积分比函数极限复杂的地方.
+\end{remark}
+\begin{proposition}[Riemann积分的简单性质]
+	设函数$f$和$g$在区间$\left[a,b\right]$上Riemann可积.
+	\begin{enumerate}
+		\item 保号性：若$f(x)$非负，则
+		$$\int_{a}^{b}f(x)\d x\geqslant0.$$
+		\item 保序性：若$f(x)\geqslant g(x)$，则
+		$$\int_{a}^{b}f(x)\d x\geqslant\int_{a}^{b}g(x)\d x.$$
+		\item 可加性：若$c\in(a,b)$，且$f$在$\left[a,c\right],\left[c,b\right]$上Riemann可积，则
+		$$\int_{a}^{b}f(x)\d x=\int_{a}^{c}f(x)\d x+\int_{c}^{b}f(x)\d x.$$
+		\item 线性性：
+		$$\int_{a}^{b}\left(\lambda f(x)+g(x)\right)\d x=\lambda\int_{a}^{b}f(x)\d x+\int_{a}^{b}g(x)\d x.$$
+	\end{enumerate}
+\end{proposition}
+\begin{remark}
+	后面我们将证明若函数$f$在$\left[a,b\right]$都可积，则它在$\left[a,c\right],\left[b,c\right]$上都可积.因此性质3的可积性条件是可以去掉的.
+\end{remark}
+\begin{remark}
+	由性质4可以看出，Riemann积分也是一个线性算子.
+\end{remark}
+\section{Riemann可积条件}
+\subsection{Riemann可积的必要条件}
+\begin{theorem}
+	若函数$f$在$\left[a,b\right]$上可积，则$f$在$\left[a,b\right]$上有界.
+\end{theorem}
+\begin{proof}
+	用反证法.如果$f$在$\left[a,b\right]$上无界，则对于闭区间$\left[a,b\right]$的任何分割$T$，函数$f$至少在一个分割区间$\left[x_{i-1},x_i\right]$上无界.这表示，可以选出点$\xi_i\in\left[x_{i-1},x_i\right]$，使$|f(\xi_i)\Delta x_i|$取任意大的值.但这样一来，只要改变点$\xi_i$在这个区间中的位置，就能使Riemann和$\displaystyle\sum_{i=1}^{n}f(\xi_i)\Delta x_i$具有任意大的绝对值.
+	
+	显然，由Riemann积分的定义可知，Riemann和现在不可能具有有限的极限.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	该定理简述为“有界不一定可积，可积一定有界”（“可积”特指Riemann可积）.有了这个Riemann可积的必要条件，我们下面只需研究有界函数即可.
+\end{remark}
+\subsection{Riemann可积的充要条件}
+\begin{definition}[Darboux和]
+	设函数$f$在$\left[a,b\right]$上有界.设$T=\left\{\Delta_i|i=1,2,\cdots,n\right\}$为对$\left[a,b\right]$的任一分割.则$f(x)$在每个小区间$\Delta_i$上有上、下确界，我们将$f(x)$在每个小区间$\Delta_i$上的上确界记作$M_i$，下确界记作$m_i$.令
+	$$\overline{S}(T)=\sum_{i=1}^{n}M_i\Delta x_i,\quad \underline{S}(T)=\sum_{i=1}^{n}m_i\Delta x_i.$$
+	我们把$\overline{S}(T)$和$\underline{S}(T)$分别称为$f$关于分割$T$的{\heiti Darboux上和}(upper Darboux sum)与{\heiti Darboux下和}(lower Darboux sum)，简称{\heiti 上和}与{\heiti 下和}.
+\end{definition}
+我们在函数的连续性章节的讨论中已经给出了振幅的定义（定义\ref{def:amplitude}），再此不再赘述.
+
+接下来，我们来研究上和与下和.显然的，根据Darboux和的定义，我们有
+$$\underline{S}(T)\leqslant \sum_{i=1}^{n}f(\xi_i)\Delta x_i\leqslant \overline{S}(T).$$
+
+类比数列（或函数）的上极限和下极限，我们可以推测上和与下和可能有以下结论：
+\begin{enumerate}
+	\item 所以上和组成的集合有下界，从而有下确界；所以下和组成的集合有上界，从而有上确界.我们暂且把这个下确界和上确界分别称为“上积分”与“下积分”.
+	\item 在某个过程中，下和单调递增且有上界，上和单调递减且有下界，因此它们都有极限，它们的极限恰好是“上积分”和“下积分”.
+	\item 任何有界函数都存在“上积分”和“下积分”.函数Riemann可积当且仅当它的“上积分”等于“下积分”.
+\end{enumerate}
+
+下面考虑在分割$T$的基础上增加分割点，我们想知道在这过程中是否会发生我们预期的事情.先从最简单的情况开始：在分割$T$上多加一个分割点$x'$，它位于$\left[x_{i-1},x_i\right]$，这样就得到了一个新的分割$T'$，它有$n+2$个分割点.这时下和$\underline{S}(T)$与$\underline{S}(T')$的差别在于$\underline{S}$中的$m_i\Delta x_i$变成了
+$$(x'-x_{i-1})\inf f(\left[x_{i-1},x'\right])+(x_i-x')\inf f(\left[x',x_i\right]).$$
+因此
+$$\underline{S}(T')-\underline{S}(T)=(x'-x_{i-1})\inf f(\left[x_{i-1},x'\right])+(x_i-x')\inf f(\left[x',x_i\right])-m_i\Delta x_i.$$
+容易知道
+$$m_i\leqslant\inf f(\left[x_{i-1},x'\right])\leqslant M_i,$$
+$$m_i\leqslant\inf f((\left[x',x_i\right])\leqslant M_i.$$
+因此
+$$\underline{S}(T')-\underline{S}(T)\geqslant m_i(x'-x_{i-1})+m_i(x_i-x')-m_i(x_i-x_{i-1})=0.$$
+\begin{align*}
+	\underline{S}(T')-\underline{S}(T)&\leqslant M_i(x'-x_{i-1})+M_i(x_i-x')-m_i(x_i-x_{i-1})\\
+	&=(M_i-m_i)\Delta x_i=\omega_i\Delta x_i\\
+	&\leqslant\omega\Delta x_i\leqslant\omega\|T\|.
+\end{align*}
+综上，我们得到
+$$\underline{S}(T)\leqslant\underline{S}(T')\leqslant\underline{S}(T)+\omega\|T\|.$$
+类似地可以得到
+$$\overline{S}(T)\geqslant\overline{S}(T')\geqslant\overline{S}(T)-\omega\|T\|.$$
+用数学归纳法可以证明增加$k$个分割点的情况.于是我们有以下命题.
+\begin{proposition}{\label{darboux1}}
+	设函数$f(x)$在区间$\left[a,b\right]$上有界.给定$\left[a,b\right]$的一个分割$T$，在此基础上增加$k$个分割点，得到新的分割$T'$.若$f(x)$在$\left[a,b\right]$上的振幅为$\omega$，则
+	$$\underline{S}(T)\leqslant\underline{S}(T')\leqslant\underline{S}(T)+k\omega\|T\|,$$
+	$$\overline{S}(T)\geqslant\overline{S}(T')\geqslant\overline{S}(T)-k\omega\|T\|.$$
+\end{proposition}
+\begin{remark}
+	若分割$T$的所有分点都是$T'$的分点，则称$T'$比$T$更细，记作$T'\leqslant T$.显然这样规定的“$\geqslant$”是一个偏序关系，并不是任意两个分割都可以比较粗细.
+\end{remark}
+\begin{remark}
+	上述命题表明，在$T$上不断增加分割点的过程中，下和单调递增，上和单调递减.
+\end{remark}
+\begin{proposition}
+	对任意两个分割$T_1$和$T_2$，总有
+	$$\underline{S}(T_1)\leqslant\overline{S}(T_2).$$
+\end{proposition}
+\begin{proof}
+	令$T=T_1+T_2$，则由命题\ref{darboux1}可得
+	$$\underline{S}(T_1)\leqslant\underline{S}(T)\leqslant\overline{S}(T)\leqslant\overline{S}(T_2).$$
+	$\hfill\blacksquare$
+\end{proof}
+
+以上命题表明，在对$\left[a,b\right]$所做的两个分割中，一个分割的下和总不大于另一个分割的上和.因此对所有分割来说，所有下和有上界，从而有上确界；所有上和有下界，从而有下确界.这就证实了我们的第一个想法.于是可以定义“上积分”和“下积分”
+\begin{definition}[Darboux积分]
+	设函数$f$在区间$\left[a,b\right]$上有界.\\
+	$f$在$\left[a,b\right]$上所有Darboux上和组成的集合的下确界称为$f$在$\left[a,b\right]$上的{\heiti Darboux上积分}(upper Darboux integral)；\\
+	$f$在$\left[a,b\right]$上所有Darboux下和组成的集合的上确界称为$f$在$\left[a,b\right]$上的{\heiti Darboux下积分}(lower Darboux integral)，\\
+	简称上积分与下积分，分别记作：
+	$$\overline{\int_{a}^{b}}f(x)\d x\coloneqq\inf\limits_{T}\overline{S}(T),$$
+	$$\underline{\int_{a}^{b}}f(x)\d x\coloneqq\sup\limits_{T}\underline{S}(T).$$
+	当
+	$$\overline{\int_{a}^{b}}f(x)\d x=\underline{\int_{a}^{b}}f(x)\d x=I\in\mathbb{R}$$
+	时，我们称$f$在$\left[a,b\right]$上{\heiti Darboux可积}(Darboux integrable)，称$I$是$f$在$\left[a,b\right]$上的{\heiti Darboux积分}(Darboux integral).
+\end{definition}
+\begin{remark}
+	Darboux积分是由法国数学家Jean\ Gaston\ Darboux于1875年提出的.
+\end{remark}
+
+我们已经看到在$T$不断增加分割点的过程中，下和单调递增且有上界；上和单调递减且有下界.因此当$\|T\|\to 0$时上和与下和一定有极限，下面来证明它们的极限恰好是“上积分”与“下积分”.
+\begin{theorem}[Darboux定理]
+	设函数$f$在区间$\left[a,b\right]$上有界.作$\left[a,b\right]$的一个分割$T$，则
+	$$\lim\limits_{\|T\|\to 0}\overline{S}(T)=\overline{\int_{a}^{b}}f(x)\d x,$$
+	$$\lim\limits_{\|T\|\to 0}\underline{S}(T)=\underline{\int_{a}^{b}}f(x)\d x.$$
+\end{theorem}
+\begin{proof}
+	只证明下积分的情况.把$f$在$\left[a,b\right]$上的下积分记作$\underline{I}$.由下积分的定义可知对于任一$\varepsilon>0$，存在$\left[a,b\right]$的一个分割$T_0$，使得
+	$$\underline{S}(T_0)>\underline{I}-\frac{\varepsilon}{2}.$$
+	设$T_0$一共有$l$个分割点（不含$a,b$），则对于$\left[a,b\right]$的任一分割$T$，当$\|T\|<\dfrac{\varepsilon}{2l\omega+1}$时，由命题\ref{darboux1}可知
+	$$\underline{S}(T)\geqslant\underline{S}(T_0+T)\geqslant\underline{S}(T_0)-l\omega\|T\|>\underline{I}-\frac{\varepsilon}{2}-l\omega\cdot\frac{\varepsilon}{2l\omega+1}>\underline{I}-\frac{\varepsilon}{2}-\frac{\varepsilon}{2}=l-\varepsilon.$$
+	因此
+	$$\underline{I}-\underline{S}(T)<\varepsilon.$$
+	于是可知
+	$$\lim\limits_{\|T\|\to 0}\underline{S}(T)=\underline{\int_{a}^{b}}f(x)\d x.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	由于$\omega$可能为$0$，为了避免繁琐的分类讨论，此处用了“$\omega+1$”.
+\end{remark}
+\begin{remark}
+	以上定理也可作为上积分与下积分的定义.
+\end{remark}
+类似于数列的上极限和下极限，可以得到一系列关于上积分和下积分的简单性质.
+\begin{proposition}
+	设函数$f(x)$在区间$\left[a,b\right]$上有界.则
+	$$\underline{\int_{a}^{b}}f(x)\d x\leqslant\overline{\int_{a}^{b}}f(x)\d x.$$
+\end{proposition}
+\begin{proposition}[保序性]
+	设函数$f(x),g(x)$在区间$\left[a,b\right]$上有界.若$f(x\geqslant g(x)(\forall x\in\left[a,b\right]))$则
+	$$\overline{\int_{a}^{b}}f(x)\d x\geqslant\overline{\int_{a}^{b}}g(x)\d x,$$
+	$$\underline{\int_{a}^{b}}f(x)\d x\geqslant\underline{\int_{a}^{b}}g(x)\d x.$$
+\end{proposition}
+\begin{proposition}[可加性]
+	设函数$f(x)$在区间$\left[a,b\right]$上有界.若$c\in(a,b)$，则
+	$$\overline{\int_{a}^{b}}f(x)\d x=\overline{\int_{a}^{c}}f(x)\d x+\overline{\int_{c}^{b}}f(x)\d x,$$
+	$$\underline{\int_{a}^{b}}f(x)\d x=\underline{\int_{a}^{c}}f(x)\d x+\underline{\int_{c}^{b}}f(x)\d x.$$
+\end{proposition}
+\begin{proposition}[下积分的超可加性与上积分的次可加性]
+	设函数$f(x),g(x)$在区间$\left[a,b\right]$上有界.则
+	$$\overline{\int_{a}^{b}}f(x)\d x+\overline{\int_{a}^{b}}g(x)\d x\geqslant\overline{\int_{a}^{b}}\left[f(x)+g(x)\right]\d x,$$
+	$$\underline{\int_{a}^{b}}f(x)\d x+\underline{\int_{a}^{b}}g(x)\d x\leqslant\underline{\int_{a}^{b}}\left[f(x)+g(x)\right]\d x,$$
+\end{proposition}
+\begin{proposition}
+	设函数$f(x),g(x)$在区间$\left[a,b\right]$上有界.由于任一实数$c\geqslant 0$有
+	$$\overline{\int_{a}^{b}}cf(x)\d x=c\overline{\int_{a}^{b}}f(x)\d x,\quad\underline{\int_{a}^{b}}cf(x)\d x=c\underline{\int_{a}^{b}}f(x)\d x,$$
+	对于任一实数$c\leqslant 0$都有
+	$$\overline{\int_{a}^{b}}cf(x)\d x=c\underline{\int_{a}^{b}}f(x)\d x,\quad\underline{\int_{a}^{b}}cf(x)\d x=c\overline{\int_{a}^{b}}f(x)\d x.$$
+\end{proposition}
+
+现在终于可以来验证我们的第三个想法.
+\begin{theorem}[Riemann可积的充要条件]
+	设函数$f(x)$在$\left[a,b\right]$上有界，则以下4个命题等价：
+	\begin{enumerate}
+		\item $f(x)$在$\left[a,b\right]$上Riemann可积.
+		\item 作分割$T=\{\Delta_i\}(i=1,2,\cdots,n)$.设$f(x)$在$\left[x_{i-1},x_i\right]$上的振幅为$\omega_i$.则
+		$$\lim\limits_{\|T\|\to 0}\sum_{i=1}^{n}\omega_i\Delta x_i=0.$$
+		\item 对于任一$\varepsilon>0$都存在$\left[a,b\right]$的一个分割$T$使得
+		$$\overline{S}(T)-\underline{S}(T)<\varepsilon.$$
+		\item $f(x)$在$\left[a,b\right]$上Darboux可积.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	\begin{enumerate}
+		\item 证明$1\Rightarrow2$.若1成立，令$I=\displaystyle\int_{a}^{b}f(x)\d x$，则对于任一$\varepsilon>0$，存在$\delta>0$使得当$\|T\|<\delta$时，无论$\xi_i$在$\left[x_i-1,x_i\right]$中如何选取都有
+		$$I-\frac{\varepsilon}{3}<\sum_{i=1}^{n}f(\xi_i)\Delta x_i<I+\frac{\varepsilon}{3}.$$
+		因此
+		$$0\leqslant\overline{S}(T)-\underline{S}(T)\leqslant\frac{2}{3}\varepsilon<\varepsilon\iff 0\leqslant\sum_{i=1}^{n}\omega_i\Delta x_i\leqslant\frac{2}{3}\varepsilon<\varepsilon.$$
+		于是可知
+		$$\lim\limits_{\|T\|\to 0}\sum_{i=1}^{n}\omega_i\Delta x_i=0.$$
+		\item 证明$2\Rightarrow3$.若2成立，则对于任一$\varepsilon>0$都存在一个$\left[a,b\right]$的分割$T$使得
+		$$\sum_{i=1}^{n}\omega_i\Delta x_i=\overline{S}(T)-\underline{S}(T)<\varepsilon.$$
+		\item 证明$3\Rightarrow4$.若3成立，则对于任一$\varepsilon>0$都有
+		$$0\leqslant\overline{\int_{a}^{b}}f(x)\d x-\underline{\int_{a}^{b}}f(x)\d x\leqslant\overline{S}(T)-\underline{S}(T)<\varepsilon.$$
+		令$\varepsilon\to 0$得
+		$$\overline{\int_{a}^{b}}f(x)=\underline{\int_{a}^{b}}f(x)\d x.$$
+		\item 证明$4\Rightarrow1$.若$f(x)$在$\left[a,b\right]$上Darboux可积，则
+		$$\overline{\int_{a}^{b}}f(x)\d x=\underline{\int_{a}^{b}}f(x)\d x.$$
+		故对于任一分割$T$都有
+		$$\underline{S}(T)\leqslant\sum_{i=1}^{n}f(\xi_i)\Delta x_i\leqslant\overline{S}(T).$$
+		令上式中的$\|T\|\to 0$，由Darboux定理可知
+		$$\underline{\int_{a}^{b}}f(x)\d x=\lim\limits_{\|T\|\to 0}\underline{S}(T)\leqslant\lim\limits_{\|T\|\to 0}\sum_{i=1}^{n}f(\xi_i)\Delta x_i\leqslant\lim\limits_{\|T\|\to 0}\overline{S}(T)=\overline{\int_{a}^{b}}f(x)\d x.$$
+		由迫敛性，极限$\lim\limits_{\|T\|\to 0}\displaystyle\sum_{i=1}^{n}f(\xi_i)\Delta x_i$存在，于是可知$f(x)$在$\left[a,b\right]$上Riemann可积.$\hfill\blacksquare$
+	\end{enumerate}
+\end{proof}
+
+以上定理表明，Riemann积分和Darboux积分是等价的，它们分别从两个角度定义了同一种积分.Riemann积分借鉴了极限的$\varepsilon-\delta$语言，而Darboux积分用了上极限和下极限的思想.Riemann积分的定义比较直观，但Darboux积分的定义“更容易操作”，因此要判断一个函数是否Riemann可积，我们一般都是去判断它是否Darboux可积.至此我们找到了Riemann可积的两个充要条件.
+\begin{example}
+	判断Dirichlet函数$D(x)$在$\left[0,1\right]$上是否Riemann可积.
+\end{example}
+\begin{solution}
+	对于$\left[0,1\right]$的任一分割，由于分割内的任一小区间内都同时含有无理点和有理点，因此$D(x)$的任一上和都等于1，任一下和都等于0.于是可知
+	$$\overline{\int_{a}^{b}}D(x)\d x=1,\quad \underline{\int_{a}^{b}}D(x)\d x=0.$$
+	上积分与下积分不相等，故$D(x)$不Riemann可积.
+	$\hfill\blacksquare$
+\end{solution}
+\subsection{Riemann可积的充分条件}
+\begin{theorem}
+	若函数$f$在$\left[a,b\right]$上单调，则$f$在$\left[a,b\right]$上可积.
+\end{theorem}
+\begin{proof}
+	只需考虑增函数的情况.若$f(a)=f(b)$，则$f$为常值函数，显然可积.下设$f(a)<f(b)$.对$\left[a,b\right]$的任一分割$T$，$f$在$T$所属的每个小区间$\Delta_i$上的振幅为
+	$$\omega_i=f(x_i)-f(x_{i-1}),$$
+	于是有
+	\begin{align*}
+		\sum_{T}\omega_i\Delta x_i
+		\leqslant\sum_{i=1}^{n}\left[f(x_i)-f(x_{i-1})\right]\|T\|
+		=\left[f(b)-f(a)\right]\|T\|.
+	\end{align*}
+	由此可见，任给$\varepsilon>0$，只要$\|T\|\leqslant\dfrac{\varepsilon}{f(b)-f(a)}$，就有
+	$$\sum_{T}\omega_i\Delta x_i<\varepsilon,$$
+	所以$f$在$\left[a,b\right]$上可积.
+	$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}
+	若函数$f$在$\left[a,b\right]$上连续，则$f$在$\left[a,b\right]$上可积.
+\end{theorem}
+\begin{proof}
+	$f$在闭区间$\left[a,b\right]$上连续，则它在$\left[a,b\right]$上一致连续.对$\forall\varepsilon>0,\ \exists\delta>0$，对任意$x_1,x_2\in\left[a,b\right]$，当$|x_1-x_2|<\delta$时，有
+	$$|f(x_1)-f(x_2)|<\frac{\varepsilon}{b-a}.$$
+	由于连续函数必有最大、最小值，不妨设$f(s_i)=M_i=\sup\limits_{\Delta_i}f(x),\ f(t_i)=\inf\limits_{\Delta_i}f(x),\ s_i,t_i\in\left[x_{i-1},x_i\right]$，则
+	\begin{align*}
+		\sum_{i=1}^{n}\omega_i\Delta x_i
+		=\sum_{i=1}^{n}\left[f(s_i)-f(t_i)\right]\Delta x_i
+		\leqslant\frac{\varepsilon}{b-a}\sum_{i=1}^{n}\Delta x_i=\varepsilon.
+	\end{align*}
+	所以$f$在$\left[a,b\right]$上可积.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}
+	若函数$f$在区间$\left[a,b\right]$上有有限个间断点，则$f$在$\left[a,b\right]$上Riemann可积.
+\end{theorem}
+\begin{proof}
+	不失一般性，我们只需证明$f$在$\left[a,b\right]$上仅有一个间断点的情形，并假设该间断点是端点$b$.
+	
+	对任意$\varepsilon>0$，取$\delta'$满足$0<\delta'<\frac{\varepsilon}{2(M-m)}$，且$\delta'<b-a$，其中$M$与$m$分别为$f$在$\left[a,b\right]$上的上确界和下确界.若$M=m$，则$f$是常值函数，显然可积.下设$M>m$，记$f$在小区间$\Delta'=\left[b-\delta',b\right]$上的振幅为$\omega'$，则
+	$$\omega'\delta'<(M-m)\cdot\frac{\varepsilon}{2(M-m)}=\frac{vare	}{2}.$$
+	因为$f$在$\left[a,b-\delta'\right]$上连续，因此Riemann可积.存在$\left[a,b-\delta'\right]$的某个分割$T'$，使得
+	$$\sum_{T'}\omega_i\Delta x_i<\frac{\varepsilon}{2}.$$
+	则$T=T'\cup\Delta'$是对$\left[a,b\right]$的一个分割，对于$T$，有
+	$$\sum_{T}\omega_i\Delta x_i=\sum_{T'}\omega_i\Delta x_i+\omega'\delta'<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.$$
+	所以$f$在$\left[a,b\right]$上可积.$\hfill\blacksquare$
+\end{proof}
+
+由上述定理我们会想这样一个问题：间断点增加到什么时候函数就会不可积？这个临界状态在哪里？也就是说我们想要弄清函数的间断点的多少与函数是否可积的联系.
+
+为了刻画集合中点的多少，我们引入以下概念.
+\begin{definition}[零测度集]
+	设集合$E\subseteq\mathbb{R}$，对$\forall\varepsilon>0$，集合$E$可以被至多可数个开区间集合$\{I_k\}$覆盖，且这些开区间的长度之和
+	$$\sum_{k=1}^{\infty}|I_k|\leqslant\varepsilon,$$
+	则称集合$E$具有{\heiti 零测度}或者称集合$E$是{\heiti 零测度集}(null set)，简称{\heiti 零测集}.
+\end{definition}
+以下的结论是显然的.
+\begin{proposition}
+	空集是零测集.
+\end{proposition}
+\begin{proposition}
+	零测集的子集也是零测集.
+\end{proposition}
+\begin{proposition}
+	设集合$A$是至多可数的，则$A$是一个零测集.
+\end{proposition}
+\begin{proof}
+	不失一般性，设$A$为可数集，设
+	$$A=\{a_1,a_2,\cdots,a_n,\cdots\}.$$
+	对于任意给定的$\varepsilon>0$，令
+	$$I_n=(a_n-\frac{\varepsilon}{2^{n+1}},a_n+\frac{\varepsilon}{2^{n+1}}),\quad n=1,2,\cdots.$$
+	显然$\{I_n\}$是$A$的一个开覆盖.由于
+	$$\sum_{n=1}^{\infty}|I_n|=\sum_{n=1}^{\infty}2\cdot\frac{\varepsilon}{2^{n+1}}=\varepsilon\sum_{n=1}^{\infty}\frac{1}{2^n}=\varepsilon.$$
+	则由零测集定义可知$A$是一个零测集.
+\end{proof}
+\begin{remark}
+	需要注意，可数集一定是零测集，但不可数集也可能是零测集.后续我们在《实分析》中将进一步研究.
+\end{remark}
+\begin{proposition}
+	长度不为零的区间都不是零测集.
+\end{proposition}
+\begin{proof}
+	不妨设开区间$(a,b),\ (a<b)$，若$\{I_n\}$是$(a,b)$的一个开覆盖，则
+	$\sum_{n=1}^{\infty}|I_n|\geqslant b-a>0$
+	因此$(a,b)$不是一个零测集.$\hfill\blacksquare$
+\end{proof}
+\begin{proposition}
+	至多可数个零测集的并集仍是零测集.
+\end{proposition}
+\begin{proof}
+	设$E=\displaystyle\bigcup\limits_{n}E_n$是数目至多可数的零测集$E_n$的并集.对于每个$E_n$，我们根据$\varepsilon>0$构造集合$E_n$的覆盖$\{I_{n,k}\}$使$\displaystyle\sum\limits_{k}|I_{n,k}|<\dfrac{\varepsilon}{2}$.
+	
+	因为数目至多可数的可数集的并集也是至多可数集，所以开区间$I_{n,k}(n,k\in\mathbb{N}_+)$组成集合$E$的至多可数覆盖，并且
+	$$\sum_{n,k}|I_{n,k}|<\frac{\varepsilon}{2}+\frac{\varepsilon}{2^2}+\cdots+\frac{\varepsilon}{2^n}+\cdots=\varepsilon.$$
+	在$\sum_{n,k}|I_{n,k}|$中，由于级数收敛，所以求和是顺序是无关紧要的.上述级数的任何部分和以$\varepsilon$为上界，因而收敛.这就证得了$E$是零测集.$\hfill\blacksquare$
+\end{proof}
+
+用零测集的观点可以给出Riemann可积的充要条件.
+\begin{theorem}[Lebesgue-Vitali定理]
+	设函数$f$在区间$\left[a,b\right]$上有界，则$f$在$\left[a,b\right]$上Riemann可积当且仅当$f$在$\left[a,b\right]$上的不连续点组成的集合是一个零测集.
+\end{theorem}
+\begin{proof}
+	对$\left[a,b\right]$作分割：
+	$$T:a=x_0<x_1<\cdots<x_m=b.$$
+	
+	(i)证明必要性.由命题\ref{prop:jianduan}可知
+	$$D(f)=\bigcup_{n=1}^{\infty}D_{1/n}.$$
+	若证明了对于任一$\delta>0$，$D_\delta$都是零测集，则$D_1,D_{1/2},\cdots$都是零测集，也就证明了$D(f)$是一个零测集.
+	
+	设$f$在$\left[a,b\right]$上Riemann可积，由Riemann可积的充要条件可知，对于任一$\varepsilon>0$，都有
+	$$\sum_{i=1}^{n}\omega_i\Delta x_i<\frac{\varepsilon\delta}{2}.$$
+	设$x\in D_\delta$.若$x$不是$x_0,x_1,\cdots,x_m$中的任意一个，则存在$i\in\{1,2,\cdots,m\}$使得$x\in (x_{i-1},x_i)$，因此存在$r$使得$U(x;r)\subseteq(x_{i-1},x_i)$.设$f$在$(x_{i-1},x_i)$上的振幅为$\omega_i$，则
+	$$\omega_i\geqslant\omega\left[U(x;r)\right]\geqslant\omega(x)\geqslant \delta.$$
+	令
+	$$\Lambda=\{i|D_\delta\cap(x_{i-1},x_i)\neq\varnothing,\ i=1,2,\cdots,m\}.$$
+	于是
+	$$\frac{\varepsilon\delta}{2}>\sum_{i=1}^{n}\omega_i\Delta x_i\geqslant\sum_{i\in\Lambda}\omega_i\Delta x_i\geqslant\delta\sum_{i\in\Lambda}\Delta x_i.\Rightarrow\sum_{i\in\Lambda}\Delta x_i<\frac{\varepsilon}{2}.$$
+	由于
+	$$D_\delta\subseteq\left[\bigcup_{i\in\Lambda}(x_{i-1},x_i)\right]\cup\{x_0,x_1,\cdots,x_m\}.$$
+	因此
+	$$D_\delta\subseteq\left[\bigcup_{i\in\Lambda}(x_{i-1},x_i)\right]\cup\left[\bigcup_{i=0}^m(x_i-\frac{\varepsilon}{4(m+1)},x_i+\frac{\varepsilon}{4(m+1)})\right].$$
+	由于
+	$$\sum_{i\in\Lambda}\Delta x_i+(m+1)\frac{2\varepsilon}{4(m+1)}<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.$$
+	这表明$D_\delta$是一个零测集.
+	
+	(ii)证明充分性.设$D(f)$是一个零测集，则对于任一$\varepsilon>0$都存在$D(f)$的开覆盖$\{(\alpha_i,\beta_i)|i=1,2,\cdots\}$满足
+	$$\sum_{i=1}^{\infty}(\beta_i-\alpha_i)<\frac{\varepsilon}{2\omega}.$$
+	其中$\omega$是$f$在$\left[a,b\right]$上的振幅.令
+	$$K=\left[a,b\right]\bigg\backslash\bigcup_{i=1}^{\infty}(\alpha_i,\beta_i).$$
+	由命题\ref{prop:biji}可知，对于前面给定的$\varepsilon$，存在$\delta>0$使得当$x\in K,\ y\in\left[a,b\right]$且$|x-y|<\delta$时
+	$$|f(x)-f(y)|<\frac{\varepsilon}{4(b-a)}.$$
+	取分割$T$满足$\|T\|<\delta$.令
+	$$\Lambda_1=\{i|K\cap(x_{i-1},x_i)\neq\varnothing,\ i=1,2,\cdots,m\},\quad \Lambda_2=\{i|K\cap(x_{i-1},x_i)=\varnothing,\ i=1,2,\cdots,m\}.$$
+	则
+	$$\sum_{i=1}^{n}\omega_i\Delta x_i=\sum_{i\in\Lambda_1}\omega_i\Delta x_i+\sum_{i\in\Lambda_2}\omega_i\Delta x_i.$$
+	先来看$\displaystyle\sum_{i\in\Lambda_1}\omega_i\Delta x_i$的情况.由于
+	\begin{align*}
+		\omega_i
+		&=\sup\{|f(z_1)-f(z_2)|:z_1,z_2\in\left[x_{i-1},x_i\right]\}\\
+		&\leqslant\sup\{|f(z_1)-f(y_i)|+|f(z_2)-f(y_i)|:z_1,z_2\in\left[x_{i-1},x_i\right],\ y_i\in K\cap(x_{i-1},x_i)\}\\
+		&\leqslant\frac{\varepsilon}{2(b-a)}.
+	\end{align*}
+	因此
+	$$\sum_{i\in\Lambda_1}\omega_i\Delta x_i<\frac{\varepsilon}{2(b-a)}(b-a)=\frac{\varepsilon}{2}.$$
+	再看$\displaystyle\sum_{i\in\Lambda_2}\omega_i\Delta x_i$的情况.由于$\omega_i\leqslant\omega$，故
+	$$\sum_{i\in\Lambda_2}\omega_i\Delta x_i\leqslant\sum_{i\in\Lambda_2}\Delta x_i.$$
+	显然
+	$$\bigcup_{i\in\Lambda_2}(x_{i-1},x_i)\subseteq\bigcup_{i=1}^{\infty}(\alpha_i,\beta_i).$$
+	故进一步有
+	$$\sum_{i\in\Lambda_2}\Delta x_i\leqslant\sum_{i=1}^{\infty}(\beta_i-\alpha_i)<\frac{\varepsilon}{2\omega}.$$
+	于是
+	$$\sum_{i\in\Lambda_2}\omega_i\Delta x_i<\omega\frac{\varepsilon}{2\omega}=\frac{\varepsilon}{2}.$$
+	于是可知
+	$$\sum_{i=1}^{n}\omega_i\Delta x_i=\sum_{i\in\Lambda_1}\omega_i\Delta x_i+\sum_{i\in\Lambda_2}\omega_i\Delta x_i<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon.$$
+	由Riemann可积的充要条件可知$f$在$\left[a,b\right]$上Riemann可积.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	1907年法国数学家Henri\ Lebesgue与意大利数学家Giuseppe\ Vitali同时独立证明了以上定理.
+\end{remark}
+\begin{remark}
+	设零测集$E_0\subseteq E$，$P$是关于$E$中元素的命题，若对$\forall x\in E\backslash E_0$，命题$P$成立，那么我们说命题$P$在$E$上{\heiti 几乎处处}(almost everywhere)成立.以上定理就可以说成：有界函数$f$在$\left[a,b\right]$上Riemann可积的充要条件是$f$在$\left[a,b\right]$上几乎处处连续.
+\end{remark}
+
+在Lebesgue定理之下，可以立刻得到一系列关于可积性的结论.
+\begin{corollary}
+	设函数$f$在$\left[a,b\right]$上有界.若$f$在$\left[a,b\right]$上只有至多可数个间断点，则$f$在$\left[a,b\right]$上Riemann可积.
+\end{corollary}
+\begin{corollary}
+	设函数$f$在$\left[a,b\right]$上Riemann可积，则$|f|$也在$\left[a,b\right]$上Riemann可积.
+\end{corollary}
+\begin{corollary}
+	设函数$f$和$g$在$\left[a,b\right]$上Riemann可积，则$fg$也在$\left[a,b\right]$上Riemann可积.
+\end{corollary}
+\begin{corollary}
+	设函数$f$在$\left[a,b\right]$上Riemann可积.若$1/f$在$\left[a,b\right]$上有定义且有界，则$1/f$也在$\left[a,b\right]$上Riemann可积.
+\end{corollary}
+\begin{corollary}
+	设函数$f$在$\left[a,b\right]$上Riemann可积，若$\left[a_1,b_1\right]\subseteq\left[a,b\right]$，则$f$在$\left[a_1,b_1\right]$上Riemann可积.
+\end{corollary}
+\begin{corollary}
+	设函数$f$在$\left[a,b\right]$和$\left[b,c\right]$上都Riemann可积，则$f(x)$在$\left[a,c\right]$上Riemann可积.
+\end{corollary}
+\begin{corollary}
+	设函数$f$在$\left[a,b\right]$上Riemann可积.若函数$g$在$\left[a,b\right]$上除去有限个点$x_1,x_2,\cdots,x_n$之外与$f$相等，则$g$也在$\left[a,b\right]$上Riemann可积.且
+	$$\int_{a}^{b}f(x)\d x=\int_{a}^{b}g(x)\d x.$$
+\end{corollary}
+\begin{proof}
+	令$h=f-g$.则$h$除$x_1,x_2,\cdots,x_n$之外的函数值都等于零.因此$D(h)\subseteq\{x_1,x_2,\cdots,x_n\}$.因此$D(h)$是一个零测集.由Lebesgue定理可知$h$在$\left[a,b\right]$上Riemann可积.因此$g$也在$\left[a,b\right]$上Riemann可积.容易知道
+	$$\int_{a}^{b}h(x)\d x=0.$$
+	于是可知
+	$$\int_{a}^{b}f(x)\d x=\int_{a}^{b}g(x)\d x.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{corollary}
+	单调函数的不连续点集一定是零测集.
+\end{corollary}
+
+下面来考察Thomae函数的Riemann积分.
+\begin{example}
+	设函数$T$满足
+	\begin{equation*}
+		T(x)=\left\{
+		\begin{aligned}
+			&1,\quad x=0\\
+			&\frac{1}{q},\quad x=\frac{p}{q}\\
+			&0,\quad x\in\mathbb{R}\backslash\mathbb{Q}
+		\end{aligned}
+		\right.
+	\end{equation*}
+	其中$q>0,\ p,q\in\mathbb{Z}_+$且$(p,q)=1$.则$T$在任一有限区间$\left[a,b\right]$上都Riemann可积，且
+	$$\int_{a}^{b}T(x)\d x=0.$$
+\end{example}
+\begin{proof}
+	易知函数$T$在任一无理点都连续，在任一有理点都不连续，因此$D(T)=\mathbb{Q}$是一个零测集.由Lebesgue定理可知$T$在任一有限闭区间都Riemann可积.由Riemann可积的定义可知
+	$$\int_{a}^{b}T(x)\d x=0.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{proposition}
+	设函数$f$在$\left[a,b\right]$上连续，$g$在$\left[c,d\right]$上可积.若$g(\left[c,d\right])\subseteq\left[a,b\right]$，则$f\circ g$在$\left[c,d\right]$上Riemann可积.
+\end{proposition}
+\begin{proof}
+	设$C=\left[c,d\right]\backslash D(g)$，则$f\circ g$在$C$上连续.因此$D(f\circ g)$也是一个零测集.由Lebesgue定理可知$f\circ g$在$\left[c,d\right]$上Riemann可积.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	若把$f$在$\left[a,b\right]$上连续改成$f$在$\left[a,b\right]$上Riemann可积，则结论不成立.举例说明：设
+	\begin{equation*}
+		f(x)=\left\{
+		\begin{aligned}
+			&0,\quad x=0\\
+			&1,\quad x\neq 0
+		\end{aligned}
+		\right.
+		\qquad
+		T(x)=\left\{
+		\begin{aligned}
+			&1,\quad x=0\\
+			&\frac{1}{q},\quad x=\frac{p}{q}\\
+			&0,\quad x\in\mathbb{R}\backslash\mathbb{Q}
+		\end{aligned}
+		\right.
+	\end{equation*}
+	显然$f$和$T$都在$\mathbb{R}$的任一有限闭区间上Riemann可积.而
+	\begin{equation*}
+		f(T(x))=\left\{
+		\begin{aligned}
+			&1,\quad x\in\mathbb{Q}\\
+			&0,\quad x\in\mathbb{R}\backslash\mathbb{Q}
+		\end{aligned}
+		\right.
+	\end{equation*}
+	这是Dirichlet函数，它在$\mathbb{R}$的任一有限闭区间上都不Riemann可积.
+\end{remark}
+
+\section{积分基本定理}
+本节主要介绍两个积分中值定理和微积分学基本定理.
+\begin{theorem}[积分第一中值定理]
+	若$f$在$\left[a,b\right]$上连续，则至少存在一点$\xi \in\left[a,b\right]$使得
+	$$\int_{a}^{b}f(x)\d x=f(\xi)(b-a).$$
+\end{theorem}
+\begin{proof}
+	由于$f$在$\left[a,b\right]$上连续，因此存在最大值$M$和最小值$m$.由
+	$$m\leqslant f(x)\leqslant M,\quad x\in\left[a,b\right],$$
+	使用积分不等式性质得
+	$$m(b-a)\leqslant\int_{a}^{b}f(x)\d x\leqslant M(b-a),$$
+	即
+	$$m\leqslant\frac{1}{b-a}\int_{a}^{b}f(x)\d x\leqslant M.$$
+	由连续函数的介值定理可知，至少存在一点$\xi\in\left[a,b\right]$，使得
+	$$f(\xi)=\frac{1}{b-a}\int_{a}^{b}f(x)\d x,$$
+	即
+	$$\int_{a}^{b}f(x)\d x=f(\xi)(b-a).$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	$\dfrac{1}{b-a}\displaystyle\int_{a}^{b}f(x)\d x$可以理解为$f(x)$在区间$\left[a,b\right]$上所有函数值的平均值.这是通常有限个数的算术平均值的推广.
+\end{remark}
+\begin{theorem}[推广的积分第一中值定理]
+	若$f$和$g$都在$\left[a,b\right]$上连续，且$g(x)$在$\left[a,b\right]$上不变号，则至少存在一点$\xi\in\left[a,b\right]$，使得
+	$$\int_{a}^{b}f(x)g(x)\d x=f(\xi)\int_{a}^{b}g(x)\d x.$$
+\end{theorem}
+\begin{proof}
+	不妨设$g(x)\geqslant 0,\ x\in\left[a,b\right]$.这时有
+	$$mg(x)\leqslant f(x)g(x)\leqslant Mg(x),\ x\in\left[a,b\right],$$
+	其中$M,m$分别为$f$在$\left[a,b\right]$上的最大、最小值.由定积分的不等式性质，得到
+	$$m\int_{a}^{b}g(x)\d x\leqslant\int_{a}^{b}f(x)g(x)\d x\leqslant M\int_{a}^{b}g(x)\d x.$$
+	若$\displaystyle\int_{a}^{b}g(x)\d x=0$，则$\displaystyle\int_{a}^{b}f(x)g(x)\d x=0$，从而对任何$\xi\in\left[a,b\right]$，结论都成立.\\
+	若$\displaystyle\int_{a}^{b}g(x)\d x>0$，则
+	$$m\leqslant\frac{\displaystyle\int_{a}^{b}f(x)g(x)\d x}{\displaystyle\int_{a}^{b}g(x)\d x}\leqslant M.$$
+	由连续函数的介值性，必至少存在一点$\xi\in\left[a,b\right]$，使得
+	$$f(\xi)=\frac{\displaystyle\int_{a}^{b}f(x)g(x)\d x}{\displaystyle\int_{a}^{b}g(x)\d x}.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{definition}[变限积分]
+	设$f$在$\left[a,b\right]$上可积，则对任何$x\in\left[a,b\right]$，$f$在$\left[a,x\right]$上也可积.设
+	$$\varPhi(x)=\int_{a}^{x}f(t)\d t,\quad x\in\left[a,b\right].$$
+	它是一个以积分上限$x$为自变量的函数，称为变上限的定积分.类似地，我们可定义变下限的定积分：
+	$$\Psi(x)=\int_{x}^{b}f(t)\d t,\quad x\in\left[a,b\right].$$
+	$\varPhi$和$\Psi$统称为{\heiti 变限积分}.
+\end{definition}
+由于
+$$\int_{x}^{b}f(t)\d t=-\int_{a}^{x}f(t)\d t,$$
+因此下面只讨论变上限积分的情形.
+\begin{theorem}
+	若$f$在$\left[a,b\right]$上可积，则上面的$\varPhi(x)$在$\left[a,b\right]$上连续.
+\end{theorem}
+\begin{proof}
+	对$\left[a,b\right]$上任一确定的点$x$，只要$x+\Delta x\in\left[a,b\right]$，则
+	$$\Delta \varPhi=\int_{a}^{x+\Delta x}f(t)\d t-\int_{a}^{x}f(t)\d t=\int_{x}^{x+\Delta x}f(t)\d t.$$
+	因$f$在$\left[a,b\right]$上有界，设$|f(t)|\leqslant M,\ t\in\left[a,b\right]$.当$\Delta x>0$时，有
+	$$|\Delta\varPhi|=\big|\int_{x}^{x+\Delta x}f(t)\d t\big|\leqslant\int_{x}^{x+\Delta x}|f(t)|\d t\leqslant M\Delta x.$$
+	当$\Delta x<0$时，有$|\Delta \varPhi|\leqslant M|\Delta x|$.由此得到
+	$$\lim\limits_{\Delta x\to 0}\Delta \varPhi=0.$$
+	即$\varPhi$在点$x$处连续，由$x$的任意性可知$\varPhi$在$\left[a,b\right]$上处处连续.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}[微积分学基本定理]
+	若$f$在$\left[a,b\right]$上连续，则$\varPhi(x)$在$\left[a,b\right]$上处处可导，且
+	$$\varPhi'(x)=\frac{\d}{\d x}\int_{a}^{x}f(t)\d t=f(x),\quad x\in\left[a,b\right].$$
+\end{theorem}
+\begin{proof}
+	对$\left[a,b\right]$上任一确定的$x$，当$\Delta x\neq 0$且$x+\Delta x\in\left[a,b\right]$时，由积分第一中值定理，有
+	$$\frac{\Delta\varPhi}{\Delta x}=\frac{1}{\Delta x}=\frac{1}{\Delta x}\int_{x}^{x+\Delta x}f(t)\d t=f(x+\theta x),\ 0\leqslant\theta\leqslant 1.$$
+	由于$f$在点$x$连续，故有
+	$$\varPhi'(x)=\lim\limits_{\Delta x\to 0}\frac{\Delta \varPhi}{\Delta x}=\lim\limits_{\Delta x\to 0}f(x+\theta\Delta x)=f(x).$$
+	由$x$在$\left[a,b\right]$上的任意性，证得$\varPhi$是$f$在$\left[a,b\right]$上的一个原函数.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	本定理沟通了导数和定积分这两个从表面看似不相干的概念之间的内在联系；同时也证明了“连续函数必有原函数”这一基本结论，并以积分形式给出了$f$的一个原函数.可见该定理的重要意义.
+\end{remark}
+
+\begin{theorem}[积分第二中值定理]
+	设函数$f$在$\left[a,b\right]$上可积.
+	\begin{enumerate}
+		\item 若函数$g$在$\left[a,b\right]$上减，且$g(x)\geqslant 0$，则存在$\xi\in\left[a,b\right]$，使得
+		$$\int_{a}^{b}f(x)g(x)\d x=g(a)\int_{a}^{\xi}f(x)\d x.$$
+		\item 若函数$g$在$\left[a,b\right]$上增，且$g(x)\leqslant 0$，则存在$\eta\in\left[a,b\right]$，使得
+		$$\int_{a}^{b}f(x)g(x)\d x=g(b)\int_{\eta}^{b}f(x)\d x.$$
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	只需证1，类似地可证2.设
+	$$F(x)=\int_{a}^{x}f(t)\d t,\ x\in\left[a,b\right].$$
+	由于$f$在$\left[a,b\right]$上可积，因此$f$有界，设$|f(x)|\leqslant L$.且有$F(x)$在$\left[a,b\right]$上连续，从而存在最大值$M$和最小值$m$.由于可积函数是连续的，所以下面只需证明
+	$$m\leqslant\frac{1}{g(a)}\int_{a}^{b}f(x)g(x)\d x\leqslant M.$$
+	即证
+	$$mg(a)\leqslant\int_{a}^{b}f(x)g(x)\d x\leqslant Mg(a).$$
+	
+	由于$g(x)$是单调的，因此必可积，对任意$\varepsilon>0$，存在分割$T:a=x_0<x_1<\cdots<x_n=b$，使
+	$$\sum_{i=1}^{n}\omega_i\Delta x_i<\frac{\varepsilon}{L}.$$
+	\begin{align*}
+		\int_{a}^{b}f(x)g(x)\d x
+		&=\sum_{i=1}^{n}\int_{x_{i-1}}^{x_i}f(x)g(x)\d x\\
+		&=\sum_{i=1}^{n}\int_{x_{i-1}}^{x_i}\left[g(x)-g(x_{i-1})\right]f(x)\d x+\sum_{i=1}^{n}g(x_{i-1})\int_{x_{i-1}}^{x_i}f(x)\d x\\
+		&\leqslant\sum_{i=1}^{n}\int_{x_{i-1}}^{x_i}\left|g(x)-g(x_{i-1})\right|\cdot|f(x)|\d x+\sum_{i=1}^{n}g(x_{i-1})\left[F(x_i)-F(x_{i-1})\right]\\
+		&\leqslant L\cdot\sum_{i=1}^{n}\omega_i\Delta x_i+\sum_{i=1}^{n-1}F(x_i)\left[g(x_{i-1})-g(x_i)\right]+F(b)g(x_{n-1})\\
+		&<L\cdot\frac{\varepsilon}{L}+M\sum_{i=1}^{n-1}\left[g(x_{i-1})-g(x_i)\right]+Mg(x_{n-1})\\
+		&=\varepsilon+Mg(a).
+	\end{align*}
+	同理，有
+	$$\int_{a}^{b}f(x)g(x)\d x>-\varepsilon+mg(a).$$
+	结合两式，
+	$$-\varepsilon+mg(a)<\int_{a}^{b}f(x)g(x)\d x<Mg(a)+\varepsilon.$$
+	令$\varepsilon\to 0$，得
+	$$mg(a)\leqslant\int_{a}^{b}f(x)g(x)\d x\leqslant Mg(a).$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{corollary}
+	设函数$f$在$\left[a,b\right]$上可积.若$g$为单调函数，则存在$\xi\in\left[a,b\right]$，使得
+	$$\int_{a}^{b}f(x)g(x)\d x=g(a)\int_{a}^{\xi}f(x)\d x+g(b)\int_{\xi}^{b}f(x)\d x.$$
+\end{corollary}
+\begin{proof}
+	只需证$g$为递减的情况，递增的情况可类似证明.设$h(x)=g(x)-g(b)$，则$h$为非负、递减函数.由积分第二中值定理，存在$\xi\in\left[a,b\right]$，使得
+	$$\int_{a}^{b}f(x)h(x)\d x=h(a)\int_{a}^{\xi}f(x)\d x.$$
+	又
+	$$\int_{a}^{b}f(x)h(x)\d x=\int_{a}^{b}f(x)g(x)\d x-g(b)\int_{a}^{b}f(x)\d x.$$
+	化简即得结论.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	积分第二中值定理及其推论是今后建立反常积分收敛判别法的工具.
+\end{remark}
+\section{Riemann积分的计算}
+\begin{theorem}[Newton-Leibnitz公式]
+	若函数$f$在$\left[a,b\right]$上Riemann可积，且存在原函数$F$，若$F$在$\left[a,b\right]$上连续，则
+	$$\int_{a}^{b}f(x)\d x=F(b)=F(a).$$
+	上式称为{\heiti Newton-Leibnitz公式}.
+\end{theorem}
+\begin{proof}
+	把$\left[a,b\right]$作$n$等分
+	$$a=x_0<x_1<\cdots<x_n=b.$$
+	由Lagrange中值定理可知，存在$\xi_i\in(x_{i-1},x_i)(i=1,2,\cdots,n)$满足
+	$$F(b)-F(a)=\sum_{i=1}^{n}\left[F(x_i)-F(x_{i-1})\right]=\sum_{i=1}^{n}F'(\xi)(x_i-x_{i-1})=\sum_{i=1}^{n}f(\xi_i)\Delta x_i.$$
+	由于$f(x)$在$\left[a,b\right]$上Riemann可积，因此令上式的$n\to\infty$得
+	$$F(b)-F(a)=\lim\limits_{n\to\infty}\sum_{i=1}^{n}f(\xi_i)\Delta x_i=\int_{a}^{b}f(x)\d x.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	用微积分学基本定理也可以很容易地证明Newton-Leibnitz公式，在此不再赘述.
+\end{remark}
+
+对原函数的存在性有了正确的认识，就能顺利地把不定积分的换元积分法和分部积分法移植到定积分计算中来.
+\begin{theorem}[换元积分法]
+	若函数$f$在$\left[a,b\right]$上连续，$\varphi'$在$\left[\alpha,\beta\right]$上可积，且满足
+	$$\varphi(\alpha)=a,\ \varphi(\beta)=b,\ \varphi(\left[\alpha,\beta\right])\subseteq\left[a,b\right],$$
+	则有定积分换元公式：
+	$$\int_{a}^{b}f(x)\d x=\int_{\alpha}^{\beta}f(\varphi(t))\varphi'(t)\d t.$$
+\end{theorem}
+\begin{proof}
+	由于$f$在$\left[a,b\right]$上连续，因此其原函数存在.设$F$为$f$在$\left[a,b\right]$上的一个原函数，则
+	$$\frac{\d}{\d t}\bigg(F(\varphi(t))\bigg)=f(\varphi(t))\varphi'(t).$$
+	又$\varphi'(t)$在$\left[\alpha,\beta\right]$上可积，由Newton-Leibnitz公式，有
+	$$\int_{\alpha}^{\beta}f(\varphi(t))\varphi'(t)\d t=F(\varphi(\beta))-F(\varphi(\alpha))=F(b)-F(a)=\int_{a}^{b}f(x)\d x.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}[分部积分法]
+	若$u(x),v(x)$为$\left[a,b\right]$上的可微函数，且$u'(x)$和$v'(x)$都在$\left[a,b\right]$上可积，则有定积分分部积分公式：
+	$$\int_{a}^{b}u(x)v'(x)\d x=u(x)v(x)\bigg|_{a}^{b}-\int_{a}^{b}u'(x)v(x)\d x.$$
+\end{theorem}
+\begin{proof}
+	$$\int_{a}^{b}u(x)v'(x)\d x+\int_{a}^{b}u'(x)v(x)\d x=\int_{a}^{b}\left[u(x)v'(x)+v(x)u'(x)\right]\d x=u(x)v(x)\bigg|_{a}^{b}.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	为方便，分部积分公式也可写成
+	$$\int_{a}^{b}u(x)\d v(x)=u(x)v(x)\bigg|_{a}^{b}-\int_{a}^{b}v(x)\d u(x).$$
+\end{remark}
+\section{Taylor公式的积分型余项}
+由前面的学习中我们知道，设$R_n(x)$是Taylor公式的余项，则$f(x)$在$x_0$处的Taylor公式为
+$$f(x)=\sum_{k=0}^{n}\frac{f^{(k)}(x)}{k!}(x-x_0)^k+R_n(x).$$
+我们已经从定性和定量的角度分别介绍了Peano型余项和Lagrange型余项，下面我们从积分的角度给出积分型余项和Cauchy型余项.
+
+先给出一个引理，这是求积分型余项的基础.
+\begin{lemma}[推广的分部积分公式]
+	设函数$u(x),v(x)$在$\left[a,b\right]$上有$n+1$阶连续导函数，则
+	\begin{align*}
+		\int_{a}^{b}u(x)v^{(n+1)}(x)\d x=
+		&\left[u(x)v^{(n)}(x)-u'(x)v^{(n-1)}(x)+\cdots+(-1)^nu^{(n)}(x)v(x)\right]_{a}^{b}+\\
+		&(-1)^{n+1}\int_{a}^{b}u^{(n+1)}(x)v(x)\d x\quad(n=1,2,\cdots).
+	\end{align*}
+\end{lemma}
+
+该引理可由数学归纳法证明.
+
+设函数$f$在$x_0$的某邻域$U(x_0)$上有$n+1$阶连续导函数.对$x\in U(x_0),\ t\in\left[x_0,x\right](\text{或}\left[x,x_0\right])$，利用推广的分部积分公式，有
+\begin{align*}
+	&\int_{x_0}^{x}(x-t)^nf^{(n+1)}(t)\d t\\
+	&=\left[(x-t)^nf^{(n)}(t)+n(x-t)^{(n-1)}(t)+\cdots+n!f(t)\right]_{x_0}^{x}+\int_{x_0}^{x}0\cdot f(t)\d t\\
+	&=n!f(x)-n!\left[f(x_0)+f'(x_0)(x-x_0)+\cdots+\frac{f^{(n)}(x_0)}{n!}(x-x_0)^n\right]\\
+	&=n!R_n(x).
+\end{align*}
+其中$R_n(x)$即为Taylor公式的{\heiti 积分型余项}.求得
+$$R_n(x)=\frac{1}{n!}\int_{x_0}^{x}f^{(n+1)}(t)(x-t)^n\d t.$$
+
+由于$f^{(n+1)}(t)$连续，$(x-t)^n$在$\left[x_0,x\right](\text{或}\left[x,x_0\right])$上保持同号，因此由推广的积分第一中值定理，可将积分型余项写作
+$$R_n(x)=\frac{1}{n!}f^{(n+1)}(\xi)\int_{x_0}^{x}(x-t)^n\d t=\frac{1}{(n+1)!}f^{(n+1)}(\xi)(x-x_0)^{n+1},\ \xi=x_0+\theta(x-x_0),\ 0\leqslant\theta\leqslant 1.$$
+这就是以前所熟悉的Lagrange型余项.
+
+\hspace*{\fill}
+
+如果直接对积分型余项应用积分第一中值定理，则
+\begin{align*}
+	R_n(x)
+	&=\frac{1}{n!}f^{(x+1)}(\xi)(x-\xi)^n(x-x_0),\quad \xi=x_0+\theta(x-x_0),\ 0\leqslant\theta\leqslant 1.\\
+	&=\frac{1}{n!}f^{(x+1)}(\xi)\left[x-x_0-\theta(x-x_0)^n\right](x-x_0)\\
+	&=\frac{1}{n!}f^{(x+1)}(x_0+\theta(x-x_0))(1-\theta)^n(x-x_0)^{n+1}
+\end{align*}
+特别当$x_0=0$时，有
+$$R_n(x)=\frac{1}{n!}f^{(n+1)}(\theta x)(1-\theta)^nx^{n+1},\quad 0\leqslant\theta\leqslant 1.$$
+我们将上述两式称为Taylor公式的{\heiti Cauchy型余项}.各种形式的Taylor公式余项将在幂级数中显示它们的功用.

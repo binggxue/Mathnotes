@@ -1,0 +1,440 @@
+\chapter*{预备知识}
+\addcontentsline{toc}{chapter}{预备知识}
+此章节中，我们给出有关命题逻辑与朴素集合论的相关知识，这是在描述现代数学理论中必不可少的.
+\section{命题}
+\subsection{命题的概念}
+\begin{definition}[命题]
+	可以判断真假的陈述句称为{\heiti 命题}(proposition).其中判断为真的语句叫{\heiti 真命题}(true proposition)，判断为假的语句叫{\heiti 假命题}(false proposition).
+\end{definition}
+一般地，命题可以写作“若$p$，则$q$”的形式.我们称$p$为命题的条件，$q$为命题的结论.
+\subsection{逻辑联结词}
+逻辑联结词分为合取词（与）、析取词（或）和否定词（非）.
+\begin{definition}[与]
+	对于两个条件$p$，$q$，我们将$p$,$q$同时成立的称为$p${\heiti 与}$q$或$p${\heiti 且}$q$，记作$p\wedge q$.
+\end{definition}
+
+\begin{definition}[或]
+	对于两个条件$p$，$q$，我们将$p$,$q$中至少有一个成立的称为$p${\heiti 或}$q$，记作$p\vee q$.
+\end{definition}
+
+\begin{definition}[非]
+	对于条件$p$，我们将不满足条件$p$的条件称为{\heiti 非}$p$，记作$\neg p$.
+\end{definition}
+
+我们将不含逻辑联结词的命题称为{\heiti 简单命题}，将由简单命题和逻辑联结词组成的命题称为{\heiti 复合命题}.
+\subsection{命题变换与真值判断}
+设命题$P:\text{若}p,\text{则}q$.
+
+我们定义$P$的逆命题、否命题、逆否命题如下：
+
+逆命题：若$q$，则$p$；
+
+否命题：若$\neg p$，则$\neg q$；
+
+逆否命题：若$\neg q$，则$\neg p$.
+
+我们称变换前的命题$P$为原命题，那么我们有以下结论：
+
+{\heiti 原命题为真，逆命题和否命题不一定为真，但逆否命题一定为真.}
+\subsection{蕴含关系与条件语句}
+设命题$P:\text{若}p,\text{则}q$.
+
+我们可以将其记作$p\rightarrow q$，称作“$p$蕴含$q$”.我们称$p$是$q$的{\heiti 充分条件}，即在$p$成立的前提下，可以充分地说明$q$是成立的；称$q$是$p$的{\heiti 必要条件}，即$q$的成立不一定能说明$p$是成立的，$p$的成立可能还受其他条件制约，但$q$成立是必要的，如果$q$不成立，那么$p$也是不成立的（这就是$P$的逆否命题，它与$P$是等价的）.
+
+由上面的分析我们得出，若$p\rightarrow q$，则$\neg q\rightarrow \neg p$.同样地，若$\neg q\rightarrow \neg p$，则$p\rightarrow q$.我们可以看出$P$与$P$的逆否命题是等价的，记作
+$$P\iff P\text{的逆否命题}.$$
+我们可以看出，若$p\iff q$，则$p\rightarrow q$且$q\rightarrow p$，$p$既是$q$的充分条件又是$q$的必要条件，我们称$p$为$q$的{\heiti 充分必要条件}，简称为{\heiti 充要条件}.根据定义，互为充要条件的两个条件是等价的.
+\section{逻辑量词}
+逻辑量词分为全称量词和存在量词.
+\begin{definition}[全称量词]
+	在语句中含有短语“所有”、“每一个”、“任何一个”、“任意一个”“一切”等都是在指定范围内，表示整体或全部的含义，这样的词叫作{\heiti 全称量词}.记作“$\forall$”，读作“任意”.
+\end{definition}
+\begin{definition}[存在量词]
+	短语“有些”、“至少有一个”、“有一个”、“存在”等都有表示个别或一部分的含义，这样的词叫作{\heiti 存在量词}.记作“$\exists$”，读作“存在”.
+\end{definition}
+命题涉及“任意”和“存在”这两个逻辑量词时，它们的否定说法是把“任意”改成“存在”，把“存在”改成“任意”.
+\section{集合的基本概念}
+集合是数学中所谓原始概念之一，不能用别的概念加以定义.目前我们只需掌握其朴素的说法.对于那些对集合的理论有进一步需求的读者，例如打算研究集合论本身或者打算研究数理逻辑的读者，建议去研读有关公理集合论的专著.
+
+我们把在一定特征范围内的个体构成的集体称为{\heiti 集合}(set).集合也常称为{\heiti 集}、{\heiti 族}或{\heiti 类}.组成集合的每个个体都是集合的{\heiti 元素}.通常，我们用大写字母$A,B,C,\cdots$来表示集合，小写字母$a,b,c,\cdots$来表示集合中的元素.
+\subsection{集合的表示}
+常用集合的表示方法有{\heiti 列举法}和{\heiti 描述法}.顾名思义，列举法就是将集合中的元素一一列举出来，例如
+$$A=\{a,b,c,\cdots\}.$$
+描述法是将元素的共同特征归纳在一起，例如
+$$A=\{x|x\text{满足条件}P\}.$$
+其中竖线“$|$”也可用冒号“$:$”、分号“$;$”表示.集合中的元素具有确定性、互异性、无序性.
+
+习惯上，我们用空心大写字母来表示数集.例如
+$\mathbb{N}$表示{\heiti 自然数集}，$\mathbb{Z}$表示{\heiti 整数集}，$\mathbb{N}^+$或$\mathbb{R}^+$表示{\heiti 正整数集}，$\mathbb{Q}$表示有理数集，$\mathbb{R}$表示{\heiti 实数集}，$\mathbb{C}$表示{\heiti 复数集}.
+
+设$A$是一个集合，若$a$是$A$的元素，记作$a\in A$，读作{\heiti $a$属于$A$}；如果$a$不是$A$的元素，记作$a\notin A$，读作{\heiti $a$不属于$A$}.
+\subsection{集合的包含与相等}
+\begin{definition}[包含与子集]
+	对任意$x\in A$，都有$x\in B$，则称{\heiti $A$包含于$B$}或{\heiti $B$包含$A$}，记作$A\subset B$或$B\supset A$.称$A$是$B$的{\heiti 子集}(subset)，若存在$y\in B$，使得$y\notin A$，则称$A$为$B$的{\heiti 真子集}(proper subset).记作$A\subsetneqq B$或$B\supsetneqq A$.
+\end{definition}
+\begin{definition}[集合的相等]
+	若集合$A$中的元素和集合$B$中的元素完全相同，则称$A$和$B$相等，记作$A=B$.
+\end{definition}
+不难看出，$A=B$的充要条件是$A\subset B$且$B\subset A$.
+\section{集合的运算}
+从给定的一些集合出发，我们可以通过所谓“集合的运算”作出一些新的集合.
+\subsection{集合的基本运算}
+下面我们将介绍集合的并、交、差、补的运算.
+\begin{definition}[并集]
+	设$A,B$是任意两个集合.由一切属于$A$或属于$B$的元素组成的集合$C$，称为$A$和$B$的{\heiti 并集}或{\heiti 和集}，简称为{\heiti 并}或{\heiti 和}，记为$C=A\cup B$.即
+	$$A\cup B=\{x|x\in A\text{或}x\in B\}.$$
+\end{definition}
+并集的概念可以推广到任意多个集合的情形.
+\begin{definition}[推广的并集]
+	设有一族集合$\{A_\alpha|\alpha\in\Lambda\}$，其中$\alpha$是在固定指标集$\Lambda$中变化的指标；则由一切$A_\alpha(\alpha\in\Lambda)$的所有元素组成的集合称为这族集合的并集或和集，记为$\bigcup\limits_{\alpha\in\Lambda}A_\alpha$，即
+	$$\bigcup_{\alpha\in\Lambda}A_\alpha=\{x|\text{存在某个}\alpha\in\Lambda,\text{使}x\in A_\alpha\}.$$
+\end{definition}
+习惯上，当$\Lambda=\{1,2,\cdots,k\}$为有限集时，$A=\bigcup\limits_{\alpha\in\Lambda}A_\alpha$写成$A=\bigcup\limits_{n=1}^{k}A_\alpha$，而$A=\bigcup\limits_{n\in\mathbb{N}^+}A_\alpha$写成$\bigcup\limits_{n=1}^{\infty}A_\alpha$.
+\begin{definition}[交集]
+	设$A,B$是任意两个集合.由一切属于$A$且属于$B$的元素组成的集合$C$，称为$A$和$B$的{\heiti 交集}或{\heiti 积集}，简称为{\heiti 交}或{\heiti 积}，记为$C=A\cap B$.即
+	$$A\cap B=\{x|x\in A\text{且}x\in B\}.$$
+\end{definition}
+交集的概念也可以推广到任意多个集合的情形.
+\begin{definition}[推广的交集]
+	设有一族集合$\{A_\alpha|\alpha\in\Lambda\}$，其中$\alpha$是在固定指标集$\Lambda$中变化的指标；则由一切同时属于每个$A_\alpha(\alpha\in\Lambda)$的元素组成的集合称为这族集合的交集或积集，记为$\bigcap\limits_{\alpha\in\Lambda}A_\alpha$，即
+	$$\bigcap_{\alpha\in\Lambda}A_\alpha=\{x|\text{对任意}\alpha\in\Lambda,\text{有}x\in A_\alpha\}.$$
+\end{definition}
+习惯上，当$\Lambda=\{1,2,\cdots,k\}$为有限集时，$A=\bigcap\limits_{\alpha\in\Lambda}A_\alpha$写成$A=\bigcap\limits_{n=1}^{k}A_\alpha$，而$A=\bigcap\limits_{n\in\mathbb{N}^+}A_\alpha$写成$\bigcap\limits_{n=1}^{\infty}A_\alpha$.
+
+关于集合的并和交显然有下面的事实.
+\begin{theorem}
+	\begin{enumerate}[(1)]
+		\item (交换律)$A\cup B=B\cup A,\ A\cap B=B\cap A$.
+		\item (结合律)$A\cup(B\cup C)=(A\cup B)\cup C$，$A\cap(B\cap C)=(A\cap B)\cap C$.
+		\item (分配律)$A\cap (B\cup C)=(A\cap B)\cup(A\cap C)$，$A\cap(\bigcup\limits_{\alpha\in\Lambda}B_\alpha)=\bigcup\limits_{\alpha\in\Lambda}(A\cap B_\alpha)$.
+		\item $A\cup A=A,\ A\cap A=A$.
+	\end{enumerate}
+\end{theorem}
+\begin{definition}[差集]
+	若$A$和$B$是集合，称$A\backslash B=\{x|x\in A\text{且}x\notin B\}$为$A$和$B$的{\heiti 差集}.
+\end{definition}
+\begin{definition}[补集]
+	当我们讨论的集合都是某一个大集合$S$（称为全集）的子集时，我们称$S\backslash A$为$A$的{\heiti 补集}或{\heiti 余集}，并记$S\backslash A=A^c$.
+\end{definition}
+当全集确定时，显然$A\backslash B=A\cap B^c$.因此研究差集运算可通过研究补集运算来实现.此外，在集合论中处理差集或补集运算式时常用到以下公式.
+\begin{theorem}[De\ Morgan公式]
+	若$\{A_\alpha|\alpha\in \Lambda\}$是一族集合，则
+	\begin{enumerate}[(1)]
+		\item $(\bigcup\limits_{\alpha\in\Lambda}A_\alpha)^c=\bigcap\limits_{\alpha\in\Lambda}A_\alpha^c$;
+		\item $(\bigcap\limits_{\alpha\in\Lambda}A_\alpha)^c=\bigcup\limits_{\alpha\in\Lambda}A_\alpha^c$.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	只需证(1).设$x\in (\bigcup\limits_{\alpha\in\Lambda}A_{\alpha})^c$，则$x\notin \bigcup\limits_{\alpha\in\Lambda}A_\alpha$，因此对任意$\alpha\in\Lambda,\ x\notin A_\alpha$，即对任意$\alpha\in\Lambda,\ x\in A_{\alpha}^c$，从而$x\in \bigcap\limits_{\alpha\in\Lambda}A_{\alpha}^c$.反之，设$x\in\bigcap\limits_{\alpha\in\Lambda}A_{\alpha}^c$，则对任意$\alpha\in\Lambda,\ x\in A_{\alpha}^c$，即对任意$\alpha\in\Lambda,\ x\notin A_{\alpha}$，则$x\notin\bigcup\limits_{\alpha\in\Lambda}A_{\alpha}$，从而$x\in(\bigcup\limits_{\alpha\in\Lambda}A_\alpha)^c$.综合可得$(\bigcup\limits_{\alpha\in\Lambda}A_\alpha)^c=\bigcap\limits_{\alpha\in\Lambda}A_\alpha^c$.
+	
+	对于(2)，只需对等式两边取补集，并用$A_{\alpha}^c$代替$A_\alpha$即可转化为(1).$\hfill\blacksquare$
+\end{proof}
+{\heiti 我们注意到与“存在”相对应的是并集运算，与“任意”相对应的是交集运算.}数学分析中的很多定义、命题涉及“任意”和“存在”这两个逻辑量词，它们的否定说法是把“任意”改为“存在”，把“存在”改成“任意”.在集合论中，De\ Morgan公式很好地反映了这种论述的合理性.
+\subsection{集列的上极限和下极限}
+我们将一列集合$A_1,A_2,\cdots,A_n,\cdots$称为{\heiti 集列}.记作$\{A_n\}$.
+\begin{definition}[上极限]
+	设$A_1,A_2,\cdots,A_n,\cdots$是任意一集列.由属于上述集列中无限多个集合的那种元素的全体所组成的集合称为这一集列的{\heiti 上极限}，记为$\varlimsup\limits_{n\to\infty}A_n$或$\limsup\limits_{n\to\infty}A_n$.它可表示为
+	$$\varlimsup\limits_{n\to\infty}A_n=\{x|\text{存在无穷多个}A_n,\ \text{使}x\in A_n\}.$$
+\end{definition}
+不难证明：
+$$\varlimsup\limits_{n\to\infty}A_n=\{x|\forall N>0,\ \exists n>N,\ s.t.\ x\in A_n\}.$$
+\begin{definition}[下极限]
+	设$A_1,A_2,\cdots,A_n,\cdots$是任意一集列.除有限个下标外，属于集列中每个集合的元素全体所组成的集合称为这一集列的{\heiti 下极限}，记为$\varliminf\limits_{n\to\infty}A_n$或$\liminf\limits_{n\to\infty}A_n$.它可表示为
+	$$\varliminf\limits_{n\to\infty}A_n=\{x|\text{当}n\text{充分大以后都有}x\in A_n\}.$$
+\end{definition}
+不难证明：
+$$\varliminf\limits_{n\to\infty}A_n=\{x|\exists N>0,\ \forall n>N,\ s.t.\ x\in A_n\}.$$
+根据上极限和下极限的定义，可知上极限中的元素是频繁出现的，不一定在$n$充分大的时候一定存在，比如有可能是振荡的，有可能只在偶数项上出现等等.而下极限中的元素在$n$充分大的时候都是存在的，也就是说除去有限项下标后元素是一直存在的，自此我们可以看出，下极限定义的条件比上极限更严格，所以下极限是包含于上极限的，即
+$$\varliminf\limits_{n\to\infty}A_n\subset\varlimsup\limits_{n\to\infty}A_n$$
+
+上、下极限还可以用交集和并集表示.
+\begin{theorem}
+	\begin{enumerate}[(1)]
+		\item $\varlimsup\limits_{n\to\infty}A_n=\bigcap\limits_{n=1}^{\infty}\bigcup\limits_{m=n}^{\infty}A_m$；
+		\item $\varliminf\limits_{n\to\infty}A_n=\bigcup\limits_{n=1}^{\infty}\bigcap\limits_{m=n}^{\infty}A_m$.
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	只需证明(1).
+	
+	记$A=\varlimsup\limits_{n\to\infty}A_n=\{x|\forall N>0,\ \exists n>N,\ s.t.\ x\in A_n\}$，$B=\bigcap\limits_{n=1}^{\infty}\bigcup\limits_{m=n}^{\infty}A_m$.设$x\in A$，则对任意取定的$n$，总有$m>n$，使$x\in A_m$，即对任何$n$，总有$x\in\bigcup\limits_{m=n}^{\infty}A_m$，故$x\in B$.
+	
+	反之，设$x\in B$，则对任意的$N>0$，总有$x\in \bigcup\limits_{m=N+1}^{\infty}A_m$，即总存在$m>N$，有$x\in A_m$，所以$x\in A$，因此$A=B$，即$\varlimsup\limits_{n\to\infty}A_n=\bigcap\limits_{n=1}^{\infty}\bigcup\limits_{m=n}^{\infty}A_m$.$\hfill\blacksquare$
+\end{proof}
+如果$\varlimsup\limits_{n\to\infty}A_n=\varliminf\limits_{n\to\infty}A_n$，则称集列$\{A_n\}$收敛，记$\lim\limits_{n\to\infty}A_n=\varlimsup\limits_{n\to\infty}A_n=\varliminf\limits_{n\to\infty}A_n$称为集列$\{A_n\}$的极限.
+\subsection{单调集列}
+\begin{definition}[单调集列]
+	如果集列$\{A_n\}$满足$A_n\subset A_{n+1},\ n=1,2,\cdots$，则称$\{A_n\}$为增列；如果集列$\{A_n\}$满足$A_n\supset A_{n+1},\ n=1,2,\cdots$，则称$\{A_n\}$为减列.增列和减列统称为{\heiti 单调集列}.
+\end{definition}
+容易证明：{\heiti 单调集列是收敛的}.若$\{A_n\}$为增列，则$\lim\limits_{n\to\infty}A_n=\bigcup\limits_{n=1}^{\infty}A_n$；若$\{A_n\}$为减列，则$\lim\limits_{n\to\infty}A_n=\bigcap\limits_{n=1}^{\infty}A_n$.
+
+现在我们可以从单调集列的角度来定义上下极限.
+
+对于任意的一个集列$\{A_n\}$，我们构造一个新的集列$B_n=\bigcup\limits_{m=n}^{\infty}A_m$，显然$\{B_n\}$是减的(不一定严格).则
+$$\lim\limits_{n\to\infty}B_n=\bigcap\limits_{n=1}^{\infty}\bigcup\limits_{m=n}^{\infty}A_m.$$
+我们将集列$\{B_n\}$的极限定义为$\{A_n\}$的上极限.类似地，我们还可以给出下极限的定义，这里不再赘述.
+\subsection{集合的Cartesian积}
+\begin{definition}[Cartesian积]
+	若$A_i(i=1,2,\cdots,n)$是集合，则$A=\{(x_1,x_2,\cdots,x_n)|x_i\in A,\ i=1,2,\cdots,n\}$称为$A_i(i=1,2,\cdots,n)$的{\heiti Cartesian积}或{\heiti 直积}，记为
+	$$\prod_{i=1}^{n}A_i\text{或}A_1\times A_2\times\cdots\times A_n.$$
+\end{definition}
+类似地，
+$$\prod_{i=1}^{\infty}A_i=A_1\times A_2\times\cdots=\{(x_1,x_2,\cdots)|x_i\in A,\ i=1,2,\cdots\}.$$
+我们应当注意，集合的Cartesian积依赖于预先给定集合的次序.一般说来，集合$X$和集合$Y$的Cartesian积$X\times Y$完全不同于集合$Y$和集合$X$的Cartesian积$Y\times X$.特别地，若$A_i=A(i=1,2,\cdots)$，则
+$$\prod_{i=1}^{n}A_i=A^n,\ \prod_{i=1}^{\infty}A_i=A^{\infty}.$$
+\section{关系与等价关系}
+\begin{definition}[关系]
+	设$X,Y$是两个集合.如果$R\subset X\times Y$，则称$R$是从$X$到$Y$的一个{\heiti 关系}.
+\end{definition}
+\begin{definition}[值域]
+	设$R$是从集合$X$到集合$Y$的一个关系，即$R\subset X\times Y$.如果$(x,y)\in R$，则我们称$x$与$y$是{\heiti $R$-相关的}，并且记作$xRy$.如果$A\subset X$，则$Y$的子集
+	$$\{y\in Y|\text{存在}x\in A,\ s.t.\ xRy\}$$
+	称为{\heiti 集合$A$对于关系$R$而言的像集}，或者简单地称为集合$A$的{\heiti 像集}或集合$A$的{\heiti $R$-像}，并且记作$R(A)$.我们称$R(X)$为关系$R$的{\heiti 值域}.
+\end{definition}
+关系的概念十分广泛.函数、映射、等价、序、运算等概念都是关系的特例.这里有两个特别简单的从集合$X$到集合$Y$的特例，一个是$X\times Y$本身，另一个是空集$\varnothing$.
+\begin{definition}[定义域]
+	设$R$是从集合$X$到集合$Y$的一个关系，即$R\subset X\times Y$.这时Cartesian积$Y\times X$的子集
+	$$\{(y,x)\in Y\times X|xRy\}$$
+	是从集合$Y$到集合$X$的一个关系，我们称它为关系$R$的{\heiti 逆}，记作$R^{-1}$.如果$B\subset Y$，则$X$的子集$R^{-1}(B)$是集合$B$的{\heiti $R^{-1}$-像}，我们也常称它为集合$B$对于关系$R$而言的{\heiti 原像}，或者集合$B$的{\heiti $R$-原像}.关系$R^{-1}$的值域$R^{-1}(Y)$也成为关系$R$的{\heiti 定义域}.
+\end{definition}
+\begin{definition}[复合关系]
+	设$R$是从集合$X$到集合$Y$的一个关系，$S$是从集合$Y$到集合$Z$的一个关系.集合
+	$$\{(x,z)\in(X,Z)|\text{存在}y\in Y,\ s.t.\ xRy\text{且}ySz\}$$
+	是Cartesian积$X\times Z$的一个子集，即从集合$X$到集合$Z$的一个关系，此关系称为关系$R$与关系$S$的{\heiti 复合}或{\heiti 积}，记作$S\circ R$.
+\end{definition}
+\begin{theorem}
+	设$R$是从集合$X$到集合$Y$的一个关系，$S$是从集合$Y$到集合$Z$的一个关系，$T$是从集合$Z$到集合$U$的一个关系，则
+	\begin{enumerate}[(1)]
+		\item $(R^{-1})^{-1}=R$；
+		\item $(S\circ R)^{-1}=R^{-1}\circ S^{-1}$；
+		\item $T\circ(S\circ R)=(T\circ S)\circ R$.
+	\end{enumerate}
+\end{theorem}
+\begin{theorem}
+	设$R$是从集合$X$到集合$Y$的一个关系，$S$是从集合$Y$到集合$Z$的一个关系，则对于$X$的任意两个子集$A$和$B$，我们有
+	\begin{enumerate}[(1)]
+		\item $R(A\cup B)=R(A)\cup R(B)$；
+		\item $R(A\cap B)=R(A)\cap R(B)$；
+		\item $(S\circ R)(A)=S(R(A))$.
+	\end{enumerate}
+\end{theorem}
+以上定理都可由定义直接验证，这里不再赘述.
+\begin{definition}
+	设$X$是一个集合，从集合$X$到集合$X$的一个关系将简称为集合$X$中的一个关系.集合$X$中的关系$\{(x,x)|x\in X\}$称为{\heiti 恒同关系}、{\heiti 恒同}或者{\heiti 对角线}，记作$\Delta(X)$.
+\end{definition}
+\begin{definition}[等价关系]
+	设$R$是集合$X$中的一个关系.如果$\Delta(X)\subset R$，即对任何$x\in X$有$xRx$，则称关系$R$为{\heiti 自反的}；如果$R=R^{-1}$，即对任何$x,y\in X$，若$xRy$则$yRx$，则称关系$R$为{\heiti 对称的}；如果$R\cap R^{-1}=\varnothing$，即对任何$x,y\in X$，$xRy$和$yRx$不能同时成立，则称关系$R$是{\heiti 反称的}；如果$R\circ R\subset R$，即对任何$x,y,z\in X$，若$xRy,yRz$，则$xRz$，则称关系$R$是{\heiti 传递的}.
+	
+	集合$X$中的一个关系如果同时是自反、对称和传递的，则称为集合$X$中的一个{\heiti 等价关系}.
+\end{definition}
+等价关系的概念在此简单提出，之后在更深入的学习中将展开讨论，在此不再深入探讨.
+\section{映射}
+\begin{definition}[映射]
+	设$F$是从集合$X$到集合$Y$的一个关系.如果对于每一个$x\in X$存在唯一的$y\in Y$使得$xFy$，则称关系$F$是从集合$X$到集合$Y$的一个{\heiti 映射}，记作$F:X\rightarrow Y$.
+\end{definition}
+换言之，关系$F$是一个映射，如果对于每一个$x\in X$，满足
+\begin{enumerate}[(1)]
+	\item 存在$y\in Y$，使得$xFy$；
+	\item 如果对于$y_1,y_2\in Y$有$xFy_1$和$xFy_2$，则$y_1=y_2$.
+\end{enumerate}
+\begin{definition}[像与原像]
+	设$X,Y$是两个集合，$F:X\rightarrow Y$.对于每一个$x\in X$，使得$xFy$的唯一的那个$y\in Y$称为$x$的{\heiti 像}或{\heiti 值}，记作$F(x)$；对于每一个$y\in Y$，若$x\in X$使得$xFy$（即$y$是$x$的像），则称$x$是$y$的一个{\heiti 原像}.（注意：$y\in Y$可以没有原像，也可以有不止一个原像.）
+\end{definition}
+由于映射本身就是一种特殊的关系，因此关系的定义域、值域、逆、复合等概念自然也是映射的概念，我们不再重复.下面给出单射、满射和双射的概念.
+\begin{definition}
+	设$X$和$Y$是两个集合，$f:X\rightarrow Y$.如果$X$中不同的点的像是$Y$中不同的点，那么称$f$是一个{\heiti 单射}；如果$Y$中的每一个点都有原像，那么称$f$是一个{\heiti 满射}；如果$f$既是一个单射又是一个满射，则称$f$为{\heiti 双射}，又称{\heiti 一一映射}.
+\end{definition}
+用数学语言表示就是：
+\begin{enumerate}[(1)]
+	\item 单射：对任何$x_1,x_2\in X$，若$x_1\neq x_2$，则$f(x_1)\neq f(x_2)$；
+	\item 满射：对任何$y\in Y$，存在$x\in X$使得$f(x)=y$.
+\end{enumerate}
+
+易见，集合$X$中的恒同关系$\Delta(X)$是从$X$到$X$的一个双射，我们也常称之为（集合$X$上的）{\heiti 恒同映射}或{\heiti 恒同}，有时也称之为{\heiti 单位映射}，记作$i_X$或$i:X\rightarrow X$.显然，对任何$x\in X$，有$i_X(x)=x$，即恒同映射把每一个点映为这个点自身.
+
+由于下面这个定理，双射也称为{\heiti 可逆映射}.
+\begin{theorem}
+	设$X$和$Y$是两个集合，$f:X\rightarrow Y$.如果$f$是双射，则$f^{-1}$是从$Y$到$X$的双射，即$f^{-1}:Y\rightarrow X$.且
+	$$f^{-1}\circ f=i_X,\qquad f\circ f^{-1}=i_Y.$$
+\end{theorem}
+该定理的证明参见熊金城编著的《点集拓扑讲义》第13页，在此不再展开.
+\section{对等与基数}
+\begin{definition}[对等]
+	若$A,B$是非空集合，且存在双射$\varphi:A\rightarrow B$，则称$A$与$B${\heiti 对等}，记为$A\sim B$，规定$\varnothing\sim \varnothing$.
+\end{definition}
+\begin{example}
+	我们可以给出有限集合的一个不依赖于元素个数概念的定义：集合$A$称为有限集合，如果$A=\varnothing$或$A$和正整数的某一截段$\{1,2,\cdots,n\}$对等.
+\end{example}
+\begin{example}\label{zo}
+	$\{\text{正整数全体}\}\sim \{\text{正偶数全体}\}$.这只需令$\varphi(x)=2x,x\in\mathbb{Z}^+$即可.
+\end{example}
+\begin{example}\label{real}
+	区间$(0,1)$和全体实数$\mathbb{R}$对等，只需对$x\in(0,1)$，令$\varphi(x)=\tan\bigg(\pi x-\dfrac{\pi}{2}\bigg)$.
+\end{example}
+
+例\ref{zo}和例\ref{real}表明，一个无限集可以和它的一个真子集对等（可以证明，这一性质正是无限集的特征，常用来作为无限集的定义）.这一性质对有限集来说显然不能成立.由此可以看到无限集和有限集之间的深刻差异.此外，例\ref{real}还表明，无限长的“线段”并不比有限长的线段有“更多的点”.
+
+对等关系显然有以下性质：
+\begin{theorem}
+	对任何集合$A,B,C$，均有
+	\begin{enumerate}
+		\item 自反性：$A\sim A$；
+		\item 对称性：$A\sim B$，则$B\sim A$；
+		\item 传递性：$A\sim B,\ B\sim C$，则$A\sim C$.
+	\end{enumerate}
+\end{theorem}
+\begin{definition}[基数]
+	若$A$和$B$对等，则称它们有相同的{\heiti 基数}或{\heiti 势}.记为$|A|=|B|$.
+\end{definition}
+\begin{definition}
+	设$A,B$是两个集合，如果$A$不与$B$对等，但存在$B$的真子集$B'$，有$A\sim B'$，则称$A$比$B$有{\heiti 较小的基数}（或$B$比$A$有{\heiti 更大的基数}），记作$|A|<|B|$（或$|B|>|A|$）.
+\end{definition}
+
+下面，我们提出问题：任给两个集合$A,B$，在
+$$|A|<|B|,\quad |A|=|B|,\quad |A|>|B|$$
+中是否必有一个成立且只有一个成立呢？回答是肯定的.但是第一个问题的论证较为复杂，不能在此讨论，我们仅简单给出第二个问题的定理.
+\begin{theorem}[Bernstein定理]
+	设$A,B$是两个非空集合.如果$A$对等于$B$的一个子集，$B$又对等于$A$的一个子集，那么$A\sim B$.
+\end{theorem}
+利用基数的说法就是：若$|A|\leqslant|B|,\ |B|\leqslant |A|$，则$|A|=|B|$.定理的证明过程不再展开讨论.
+\section{可数集}
+\begin{definition}[可数集]
+	凡和全体正整数所成集合$\mathbb{Z}^+$对等的集合都称为{\heiti 可数集}或{\heiti 可列集}.
+\end{definition}
+由于$\mathbb{Z}^+$可按大小顺序排成一无穷序列$1,2,\cdots,n,\cdots$，因此，一个集合$A$是可数集合的充要条件为：$A$可以排成一个无穷序列
+$$a_1,a_2,\cdots,a_n,\cdots .$$
+
+可数集合是无限集合，那么它在一般无限集合中处于什么地位呢？
+\begin{theorem}
+	任何无限集合都至少包含一个可数子集.
+\end{theorem}
+\begin{proof}
+	设$M$是一个无限集，因$M\neq\varnothing$，总可以从$M$中取出一个元素记为$e_1$，由于$M$是无限集，因此$M\backslash\{e_1\}\neq\varnothing$，于是又可以从$M\backslash\{e_1\}$中取出一个元素$e_2$，显然$e_2\in M$且$e_2\neq e_1$.以此类推，我们可以取出$n$个这样的互异元素$e_1,e_2,\cdots,e_n$.由归纳法，我们还可以从$M\backslash\{e_1,e_2,\cdots,e_n\}$取出$e_{n+1}$.这样由归纳法，我们就找到$M$的一个无限子集$\{e_1,e_2,\cdots,e_n,\cdots\}$.它显然是一个可数集.$\hfill\blacksquare$
+\end{proof}
+由上述定理我们知道：{\heiti 可数集在所有无限集中有最小的基数}.
+\begin{theorem}\label{2}
+	可数集合的任何无限子集必为可数集合，从而可数集合的任何子集或者是有限集或者是可数集.
+\end{theorem}
+证明思路：利用Bernstein定理来夹逼.
+\begin{theorem}
+	设$A$是可数集，$B$是有限或可数集，则$A\cup B$为可数集.
+\end{theorem}
+证明思路：将可数集排成无穷序列.
+\begin{corollary}\label{1}
+	设$A_i(i=1,2,\cdots,n)$是有限集或可数集，则$\bigcup\limits_{i=1}^{n}A_i$也是有限集或可数集.但如果至少有一个$A_i$是可数集，则$\bigcup\limits_{i=1}^{n}A_i$必为可数集.
+\end{corollary}
+\begin{theorem}\label{4}
+	设$A_i(i=1,2,\cdots,n)$都是可数集，则$\bigcup\limits_{i=1}^{\infty}A_i$也是可数集.
+\end{theorem}
+\begin{proof}
+	(1)先设$A_i\cap A_j=\varnothing(i\neq j)$.
+	
+	可将$\bigcup\limits_{i=1}^{\infty}A_i$排成
+	$$\bigcup_{i=1}^{\infty}A_i=\{a_{11},a_{12},a_{21},a_{31},a_{22},a_{13},a_{14},\cdots\}.$$
+	
+	(2)一般情形下，令$A_1'=A_1,\ A_i'=A_i-\bigcup\limits_{j=1}^{i-1}A_j(i\geqslant 2)$，则$A_i'\cap A_j'=\varnothing(i\neq j)$，且$\bigcup\limits_{i=1}^{\infty}A_i=\bigcup\limits_{i=1}^{\infty}A_i'$
+	
+	易知$A_i'$都是有限集或可数集.(定理\ref{2})如果只有有限个$A_i'$不为空集，由推论\ref{1}，$\bigcup\limits_{i=1}^{\infty}A_i'$为可数集（因至少$A_i'=A_i$为可数集），如果有无限多个（必为可数个）$A_i'$不为空集，则由(1)，$\bigcup\limits_{i=1}^{\infty}A_i'$也是可数集，故在任何情形下，$\bigcup\limits_{i=1}^{\infty}A_i$都是可数集.$\hfill\blacksquare$
+\end{proof}
+我们用$\aleph_0$（读作“阿列夫零”）表示可数集的基数.则当$A_i$均为可数集合时，推论\ref{1}可简记为
+$$n\cdot \aleph_0=\underbrace{\aleph_0+\aleph_0+\cdots+\aleph_0}_{n\text{个}}=\aleph_0.$$
+
+定理\ref{4}的结论可简记为
+$$\aleph_0\cdot \aleph_0=\underbrace{\aleph_0+\aleph_0+\cdots+\aleph_0+\cdots}_{\text{可数个}}=\aleph_0.$$
+\begin{theorem}
+	有理数全体成一可数集合.
+\end{theorem}
+\begin{proof}
+	设$A_i=\biggl\{\dfrac{1}{i},\dfrac{2}{i},\dfrac{3}{i},\cdots\biggr\}(i=1,2,3,\cdots)$，则$A_i$是可数集，于是由定理\ref{4}知全体正有理数成一可数集$\mathbb{Q}^+=\bigcup\limits_{i=1}^{\infty}A_i$，因正负有理数通过$\varphi(r)=-r$一一对应，故全体负有理数成一可数集$\mathbb{Q}^-$，又$\mathbb{Q}=\mathbb{Q}^+\cup\mathbb{Q}^-\cup \{0\}$，故由推论\ref{1}知$\mathbb{Q}$为可数集.$\hfill\blacksquare$
+\end{proof}
+
+应该注意，有理数在实数中是处处稠密的，即在数轴上任何小区间中都有有理数存在（并且有无穷多个）.尽管如此，全体有理数还只不过是一个和稀疏分布着的正整数全体成为一一对应的可数集.这个表面看来令人难以置信的事实，正是Cantor创立集合论，向“无限”进军的一个重要成果，它是人类理论思维的又一胜利.
+
+用有理数集的可数性和稠密性可推断出一些重要的结论.
+\begin{example}
+	设集合$A$中元素都是直线上的开区间，满足条件：若开区间$K,J\in A,\ K\neq J$，则$K\cap J=\varnothing$.则$A$是可数集或有限集.
+\end{example}
+\begin{proof}
+	作映射$\varphi:A\rightarrow\mathbb{Q}$.设$K\in A$，由于$\mathbb{Q}$在直线上稠密，任取$r\in K\cap \mathbb{Q}$，定义$\varphi(K)=r$.由于任意$K,J\in A,\ K\neq J$，有$K\cap J=\varnothing$，因此$\varphi$是$A$到$\mathbb{Q}$内的单射，于是$A\sim \varphi(A)\subset \mathbb{Q}$，所以$|A|\leqslant|\mathbb{Q}|=\aleph_0$，即$A$是可数集或有限集.$\hfill\blacksquare$
+\end{proof}
+\begin{theorem}\label{6}
+	设$A_i(i=1,2,\cdots)$是可数集，则$\prod\limits_{i=1}^{n}A_i$是可数集.
+\end{theorem}
+\begin{proof}
+	用归纳法证明.显然$i=1$时结论成立.设$i=n-1$时结论成立，则$\prod\limits_{i=1}^{n-1}A_i$是可数集.$A_i$可数，可设$A_i=\{x_1,x_2,\cdots,x_k,\cdots\}$.记$\hat{A_k}=\prod\limits_{i=1}^{n-1}A_i\times\{x_k\}$，则$\hat{A_k}\sim\prod\limits_{i=1}^{n-1}A_i(k=1,2,\cdots)$，因此$\hat{A_k}$是可数集.又$\prod\limits_{i=1}^{n}A_i=\bigcup\limits_{k=1}^{\infty}\hat{A_k}$，由定理\ref{4}，$\prod\limits_{i=1}^{n}A_i$是可数集.$\hfill\blacksquare$
+\end{proof}
+\begin{example}
+	平面上坐标为有理数的点的全体所成的集合为一可数集.
+\end{example}
+\begin{example}
+	元素$(n_1,n_2,\cdots,n_k)$是由$k$个有理数组成的，其全体成一可数集.
+\end{example}
+\begin{example}
+	整系数多项式
+	$$a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$$
+	的全体是一可数集.
+\end{example}
+\begin{proof}
+	对任意$n$，设$A_n$是$n$次整系数多项式的全体组成的集合，则$A_n=\{a_nx^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0\}\sim\mathbb{Z}_0\times\underbrace{\mathbb{Z}\times\cdots\times\mathbb{Z}}_{n\text{个}}$，其中$\mathbb{Z}_0=\mathbb{Z}\backslash\{0\}$和$\mathbb{Z}$都是可数集，因此由定理\ref{6}，$A_n$是可数集.从而整系数多项式的全体组成的集合$\bigcup\limits_{n=0}^{\infty}A_n$也是可数集.$\hfill\blacksquare$
+\end{proof}
+每个多项式只有有限个根，所以得下面的定理.
+\begin{theorem}
+	代数数的全体成一可数集.
+\end{theorem}
+\begin{remark}
+	代数数指的是整系数多项式的根.
+\end{remark}
+\section{不可数集}
+我们将不是可数集合的{\heiti 无限集合}称为{\heiti 不可数集}.
+\begin{theorem}
+	全体实数所成集合$\mathbb{R}$是一个不可数集合.
+\end{theorem}
+\begin{proof}
+	由例\ref{real}知$\mathbb{R}\sim(0,1)$，我们只需证明$(0,1)$不是可数集即可.首先$(0,1)$中的每一个实数$a$都可以唯一地表示为十进位无限小数
+	$$a=0.a_1a_2\cdots=\sum\limits_{n=1}^{\infty}\dfrac{a_n}{10^n}$$
+	的形式，其中各$a_n$是$0,1,\cdots,9$中的一个数字，不全为$9$，且不以$0$为循环节.我们称实数的这种表示为一个正规表示.（后面在实数理论中将给出证明）
+	
+	现用反证法：假设$(0,1)$中的全体实数可排列成一个序列
+	$$(0,1)=\{a_1,a_2,\cdots\}.$$
+	将每个$a_n$表示成正规的无限小数：
+	$$a_1=0.a_{11}a_{12}\cdots,$$
+	$$a_2=0.a_{21}a_{22}\cdots,$$
+	$$\cdots\cdots\cdots\cdots$$
+	下面设法在$(0,1)$之间找一个与所有这些实数都不同的实数.利用对角线上的数字$a_{nn}$，作一个无限小数：
+	$$0.b_1b_2\cdots,\text{其中}b_n=\left\{
+	\begin{aligned}
+		&1,\quad & a_{nn}\neq 1,\\
+		&2,\quad & a_{nn}=1.
+	\end{aligned}
+	\right.
+	$$
+	则此无限小数的各位数字既不全是$9$，也不以$0$为循环节，因此必是$(0,1)$中某一实数的正规表示.但这个实数与每一个$a_n$的正规表示都不同（至少第$n$位不同），因此$(0,1)\neq\{a_1,a_2,\cdots\}$，与假设矛盾.因此$(0,1)$是不可数集.实数集$\mathbb{R}$是不可数集.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	以上定理的证明思路是Cantor的对角线技巧.
+\end{remark}
+\begin{corollary}
+	若用$\aleph$表示全体实数所成的集合$\mathbb{R}$的基数，用$\aleph_0$表示全体正整数所成集合$\mathbb{Z}^+$的基数，则$\aleph>\aleph_0$.
+\end{corollary}
+我们称$\aleph$为{\heiti 连续基数}.称与$\mathbb{R}$等势的集合为{\heiti 连续统}.
+\begin{theorem}
+	任意区间$(a,b),\left[a,b\right),\left(a,b\right],(0,\infty),\left[0,\infty\right)$都是连续统.
+\end{theorem}
+\begin{theorem}
+	设$A_1,A_2,\cdots,A_n,\cdots$是一列互不相交的连续统，则$\bigcup\limits_{n=1}^{\infty}A_i$也是连续统.
+\end{theorem}
+\begin{remark}
+	上述定理说明{\heiti 可数个连续统的并仍是连续统}.
+\end{remark}
+\begin{theorem}
+	设$A_1,A_2,\cdots,A_n,\cdots$是一列连续统，则$\prod\limits_{n=1}^{\infty}A_i$也是连续统.
+\end{theorem}
+\begin{remark}
+	上述定理说明{\heiti 可数个连续统的Cartesian积仍是连续统}.
+\end{remark}
+\begin{theorem}
+	设$M$是任意的一个集合，它的所有子集构成新的集合$\mu$，则$|\mu|>|M|$.
+\end{theorem}
+一般地，集合$M$的所有子集组成的集合记为$2^M$.上述定理说明了，对任意集合$M$，$|M|<|2^M|$，从而没有最大的基数.
+
+由于可数集中元素比连续统中元素少得多，我们通常尽可能地用可数集合交、并运算代替不可数集的交、并运算.这一点，在测度论中有十分重要的应用.

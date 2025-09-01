@@ -1,0 +1,125 @@
+\chapter{不定积分}
+\section{不定积分的概念}
+正如加法有逆运算减法，乘法有逆运算除法一样，微分法也有逆运算——积分法.
+\subsection{原函数与不定积分}
+\begin{definition}[原函数]
+	设函数$f$与$F$在区间$I$上都有定义.若
+	$$F'(x)=f(x),\quad x\in I,$$
+	则称$F$为$f$在区间$I$上的一个{\heiti 原函数}(primitive function).
+\end{definition}
+在研究原函数之前，我们需要明确原函数存在的条件与是否唯一，在这个前提下我们谈论求解原函数才是有意义的.
+\begin{theorem}[原函数存在定理（待证）]
+	若函数$f$在区间$I$上连续，则$f$在$I$上存在原函数$F$.
+\end{theorem}
+由于初等函数在其定义区间上都是连续函数，因此每个初等函数在其定义区间上都有原函数.
+\begin{theorem}
+	设$F$是$f$在区间$I$上的一个原函数，则
+	
+	(i)$F+C$也是$f$在$I$上的原函数，其中$C$为任意常量函数（常数）；
+	
+	(ii)$f$在$I$上的任意两个原函数之间，只可能相差一个常数.
+\end{theorem}
+\begin{proof}
+	(i)这是因为$\left[F(x)+C\right]'=F'(x)=f(x),\ x\in I$.
+	
+	(ii)设$F$和$G$是$f$在$I$上的任意两个原函数，则有
+	$$\left[F(x)-G(x)\right]'=F'(x)-G'(x)=f(x)-f(x)=0,\ x\in I.$$
+	根据Lagrange定理的推论2，有$$F(x)-G(x)\equiv C,\ x\in I.$$
+	$\hfill\blacksquare$
+\end{proof}
+\begin{definition}[不定积分]
+	函数$f$在区间$I$上的全体原函数称为$f$在$I$上的{\heiti 不定积分}(indefinite integral)，记作
+	$$\int f(x)\d x,$$
+	其中称$\int$为积分号，$f(x)$为{\heiti 被积函数}(integrand)，$f(x)\d x$为{\heiti 被积表达式}，$x$为{\heiti 积分变量}.
+\end{definition}
+可见，不定积分与原函数是总体和个体的关系，即若$F$为$f$的一个原函数，则$f$的不定积分是一个函数族$\{F+C\}$，其中$C$为任意常数，为方便起见，记作
+$$\int f(x)\d x=F(x)+C.$$
+于是又有
+$$\left[\int f(x)\d x\right]'=\left[F(x)+C\right]'=f(x),$$
+$$d\int f(x)\d x=d\left[F(x)+C\right]=f(x)\d x.$$
+
+不定积分的几何意义：若$F$是$f$的一个原函数，则称$y=F(x)$为$f$的一条{\heiti 积分曲线}.$f$的不定积分在几何上表示$f$的某一积分曲线沿纵轴方向任意平移所得一切积分曲线组成的曲线族.
+\subsection{基本积分表}
+我们把基本导数公式写成基本积分公式.
+\begin{proposition}[基本积分公式]
+	\begin{align*}
+		&\int x^\alpha\d x=\frac{x^{\alpha +1}}{\alpha +1}+C\ (\alpha\neq -1,\ x\geqslant 0).\\
+		&\int \frac{1}{x}\d x=\ln|x|+C\ (x\neq 0).\\
+		&\int a^x\d x=\frac{a^x}{\ln a}+C\ (a>0,\ a\neq 1).\\
+		&\int \cos x\d x=\sin x+C.\\
+		&\int \sin x\d x=-\cos x+C.\\
+		&\int \sec^2 x\d x=\tan x+C.\\
+		&\int \csc^2 x\d x=-\cot x+C.\\
+		&\int \sec x\cdot\tan x\d x=\sec x+C.\\
+		&\int \csc x\cdot\cot x\d x=-\csc x+C.\\
+		&\int \frac{\d x}{\sqrt{1-x^2}}=\arcsin x+C=-\arccos x+C_1.\\
+		&\int \frac{\d x}{1+x^2}=\arctan x+C=-\text{arccot}x+C_1.&
+	\end{align*}
+\end{proposition}
+我们可以从导数的线性运算法则得到不定积分的线性运算法则.
+\begin{theorem}[积分的线性性]
+	若函数$f_i(x)(i=1,2,\cdots)$在区间$I$上都存在原函数，$k_i$为任意常数，则
+	$$\sum_{i=1}^{n}k_if_i(x)$$在$I$上也存在原函数，且当$k_i$中所有项不同时为零时，有
+	$$\int\left(\sum_{i=1}^{n}k_if_i(x)\right)\d x=\sum_{i=1}^{n}k_i\int f_i(x)\d x.$$
+\end{theorem}
+对等式两边求导即可证得，在此不再赘述.
+\section{积分方法}
+上一节我们通过基本导数公式得到了一部分基本初等函数的原函数.但即使像$\ln x$，$\tan x$这样的基本初等函数我们还不知道如何求得其原函数，因此我们还需要一些求积法则.下面我们介绍换元积分法和分部积分法.
+\subsection{换元积分法}
+\begin{theorem}[第一换元积分法]
+	设函数$f(x)$在区间$I$上有定义，$\varphi(t)$在区间$J$上可导，且$\varphi(J)\subseteq I$.如果不定积分$\int f(x)\d x=F(x)+C$在$I$上存在，则不定积分$\int f(\varphi(t))\varphi'(t)\d t$也存在，且
+	$$\int f(\varphi(t))\varphi'(t)\d t=F(\varphi(t))+C.$$
+\end{theorem}
+\begin{proof}
+	用复合函数求导法进行验证.因为对于任何$t\in J$，有
+	$$\frac{\d}{\d t}(F(\varphi(t)))=F'(\varphi(t))\varphi'(t)=f(\varphi(t))\varphi'(t),$$
+	所以$f(\varphi(t))\varphi'(t)$以$F(\varphi(t))$为原函数$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	第一换元公式也可以写成
+	\begin{align*}
+		\int f(\varphi(t))\varphi'(t)\d t
+		&=\int f(\varphi(t))\d \varphi(t)\\
+		&=\int f(x)\d x\qquad(\text{令}x=\varphi (t))\\
+		&=F(x)+C
+		&=F(\varphi(t))+C.
+	\end{align*}
+	因此第一换元法也成为{\heiti 凑微分法}
+\end{remark}
+\begin{theorem}[第二换元积分法]
+	设函数$f(x)$在区间$I$上有定义，$\varphi(t)$在区间$J$上可导，$\varphi(J)=I$，且$x=\varphi(t)$在区间$J$上存在反函数$t=\varphi^{-1}(x),\ x\in I$.如果不定积分$\int f(x)\d x$在$I$上存在，则当$\int f(\varphi(t))\varphi'(t)\d t$在$J$上存在时，在$I$上有
+	$$\int f(x)\d x=G(\varphi^{-1}(x))+C.$$
+\end{theorem}
+\begin{proof}
+	设$\int f(x)\d x=F(x)+C.$对于任何$t\in J$，有
+	\begin{align*}
+		\frac{\d}{\d t}(F(\varphi(t))-G(t))&=F'(\varphi(t))\varphi'(t)-G'(t)
+		&=f(\varphi(t))\varphi'(t)-f(\varphi(t))\varphi'(t)=0.
+	\end{align*}
+	所以存在常数$C_1$，使得$F(\varphi(t))-G(t)=C_1$对于任何$t\in J$成立，从而$G(\varphi'(x))=F(x)-C_1$对于任何$x\in I$成立.因此，对于任何$x\in I$，有
+	$$\frac{\d}{\d x}(G(\varphi^{-1}(x)))=F'(x)=f(x),$$
+	即$G(\varphi^{-1}(x))$为$f(x)$的原函数.$\hfill\blacksquare$
+\end{proof}
+\begin{remark}
+	第二换元公式也可以写成
+	\begin{align*}
+		\int f(x)\d x&=\int f(\varphi(t))\varphi'(t)\d t\ (\text{令}x=\varphi(t))
+		&=G(t)+C
+		&=G(\varphi^{-1}(x))+C.(t=\varphi^{-1}(x))
+	\end{align*}
+	因此第二换元法也成为{\heiti 代入换元法}.
+\end{remark}
+\subsection{分部积分法}
+由乘积求导法，可以导出分部积分法.
+\begin{theorem}[分部积分法]
+	若$u(x)$与$v(x)$可导，不定积分$\int u'(x)v(x)\d x$存在，则$\int u(x)v'(x)\d x$也存在，并有
+	$$\int u(x)v'(x)\d x=u(x)v(x)-\int u'(x)v(x)\d x.$$
+\end{theorem}
+\begin{proof}
+	由$$\left[u(x)v(x)\right]'=u'(x)v(x)+u(x)v'(x)，$$
+	得$$u(x)v'(x)=\left[u(x)v(x)\right]'-u'(x)v(x),$$
+	对上式两边积分即得定理中的结论.$\hfill\blacksquare$
+\end{proof}
+分部积分公式也可写作
+$$\int u\d v=uv-\int v\d u.$$
+\section{有理函数和可化为有理函数的不定积分}

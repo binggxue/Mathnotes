@@ -1,0 +1,101 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,graphicx,caption,color,xpatch}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+%define color 'orange'
+\definecolor{orange}{RGB}{255,127,0}
+
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{property}{性质}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{\textcolor{green}{Soln}}
+\newtheorem*{remark}{\textcolor{orange}{Rmk}}
+\geometry{a4paper,scale=0.8}
+
+%remove the dot after the theoremstyle
+%\makeatletter
+%\xpatchcmd{\@thm}{\thm@headpunct{.}}{\thm@headpunct{}}{}{}
+%\makeatother
+
+%article info
+\title{\vspace{-2em}\textbf{集代数}\vspace{-2em}}
+\date{ }
+
+\begin{document}
+	\maketitle
+	\begin{definition}[幂集]
+		集合$S$的所有子集组成的集合称为集合$S$的\textbf{幂集}，记作$2^S$.
+	\end{definition}
+	\begin{definition}[环与代数]
+		设非空集类$\mathcal{R}\subset 2^S$满足以下条件：
+		\begin{enumerate}
+			\item 对差封闭：$\forall A,B\in\mathcal{R},A-B\in\mathcal{R}$;
+			\item 对有限并封闭：$\forall E_i\in\mathcal{R},i=1,2,\cdots,n,\ \bigcup_{i=1}^{n}E_i\in\mathcal{R}$.
+		\end{enumerate}
+		则称$\mathcal{R}$为\textbf{环}.特别地，若全集在其中，即$S\in\mathcal{R}$，则称$\mathcal{R}$为\textbf{代数}.当有限并可以改为可列并时，分别称为$\boldsymbol{\sigma}$\textbf{-环}和$\boldsymbol{\sigma}$\textbf{-代数}.
+	\end{definition}
+	\begin{definition}[$\pi$-系统]
+		设非空集类$\mathcal{F}\subset 2^S$满足以下条件：
+		\begin{enumerate}
+			\item 对有限交封闭：$\forall E_i\in\mathcal{F},i=1,2,\cdots,n,\ \bigcap_{i=1}^{n}E_i\in\mathcal{F}$.
+		\end{enumerate}
+		则称$\mathcal{F}$为$\boldsymbol{\pi}$\textbf{-系统}.
+	\end{definition}
+	\begin{definition}[$\lambda$-系统]
+		设非空集类$\mathcal{F}\subset 2^S$满足以下条件：
+		\begin{enumerate}
+			\item 全集在其中：$S\in\mathcal{F}$;
+			\item 对差封闭：$\forall A,B\in\mathcal{F},A-B\in\mathcal{F}$;
+			\item 对不交可列并封闭：$\forall E_i\in\mathcal{R},i=1,2,\cdots,\ \bigsqcup_{i=1}^{\infty}E_i\in\mathcal{F}$.
+		\end{enumerate}
+		则称$\mathcal{F}$为$\boldsymbol{\lambda}$\textbf{-系统}.
+	\end{definition}
+	\begin{definition}[单调类]
+		若非空集类$\mathcal{F}\subset 2^S$对单调集列的极限封闭，则称$\mathcal{F}$为\textbf{单调类}.
+	\end{definition}
+	\begin{definition}[生成的$\sigma$-环]
+		设非空集类$\mathcal{F}\subset 2^S$，称包含$\mathcal{F}$的最小的$\sigma$-环为$\mathcal{F}$生成的$\sigma$-环，记作$R(\mathcal{F})$.
+	\end{definition}
+	\begin{definition}[生成的$\sigma$-代数]
+		设非空集类$\mathcal{F}\subset 2^S$，称包含$\mathcal{F}$的最小的$\sigma$-代数为$\mathcal{F}$生成的$\sigma$-代数，记作$\sigma(\mathcal{F})$.
+	\end{definition}
+	\begin{definition}[生成的$\lambda$-系]
+		设非空集类$\mathcal{F}\subset 2^S$，称包含$\mathcal{F}$的最小的$\lambda$-系为$\mathcal{F}$生成的$\lambda$-系，记作$\delta(\mathcal{F})$.
+	\end{definition}
+	\begin{theorem}[$\lambda$-$\pi$系定理]
+		设$\mathcal{F}$为$\pi$-系，则
+		$$\delta(\mathcal{F})=\sigma(\mathcal{F}).$$
+	\end{theorem}
+	\begin{proof}
+		$\sigma(\mathcal{F})$为包含$\mathcal{F}$的$\lambda$-系，而$\delta(\mathcal{F})$是包含$\mathcal{F}$的最小的$\lambda$-系，于是$\delta(\mathcal{F})\subset\sigma(\mathcal{F})$.
+		
+		为证$\sigma(\mathcal{F})\subset\delta(\mathcal{F})$，只需证$\delta(\mathcal{F})$为$\sigma$-代数.
+		
+		只需证$\delta(\mathcal{F})$关于有限交封闭.
+		
+		对任意$A\in\delta(\mathcal{F})$，令
+		$$\kappa(A)=\left\{B\in\delta(\mathcal{F}):B\cap A\in\delta(\mathcal{F})\right\}.$$
+		以下证$\kappa(A)=\delta(\mathcal{F})$.
+		
+		首先，若$A\in\mathcal{F}$，因$\mathcal{F}$为$\pi$-系，故$F\subset \kappa(A)$.
+		
+		以下说明$\kappa(A)$为$\lambda$-系.如此$\kappa(A)\supset\delta(\mathcal{F})$，而由$\kappa(A)$定义，显然$\kappa(A)\subset\delta(\mathcal{F})$，如此$\kappa(A)=\delta(\mathcal{F})$.
+		
+		\begin{enumerate}
+			\item 全集在其中：$S\cap A\in\kappa(A)$;
+			\item 不交可列并封闭：设$B_n$两两不交，$B_n\subset\kappa(A)$，即$B_n\cap A\in\delta(\mathcal{F})$.有
+			$$\left(\bigcup_nB_n\right)\cap A=\bigcup_n\left(B_n\cap A\right)=\bigsqcup_n(B_n\cap A)\in\delta(\mathcal{F}).$$
+			\item 补集在其中：若$B\in\kappa(A)$，即$B\cap A\in\delta(\mathcal{F})$，下证$B^c\in\kappa(A)$，即证$B^c\cap A\in\delta(\mathcal{F})$.
+			$$B^c\cap A=(B\cap A)^c\cap A=\left((B\cap A)\cup A^c\right)^c=\left((B\cap A)\sqcup A^c\right)^c.$$
+		\end{enumerate}
+		
+		其次，若$A\in\delta(\mathcal{F})$，$\mathcal{F}\subset\kappa(A)$，同理证明$\kappa(A)$是$\lambda$-系即可.
+	\end{proof}
+	\begin{theorem}[单调类方法]
+		若$\mathcal{F}$是环，则
+		$$M(\mathcal{F})=R(\mathcal{F}).$$
+	\end{theorem}
+\end{document}
