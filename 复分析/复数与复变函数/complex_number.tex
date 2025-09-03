@@ -1,0 +1,84 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{proposition}{命题}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+\newcommand{\iu}{\mathrm{i}}
+\newcommand{\eu}{\mathrm{e}}
+\newcommand{\Arg}{\operatorname{Arg}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+
+%article info
+\title{\vspace{-2em}\textbf{复数与复变函数}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	复数是实数域的扩充.
+	\begin{definition}
+		设$a,b\in\mathbb{R}$，定义虚数单位$\iu$满足$\iu^2=-1$.称$z=a+\iu b$为\textbf{复数}，$a$，$b$分别称为复数$z$的\textbf{实部}和\textbf{虚部}，记作$\Re z=a$，$\Im z=b$.
+	\end{definition}
+	复数的四则运算如下.
+	$$(a+\iu b)\pm(c+\iu d)=(a\pm c)+\iu(b\pm d),$$
+	$$(a+\iu b)(c+\iu d)=(ac-bd)+\iu(ad+bc),$$
+	若$c+\iu d\neq 0$，则
+	$$\frac{a+\iu b}{c+\iu d}=\frac{(a+\iu b)(c-\iu d)}{(c+\iu d)(c-\iu d)}=\frac{(ac+bd)+\iu (bc-ad)}{c^2+d^2}.$$
+	\begin{definition}
+		设$z=a+\iu b$，称$a-\iu b$为$z$的\textbf{共轭}，记作$\overline{z}$.
+	\end{definition}
+	\begin{definition}
+		设$z=a+\iu b$，称$\sqrt{a^2+b^2}$为$z$的\textbf{模}，记作$|z|$.
+	\end{definition}
+	\begin{definition}
+		对于平面上给定的直角坐标系，复数$z=a+\iu b$可以用坐标为$(a,b)$的点表示. 第一个坐标称为\textbf{实轴}，第二个坐标称为\textbf{虚轴}，所在的平面称为\textbf{复平面}.
+	\end{definition}
+	复数可以表示为一点，或者从原点指向该点的向量，可以用极坐标表示.
+	\begin{definition}
+		设复数$z=a+\iu b=r\left(\cos\varphi+\iu\sin\varphi\right)$，则$r=|z|$是复数$z$的\textbf{模}. 当$z\neq 0$时，称$\varphi$为$z$的\textbf{辐角}.
+	\end{definition}
+	\begin{remark}
+		$z=0$时，辐角无意义.
+	\end{remark}
+	设$z_1=r_1\left(\cos\varphi_1+\iu\sin\varphi_1\right)$，$z_2=r_2\left(\cos\varphi_2+\iu\sin\varphi_2\right)$，则
+	$$z_1z_2=r_1r_2\left(\cos(\varphi_1+\varphi_2)+\iu\sin(\varphi_1+\varphi_2)\right).$$
+	非零复数$z$的辐角有无数个，将$z$的全体辐角记作$\Arg z$. 将辐角范围取为$0\leqslant\varphi<2\pi$，称为$z$的\textbf{主辐角}，记作$\arg z$.
+	
+	下面介绍复球面. 取一个在原点$O$与复平面相切的球面，通过点$O$作一条与复平面垂直的直线交球面于点$N$，称$N$点为北极点. 取复平面上任一点$z$，用直线与$N$点相连，交球面于一点$P(z)$，于是建立了复平面到球面上的双射. 
+	
+	在复平面上，以原点$O$为圆心的圆$C$上的点，通过双射，在球面上也是一个圆$\varGamma$（纬线）. 当$C$的半径增大时，$\varGamma$就越接近北极点$N$. 我们有一个假想点$\infty$与北极点$N$对应，称这个假想点为\textbf{无穷远点}. 添加无穷远点后的复平面称为\textbf{扩充复平面}. 扩充复平面与整个球面是一一对应的.
+	
+	先研究单值的复变函数. 
+	\begin{definition}
+		定义在区间$[a,b]$上的连续复值函数$\gamma(t)=x(t)+\iu y(t)(a\leqslant t\leqslant b)$称为\textbf{曲线}，其中$x(t)$和$y(t)$均为$t$的连续实函数. $\gamma(a)$和$\gamma(b)$称为曲线$\gamma(t)$的\textbf{端点}. 若$\gamma(a)=\gamma(b)$，则称$\gamma(t)$为\textbf{闭曲线}. 曲线的\textbf{方向}定义为$t$增加的方向. 若$\gamma'(t)$存在且连续，则称$\gamma(t)$为\textbf{光滑曲线}.
+	\end{definition}
+	\begin{definition}
+		若仅当$t_1=t_2$时$\gamma(t_1)=\gamma(t_2)$，则称$\gamma(t)$为\textbf{简单曲线}或\textbf{Jordan曲线}.
+	\end{definition}
+	\begin{definition}
+		复平面上的一个非空连通开集$D$称为一个\textbf{域}.
+	\end{definition}
+	\begin{theorem}[Jordan]
+		一条简单闭曲线$\gamma$将复平面分为两个域，其中一个是有界的，称为$\gamma$的内部，另一个是无界的，称为$\gamma$的外部，$\gamma$是这两个域的共同边界.
+	\end{theorem}
+	\begin{remark}
+		定理是容易接受的，证明需要拓扑等知识，在此述而不证.
+	\end{remark}
+	\begin{definition}
+		若$D\subset\mathbb{C}$是域，$f(z):D\to\mathbb{C}$称为\textbf{复变函数}.
+	\end{definition}
+\end{document}

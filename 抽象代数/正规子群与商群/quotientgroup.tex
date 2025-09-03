@@ -17,9 +17,35 @@
 \geometry{a4paper,scale=0.8}
 
 %article info
-\title{\vspace{-2em}\textbf{正规子群与商集}\vspace{-2em}}
+\title{\vspace{-2em}\textbf{正规子群与商群}\vspace{-2em}}
 \date{ }
 \begin{document}
 	\maketitle
-	
+	\begin{definition}[正规子群]
+		设$G$是群，$H<G$，若有
+		$$ghg^{-1}\in H,\ \forall\ g\in G,\ \forall\ h\in H,$$
+		则称$H$是$G$的\textbf{正规子群}，记作$H\vartriangleleft G$.
+	\end{definition}
+	\begin{theorem}
+		设$H<G$，则下列条件等价.
+		\begin{enumerate}
+			\item $H\vartriangleleft G$;
+			\item $gH=Hg,\ \forall\ g\in G$;
+			\item $g_1Hg_2H=g_1g_2H,\ \forall\ g_1,g_2\in G$.
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		
+	\end{proof}
+	\begin{definition}[商群]
+		设$H<G$，关系$R$定义为$aRb\iff a^{-1}b\in H$，则
+		$$R\text{为同余关系}\iff H\vartriangleleft G,$$
+		商集合$G/R$对同余关系$R$导出的运算也构成一个群，称为$G$对$H$的\textbf{商群}，记为$G/H$.
+	\end{definition}
+	\begin{proof}
+		
+	\end{proof}
+	\begin{example}
+		
+	\end{example}
 \end{document}

@@ -1,0 +1,160 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate,fixdif}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{proposition}{命题}
+\newtheorem{example}{例}
+
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+\newcommand{\iu}{\mathrm{i}}
+\newcommand{\eu}{\mathrm{e}}
+\newcommand{\Arg}{\operatorname{Arg}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+
+%article info
+\title{\vspace{-2em}\textbf{复变函数的微分}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}
+		设$f(z)$是复变函数，对任意$\varepsilon>0$，存在$\delta>0$使得当$|z-z_0|<\delta$时，有$\left|f(z)-A\right|<\varepsilon$，则称当$z$趋近于$z_0$时，$f(z)$的\textbf{极限}为$A$. 记作$\lim\limits_{z\to z_0}f(z)=A$.
+	\end{definition}
+	\begin{definition}
+		若$\lim\limits_{z\to z_0}f(z)=f(z_0)$，则称$f(z)$在$z_0$处\textbf{连续}.
+	\end{definition}
+	\begin{definition}
+		设$w=f(z)$，若
+		$$\lim\limits_{z\to z_0}\frac{f(z)-f(z_0)}{z-z_0}$$
+		对任意途径的$z\to z_0$都存在且相等，则称$f(z)$在$z_0$点可微，记作$\dfrac{\d f}{\d z}$或$f'(z)$，称为$f(z)$在$z$点的\textbf{微商}或\textbf{导数}. 如果$f(z)$在其定义域上每一点都可微，则称$f(z)$为其定义域上的\textbf{解析函数}或\textbf{全纯函数}. 将复数域$\varOmega$上全体全纯函数记作$H(\varOmega)$.
+	\end{definition}
+	复变函数的微商四则运算以及复合函数的微商法则都是可以由实函数推广得到. 
+	
+	{\centering\hrulefill}
+	
+	\vspace{4mm}
+	
+	下面介绍Cauchy-Riemann方程.考虑$z$沿实轴和虚轴分别趋近于$z_0$的情形. 设$f(z)=u(x,y)+\iu v(x,y)$在$z_0=x_0+\iu y_0$处可微.
+	
+	令$z=x+\iu y_0$，则
+	$$f'(z_0)=\lim\limits_{x\to x_0}\left[\frac{u(x,y_0)-u(x_0,y_0)}{x-x_0}+\iu\frac{v(x,y_0)-v(x_0,y_0)}{x-x_0}\right]=u_x(x_0,y_0)+\iu v_x(x_0,y_0).$$
+	
+	令$z=x_0+\iu y$，则
+	$$f'(z_0)=\lim\limits_{y\to y_0}\left[\frac{u(x_0,y)-u(x_0,y_0)}{\iu(y-y_0)}+\frac{v(x_0,y)-v(x_0,y_0)}{y-y_0}\right]=v_y(x_0,y_0)-\iu u_y(x_0,y_0).$$
+	
+	比较实部和虚部，得
+	\begin{equation}
+		u_x=v_y,\qquad u_y=-v_x.
+	\end{equation}
+	也可写作
+	\begin{equation}
+		\frac{\partial f}{\partial x}=-\iu\frac{\partial f}{\partial y}.
+	\end{equation}
+	上述两个方程都称为\textbf{Cauchy-Riemann方程}，简称C-R方程.
+	\begin{remark}
+		C-R方程是可微的必要条件，但不充分.
+	\end{remark}
+	\begin{theorem}
+		函数$f(z)=u+\iu v$在域$D$内可微的充要条件是$u$，$v$在域$D$内可微且满足C-R方程.
+	\end{theorem}
+	\begin{proof}
+		必要性：设$f(z)$在任一$z=z_0$处可微，则
+		\begin{equation}\label{differential}
+			\Delta f(z)=f'(z_0)\Delta z+\varepsilon\left(|\Delta z|\right),
+		\end{equation}
+		令$\Delta z=\Delta x+\iu\Delta y$，则$|\Delta z|=\sqrt{(\Delta x)^2+(\Delta y)^2}$，$\varepsilon$满足
+		\begin{equation}
+			\lim\limits_{|\Delta z|\to 0}\frac{\varepsilon(|\Delta z|)}{|\Delta z|}=0.
+		\end{equation}
+		令$\Delta f(z)=\Delta u+\iu\Delta v$，$f'(z_0)=a+\iu b$，则式(\ref{differential})可分离实虚部为
+		\begin{equation}
+			\Delta u+\iu\Delta v=\left(a\Delta x-b\Delta y\right)+\iu\left(b\Delta x+a\Delta y\right)+\varepsilon.
+		\end{equation}
+		令$\varepsilon=\varepsilon_1+\iu\varepsilon_2$，则
+		\begin{equation}
+			\begin{aligned}
+				&\Delta u=a\Delta x-b\Delta y+\varepsilon_1,\\
+				&\Delta v=b\Delta x+a\Delta y+\varepsilon_2,
+			\end{aligned}
+		\end{equation}
+		于是$u$，$v$在$z_0$处可微，由$z_0$的任意性得$u$，$v$在$D$上可微. 而由$f(z)$可微可直接得C-R方程.
+		
+		充分性：由$u$，$v$的可微性，对任意$z_0\in D$，有
+		\begin{equation}
+			\begin{aligned}
+				&\Delta u=u_x\Delta x+u_y\Delta y+\varepsilon_1\left(|\Delta z|\right),\\
+				&\Delta v=v_x\Delta x+v_y\Delta y+\varepsilon_2\left(|\Delta z|\right),
+			\end{aligned}
+		\end{equation}
+		由C-R方程，$u_x=v_y$，$u_y=-v_x$，设$a=u_x=v_y$，$b=v_x=-u_y$，则
+		\begin{equation}
+			\begin{aligned}
+				&\Delta u=a\Delta x-b\Delta y+\varepsilon_1,\\
+				&\Delta v=b\Delta x+a\Delta y+\varepsilon_2,
+			\end{aligned}
+		\end{equation}
+		\begin{equation}
+			\begin{aligned}
+				\Delta f&=\Delta u+\iu\Delta v\\
+						&=a\Delta x-b\Delta y+\iu b\Delta x+\iu a\Delta y+\varepsilon_1+\iu\varepsilon_2\\
+						&=\left(a+\iu b\right)\left(\Delta x+\iu \Delta y\right)+\varepsilon.
+			\end{aligned}
+		\end{equation}
+		其中$\varepsilon=\varepsilon_1+\iu\varepsilon_2$是$|\Delta z|$的高阶无穷小.于是
+		\begin{equation}
+			f'(z_0)=\lim\limits_{z\to z_0}\frac{\Delta f}{\Delta z}=a+\iu b.
+		\end{equation}
+		$f(z)$在$z=z_0$处可微，由$z_0$的任意性，$f(z)$在$D$上可微.
+	\end{proof}
+	若$u$，$v$二阶可微，则由$u_x=v_y$，$u_y=-v_x$有
+	\begin{equation}
+		u_{xx}=v_{xy},\quad u_{yx}=v_{yy},\quad u_{xy}=-v_{xx},\quad u_{yy}=-v_{yx}
+	\end{equation}
+	于是有
+	\begin{equation}\label{laplace}
+		u_{xx}+u_{yy}=0,\qquad v_{xx}+v_{yy}=0.
+	\end{equation}
+	记
+	\begin{equation}
+		\varDelta=\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2},
+	\end{equation}
+	则方程(\ref{laplace})可改写为$\varDelta u=0$和$\varDelta v=0$. 这个方程和方程(\ref{laplace})都称为\textbf{Laplace方程}. 满足$\varDelta u=0$的函数$u$称为\textbf{调和函数}.
+	
+	设$z=x+\iu y$，则$\overline{z}=x-\iu y$，于是
+	\begin{equation}
+		x=\frac{1}{2}(z+\overline{z}),\qquad y=-\frac{\iu}{2}(z-\overline{z}),
+	\end{equation}
+	于是函数$f(x,y)$可以看作以$z$和$\overline{z}$为自变量的函数，那么
+	\begin{equation}
+		\frac{\partial f}{\partial z}=\frac{\partial f}{\partial x}\frac{\partial x}{\partial z}+\frac{\partial f}{\partial y}\frac{\partial y}{\partial z}=\frac{1}{2}\left(\frac{\partial f}{\partial x}-\iu\frac{\partial f}{\partial z}\right).
+	\end{equation}
+	同理，
+	\begin{equation}
+		\frac{\partial f}{\partial\overline{z}}=\frac{1}{2}\left(\frac{\partial f}{\partial x}+\iu\frac{\partial f}{\partial y}\right).
+	\end{equation}
+	于是，$f$全纯当且仅当$\dfrac{\partial f}{\partial\overline{z}}=0$.
+	\begin{theorem}
+		设曲线$\gamma_1:(-\varepsilon,\varepsilon)\to\varOmega$，$\gamma_2:(-\varepsilon_2,\varepsilon_2)\to\varOmega$，$\gamma_1(0)=\gamma_2(0)=z_0$，$\gamma_1$与$\gamma_2$在$z_0$处的夹角为$\theta$，设映射$f:\varOmega\to\tilde{\varOmega}$在$z_0$处复可微，$f\circ\gamma_1$与$f\circ\gamma_2$在$f(z_0)$处的夹角为$\tilde{\theta}$，则$\theta=\tilde{\theta}$.
+	\end{theorem}
+	\begin{proof}
+		\begin{equation}
+			\tilde{\theta}=\arg\frac{(f\circ\gamma_1)'(0)}{f\circ\gamma_2)'(0)}=\arg\frac{f'(z_0)\gamma_1'(0)}{f'(z_0)\gamma_2'(0)}=\arg\frac{\gamma_1'(0)}{\gamma_2'(0)}=\theta.
+		\end{equation}
+	\end{proof}
+	\begin{remark}
+		这个定理说明了全纯映射的保角性.
+	\end{remark}
+\end{document}
