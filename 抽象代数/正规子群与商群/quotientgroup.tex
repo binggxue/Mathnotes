@@ -21,11 +21,41 @@
 \date{ }
 \begin{document}
 	\maketitle
+	\begin{definition}[共轭]
+		设$f,h\in G$，若存在$g\in G$，使得
+		$$f=ghg^{-1},$$
+		则称$f$和$g$\textbf{共轭}.
+	\end{definition}
+	容易验证，共轭是一个等价关系，于是决定了一个等价类，称为共轭类.
+	\begin{definition}[共轭类]
+		设$G$是群，对任意$f\in G$，与$f$共轭的元素组成的集合称为以$f$为代表元的\textbf{共轭类}.
+	\end{definition}
+	\begin{definition}[自共轭元素]
+		如果以$f$为代表的共轭类中的元素只有$f$一个，则称$f$是群$G$的\textbf{自共轭元素}.
+	\end{definition}
+	\begin{property}
+		一个共轭类中所有元素的阶相同.
+	\end{property}
+	\begin{property}
+		共轭类的元素数目是群的阶的因子.
+	\end{property}
+	\begin{definition}[共轭子群]
+		若$H<G$，$K<G$，存在$g\in G$使得
+		$$K=gHg^{-1},$$
+		则称子群$H$和$K$\textbf{共轭}.
+	\end{definition}
+	如果对任意$g\in G$，子群$H$都是自共轭的，则称$H$为正规子群，即如下定义.
 	\begin{definition}[正规子群]
 		设$G$是群，$H<G$，若有
 		$$ghg^{-1}\in H,\ \forall\ g\in G,\ \forall\ h\in H,$$
 		则称$H$是$G$的\textbf{正规子群}，记作$H\vartriangleleft G$.
 	\end{definition}
+	\begin{example}
+		定义运算为矩阵乘法，$SL_n(F)\vartriangleleft GL_n(F)$.
+	\end{example}
+	\begin{example}
+		定义运算为数的加法，$m\mathbb{Z}\vartriangleleft \mathbb{Z}$.
+	\end{example}
 	\begin{theorem}
 		设$H<G$，则下列条件等价.
 		\begin{enumerate}
@@ -35,7 +65,11 @@
 		\end{enumerate}
 	\end{theorem}
 	\begin{proof}
+		1 $\to$ 2 : 若$H\vartriangleleft G$，则$gHg^{-1}=H$，故$gH=Hg$.
 		
+		2 $\to$ 3 : 若$gH=Hg$，则$g_1Hg_2H=g_1(Hg_2)H=g_1g_2H$.
+		
+		3 $\to$ 1 : 若$g_1Hg_2H=g_1g_2H$，则$gHg^{-1}H=gg^{-1}H=H$，则$gHg^{-1}=H$.
 	\end{proof}
 	\begin{definition}[商群]
 		设$H<G$，关系$R$定义为$aRb\iff a^{-1}b\in H$，则
@@ -43,9 +77,16 @@
 		商集合$G/R$对同余关系$R$导出的运算也构成一个群，称为$G$对$H$的\textbf{商群}，记为$G/H$.
 	\end{definition}
 	\begin{proof}
+		必要性：因为$g^{-1}(gh)=h\in H$，故$gR(gh)$.又$g^{-1}Rg^{-1}$，于是由同余关系，$$(gg^{-1})R(ghg^{-1}),$$即$eR(ghg^{-1})$，$ghg^{-1}=e^{-1}ghg^{-1}\in H$，$H\vartriangleleft G$.
 		
+		充分性：设任意$a_1,a_2,b_1,b_2\in H$，$a_1Rb_1$，$a_2Rb_2$，则
+		$$(a_1a_2)^{-1}(b_1b_2)=a_2^{-1}a_1^{-1}b_1b_2=a_2{-1}a_1^{-1}b_1a_2a_2^{-1}b_2,$$
+		由于$H\vartriangleleft G$，$a_1^{-1}b_1\in H$，则$a_2{-1}a_1^{-1}b_1a_2\in H$，又$a_2^{-1}b_2\in H$，则$(a_1a_2)^{-1}(b_1b_2)\in H$，故$R$为同余关系.
 	\end{proof}
 	\begin{example}
-		
+		由于$m\mathbb{Z}\vartriangleleft\mathbb{Z}$，于是有商群
+		$$\mathbb{Z}/m\mathbb{Z}=\left\{\overline{0},\overline{1},\cdots,\overline{m-1}\right\},$$
+		记为$\mathbb{Z}_m$，称为$\mathbb{Z}$的\textbf{模$m$的剩余类加群}.
 	\end{example}
+	剩余类加群的每一个元素叫做一个剩余类. 同一剩余类中的两个元素同余，例如设$a,b\in\overline{k}$，$k=0,1,\cdots,m-1$，则$a\equiv b\pmod m$. 
 \end{document}

@@ -1,0 +1,98 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate,fixdif}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{proposition}{命题}
+\newtheorem{example}{例}
+
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+\newcommand{\iu}{\mathrm{i}}
+\newcommand{\eu}{\mathrm{e}}
+\newcommand{\Arg}{\operatorname{Arg}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+%article info
+\title{\vspace{-2em}\textbf{复变函数的积分}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}
+		设$f:\varOmega\to\mathbb{C}$，$\gamma:\left[\alpha,\beta\right]\to\varOmega$，$\gamma(\alpha)=z_0$，$\gamma(\beta)=z_1$. 对任意$\varepsilon>0$，存在$\delta>0$，使得对任意$\left[\alpha,\beta\right]$的分划
+		$$\pi:\alpha=t_0<t_1<\cdots<t_n=\beta,$$
+		及其标记点组$\xi_i\in\left[t_{i-1},t_i\right],\ i=1,2,\cdots,n$，只要细度$\lambda(\pi)=\max\limits_{1\leqslant i\leqslant n}|t_{i}-t_{i-1}|<\delta$，就有
+		$$\sum_{i=1}^{n}\left[f\left(\gamma(\xi_i)\right)\left(\gamma(t_i)-\gamma(t_{i-1})\right)-A\right]<\varepsilon,$$
+		则称$f$在$\gamma$上可积，记作
+		$$\int_{\gamma}f(z)\d z=A.$$
+	\end{definition}
+	这里的$\gamma$是可求长的，如下定义.
+	\begin{definition}
+		设$\gamma:\left[\alpha,\beta\right]\to\varOmega$，任意分划$\pi:\alpha=t_0<t_1<\cdots<t_n=\beta$，则分划后折线段的长度为
+		$$L_{\pi}=\sum_{i=1}^{n}\left|\gamma(t_i)-\gamma(t_{i-1})\right|,$$
+		定义集合$\mathcal{L}=\left\{L_{\pi}\ |\ \pi\text{是分划}\right\}$，若$\mathcal{L}$有上界，则称$\gamma$是\textbf{可求长的}，并定义长度$L(\gamma)=\sup\mathcal{L}$.
+	\end{definition}
+	以下的讨论总是基于$f$在$\varGamma=\gamma(\left[\alpha,\beta\right])\subset\varOmega$上连续以及$\gamma$可求长展开的.
+	
+	设$f(z)=u(z)+\iu v(z)$，$z=x+\iu y$，则
+	\begin{equation}
+		\int_{\gamma}f(z)\d z=\int_{\gamma}(u+\iu v)(\d x+\iu\d y)=\int_{\gamma}u\d x-v\d y+\iu\int_{\gamma}u\d y+v\d x.
+	\end{equation}
+	若$\gamma$是$C^1$的，则
+	\begin{equation}
+		\int_{\gamma}f(z)\d z=\int_{\alpha}^{\beta}f\left(\gamma(t)\right)\gamma'(t)\d t.
+	\end{equation}
+	令$t=t(s)$，$s\in\left[a,b\right]$，则
+	\begin{equation}
+		\int_{a}^{b}f\left(\gamma(t(s))\right)\gamma'(t(s))\d t(s)=\int_{a}^{b}f\left(\tilde{\gamma}(s)\right)\tilde{\gamma}'(s)\d s.
+	\end{equation}
+	其中$\tilde{\gamma}=\gamma\circ t$. 由此，积分与曲线参数化的选取无关.
+	\begin{example}
+		$\displaystyle\int_{\gamma}\d z=\gamma(\beta)-\gamma(\alpha)$.
+	\end{example}
+	\begin{example}
+		$\displaystyle\int_{\gamma}z\d z=\frac{1}{2}\left(\gamma(\beta)^2-\gamma(\alpha)^2\right)$.
+	\end{example}
+	\begin{example}
+		$\displaystyle\int_{\gamma}\overline{z}\d z=\frac{1}{2}\left(|\gamma(\beta)|^2-|\gamma(\alpha)|^2\right)+\iu S_{\gamma}$. 其中$S_{\gamma}$与$\gamma$和原点的连线扫过的面积有关.
+	\end{example}
+	\begin{example}
+		若$\gamma=r\eu^{\iu\theta}$，则$\displaystyle\int_{\gamma}\frac{\d z}{z}=2\pi\iu$.
+	\end{example}
+	\begin{example}
+		若$\gamma=r\eu^{\iu\theta}$，则$n\geqslant 2$时，$\displaystyle\int_{\gamma}\frac{\d z}{z^n}=0$.
+	\end{example}
+	\begin{example}
+		设$\gamma:\left[\alpha,\beta\right]\to\mathbb{C}\backslash\left\{0\right\}$是可求长闭曲线，则
+		$$\int_{\gamma}\frac{\d z}{z}=\int_{\gamma}\d\left(\ln\sqrt{x^2+y^2}\right)+\iu\int_{\gamma}\d \omega=2\pi\iu\cdot\mathrm{Ind}_{\gamma}(z).$$
+		称$\mathrm{Ind}_{\gamma}(z)$为\textbf{环绕数}.
+	\end{example}
+	\begin{theorem}
+		设$f\in C(\varOmega)$，$F\in H(\varOmega)$，且$F'=f$，$\gamma:\left[\alpha,\beta\right]\to\varOmega$可求长，则
+		\begin{equation}
+			\int_{\gamma}f(z)\d z=F(\gamma(\beta))-F(\gamma(\alpha)).
+		\end{equation}
+	\end{theorem}
+	\begin{proof}
+		设$f=u+\iu v$，$F=A+\iu B$，则由C-R方程，$A_x=B_y=u$，$B_x=-A_y=v$，则
+		\begin{equation}
+			\begin{aligned}
+				\int_{\gamma}f(z)\d z&=\int_{\gamma}u\d x-v\d y+\int_{\gamma}u\d y+v\d x\\
+				&=\int_{\gamma}A_x\d x+A_y\d y+\int_{\gamma}B_y\d y+B_x\d x\\
+				&=A(\gamma(\beta))-A(\gamma(\alpha))+\iu\left(B(\gamma(\beta))-B(\gamma(\alpha))\right)\\
+				&=F(\gamma(\beta))-F(\gamma(\alpha)).
+			\end{aligned}
+		\end{equation}
+	\end{proof}
+\end{document}
