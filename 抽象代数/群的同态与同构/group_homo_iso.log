@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.31)  5 SEP 2025 09:40
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.31)  6 SEP 2025 18:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**quotientgroup.tex
-(./quotientgroup.tex
+**group_homo_iso.tex
+(./group_homo_iso.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22>
 (d:/Program Files/texlive/2023/texmf-dist/tex/latex/ctex/ctexart.cls
@@ -606,8 +606,8 @@ Package: xy 2013/10/06 Xy-pic version 3.8.9
 \c@property=\count330
 \c@proposition=\count331
 \c@example=\count332
- (./quotientgroup.aux)
-\openout1 = `quotientgroup.aux'.
+ (./group_homo_iso.aux)
+\openout1 = `group_homo_iso.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
 LaTeX Font Info:    ... okay on input line 22.
@@ -734,9 +734,9 @@ File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
 (d:/Program Files/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 Package hyperref Info: Link coloring ON on input line 22.
 
-(./quotientgroup.out) (./quotientgroup.out)
+(./group_homo_iso.out) (./group_homo_iso.out)
 \@outlinefile=\write4
-\openout4 = `quotientgroup.out'.
+\openout4 = `group_homo_iso.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 24.
 
@@ -755,17 +755,17 @@ LaTeX Warning: No \author given.
 
 [1
 
-] [2] (./quotientgroup.aux)
-Package rerunfilecheck Info: File `quotientgroup.out' has not changed.
+] [2] (./group_homo_iso.aux)
+Package rerunfilecheck Info: File `group_homo_iso.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18115 strings out of 476683
- 378343 string characters out of 5801400
- 1865012 words of memory out of 5000000
- 38088 multiletter control sequences out of 15000+600000
- 523190 words of font info for 99 fonts, out of 8000000 for 9000
+ 18109 strings out of 476683
+ 378210 string characters out of 5801400
+ 1874012 words of memory out of 5000000
+ 38084 multiletter control sequences out of 15000+600000
+ 523174 words of font info for 97 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 89i,6n,97p,415b,520s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,8n,97p,416b,430s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on quotientgroup.pdf (2 pages).
+Output written on group_homo_iso.pdf (2 pages).

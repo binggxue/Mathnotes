@@ -1,0 +1,102 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{proposition}{命题}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+%article info
+\title{\vspace{-2em}\textbf{群的同态与同构}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}[同态映射]
+		设群$(G_1,\circ)$，$(G_2,\ast)$之间存在映射$f:G_1\to G_2$，若对任意$g_1,g_2\in G_1$，有$f(g_1\circ g_2)=f(g_1)\ast f(g_2)$，则称$f$为\textbf{同态映射}. 符号不至于混淆时，常记作$f(g_1g_2)=f(g_1)f(g_2)$.
+	\end{definition}
+	如果$f$是单射，则称为\textbf{单同态}；如果$f$是满射，则称为\textbf{满同态}. 若$f:G_1\to G_2$是满同态，则称$G_1$和$G_2$是\textbf{同态的}.
+	\begin{definition}[同构]
+		若同态映射$f:G_1\to G_2$是双射，则称$f$是\textbf{同构映射}，$G_1$和$G_2$是\textbf{同构的}，记作$G_1\cong G_2$.
+	\end{definition}
+	\begin{definition}[自然同态]
+		设$H\lhd G$，映射$\pi:G\to G/H,g\mapsto gH$是同态映射，称为\textbf{自然同态}.
+	\end{definition}
+	\begin{property}
+		设同态映射$f:G_1\to G_2$，$g:G_2\to G_3$，则$gf:G_1\to G_3$也是同态映射.
+	\end{property}
+	\begin{property}
+		幺元同态到幺元，逆元同态到逆元，子群同态到子群.
+	\end{property}
+	\begin{definition}[核]
+		设同态映射$f:G_1\to G_2$，$e_1\in G_1$，$e_2\in G_2$是幺元，$G_2$的幺元$e_2$的完全原像$\{a\in G_1\ |\ f(a)=e_2\}$称为同态映射$f$的\textbf{核}，记作$\ker f$.
+	\end{definition}
+	\begin{example}
+		若$f$是单同态，则$\ker f=\{e_1\}$.
+	\end{example}
+	\begin{proposition}
+		若$H\lhd G$，$\pi:G\to G/H$，则$\ker\pi=H$.
+	\end{proposition}
+	\begin{proposition}
+		设同态映射$f:G_1\to G_2$，则$\ker f\lhd G_1$.
+	\end{proposition}
+	\begin{proof}
+		对任意$g\in G_1$，$a\in\ker f$，
+		$$f(gag^{-1})=f(g)f(a)f(g^{-1})=f(g)f(g^{-1})=f(gg^{-1})=f(e_1)=e_2,$$
+		于是$gag^{-1}\in\ker f$. 由正规子群定义得$\ker f\lhd G_1$.
+	\end{proof}
+	\begin{theorem}[群同态基本定理]
+		设满同态$f:G_1\to G_2$，则$G_1/\ker f\cong G_2$.
+	\end{theorem}
+	\begin{proof}
+		记$N=\ker f\lhd G_1$，设$\varphi:G_1/N\to G_2,\ gN\mapsto f(g)$.若$g_1N=g_2N$，则$g_1^{-1}g_2\in N$，$f(g_1^{-1}g_2)=f(g_1)^{-1}f(g_2)=e_2$，于是$f(g_1)=f(g_2)$. 这表明$g_N$在$\varphi$下的像是唯一的，所以$\varphi$是映射.
+		
+		若$f(g_1)=f(g_2)$，则$e_2=f(g_1)^{-1}f(g_2)=f(g_1^{-1}g_2)$，于是$g_1^{-1}g_2\in N$，$g_1N=g_2N$，因此$\varphi$是单射.
+		
+		由于$f$是满射，因此$\varphi$是满射，故$\varphi$是双射.
+		
+		对任意$aN,bN\in G/N$，由于$f$是同态，有
+		$$\varphi(aNbN)=\varphi(abN)=f(ab)=f(a)f(b)=\varphi(aN)\varphi(bN).$$
+		因此$\varphi$是同构映射，故$G_1/\ker f\cong G_2$.
+	\end{proof}
+	\begin{corollary}[第一同构定理]
+		设$f$是群$G$的同态，则$G/\ker f\cong f(G)$.
+	\end{corollary}
+	\begin{theorem}[第二同构定理]
+		若$H<G$，$N\lhd G$，则$H\cap N\lhd H$且
+		$$H/(H\cap N)\cong HN/N.$$
+	\end{theorem}
+	\begin{proof}
+		令$\varphi:H\to HN/N,\ h\mapsto hN$，显然$\varphi$是映射. 对任意$hnN\in HN/N$，由于$hnN=hN$，有$$\varphi(h)=hN=hnN,$$故$\varphi$是满射. 对任意$h_1,h_2\in H$，
+		$$\varphi(h_1h_2)=h_1h_2N=h_1Nh_2N=\varphi(h_1)\varphi(h_2),$$
+		故$\varphi$是同态. 而
+		$$\ker\varphi=\left\{h\in H\ |\ \varphi(h)=hN=e_2=N\right\}=\left\{h\in H\ |\ h\in N\right\}=H\cap N,$$
+		由同态基本定理，有
+		$$H/(H\cap N)\cong HN/N.$$
+	\end{proof}
+	\begin{theorem}[第三同构定理]
+		若$H\lhd G$，$N\lhd G$，$N\subset H$，则
+		$$G/H\cong (G/N)/(H/N).$$
+	\end{theorem}
+	\begin{proof}
+		由$H\lhd G$，$N\lhd G$以及$N\subset H$，有$N\lhd H$，且$H/N\lhd G/N$.
+		
+		设$\pi:G\to G/N,\ g\mapsto gN$以及$\psi:G/N\to(G/N)/(H/N),\ gN\mapsto (gN)(H/N)$，则$\varphi=\psi\circ\pi:G\to(G/N)/(H/N)$是群同态.
+		
+		由于$\pi$，$\psi$是满射，故$\varphi$是满射. 又
+		$$\ker\varphi=\left\{g\in G\ |\ \varphi(g)=H/N\right\},$$
+		$$\varphi(g)=\psi(\pi(g))=(gN)(H/N),$$
+		$$(gN)(H/N)=H/N\iff gN=H/N\iff g\in H,$$
+		故$\ker\varphi=G\cap H=H$，由群同态基本定理，
+		$$G/H\cong (G/N)/(H/N).$$
+	\end{proof}
+\end{document}
