@@ -1,0 +1,106 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{proposition}{命题}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Orb}{\mathrm{Orb}}
+\newcommand{\Stab}{\mathrm{Stab}}
+%article info
+\title{\vspace{-2em}\textbf{群作用}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}[群作用]
+		设$G$是群，$X$是非空集合. 定义映射$G\times X\to X,\ (g,x)\mapsto g\cdot x$，若满足
+		\begin{enumerate}
+			\item 幺元：$e\cdot x=x$;
+			\item 兼容性：对任意$g_1,g_2\in G$，$(g_1g_2)\cdot x=g_1\cdot(g_2\cdot x)$,
+		\end{enumerate}
+		则称映射“$\cdot$”为$G$在$X$上的一个\textbf{作用}.
+	\end{definition}
+	
+	群作用由公理化的定义有些抽象，下面建立群作用和置换之间的联系，也可看作是群作用的另一种定义.
+	\begin{theorem}
+		设$G$是群，$X$是非空集合，映射$\varphi:G\to S_X,\ g\mapsto\varphi_{g}$.则$\varphi$是同态当且仅当$\varphi$给出了一个群$G$在集合$X$上的群作用.
+	\end{theorem}
+	\begin{proof}
+		必要性：定义映射$\cdot:G\times X\to X,\ (g,x)\mapsto\varphi_g(x)$，这里$\varphi_g\in S_X$是同态. 下面证明“$\cdot$”是群作用.
+		
+		对任意$g\in G$，$e\in G$是幺元，则
+		$$\varphi_{ge}=\varphi_g\varphi_e=\varphi_g,$$
+		于是$\varphi_e=\id$.则对任意$x\in X$，
+		$$e\cdot x=\varphi_e(x)=\id(x)=x.$$
+		
+		对任意$g_1,g_2\in G$，有
+		$$(g_1g_2)\cdot x=\varphi_{g_1}\varphi_{g_2}(x)=\varphi_{g_1}(\varphi_{g_2}(x))=g_1\cdot(g_2\cdot x).$$
+		于是“$\cdot$”是群作用.
+		
+		充分性：定义映射$\varphi_g:X\to X,\ \varphi_g(x)\mapsto g\cdot x$，先证明$\varphi_g$是置换.
+		
+		对任意$x_1,x_2\in X$，若$\varphi_g(x_1)=\varphi_g(x_2)$，则$g\cdot x_1=g\cdot x_2$，用$g^{-1}$作用，得
+		$$g^{-1}\cdot(g\cdot x_1)=g^{-1}\cdot(g\cdot x_2),$$由兼容性公理得$x_1=x_2$，故$\varphi_g$是单射.
+		
+		而$\varphi_{g}(g^{-1}\cdot x)=g\cdot(g^{-1}\cdot x)=e\cdot x=x$，故对所有$x\in X$，都存在原像$g^{-1}\cdot x$，于是$\varphi_g$是满射.
+		
+		因此$\varphi_g$是置换. 定义映射$\varphi:G\to S_X,\ g\mapsto\varphi_g$，下面证明$\varphi$是同态.
+		
+		对任意$g_1,g_2\in G$，任意$x\in X$，有
+		$$\varphi_{g_1g_2}(x)=(g_1g_2)\cdot x=g_1\cdot(g_2\cdot x)=\varphi_{g_1}\cdot(\varphi_{g_2}(x))=\varphi_{g_1}\varphi_{g_2}(x),$$
+		于是$\varphi$是同态.
+	\end{proof}
+	\begin{definition}[轨道]
+		设$G$是群，$X$是非空集合. 对任意给定的$x\in X$，称集合$\left\{g\cdot x\ |\ \forall g\in G\right\}$为$x$的\textbf{轨道}，记作$\Orb(x)$.
+	\end{definition}
+	轨道就是在群$G$的作用下，$x$所能到达的所有取值的集合.
+	\begin{definition}[稳定化子]
+		设$G$是群，$X$是非空集合. 对任意给定的$x\in X$，集合$\left\{g\ |\ g\cdot x=x\right\}$关于群$G$的运算构成群，称为$x$的\textbf{稳定化子}或\textbf{迷向子群}，记作$\Stab(x)$.
+	\end{definition}
+	也就是说，群$G$中有一些元素，作用在$x$上，得到的还是$x$自身. 例如$e\in G$，$e\cdot x=x$. 下面证明$\Stab(x)<G$.
+	\begin{proof}
+		已知$\Stab(x)\subset G$. 对任意$g_1,g_2\in \Stab(x)$，
+		$$e\cdot x=(g_2^{-1}g_2)\cdot x=g_2^{-1}\cdot(g_2\cdot x)=g_2^{-1}\cdot x=x.$$
+		于是
+		$$(g_1g_2^{-1})\cdot x=g_1\cdot (g_2^{-1}\cdot x)=g_1\cdot x=x.$$
+		故$g_1g_2^{-1}\in \Stab(x)$，由子群的充要条件，$\Stab(x)<G$.
+	\end{proof}
+	\begin{definition}[齐性空间]
+		若群$G$作用在集合$X$上，对任意$x,y\in X$，都有$g\in G$满足$g\cdot x=y$，则称这个作用是\textbf{可传递}的或\textbf{可迁}的，集合$X$称为\textbf{齐性空间}.
+	\end{definition}
+	\begin{definition}
+		若对任意$x\in X$，$\Stab(x)=e$，则称$G$的作用是\textbf{自由的}.
+	\end{definition}
+	\begin{definition}
+		若对任意$g\neq e$，存在$x\in X$使得$g\cdot x\neq x$，则称$G$的作用是\textbf{忠实的}或\textbf{有效的}.
+	\end{definition}
+	\begin{definition}
+		若对任意$g\in G$，$x\in X$，都有$g\cdot x=x$，则称$G$的作用是\textbf{平凡的}.
+	\end{definition}
+	\begin{theorem}[轨道-稳定化子定理]
+		设$G/\Stab(x)$是$G$关于$\Stab(x)$的左陪集空间，则存在双射$\varphi:\Orb(x)\to G/\Stab(x)$.特别地，当$G$是有限群时，有$|G|=|\Orb(x)||\Stab(x)|$.
+	\end{theorem}
+	\begin{proof}
+		设$\varphi:\Orb(x)\to G/\Stab(x),\ g\cdot x\mapsto g\Stab(x)$. 设$g\cdot x=h\cdot x$，则$(h^{-1}g)\cdot x=x$，于是$h^{-1}g\in\Stab(x)$，$h\Stab(x)=g\Stab(x)$，所以$\varphi$是映射.
+		
+		对于任一$g\Stab(x)$，都有原像$g\cdot x$，故$\varphi$是满射.
+		
+		对任意$g_1\cdot x,g_2\cdot x\in\Orb(x)$，若$\varphi(g_1\cdot x)=\varphi(g_2\cdot x)$，则$g_1\Stab(x)=g_2\Stab(x)$，$g_2^{-1}g_1\in\Stab(x)$，于是$g_2^{-1}g_1\cdot x=x$，于是$g_1\cdot x=g_2\cdot x$，$\varphi$是单射.
+		
+		于是$\varphi$是双射，有$|\Orb(x)|=|G\Stab(x)|=\left[G:\Stab(x)\right]$.特别地，当$G$有限时，由Lagrange定理，有$|G|=|\Orb(x)||\Stab(x)|$.
+	\end{proof}
+\end{document}

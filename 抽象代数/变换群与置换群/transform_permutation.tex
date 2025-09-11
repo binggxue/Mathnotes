@@ -1,0 +1,167 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{proposition}{命题}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Inn}{\mathrm{Inn}}
+%article info
+\title{\vspace{-2em}\textbf{变换群与置换群}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}[变换]
+		设$A$是一个集合，映射$f:A\to A$称为\textbf{变换}，即集合到自身的映射.
+	\end{definition}
+	\begin{definition}[变换群]
+		集合$A$上所有的可逆变换组成的集合，关于映射的复合构成群，称为集合$A$的\textbf{全变换群}，记作$S_A$. 全变换群的一个子群称为$A$的一个\textbf{变换群}.
+	\end{definition}
+	可以依定义验证$S_A$构成群. 可逆变换即双射，要求集合中的元素在变换前后是一一对应的.
+	\begin{definition}[对称群]
+		若集合$A$是含$n$个元素的有限集，$S_A$也称为$n$元\textbf{对称群}，也记作$S_n$. $S_n$中的变换称为\textbf{置换}.
+	\end{definition}
+	\begin{definition}[置换群]
+		对称群$S_n$中若干置换可以构成一个$S_n$的子群，称为\textbf{置换群}.
+	\end{definition}
+	由定义，对称群是最大的置换群.
+	\begin{theorem}[Cayley]
+		任何群都与一个变换群同构.
+	\end{theorem}
+	\begin{proof}
+		设$G$是群，任意$a\in G$，定义$\varphi_a:G\to G,\ g\mapsto ag$. $g$在$\varphi_a$下的像$ag$是唯一的，所以$\varphi$是映射.
+		
+		由于$a^{-1}g\in G$，而$\varphi_a(a^{-1}g)=g$，也就是$G$中任何元素$g$都有原像$a^{-1}g$，所以$\varphi_a$是满射.
+		
+		对任意$g_1,g_2\in G$，若$\varphi_a(g_1)=\varphi_a(g_2)$，则$ag_1=ag_2$.由消去律有$g_1=g_2$，于是$\varphi_a$是单射. $\varphi_a$又是满射，所以是双射，即可逆映射.故$\varphi_a\in S_G$.
+		
+		设$T=\left\{\varphi_a\ |\ a\in G\right\}$，则$T\subset S_G$. 又因为$(\varphi_b)^{-1}=\varphi_{b^{-1}}$，则$\varphi_a(\varphi_b)^{-1}=\varphi_a\varphi_{b^{-1}}=\varphi_{ab^{-1}}\in T$，于是由子群的充要条件，有$T<S_G$，则$T$是$G$的一个变换群，下面证明$T\cong G$.
+		
+		设$f:G\to T,\ a\mapsto\varphi_a$，显然$f$是满映射.对任意$g_1,g_2\in G$，若$f(g_1)=f(g_2)$，则$\varphi_{g_1}=\varphi_{g_2}$，$\varphi_{g_1}(e)=\varphi_{g_2}(e)$，即$g_1=g_2$，所以$f$是单射.于是$f$是双射.
+		
+		对任意$a,b\in G$，$f(ab)=\varphi_{ab}=\varphi_a\varphi_b=f(a)(b)$，所以$f$是同构映射，$G\cong T$.
+	\end{proof}
+	\begin{corollary}
+		任何有限群都与一个置换群同构.
+	\end{corollary}
+	下面介绍置换群相关内容. 设$\sigma\in S_n$，设$A=\left\{a_1,a_2,\cdots,a_n\right\}$，则置换$\sigma$可以表示为
+	$$\sigma(A)=
+	\begin{pmatrix}
+		a_1 & a_2 & \cdots & a_n \\
+		\sigma(a_1) & \sigma(a_2) & \cdots & \sigma(a_n)
+	\end{pmatrix}
+	$$
+	其中，$\sigma(a_1),\sigma(a_2),\cdots,\sigma(a_n)$是$a_1,a_2,\cdots,a_n$的一个排列. 注意到一共有$n!$种不同的排列方式，于是$|S_n|=n!$. 特别地，若$\id(a_i)=a_i,i=1,2,\cdots,n$，则称$\id$为\textbf{恒等置换}.
+	\begin{definition}[轮换]
+		设$I_r=\left\{i_1,i_2,\cdots,i_r\right\}\subset\left\{a_1,a_2,\cdots,a_n\right\}=A$，置换$\sigma$满足
+		$$\sigma(I_r)=
+		\begin{pmatrix}
+			i_1 & i_2 & \cdots & i_r \\
+			i_2 & i_3 & \cdots & i_1
+		\end{pmatrix}
+		$$
+		$$\sigma(A\backslash I_r)=\id(A\backslash I_r),$$
+		则称$\sigma$为\textbf{$r$-轮换}，记作$\sigma=(i_1i_2\cdots i_r)$. $i_1,i_2,\cdots,i_r$称为轮换中的\textbf{文字}，$r$称为轮换的\textbf{长}.
+	\end{definition}
+	特别地，当$r=2$时称为\textbf{对换}，$r=1$时为恒等置换.
+	
+	\begin{proposition}
+		$r$-轮换的阶为$r$.
+	\end{proposition}
+	\begin{proposition}
+		$(i_1i_2\cdots i_r)=(i_2i_3\cdots i_1)=\cdots (i_ri_1\cdots i_{r-1})$.
+	\end{proposition}
+	上述两个命题都是显然的.
+	\begin{definition}
+		在$S_n$中，如果若干个轮换间无共同文字，则称它们是\textbf{不相交的轮换}.
+	\end{definition}
+	\begin{proposition}
+		在$S_n$中不相交轮换的乘积可换.
+	\end{proposition}
+	\begin{proof}
+		对于两个不相交的轮换$\sigma_1$和$\sigma_2$，$\sigma_1$作用在$\sigma_2$作用的文字上时是恒等置换，同理$\sigma_2$作用在$\sigma_1$作用的文字上时也是恒等置换，而恒等置换与置换的乘积是可换的，于是不相交轮换的乘积可换. 对于多个不相交的轮换，以此类推即可.
+	\end{proof}
+	\begin{theorem}\label{permutationtocycle}
+		$S_n$中任一置换都可表为若干不相交轮换的乘积.
+	\end{theorem}
+	\begin{proof}
+		设$a\in\left\{1,2,\cdots,n\right\}$，置换$\sigma$作用到$a$上得到一些不同的文字.
+		$$a=\sigma^{0}(a),\sigma(a),\sigma^2(a),\cdots,$$
+		假设$\sigma^m(a)$与前面某一文字$\sigma^k(a)$重复，那么$k=0$，否则$\sigma^{k-1}(a)=\sigma^{m-1}(a)$从而矛盾. 于是置换$\sigma$在$a$上的作用等同于轮换
+		$$\sigma_1=(a\sigma(a)\sigma^2(a)\cdots\sigma^{m}(a)),$$
+		下面考虑$b\in\left\{1,2,\cdots,n\right\}\backslash\left\{a,\sigma(a),\cdots\sigma^m(a)\right\}$，得到轮换
+		$$\sigma_2=(b\sigma(b)\cdots\sigma^l(b)),$$
+		这里$\sigma_1$和$\sigma_2$是不相交的轮换. 以此类推，可以通过有限次操作取遍$\left\{1,2,\cdots,n\right\}$中的元素. 于是任一置换可以表为若干不相交轮换的乘积.
+	\end{proof}
+	\begin{proposition}
+		任一个$r$-轮换都可以写成$r-1$个对换的乘积.
+	\end{proposition}
+	\begin{proof}
+		$(i_1i_2\cdots i_r)=(i_1i_r)(i_1i_{r-1})\cdots(i_1i_3)(i_1i_2)$.
+	\end{proof}
+	\begin{proposition}
+		任一置换都可以表为一些对换的乘积，这些对换的表示不一定唯一，但对换个数的奇偶性不变.
+	\end{proposition}
+	\begin{proof}
+		由定理\ref{permutationtocycle}，任一置换可以表示为若干不相交轮换的乘积，而任一轮换可以写成对换的乘积，因此任一置换都可以表为一些对换的乘积. 对换的表示不唯一，因为对任一对换的乘积，乘以$(i_ji_k)(i_ki_j)$之后仍然不变. 对换的表示改变了，但对换个数的奇偶性没有变.
+	\end{proof}
+	对换的表示并不是置换的本质，对换个数的奇偶性才是，于是有奇置换与偶置换的概念.
+	\begin{definition}[奇置换与偶置换]
+		可以表为奇数个对换的乘积的置换称为\textbf{奇置换}，可以表为偶数个对换的乘积的置换称为\textbf{偶置换}.
+	\end{definition}
+	下面是奇置换与偶置换的一些简单性质，这与整数的奇偶性可以类比.
+	\begin{property}\label{oddeven}
+		两个奇置换之积是偶置换，两个偶置换之积是奇置换. 奇置换与偶置换之积是奇置换，偶置换与奇置换之积是奇置换. 置换的逆不改变置换的奇偶性.
+	\end{property}
+	\begin{definition}[交错群]
+		按照群的定义可以验证，$n$元偶置换全体对置换的乘法构成群，称为$n$元\textbf{交错群}，记作$A_n$.
+	\end{definition}
+	\begin{proposition}
+		$A_n\lhd S_n$，$|A_n|=n!/2$.
+	\end{proposition}
+	\begin{proof}
+		对任意$\sigma\in A_n$，$\varphi\in S_n$，$\varphi\sigma\varphi^{-1}\in A_n$，因此$A_n\lhd S_n$. 而$A_n$中不是奇置换就是偶置换. 对任意$\sigma\in S_n$，映射$\sigma\to (1,2)\sigma$建立了一个奇置换与偶置换之间的双射，于是
+		$|A_n|=n!/2$.
+	\end{proof}
+	\begin{proposition}
+		设置换$\sigma=\sigma_1\sigma_2\cdots\sigma_n$表示为$n$个不相交的轮换的乘积，其中$\sigma_i$是$r_i$-轮换，则$\sigma$的阶为$\left[r_1,r_2,\cdots,r_n\right]$.
+	\end{proposition}
+	\begin{proof}
+		设$|\sigma|=d$，$m=\left[r_1,r_2,\cdots,r_n\right]$，则通过展开即可得$\sigma^m=\id$，于是$d\mid m$. 
+		
+		已知$\sigma^d = \text{id}$，所以对每个$i$，有$\sigma_i^d = \text{id}$.而 $\sigma_i$是一个 $r_i$-轮换，其阶为 $r_i$，因此$r_i \mid d$. 所以$d$是$r_i$的公倍数，所以$m\mid d$.
+	\end{proof}
+	\begin{definition}[自同构群]
+		群$G$到自身的同构映射称为它的一个\textbf{自同构}，全体自同构组成的集合对映射的复合作成群，称为$G$的\textbf{自同构群}，记作$\Aut G$.
+	\end{definition}
+	同构映射是双射，因此$\Aut G<S_G$.
+	\begin{definition}[内自同构群]
+		设$G$是群，给定$a\in G$，定义映射$\sigma_a:G\to G,\ g\mapsto aga^{-1}$，则映射$\sigma_a\in\Aut G$，称为由$a$决定的\textbf{内自同构}.记
+		$$\Inn G=\left\{\sigma_a\ |\ a\in G\right\},$$
+		则$\Inn G\lhd\Aut G$，称为$G$的\textbf{内自同构群}.
+	\end{definition}
+	\begin{proof}
+		对任意$g\in G$，$(\sigma_{a^{-1}})\sigma_a(g)=a^{-1}aga^{-1}a=g$. 因此$\sigma_{a^{-1}}$是$\sigma_a$的逆映射，$\sigma_a$是双射.又对任意$g_1,g_2\in G$，
+		$$\sigma_a(g_1g_2)=ag_1g_2a^{-1}=ag_1a^{-1}ag_2a^{-1}=\sigma_a(g_1)\sigma_a(g_2),$$
+		于是$\sigma_a$是同构，$\sigma_a\in\Aut G$.
+		
+		于是$\Inn G\subset\Aut G$. 对任意$a,b\in G$，任意$g\in G$，有
+		$$\sigma_a\sigma_b(g)=\sigma_a(bgb^{-1})=abgb^{-1}a^{-1}=(ab)g(ab)^{-1}=\sigma_{ab}(g)\in\Inn G,$$
+		于是$\Inn G<\Aut G$. 对任意$\sigma_a\in\Inn G$，$\varphi\in\Aut G$，有
+		$$\varphi\sigma_a\varphi^{-1}(g)=\varphi(a\varphi^{-1}(g)a^{-1})=\varphi(a)\varphi\varphi^{-1}(g)\varphi(a^{-1})=\sigma_{\varphi(a)}(g)\in\Inn G,$$
+		故$\Inn G\lhd\Aut G$.
+	\end{proof}
+\end{document}

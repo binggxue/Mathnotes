@@ -1,0 +1,71 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate,fixdif}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{proposition}{命题}
+\newtheorem{example}{例}
+
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+\newcommand{\iu}{\mathrm{i}}
+\newcommand{\eu}{\mathrm{e}}
+\newcommand{\Arg}{\operatorname{Arg}}
+\newcommand{\Ln}{\operatorname{Ln}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+%article info
+\title{\vspace{-2em}\textbf{初等复变函数}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}
+		设$z\in\mathbb{C}$，定义$\eu^{z}=\displaystyle\sum_{n=0}^{\infty}\frac{z^n}{n!}$.
+	\end{definition}
+	\begin{property}
+		$|\eu^z|=\eu^x>0$.
+	\end{property}
+	\begin{property}
+	$\eu^{z_1}\eu^{z_2}=\eu^{z_1+z_2}$.
+	\end{property}
+	\begin{property}
+		$\eu^z$以$2\pi\iu$为周期.
+	\end{property}
+	
+	由Euler公式，有
+	$$\eu^{\iu y}=\cos y+\iu\sin y.$$
+	得
+	$$\cos y=\frac{\eu^{\iu y}+\eu^{-\iu y}}{2},\qquad\sin y=\frac{\eu^{\iu y}-\eu^{-\iu y}}{2\iu}.$$
+	于是对$z\in\mathbb{C}$，定义
+	$$\cos z=\frac{\eu^{\iu z}+\eu^{-\iu z}}{2},\qquad\sin y=\frac{\eu^{\iu z}-\eu^{-\iu z}}{2\iu}.$$
+	
+	依然可以定义$\tan z=\dfrac{\sin z}{\cos z}$.
+	\begin{property}
+		$\sin z$和$\cos z$是无界的.
+	\end{property}
+	\begin{definition}
+		满足$\eu^w=z$的复数$w$称为$z$的\textbf{对数}，记作$\Ln z$.
+	\end{definition}
+	类似地可以定义$\arcsin z$，$\arccos z$以及$\arctan z$.
+	\begin{property}
+		$w=\Ln z$是多值函数.
+	\end{property}
+	\begin{definition}
+		对于复数$\alpha$，定义幂函数
+		$$w=z^{\alpha}=\eu^{\alpha\Ln z}.$$
+	\end{definition}
+	\begin{property}
+		当$\alpha=\dfrac{m}{n}$，$m,n\in\mathbb{Z}$且$(m,n)=1$时，$w=z^{\alpha}$是$n$值的. 当$\alpha$是无理数时，$w=z^{\alpha}$有无穷多值.
+	\end{property}
+\end{document}
