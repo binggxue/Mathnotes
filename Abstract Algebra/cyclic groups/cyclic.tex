@@ -51,13 +51,19 @@
 	\begin{theorem}
 		设$|G|=m$，则$G$是循环群的充要条件是对每一个正整数因子$m_1|m$，都存在唯一的$m_1$阶子群.
 	\end{theorem}
-	\begin{proposition}
+	\begin{proposition}\label{ord}
 		有限群$G$中元素的阶是$|G|$的因子.
 	\end{proposition}
 	\begin{proof}
 		显然有限群中元素的阶有限，设$a\in G,|a|=d$，则
 		$$\langle a\rangle=\left\{e,a,a^2,\cdots,a^{d-1}\right\},$$
 		而$\langle a\rangle<G,|\langle a\rangle|=d$，由Lagrange定理得证.
+	\end{proof}
+	\begin{proposition}
+		素数阶群必为循环群.
+	\end{proposition}
+	\begin{proof}
+		设有限群$|G|=p$，$p$是素数，则由命题\ref{ord}，对任意$g\in G$，$|g|=1$或$p$.当$|g|=1$时，$g=e$.当$|g|=p$时，$|\langle g\rangle|=p=|G|$，而$\langle g\rangle<G$，于是$\langle g\rangle=G$，即$G$是由$g$生成的循环群.
 	\end{proof}
 	\begin{definition}[生成的子群]
 		设$S$是群$G$的非空子集，包含$S$的最小子群称为$S$\textbf{生成的子群}，记作$\langle S\rangle$. 等价定义为包含$S$的所有子群的交.
