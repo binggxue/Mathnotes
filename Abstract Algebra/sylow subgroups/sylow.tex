@@ -107,5 +107,52 @@
 		$$k=|\mathcal{X}|=|\Orb(P)|=\frac{|G|}{|\Stab(P)|},$$
 		于是$k\mid|G|$，即$k\mid p^lm$.而由于$k\equiv 1\pmod p$，于是$(k,p)=1$，则$k\mid m$.
 	\end{proof}
+	下面介绍Sylow定理的若干应用.
+	\begin{definition}[单群]
+		没有非平凡正规子群的群称为\textbf{单群}。
+	\end{definition}
+	\begin{example}
+		$72$阶群不是单群.
+	\end{example}
+	\begin{proof}
+		首先，$72=2^3\times3^2$，设有限群$G$的阶$|G|=72$，设$G$的Sylow $2$-子群的个数为$k_1$，Sylow $3$-子群的个数为$k_2$. 由Sylow第三定理，$k_1$可能为$1,3,9$，$k_2$可能为$1,4$.
+		
+		当$k_1=1$时，由Sylow第三定理(1)，这个$8$阶的Sylow $2$-子群是$G$的正规子群.当$k_2=1$时，这个$9$阶的Sylow $3$子群也是$G$的正规子群. 它们都不是平凡的.
+		
+		当$k_2=4$时，设$X=\left\{P_1,P_2,P_3,P_4\right\}$，其中$P_i$是互不相同的Sylow $3$-子群.设$G$作用在$X$上的作用为共轭作用.即
+		$$g\cdot P_i=gP_ig^{-1},\ \forall g\in G,$$
+		则这个作用决定了一个同态$\varphi:G\to S_X$.
+		
+		而$\ker\varphi\lhd G$，假设$\ker\varphi=G$，则对任意$g\in G$，
+		$$g\cdot P_i=\id(P_i)=P_i,$$
+		则Sylow子群之间不能互相共轭，这与Sylow第二定理矛盾.
+		
+		假设$\ker\varphi=\left\{e\right\}$，则由同态基本定理，
+		$$G/\ker\varphi\cong\varphi(G),$$
+		于是
+		$$|G/\ker\varphi|=|G/e|=|G|=|\varphi(G)|<|S_4|=24,$$
+		而$|G|=72$，矛盾.
+		
+		于是$\ker\varphi$是$G$的非平凡正规子群，故$72$阶群不是单群.
+	\end{proof}
+	\begin{example}
+		56阶群不是单群.
+	\end{example}
+	\begin{proof}
+		首先，$56=2^3\times 7$，设有限群$G$的阶$|G|=56$，设$G$的Sylow $2$-子群的个数为$k_1$，Sylow $7$-子群的个数为$k_2$. 由Sylow第三定理，$k_1$可能为$1,7$，$k_2$可能为$1,8$.
+		
+		当$k_1=1$时，由Sylow第三定理(1)，这个$8$阶的Sylow $2$-子群是$G$的正规子群.当$k_2=1$时，这个$7$阶的Sylow $7$-子群也是$G$的正规子群. 它们都不是平凡的.
+		
+		当$k_1=7$且$k_2=8$时，由于素数阶群必为循环群，于是这$8$个Sylow $7$-子群中，除幺元外的$6$个元素都是$7$阶的，且各不相同.于是一共含有$|G|$中的$1+6\times 8=49$个元素.对任意的一个Sylow $2$-子群，除幺元外含有$7$个元素，且与Sylow $7$-子群中的元素不同. 这就有$49+7=56$个元素. 而这$7$个Sylow $2$-子群元素不是完全一致的，于是Sylow $7$子群和Sylow $8$子群中不重复的元素个数就超过了$56$，这与$|G|=56$矛盾！于是$k_1=1$或$k_2=1$，则由上述可知$56$阶群不是单群.
+	\end{proof}
+	\begin{example}
+		设$|G|=p^lm$，$(p,m)=1$，$p>m\neq 1$，则$G$是单群.
+	\end{example}
+	\begin{proof}
+		设$G$的Sylow $p$-子群的个数为$k$，由Sylow第三定理，$k$的取值只能为$1$.而$m>1$，于是$G$的Sylow $p$-子群是$G$的$p^l$阶真正规子群.
+	\end{proof}
+	\begin{remark}
+		$k$的取值只能为$1$，因为当$k$取$1+p$时，$1+p>m$于是不能整除. 那么其他取值更不能取到了.
+	\end{remark}
 	
 \end{document}

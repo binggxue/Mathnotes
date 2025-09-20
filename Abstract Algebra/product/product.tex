@@ -1,0 +1,196 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{proposition}{命题}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Orb}{\mathrm{Orb}}
+\newcommand{\Stab}{\mathrm{Stab}}
+
+\everymath{\displaystyle}
+
+%article info
+\title{\vspace{-2em}\textbf{群的直积}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}[群的扩张]
+		设$G,A,B$是群，若有$N\lhd G$，使得$A\cong N$，$B\cong G/N$，则称群$G$是$B$过$A$的\textbf{扩张}.称$N$为\textbf{扩张核}.
+	\end{definition}
+	\begin{remark}
+		群的扩张与域的扩张完全不同，域从子域扩成扩域，而群不一定是子群，甚至不一定和子群同构.
+	\end{remark}
+	\begin{definition}[正合序列]
+		设$G_1,G_2,\cdots,G_n$是群，有同态映射如下，
+		\begin{displaymath}
+			\xymatrix{
+				G_1\ar[r]^{f_1} & G_2\ar[r]^{f_2} & \cdots\ar[r]^{f_{n-1}} & G_n
+			}
+		\end{displaymath}
+		且满足$f_i(G_i)=\ker f_{i+1}$，则称这个序列为\textbf{正合序列}.
+	\end{definition}
+	\begin{remark}
+		这里群的个数可以是有限的，也可以是无限的.
+	\end{remark}
+	\begin{definition}[短正合序列]
+		设$1$是$A$的幺元，$1'$是$B$的幺元，则正合序列
+		\begin{displaymath}
+			\xymatrix{
+				\{1\}\ar[r]^{i} & A\ar[r]^{\lambda} & G\ar[r]^{\mu} & B\ar[r]^{\varphi} & \{1'\}
+			}
+		\end{displaymath}
+		称为\textbf{短正合序列}.
+	\end{definition}
+	\begin{remark}
+		不难看出，$\lambda$是单射，$\mu$是满射.这是短正合序列的本质体现.因此在书写上，可简写为
+		\begin{displaymath}
+			\xymatrix{
+				1\ar[r] & A\ar[r]^{\lambda} & G\ar[r]^{\mu} & B\ar[r] & 1
+			}
+		\end{displaymath}
+	\end{remark}
+	\begin{theorem}\label{iffshort}
+		设$G,A,B$是群，则$G$是$B$过$A$的扩张当且仅当存在短正合序列
+		\begin{displaymath}
+			\xymatrix{
+				1\ar[r] & A\ar[r]^{\lambda} & G\ar[r]^{\mu} & B\ar[r] & 1
+			}
+		\end{displaymath}
+	\end{theorem}
+	\begin{proof}
+		必要性：设存在$N\lhd G$，使得$A\cong N$，$B\cong G/N$.设同构映射$f:A\to N$，$h:G/N\to B$，把$f$开拓到$\lambda$，则$\lambda$是单同态. 设$\mu=h\circ \pi$，则$\mu$是满同态. 于是存在短正合序列.
+		
+		充分性：设存在短正合序列
+		\begin{displaymath}
+			\xymatrix{
+				1\ar[r] & A\ar[r]^{\lambda} & G\ar[r]^{\mu} & B\ar[r] & 1
+			}
+		\end{displaymath}
+		则$\lambda$是单同态，$\mu$是满同态.且
+		$$\lambda(A)=\ker\mu\lhd G.$$
+		设$N=\ker\mu$，而$\lambda:A\to\lambda(A)$是单同态，又是满射，于是$\lambda$是同构，$A\cong\lambda(A)=N$.
+		
+		对于满同态$\mu:G\to B$，由同态基本定理，有$G/\ker\mu\cong B$，于是$G/N\cong B$. 因此$G$是$B$过$A$的扩张.
+	\end{proof}
+	\begin{theorem}
+		设$G,G',A,B$是群.
+		\begin{enumerate}
+			\item 若$G$是$B$过$A$的扩张，$G\cong G'$，则$G'$也是$B$过$A$的扩张.
+			\item 若$G$和$G'$都是$B$过$A$的扩张，且存在同态$f:G\to G'$，使下图交换，则$f$是同构映射.称$G$和$G'$是$B$过$A$的\textbf{等价扩张}.
+			\begin{displaymath}
+				\xymatrix{
+					1\ar[r] & A\ar[r]^{\lambda}\ar[d]^{\id_A} & G\ar[r]^{\mu}\ar[d]^{f} & B\ar[r]\ar[d]^{\id_B} & 1\\
+					1\ar[r] & A\ar[r]^{\lambda'} & G'\ar[r]^{\mu'} & B\ar[r] & 1
+				}
+			\end{displaymath}
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		1.由于$G$是$B$过$A$的扩张，于是有短正合序列
+		\begin{displaymath}
+			\xymatrix{
+				1\ar[r] & A\ar[r]^{\lambda} & G\ar[r]^{\mu} & B\ar[r] & 1
+			}
+		\end{displaymath}
+		设$f:G\to G'$是同构，则$f\circ\lambda:A\to G'$是单同态，$\mu\circ f^{-1}$是满同态，且$f\circ\lambda(A)=f(\ker\mu)=\ker\mu f^{-1}$，于是$G'$是$B$过$A$的扩张.
+		
+		2.先证$f$是单射. 只需证明$\ker f=\{e\}$，这里$e$是$G$的幺元，并设$e'$是$G'$的幺元.设$f(x)=e'$，下证$x=e$.
+		
+		由交换图，
+		$$\mu(x)=\mu'f(x)=\mu'(e')=1,$$
+		于是$x\in\ker\mu=\lambda(A)$，存在$a\in A$使$x=\lambda(a)$，即
+		$$e'=f(x)=f\lambda(a)=\lambda'(a),$$
+		又$\lambda$是单射，于是$a=1$，$x=\lambda(1)=e$.
+		
+		再证$f$是满射. 对任意$x'\in G'$，由$\mu$是满射，$\mu(G)=B$，则存在$x\in G$，使得$\mu(x)=\mu'(x')$.即
+		$$\mu'f(x)=\mu'(x'),$$
+		于是
+		$$\mu'\left(x'\left[f(x)\right]^{-1}\right)=\mu'(e')=1,$$
+		即
+		$$x'f(x)^{-1}\in\ker\mu'=\lambda'(A)=f\lambda(A)\subset f(G),$$
+		于是$x'\in f(G)f(x)\subset f(G)$.
+	\end{proof}
+	\begin{remark}
+		1的证明中，用了两次扩张的充要条件，即定理\ref{iffshort}.对于$f(\ker\mu)=\ker\mu f^{-1}$，可以由核的定义以及集合的包含关系证得.
+	\end{remark}
+	\begin{definition}[内直积]
+		设$G$是$B$过$A$的扩张，$N$为扩张核，若存在$H<G$，使得$H\cap N=\{e\}$且$G=HN$，则称此扩张为\textbf{非本质扩张}，$G$称为$N$与$H$的\textbf{半直积}，记作$G=H\ltimes N$.进一步，若$H\lhd G$，则称这种扩张为\textbf{平凡扩张}，$G$是$N$与$H$的\textbf{内直积}，记作$G=H\otimes N$.
+	\end{definition}
+	\begin{remark}
+		对非本质扩张，有$B\cong H$.因为
+		$$B\cong G/N=HN/N\cong H/(H\cap N)=H/\{e\}\cong H.$$
+	\end{remark}
+	\begin{example}
+		设$G=(\mathbb{Z},+)$，$A=N=2\mathbb{Z}\lhd\mathbb{Z}$，$B=G/N=\mathbb{Z}_2$，则$G$是$B$过$A$的扩张. 由于不存在子群$H\cong B=\mathbb{Z}_2$，于是这个扩张不是非本质扩张.
+	\end{example}
+	\begin{theorem}
+		设$A<G$，$B<G$，则
+		\begin{enumerate}
+			\item $G=AB$且$A\cap B=\{e\}$当且仅当对任意$g\in G$，存在唯一$a\in A,b\in B$使得$g=ab$.
+			\item 若$G=AB$且$A\cap B=\{e\}$，则$A,B$都是$G$的正规子群的充要条件为对任意$a\in A,b\in B,ab=ba$.此时$G=A\otimes B$.
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		1.必要性：由$G=AB$，对任意$g\in G$，存在$a\in A,b\in B$使得$g=ab$，假设另有$a'\in A,b'\in B$使得$g=a'b'$，则$ab=a'b'$，$bb'^{-1}=a^{-1}a'=e$，于是$a=a',b=b'$.
+		
+		充分性：若对任意$g\in G$，存在唯一$a\in A,b\in B$使得$g=ab$，则$G=AB$. 若$c\in A\cap B$，则$c=ec=ce$，于是$c=e$.
+		
+		2.必要性：若$A\lhd G$，则$bab^{-1}\in A$，于是$a^{-1}bab^{-1}\in A$. 又$B\lhd G$，则$a^{-1}ba\in B$，于是$a^{-1}bab^{-1}\in B$，故$a^{-1}bab^{-1}\in A\cap B$. 于是$a^{-1}bab^{-1}=e$，$ba=ab$.
+		
+		充分性：若对任意$a\in A$，$b\in B$有$ab=ba$，由于$G=AB$，对任意$g\in G$，存在$a\in A,b\in B$使得$g=ab$，于是对任意$a_0\in A$，
+		$$ga_0g^{-1}=aba_0b^{-1}a^{-1}=aa_0bb^{-1}a^{-1}=aa_0a^{-1}\in A,$$
+		于是$A\lhd G$，同理$B\lhd G$.
+	\end{proof}
+	可以将内直积的概念推广到多个正规子群的情况.
+	\begin{definition}
+		设$N_1,N_2,\cdots,N_k$是$G$的正规子群.若$G$中任意元素分解为$N_i$中元素的乘积是唯一的，则称$G$是$N_1,N_2,\cdots,N_k$的内直积，记作
+		$$G=N_1\otimes N_2\otimes\cdots\otimes N_k=\bigotimes_{i=1}^{k}N_i.$$
+	\end{definition}
+	以上讨论了一个群的内直积分解，下面说明两个群的内直积总是存在且唯一.
+	\begin{definition}[外直积]
+		设$A,B$是两个群，定义集合$G=\left\{(a,b)\mid a\in A,b\in B\right\}$，定义$G$中元素的运算$(a_1,b_1)(a_2,b_2)=(a_1a_2,b_1b_2)$.则可验证$G$关于上述运算构成群，称为$A$和$B$的\textbf{外直积}，记作$G=A\times B$.
+	\end{definition}
+	\begin{theorem}
+		设$A$和$B$是两个群，则一定存在$B$过$A$的平凡扩张$G$，且$G$在同构意义下唯一.
+	\end{theorem}
+	\begin{proof}
+		设$G=A\times B$，则$G$是群.记$A'=\left\{(a,1')\mid a\in A\right\}$，$B'=\left\{(1,b)\mid b\in B\right\}$，则可证$A'\lhd G$，$B'\lhd G$，且$G=A'B'$，$A'\cap B'=\left\{(1,1')\right\}$.
+		
+		由内直积定义，$G=A'\otimes B'=B'\otimes A'$.则$G$是$B'$过$A'$的平凡扩张.容易在$A$和$A'$，$B$和$B'$建立同构，即$A\to A',a\mapsto(a,1')$，$B\to B',b\mapsto(1,b)$，故$G$是$B$过$A$的平凡扩张.
+		
+		设$G_1$也是$B$过$A$的平凡扩张.则有$A_1\lhd G_1$，$B_1\lhd G_1$，$G_1=A_1B_1$，$A_1\cap B_1=\{e'\}$，且$A\cong A_1$，$B\cong B_1$.下证$G\cong G_1$.
+		
+		设$f_1:A\to A_1,a\mapsto a_1$，$f_2:B\to B_1,b\mapsto b_1$是两个同构映射.令$f:G\to G_1,(a,b)\mapsto f_1(a)f_2(b)$.下证$f$是同构.
+		
+		因为$f_1$和$f_2$都是满射，于是对任意$f_1(a)$和$f_2(b)$都有原像$a$和$b$.于是$f$是满射.
+		
+		假设$f_1(a')f_2(b')=f_1(a)f_2(b)$，由于$G_1$是平凡扩张，因此分解是唯一的. $f_1(a')=f_1(a)$，$f_2(b')=f_2(b)$.又因为$f_1$和$f_2$是单射，于是$a'=a,b'=b$，$(a,b)=(a',b')$.
+		
+		而
+		\begin{equation*}
+			\begin{aligned}
+				&f\left((a,b)(a',b')\right)=f\left((aa',bb')\right)=f_1(aa')f_2(bb')=f_1(a)f_1(a')f_2(b)f_2(b')\\
+				&=f_1(a)f_2(b)f_1(a')f_2(b')=f\left((a,b)\right)f\left((a',b')\right),
+			\end{aligned}
+		\end{equation*}
+		于是$f$是同构映射.
+	\end{proof}
+	\begin{remark}
+		外直积$G=G_1\times G_2$中，$G_1$和$G_2$一般不是$G$的子群，但是存在某个同构关系，使得$G_1$，$G_2$分别和$G$的两个子群同构. 而在内直积$G=H\otimes N$中，$H$和$N$都是$G$的正规子群.内直积和外直积在本质上是一致的.
+	\end{remark}
+\end{document}
