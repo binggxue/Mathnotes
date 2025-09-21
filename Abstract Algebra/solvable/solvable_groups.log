@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.31)  21 SEP 2025 09:33
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.31)  21 SEP 2025 15:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**product.tex
-(./product.tex
+**solvable_groups.tex
+(./solvable_groups.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22>
 (d:/Program Files/texlive/2023/texmf-dist/tex/latex/ctex/ctexart.cls
@@ -606,8 +606,8 @@ Package: xy 2013/10/06 Xy-pic version 3.8.9
 \c@property=\count330
 \c@proposition=\count331
 \c@example=\count332
- (./product.aux)
-\openout1 = `product.aux'.
+ (./solvable_groups.aux)
+\openout1 = `solvable_groups.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
 LaTeX Font Info:    ... okay on input line 30.
@@ -734,9 +734,9 @@ File: xetex.def 2022/09/22 v5.0n Graphics/color driver for xetex
 (d:/Program Files/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 Package hyperref Info: Link coloring ON on input line 30.
 
-(./product.out) (./product.out)
+(./solvable_groups.out) (./solvable_groups.out)
 \@outlinefile=\write4
-\openout4 = `product.out'.
+\openout4 = `solvable_groups.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
 
@@ -753,21 +753,19 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 LaTeX Warning: No \author given.
 
-<xymatrix 4x1 141> <xymatrix 5x1 186> <xymatrix 5x1 172> <xymatrix 5x1 172>
-<xymatrix 5x1 172> <xymatrix 5x2 465> [1
+[1
 
-] <xymatrix 5x1 172> [2] [3] [4]
-[5] (./product.aux)
-Package rerunfilecheck Info: File `product.out' has not changed.
+] [2] (./solvable_groups.aux)
+Package rerunfilecheck Info: File `solvable_groups.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18153 strings out of 476683
- 378992 string characters out of 5801400
- 1887012 words of memory out of 5000000
- 38128 multiletter control sequences out of 15000+600000
+ 18114 strings out of 476683
+ 378254 string characters out of 5801400
+ 1864012 words of memory out of 5000000
+ 38089 multiletter control sequences out of 15000+600000
  523174 words of font info for 97 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 89i,13n,97p,409b,569s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,6n,97p,417b,428s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on product.pdf (5 pages).
+Output written on solvable_groups.pdf (2 pages).

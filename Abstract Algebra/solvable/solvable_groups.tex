@@ -1,0 +1,115 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{proposition}{命题}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Orb}{\mathrm{Orb}}
+\newcommand{\Stab}{\mathrm{Stab}}
+
+\everymath{\displaystyle}
+
+%article info
+\title{\vspace{-2em}\textbf{可解群与幂零群}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}[换位子]
+		设$g_1,g_2\in G$，称
+		$$\left[g_1,g_2\right]=g_1^{-1}g_2^{-1}g_1g_2$$
+		为$g_1$和$g_2$的\textbf{换位子}.
+	\end{definition}
+	可见，换位子的作用是换位，即$g_2g_1\left[g_1,g_2\right]=g_1g_2$.且有
+	$$\left[g_1,g_2\right]\left[g_2,g_1\right]=e.$$
+	即$\left[g_2,g_1\right]=\left[g_1,g_2\right]^{-1}$.
+	\begin{definition}[换位子群]
+		设$H<G$，$K<G$，称
+		$$\left[H,K\right]=\langle \left\{\left[h,k\right]\mid h\in H,k\in K\right\}\rangle$$
+		为$H$和$K$的\textbf{换位子群}.
+	\end{definition}
+	可见，$\left[H,K\right]=\left[K,H\right]$.
+	\begin{property}
+		设$\alpha:G\to G_1$是同态，则
+		\begin{enumerate}
+			\item 对任意$g_1,g_2\in G$，$\alpha\left(\left[g_1,g_2\right]\right)=\left[\alpha(g_1),\alpha(g_2)\right]$.
+			\item 对任意$H<G$，$K<G$，$\alpha\left(\left[H,K\right]\right)=\left[\alpha(H),\alpha(K)\right]$.
+		\end{enumerate}
+	\end{property}
+	\begin{lemma}
+		设$H<G$，$K<G$，则
+		\begin{enumerate}
+			\item $\left[H,K\right]=\{1\}\iff H\subset C_G(K)$;
+			\item $\left[H,K\right]\subset K\iff H\subset N_G(K)$;
+			\item 若$H\lhd G$，$G\lhd G$，则$\left[H,K\right]\lhd G$且$\left[H,K\right]\subset H\cap K$;
+			\item 若$H_1<H$，$K_1<K$，则$\left[H_1,K_1\right]<\left[H,K\right]$.
+		\end{enumerate}
+	\end{lemma}
+	\begin{corollary}
+		设$H<G$，$K<G$，则
+		\begin{enumerate}
+			\item $G$是交换群当且仅当$\left[G,G\right]=\{1\}$;
+			\item $K\lhd G\iff \left[K,K\right]\lhd G$;
+			\item $\left[G,G\right]\lhd G$.
+		\end{enumerate}
+	\end{corollary}
+	\begin{definition}[正规列]
+		设群$G$的幺元为$1$，它的子群$G_i$有如下排列
+		$$G=G_1\supset G_2\supset\cdots\supset G_t\supset G_{t+1}=\{1\},$$
+		且$G_i\lhd G_{i-1},2\leqslant i\leqslant t+1$，则称这个序列为\textbf{次正规列}.若还有$G_i\lhd G$，则称这个序列为\textbf{正规列}.上述序列中有$t$个包含号，所以称序列的长度为$t$.称$G_i/G_{i-1}$为次正规序列的\textbf{因子}.
+	\end{definition}
+	\begin{definition}[因子列]
+		次正规序列
+		$$G=G_1\supset G_2\supset\cdots\supset G_t\supset G_{t+1}=\{1\}$$
+		的因子
+		$$G_1/G_2,G_2/G_3,\cdots,G_t/G_{t+1}$$
+		称为次正规序列的\textbf{因子列}.
+	\end{definition}
+	\begin{remark}
+		因子列没有包含关系.
+	\end{remark}
+	\begin{definition}[加细]
+		设有两个次正规序列
+		$$G=G_1'\supset G_2'\supset\cdots\supset G_r'\supset G_{r+1}'=\{1\},$$
+		$$G=G_1\supset G_2\supset\cdots\supset G_t\supset G_{t+1}=\{1\},$$
+		若对任意$G_i'$，都有$G_j=G_i'$，则称后者是前者作为次正规序列的\textbf{加细}.
+	\end{definition}
+	\begin{remark}
+		正规序列的加细也有类似的定义.若正规序列加细后仍是正规序列，则称后者是前者作为正规序列的加细.但是，若正规序列加细后不再是正规序列，则把这个正规序列看作次正规序列，后者是前者作为次正规序列的加细.
+	\end{remark}
+	\begin{definition}[导出列]
+		定义$G^{(0)}=G$，$G^{(i)}=\left[G^{(i-1)},G^{(i-1)}\right],i\geqslant1$，称序列
+		$$G=G^{(0)}\supset G^{(1)}\supset G^{(2)}\supset\cdots$$
+		为$G$的\textbf{导出列}.
+	\end{definition}
+	\begin{definition}[降中心列]
+		定义$\varGamma_1(G)=G$，$\varGamma_i(G)=\left[G,\varGamma_{i-1}(G)\right],i\geqslant 2$，称序列
+		$$G=\varGamma_1(G)\supset\varGamma_2(G)\supset\cdots$$
+		为$G$的\textbf{降中心列}.
+	\end{definition}
+	\begin{definition}[升中心列]
+		定义$C_0(G)=\{1\}$，$C_i(G)/C_{i-1}(G)=C(G/C_{i-1}(G)),i\geqslant 1$，称序列
+		$$\{1\}=C_0(G)\subset C_1(G)\subset C_2(G)\subset\cdots$$
+		为$G$的\textbf{升中心列}.
+	\end{definition}
+	\begin{remark}
+		$C_i(G)$是存在的，可以写成显性表达式.
+	\end{remark}
+	\begin{definition}[可解群，幂零群]
+		设$G$是群，若有$k$，使$G^{(k)}=\{1\}$，则称$G$是\textbf{可解群}.若有$k$，使$\varGamma_k(G)=\{1\}$，则称$G$是\textbf{幂零群}.
+	\end{definition}
+\end{document}

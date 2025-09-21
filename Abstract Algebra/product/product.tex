@@ -193,4 +193,43 @@
 	\begin{remark}
 		外直积$G=G_1\times G_2$中，$G_1$和$G_2$一般不是$G$的子群，但是存在某个同构关系，使得$G_1$，$G_2$分别和$G$的两个子群同构. 而在内直积$G=H\otimes N$中，$H$和$N$都是$G$的正规子群.内直积和外直积在本质上是一致的.
 	\end{remark}
+	\begin{remark}
+		上述定理实际上说明了对于$G=A\times B$，存在$A'\lhd G$，$B'\lhd G$且$A'\cong A$，$B'\cong B$，使得$G=A'\otimes B'$.
+	\end{remark}
+	反之，对于$G=A\otimes B$，它和外直积的关系如下.
+	\begin{theorem}
+		若$G=A\otimes B$，则$A\times B\cong G$.
+	\end{theorem}
+	\begin{proof}
+		令$f:A\times B\to G,(a,b)\mapsto ab$，容易判断这是良定义的.对任意$g\in G$，都有唯一$a\in A$，$b\in B$使得$g=ab$，于是$f$是满射.对任意$g_1=g_2$，有$(a_1,b_1)=(a_2,b_2)$，于是$a_1=a_2$，$b_1=b_2$，于是$f$是单射.又
+		$$f\left((a_1,b_1)(a_2,b_2)\right)=f\left((a_1a_2,b_1b_2)\right)=a_1a_2b_1b_2=a_1b_1a_2b_2=f\left((a_1,b_1)\right)f\left((a_2,b_2)\right),$$
+		于是$f$是同构映射.
+	\end{proof}
+	下面介绍外直积的若干性质.
+	\begin{theorem}
+		设$G=A\times B$，则
+		\begin{enumerate}
+			\item $G$是有限群当且仅当$A$和$B$都是有限群，且当$G$为有限群时，有$|G|=|A||B|$.
+			\item $G$是交换群当且仅当$A$和$B$都是交换群.
+			\item $A\times B\cong B\times A$.
+		\end{enumerate}
+	\end{theorem}
+	\begin{proof}
+		1.由Cartesian积的性质立即可得.
+		
+		2.若$G$是交换群，对任意$a_1,a_2\in A$，$b_1,b_2\in B$有$(a_1,b_1)(a_2,b_2)=(a_2,b_2)(a_1,b_1)$，即$(a_1a_2,b_1b_2)=(a_2a_1,b_2b_1)$，于是$a_1a_2=a_2a_1$，$b_1b_2=b_2b_1$.反之，若$A$和$B$都是交换群，对任意$(a_1,b_1),(a_2,b_2)\in G$，有
+		$$(a_1,b_1)(a_2,b_2)=(a_1a_2,b_1b_2)=(a_2a_1,b_2b_1)=(a_2,b_2)(a_1,b_1),$$
+		于是$G$是交换群.
+		
+		3.设映射$f:A\times B\to B\times A,(a,b)\mapsto(b,a)$，则这是良定义的，且是双射.而
+		$$f\left((a_1,b_1)(a_2,b_2)\right)=f\left((a_1a_2,b_1b_2)\right)=(b_1b_2,a_1a_2)=(b_1,a_1)(b_2,a_2)=f\left((a_1,b_1)\right)f\left((a_2,b_2)\right),$$
+		于是$f$是同构映射.
+	\end{proof}
+	\begin{theorem}
+		设$A,B$是群，$a\in A,b\in B$是两个有限阶元，则对$(a,b)\in A\times B$，有
+		$$|(a,b)|=\left[|a|,|b|\right].$$
+	\end{theorem}
+	\begin{proof}
+		设$|a|=m$，$|b|=n$，$|(a,b)|=t$，$\left[|a|,|b|\right]=s$.则$(a,b)^s=(a^s,b^s)=(e_1,e_2)$，于是$t\mid s$.又$(e_1,e_2)=(a,b)^t=(a^t,b^t)$，于是$a^t=e_1$，$b^t=e_2$，于是$m\mid t$，$n\mid t$，而$s=\left[m,n\right]$，于是$s\mid t$，所以$t=s$，即$|(a,b)|=\left[|a|,|b|\right]$.
+	\end{proof}
 \end{document}
