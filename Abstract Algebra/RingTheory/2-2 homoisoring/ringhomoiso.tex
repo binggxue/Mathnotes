@@ -1,0 +1,92 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate,graphicx}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{proposition}{命题}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Orb}{\mathrm{Orb}}
+\newcommand{\Stab}{\mathrm{Stab}}
+
+\everymath{\displaystyle}
+
+%article info
+\title{\vspace{-2em}\textbf{环的同态与同构}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}[同态与同构]
+		设$R_1$和$R_2$是两个环，映射$f:R_1\to R_2$满足对任意$a,b\in R_1$，
+		$$f(a+b)=f(a)+f(b),\qquad f(ab)=f(a)f(b),$$
+		则称$f$是环$R_1$到$R_2$上的\textbf{同态映射}.若$f$是单射，则称\textbf{单同态}，若$f$是满射，则称\textbf{满同态}，这时称$R_1$和$R_2$是\textbf{同态的}，若$f$是双射，则称\textbf{同构映射}，$R_1$和$R_2$是\textbf{同构的}.
+	\end{definition}
+	\begin{definition}[零同态]
+		设$f$是环$R_1$到$R_2$上的同态，若对任意$a\in R_1$，$f(a)=0$，则称$f$是$R_1$到$R_2$的\textbf{零同态}.
+	\end{definition}
+	\begin{definition}[自然同态]
+		设$R$是环，$I\lhd R$，映射$\pi:R\to R/I$是同态，称为$R$关于$I$的\textbf{自然同态}.
+	\end{definition}
+	环的同态与同构与群的类似，很多性质可以类推.
+	\begin{definition}[核]
+		设$f$是环$R_1$到$R_2$的同态，称$\ker f=\left\{a\in R_1\mid f(a)=0\right\}$为$f$的\textbf{核}.
+	\end{definition}
+	立即可得，零同态$f$的核$\ker f=R_1$.
+	\begin{theorem}[环同态基本定理]
+		设$f$是环$R_1$到$R_2$的满同态，则$R_1/\ker f\cong R_2$.
+	\end{theorem}
+	\begin{proof}
+		由环的定义，$R_1$和$R_2$对加法构成Abel群，于是由群同态基本定理，存在同构$\varphi:R_1/\ker f\to R_2$，对任意$a+I,b+I\in R_1/\ker f$，有
+		$$\varphi((a+I)(b+I))=\varphi(ab+I)=f(ab)=f(a)f(b)=\varphi(a+I)\varphi(b+I),$$
+		于是$\varphi$对乘法也是同构.
+	\end{proof}
+	\begin{theorem}[挖补定理]
+		设环$S,R'$，$R'\cap S=\varnothing$，设$R<S$使得$R\cong R'$，则存在$S'\cong S$，且$R'<S'$.
+	\end{theorem}
+	\begin{proof}
+		设$\varphi:R\to R'$是同构映射.令$S'=R'\cup(S\backslash R)$，设映射$\phi:S\to S'$，满足
+		$$\phi(x)=\left\{
+			\begin{aligned}
+				& x, &x\in S\backslash R,\\
+				& \varphi(x), & x\in R,
+			\end{aligned}
+		\right.$$
+		容易验证$\phi$是双射.定义$S'$中的加法与乘法，对任意$x',y'\in S'$，
+		$$x'+y'=\phi(x+y),$$
+		$$x'y'=\phi(xy),$$
+		其中
+		$$x=\left\{
+			\begin{aligned}
+				& x', & x'\in S\backslash R,\\
+				& \varphi^{-1}(x'), & x'\in R',
+			\end{aligned}
+		\right.$$
+		$$y=\left\{
+		\begin{aligned}
+			& y', & y'\in S\backslash R,\\
+			& \varphi^{-1}(y'), & y'\in R',
+		\end{aligned}
+		\right.$$
+		如此，对任意$x,y\in S$，设$x'=\phi(x)$，$y'=\phi(y)$，则
+		$$x'+y'=\phi(a+b),\qquad x'y'=\phi(ab)$$
+		若$x \in R$，则 $x' = \varphi(x) \in R'$，故 $a = \varphi^{-1}(x') = x$；若$x \in S \setminus R$，则$x' = x$，故$a = x$.同理$b=y$，于是
+		$$\phi(x)+\phi(y)=x'+y'=\phi(x+y),$$
+		$$\phi(x)\phi(y)=x'y'=\phi(xy),$$
+		于是$\phi$是同构.
+		
+		$S'$的加法和乘法在$R'$上的限制就是$R'$的加法和乘法，于是$R'<S'$.
+	\end{proof}
+\end{document}
