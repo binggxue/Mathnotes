@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.31)  19 OCT 2025 09:16
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.31)  29 OCT 2025 21:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**ring.tex
-(./ring.tex
+**directsum.tex
+(./directsum.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22>
 (d:/Program Files/texlive/2023/texmf-dist/tex/latex/ctex/ctexart.cls
@@ -626,8 +626,8 @@ Package: xy 2013/10/06 Xy-pic version 3.8.9
 \c@property=\count330
 \c@proposition=\count331
 \c@example=\count332
- (./ring.aux)
-\openout1 = `ring.aux'.
+ (./directsum.aux)
+\openout1 = `directsum.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
 LaTeX Font Info:    ... okay on input line 30.
@@ -751,9 +751,9 @@ Package color Info: Driver file: xetex.def on input line 149.
 (d:/Program Files/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 Package hyperref Info: Link coloring ON on input line 30.
 
-(./ring.out) (./ring.out)
+(./directsum.out) (./directsum.out)
 \@outlinefile=\write4
-\openout4 = `ring.out'.
+\openout4 = `directsum.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
 
@@ -770,22 +770,30 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 LaTeX Warning: No \author given.
 
+
+Overfull \hbox (1.57405pt too wide) in paragraph at lines 68--69
+[]\TU/SimSun(0)/b/n/12 注\TU/lmr/bx/n/12 . []\TU/SimSun(0)/m/it/12 条 件 \TU/lmr/m
+/it/12 2 \TU/SimSun(0)/m/it/12 比  |“$\OML/cmm/m/it/12 M[] \OMS/cmsy/m/n/12 \ \O
+ML/cmm/m/it/12 M[] \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OT1/cmr/m/n/12 0\OMS/cm
+sy/m/n/12 g\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 8\OML/cmm/m/it/12 i \OMS/cmsy/m/
+n/12 6\OT1/cmr/m/n/12 = \OML/cmm/m/it/12 j$\TU/SimSun(0)/m/it/12 ”|  的 条 件 更 强，
+|  也 等 价 于 $\OML/cmm/m/it/12 N$ \TU/SimSun(0)/m/it/12 中 元 素 表 示 为 $\OML/cmm/m/i
+t/12 M[]; M[]; []  ; M[]$
+ []
+
 [1
 
-]
-File: mindmap.pdf Graphic file (type pdf)
-<use mindmap.pdf>
- [2] [3] [4] (./ring.aux)
-Package rerunfilecheck Info: File `ring.out' has not changed.
+] [2] (./directsum.aux)
+Package rerunfilecheck Info: File `directsum.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18449 strings out of 476683
- 386361 string characters out of 5801400
+ 18439 strings out of 476683
+ 386287 string characters out of 5801400
  1865012 words of memory out of 5000000
- 38409 multiletter control sequences out of 15000+600000
+ 38401 multiletter control sequences out of 15000+600000
  523190 words of font info for 99 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 89i,8n,97p,415b,450s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,6n,97p,420b,501s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ring.pdf (4 pages).
+Output written on directsum.pdf (2 pages).

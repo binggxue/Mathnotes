@@ -104,7 +104,16 @@
 		充分性：若对任意$a,b\in R_1$，有$a-b\in R_1$，$a,b\in R_1$，则由子群的充要条件，$R_1$对加法作成$R$的子群，自然继承$R$中加法的交换性，于是对加法作成交换群.而乘法继承$R$中的结合性，又因为对任意$a,b\in R_1$，$ab\in R_1$满足封闭性，关于乘法作成半群.在$R_1$中，继承$R$的分配律，对任意$a,b,c\in R_1$，$a(b+c)=ab+ac,(a+b)c=ac+bc$，于是$R_1$是$R$的子环.
 	\end{proof}
 	\begin{corollary}[理想的充要条件]
-		设$R$是环，$I$是$R$的非空子集，则$I$是$R$的理想当且仅当对任意$a,b\in I$，任意$x,y\in R$，有$a-b\in R_1,xa,ay\in R_1$.
+		设$R$是环，$I$是$R$的非空子集，则$I$是$R$的理想当且仅当对任意$a,b\in I$，任意$x,y\in R$，有$a-b\in I,xa,ay\in I$.
+	\end{corollary}
+	\begin{theorem}
+		两个理想之交仍是理想.
+	\end{theorem}
+	\begin{proof}
+		设$I_1,I_2\lhd R$，若$I_1\cap I_2=\left\{e\right\}$，则是平凡理想.反之，可设$a,b\in I_1\cap I_2$，$x,y\in R$.由$I_1\lhd R$，$a,b\in I_1$，有$a-b\in I_1$，$xa,ay\in I_1$.同理，有$a,b\in I_2$，$xa,ay\in I_2$，于是$a-b\in I_1\cap I_2$，$xa,ay\in I_1\cap I_2$.由理想的充要条件，$I_1\cap I_2\lhd R$.
+	\end{proof}
+	\begin{corollary}
+		任意多个理想的交仍是理想.
 	\end{corollary}
 	\begin{definition}[商环]
 		设$R$是环，$I\lhd R$，在$R$中定义关系$a\sim b\iff a-b\in I$，则关系$\sim$对环的加法和乘法为同余关系.记$a\in R$所在的等价类为$a+I$，在商集合$R/I$上定义运算

@@ -1,0 +1,118 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate,graphicx}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{proposition}{命题}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Orb}{\mathrm{Orb}}
+\newcommand{\Stab}{\mathrm{Stab}}
+\newcommand{\End}{\mathrm{End}}
+
+\everymath{\displaystyle}
+
+%article info
+\title{\vspace{-2em}\textbf{模的概念}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}[模]
+		设$R$是幺环，$(M,+)$是Abel群，定义映射$R\times M\to M,(r,m)\mapsto r\cdot m$，若对任意$a,b\in R$，$x,y\in M$满足
+		\begin{enumerate}
+			\item $1\cdot x=x$;
+			\item $(a\cdot b)\cdot x=a\cdot(b\cdot x)$;
+			\item $(a+b)\cdot x=a\cdot x+b\cdot x$;
+			\item $a\cdot (x+y)=a\cdot x+a\cdot y$,
+		\end{enumerate}
+		则称$M$是$R$的一个\textbf{左模}，简称\textbf{左}$\boldsymbol{R}$\textbf{-模}.
+	\end{definition}
+	\begin{remark}
+		类似地可定义右$R$-模.若$M$既是左$R$-模，又是右$R$-模，且对任意$a,b\in R$，$x\in M$有$(ax)b=a(xb)$，则称$M$为$\boldsymbol{R}$\textbf{-双模}.对于交换幺环，左$R$-模$M$是$R$-双模.在不引起歧义的前提下，把交换幺环中的$R$-双模和非交换环中的左$R$-模简称为$R$-模.符号“$\cdot$”称为乘法，可省略不写.
+	\end{remark}
+	\begin{property}
+		对任意$x\in M,a\in R$，有$0x=a0=0$.
+	\end{property}
+	\begin{remark}
+		这里出现的三个“$0$”，第一个“$0$”是幺环$R$中的零元，后两个“$0$”是Abel群$M$中的幺元.
+	\end{remark}
+	\begin{definition}[子模]
+		设$M$是$R$-模，$N\subset M$，若$N$是$M$的子群且对任意$a\in R$，$x\in N$有$ax\in N$，则称$N$是$M$的\textbf{子模}.
+	\end{definition}
+	可以验证子模也是$R$-模. $\{0\}$和$M$都是$M$的子模，称为\textbf{平凡子模}.
+	\begin{property}
+		$M$中任意多个子模的交仍是子模.
+	\end{property}
+	\begin{property}
+		$M$中有限多个子模的和
+		$$\sum_{i=1}^{n}M_i=M_1+M_2+\cdots+M_n=\left\{\sum_{i=1}^{n}x_i\mid x_i\in M_i\right\}$$
+		仍是子模.
+	\end{property}
+	\begin{definition}[生成的子模]
+		设$S$是$R$-模$M$的子集，$M$的子模中包含$S$的最小子模，即包含$S$的子模的交，称为由$S$\textbf{生成的子模}.
+	\end{definition}
+	\begin{definition}[循环模]
+		由一个元素$x$生成的子模$Rx$称为\textbf{循环子模}.若模$M$由$x$生成，即$M=Rx$，则称$M$为\textbf{循环模}.
+	\end{definition}
+	有了循环模的概念，可见循环群就是循环$\mathbb{Z}$-模，幺环$R$就是循环$R$-模.
+	\begin{definition}[商模]
+		设$M$是$R$-模，$N$是$M$的子模，则$N$是$M$的正规子群.设$\overline{M}=M/N$，定义映射$R\times\overline{M}\to\overline{M},(r,x+N)\mapsto rx+N$，则$\overline{M}$为$R$-模，称为$M$对$N$的\textbf{商模}.
+	\end{definition}
+	\begin{proof}
+		首先证明映射是良定义的.对$x_1,x_2\in M$且$x_1+N=x_2+N$，可知$x_1-x_2\in N$，于是$ax_1-ax_2=a(x_1-x_2)\in N$，故$ax_1+N=ax_2+N$，于是映射是良定义的.
+		
+		下面证明$\overline{M}$是$R$-模.
+		\begin{enumerate}
+			\item $1\cdot(x+N)=1\cdot x+N=x+N$;
+			\item $(a\cdot b)\cdot (x+N)=(a\cdot b)\cdot x+N=a\cdot (b\cdot x)+N=a\cdot(b\cdot(x+N))$;
+			\item $(a+b)\cdot(x+N)=(a+b)\cdot x+N=a\cdot x+b\cdot x+N=a\cdot(x+N)+b\cdot(x+N)$;
+			\item $a\cdot(x+y+N)=a\cdot(x+y)+N=a\cdot x+a\cdot y+N=a\cdot(x+N)+a\cdot(y+N)$.
+		\end{enumerate}
+	\end{proof}
+	\begin{definition}[模同态]
+		设$R$-模$M_1$与$M_2$之间存在映射$f$，对任意$x,y\in M_1$，$a\in R$，有
+		\begin{enumerate}
+			\item $f(x+y)=f(x)+f(y)$;
+			\item $f(ax)=af(x)$,
+		\end{enumerate}
+		则称$f$是$M_1$到$M_2$的\textbf{模同态}或$\boldsymbol{R}$-\textbf{模同态}.
+	\end{definition}
+	\begin{definition}
+		若$f$是$M_1$到$M_2$的模同态，且$f$是满射，则称$f$是\textbf{满同态}，称$M_1$和$M_2$是\textbf{同态的}；若$f$还是双射，则称$f$是\textbf{模同构}.
+	\end{definition}
+	\begin{definition}[自然同态]
+		设$N$是$R$-模$M$的子模，则映射$\pi:M\to\overline{M}=M/N,x\mapsto x+N$是模同态，称为$M$关于$N$的\textbf{自然同态}.
+	\end{definition}
+	\begin{definition}[核]
+		设$f$是$M_1$到$M_2$的模同态，称$\ker f=\left\{x\in M_1\mid f(x)=0\right\}$是同态映射$f$的\textbf{核}.
+	\end{definition}
+	\begin{theorem}[模同态基本定理]
+		设$R$-模$M_1$和$M_2$之间存在满同态$f:M_1\to M_2$，则$M_1/\ker f\cong M_2$.
+	\end{theorem}
+	\begin{proof}
+		由群同态基本定理，存在同构$\varphi:M_1/\ker f\to M_2$，下证$\varphi$是模同构.
+		$$\varphi(a(x+N))=\varphi(ax+N)=f(ax)=af(x)=a\varphi(x+N).$$
+		于是$\varphi$是模同构.
+	\end{proof}
+	\begin{definition}[模自同态环]
+		$R$-模$M$到自身的同态称为$R$-自同态，简称自同态.记$R$-模$M$的自同态组成的集合为$\End_R M$，则可以定义加法
+		$$(f+g)(x)=f(x)+g(x),\ \forall f,g\in\End_R,x\in M.$$
+		可以验证$\End_R M$关于加法与映射的乘法作成幺环，称为$R$-模$M$的\textbf{自同态环}.
+	\end{definition}
+	\begin{proposition}
+		$R$-模$M$的自同态环$\End_R M$是Abel群$M$的自同态环$\End M$的子环.
+	\end{proposition}
+\end{document}

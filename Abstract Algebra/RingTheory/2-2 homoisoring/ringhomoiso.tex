@@ -21,6 +21,7 @@
 \newcommand{\Inn}{\mathrm{Inn}}
 \newcommand{\Orb}{\mathrm{Orb}}
 \newcommand{\Stab}{\mathrm{Stab}}
+\newcommand{\End}{\mathrm{End}}
 
 \everymath{\displaystyle}
 
@@ -88,5 +89,29 @@
 		于是$\phi$是同构.
 		
 		$S'$的加法和乘法在$R'$上的限制就是$R'$的加法和乘法，于是$R'<S'$.
+	\end{proof}
+	\begin{definition}[群的自同态环]
+		设$A$是Abel群，$A$到自身的同态映射称为\textbf{自同态}，记$A$中自同态组成的集合为$\End M$，定义加法
+		$$(f+g)(a)=f(a)+g(a),\ \forall f,g\in\End M,$$
+		则$\End M$关于加法和映射的复合作成幺环，称为群$A$的\textbf{自同态环}.
+	\end{definition}
+	\begin{proof}
+		显然$\id\in\End A$，于是$\End A$非空.先证$\End A$关于加法作成Abel群.
+		\begin{enumerate}
+			\item 封闭律：对任意$f,g\in\End A$，$a\in A$，$(f+g)(a)=f(a)+g(a)\in A$;
+			\item 结合律：对任意$f,g,h\in\End A$，$a\in A$，$((f+g)+h)(a)=(f+g)(a)+h(a)=f(a)+g(a)+h(a)=f(a)+(g+h)(a)=(f+(g+h))(a)$;
+			\item 零元律：对任意$a\in A$，设$\varphi(a)=0$，则对任意$f\in\End A$，有$(f+\varphi)(a)=f(a)+\varphi(a)=f(a)$，于是$\varphi$是零元.
+			\item 逆元律：对任意$f\in\End A$，定义$f^{-1}=-f$，则$(f+f^{-1})(a)=f(a)+f^{-1}(a)=f(a)+(-f(a))=0$.
+		\end{enumerate}
+		再证$\End A$关于乘法（映射复合）作成半群.
+		\begin{enumerate}
+			\item 封闭律：对任意$f,g\in\End A$，$a\in A$，$(fg)(a)=f(g(a))\in A$;
+			\item 结合律：对任意$f,g,h\in\End A$，$a\in A$，$((fg)h)(a)=fg(h(a))=f(g(h(a)))=f(gh(a))=(f(gh))(a)$.
+		\end{enumerate}
+		最后证$\End A$满足两条分配律.
+		\begin{enumerate}
+			\item $f(g+h)(a)=f((g+h)(a))=f(g(a)+h(a))=f(g(a))+f(h(a))=fg(a)+fh(a)$;
+			\item $(f+g)h(a)=f(h(a))+g(h(a))=fh(a)+gh(a)$.
+		\end{enumerate}
 	\end{proof}
 \end{document}

@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.31)  19 OCT 2025 09:16
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.12.31)  20 OCT 2025 16:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**ring.tex
-(./ring.tex
+**pid_ed.tex
+(./pid_ed.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22>
 (d:/Program Files/texlive/2023/texmf-dist/tex/latex/ctex/ctexart.cls
@@ -626,8 +626,8 @@ Package: xy 2013/10/06 Xy-pic version 3.8.9
 \c@property=\count330
 \c@proposition=\count331
 \c@example=\count332
- (./ring.aux)
-\openout1 = `ring.aux'.
+ (./pid_ed.aux)
+\openout1 = `pid_ed.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
 LaTeX Font Info:    ... okay on input line 30.
@@ -751,9 +751,9 @@ Package color Info: Driver file: xetex.def on input line 149.
 (d:/Program Files/texlive/2023/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 Package hyperref Info: Link coloring ON on input line 30.
 
-(./ring.out) (./ring.out)
+(./pid_ed.out) (./pid_ed.out)
 \@outlinefile=\write4
-\openout4 = `ring.out'.
+\openout4 = `pid_ed.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 32.
 
@@ -772,20 +772,17 @@ LaTeX Warning: No \author given.
 
 [1
 
-]
-File: mindmap.pdf Graphic file (type pdf)
-<use mindmap.pdf>
- [2] [3] [4] (./ring.aux)
-Package rerunfilecheck Info: File `ring.out' has not changed.
+] [2] [3] (./pid_ed.aux)
+Package rerunfilecheck Info: File `pid_ed.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18449 strings out of 476683
- 386361 string characters out of 5801400
- 1865012 words of memory out of 5000000
- 38409 multiletter control sequences out of 15000+600000
- 523190 words of font info for 99 fonts, out of 8000000 for 9000
+ 18385 strings out of 476683
+ 383174 string characters out of 5801400
+ 1869012 words of memory out of 5000000
+ 38349 multiletter control sequences out of 15000+600000
+ 523174 words of font info for 97 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 89i,8n,97p,415b,450s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,6n,97p,589b,416s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on ring.pdf (4 pages).
+Output written on pid_ed.pdf (3 pages).

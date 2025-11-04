@@ -1,0 +1,107 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate,graphicx}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{proposition}{命题}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Orb}{\mathrm{Orb}}
+\newcommand{\Stab}{\mathrm{Stab}}
+
+\everymath{\displaystyle}
+
+%article info
+\title{\vspace{-2em}\textbf{模的直和}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	\begin{definition}[外直和]
+		设$M_1,M_2,\cdots,M_n$是$R$-模，$M=\left\{(x_1,x_2,\cdots,x_n)\mid x_i\in M_i,1\leqslant i\leqslant n\right\}$.若满足
+		\begin{enumerate}
+			\item $(x_1,x_2,\cdots,x_n)+(y_1,y_2,\cdots,y_n)=(x_1+y_1,x_2+y_2,\cdots,x_n+y_n)$;
+			\item $a(x_1,x_2,\cdots,x_n)=(ax_1,ax_2,\cdots,ax_n)$,
+		\end{enumerate}
+		则可验证$M$也是$R$-模，称为$M_1,M_2,\cdots,M_n$的\textbf{外直和}，记作
+		$$M=M_1\oplus M_2\oplus\cdots\oplus M_n=\bigoplus_{i=1}^{n}M_i.$$
+	\end{definition}
+	\begin{remark}
+		$M_i$大多数情况下不是$M$的子模，甚至不是子集，因为它们的元素都不一样.
+	\end{remark}
+	令$M_i'=\left\{x_i'=(0,0,\cdots,\mathop{x_i}\limits_{\text{第}i\text{个}},\cdots,0)\mid x_i\in M_i,1\leqslant i\leqslant n\right\}$，这样$M_i'$是$M$的子模，且在$M_i$与$M_i'$中存在同构映射.
+	\begin{theorem}
+		设$M_1,M_2,\cdots,M_n$与$N$都是$R$-模，$M=\bigoplus_{i=1}^{n}M_i$，$\varphi_i$是$M_i$到$N$的模同态，则存在唯一的模同态$\varphi:M\to N$使得
+		$$\varphi(x_i')=\varphi_i(x_i).$$
+	\end{theorem}
+	\begin{proof}
+		存在性：定义
+		$$\varphi(x_1,x_2,\cdots,x_n)=\sum_{i=1}^{n}\varphi_i(x_i),$$
+		根据模同态的定义验证即可.
+		
+		唯一性：设$\psi:M\to N$也是模同态满足$\psi(x_i')=\varphi_i(x_i)$，则
+		$$\psi(x_1,x_2,\cdots,x_n)=\psi\left(\sum_{i=1}^{n}x_i'\right)=\sum_{i=1}^{n}\varphi_i(x_i)=\varphi(x_1,x_2,\cdots,x_n),$$
+		于是$\psi=\varphi$.
+	\end{proof}
+	\begin{definition}[内直和]
+		若$R$-模$N$的子模$M_1,M_2,\cdots,M_n$满足
+		\begin{enumerate}
+			\item $N=M_1+M_2+\cdots+M_n$;
+			\item $M_i\cap\left(\sum_{j\neq i}M_j\right)=\{0\},\quad 1\leqslant i\leqslant n$,
+		\end{enumerate}
+		则称$N$是$M_1,M_2,\cdots,M_n$的\textbf{内直和}，也记作
+		$$N=M_1\oplus M_2\oplus\cdots\oplus M_n=\bigoplus_{i=1}^{n}M_i.$$
+	\end{definition}
+	\begin{remark}
+		条件2比“$M_i\cap M_j=\{0\},\forall i\neq j$”的条件更强，也等价于$N$中元素表示为$M_1,M_2,\cdots,M_n$中元素之和的表法唯一.
+	\end{remark}
+	\begin{theorem}
+		设$M$是$R$-模$M_1,M_2,\cdots,M_n$的外直和，$N$是$M_1,M_2,\cdots,M_n$的内直和，则
+		$$\varphi(x_1,x_2,\cdots,x_n)=\sum_{i=1}^{n}x_i$$
+		是$M$到$N$的模同构映射.
+	\end{theorem}
+	\begin{proof}
+		根据定义可以验证$\varphi$是模同态.下证$\varphi$是双射.
+		
+		由于$N$是$M_1,M_2,\cdots,M_n$的内直和，于是$N=M_1+M_2+\cdots+M_n$，对任意$y\in N$，都存在$x_i\in M_i$使得$y=\sum_{i=1}^{n}x_i$，于是$y$有原像$(x_1,x_2,\cdots,x_n)$，故$\varphi$是满射.
+		
+		若$\sum_{i=1}^{n}x_i=0$，则
+		$$x_i=-\sum_{j\neq i}x_j\in M_i\cap\left(\sum_{j\neq i}M_j\right)=\{0\},$$
+		于是$x_i=0\ (1\leqslant i\leqslant n)$，于是$\ker\varphi =(0,0,\cdots,0)$，故$\varphi$是单射.
+	\end{proof}
+	\begin{property}
+		直和的表法是唯一的.
+	\end{property}
+	\begin{proof}
+		对任意$a\in N$，假设有两种表法
+		$$a=x_1+x_2+\cdots+x_n=y_1+y_2+\cdots+y_n,$$
+		则
+		$$a-a=(x_1-y_1)+(x_2-y_2)+\cdots+(x_n-y_n)=0,$$
+		于是
+		$$(x_i-y_i)=-\sum_{j\neq i}(a_j-b_j)\in M_i\cap\left(\sum_{j\neq i}M_j\right)=\{0\},$$
+		于是$x_i-y_i=0\ (1\leqslant i\leqslant n)$，故$x_i=y_i$.
+	\end{proof}
+	\begin{property}
+		直和的直和仍是直和.
+	\end{property}
+	\begin{property}
+		直和可以任意结合（任意加括号）.
+	\end{property}
+	\begin{definition}[无关]
+		若$R$-模$N$的子模$M_1,M_2,\cdots,M_n$满足
+		$$M_i\cap\left(\sum_{j\neq i}M_j\right)=\{0\},\quad 1\leqslant i\leqslant n,$$
+		则称$M_1.M_2,\cdots,M_n$是\textbf{无关的}.
+	\end{definition}
+\end{document}

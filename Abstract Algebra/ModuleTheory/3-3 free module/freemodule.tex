@@ -1,0 +1,212 @@
+\documentclass[12pt]{ctexart}
+\usepackage{amsfonts,amssymb,amsmath,amsthm,geometry,enumerate,graphicx}
+\usepackage[colorlinks,linkcolor=blue,anchorcolor=blue,citecolor=green]{hyperref}
+\usepackage[all]{xy}
+%introduce theorem environment
+\theoremstyle{definition}
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem{property}{性质}
+\newtheorem{proposition}{命题}
+\newtheorem{example}{例}
+\theoremstyle{plain}
+\newtheorem*{solution}{解}
+\newtheorem*{remark}{注}
+\geometry{a4paper,scale=0.8}
+
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Inn}{\mathrm{Inn}}
+\newcommand{\Orb}{\mathrm{Orb}}
+\newcommand{\Stab}{\mathrm{Stab}}
+\newcommand{\ent}{\mathrm{ent}}
+\newcommand{\End}{\mathrm{End}}
+
+\everymath{\displaystyle}
+
+%article info
+\title{\vspace{-2em}\textbf{自由模}\vspace{-2em}}
+\date{ }
+\begin{document}
+	\maketitle
+	设$R$是幺环，定义
+	$$R^{(n)}=R\times R\times\cdots\times R=\{(a_1,a_2,\cdots,a_n)\mid a_i\in R,i=1,2,\cdots,n\},$$
+	设$x=(x_1,x_2,\cdots,x_n)\in R^{(n)}$，记$x$的第$i$个分量为$\ent_ix$. 对任意$x,y\in R^{(n)}$，$a\in R$，定义
+	\begin{enumerate}
+		\item $\ent_i(x+y)=\ent_ix+\ent_iy$;
+		\item $\ent_i(ax)=a\ent_ix$.
+	\end{enumerate}
+	可以依定义验证$R^{(n)}$是一个左$R$-模.
+	
+	对$1\leqslant i\leqslant n$，设$e_i\in R^{(n)}$满足$\ent_je_i=\delta_{ij}$.这里$\delta_{ij}$为Kronecker记号，即
+	$$
+	\delta_{ij}=\left\{
+	\begin{aligned}
+		&1,\quad i=j\\
+		&0,\quad i\neq j
+	\end{aligned}
+	\right.
+	$$
+	则对任意$x\in R^{(n)}$，有$x=\sum_{i=1}^{n}(\ent_ix)e_i$，于是有
+	\begin{enumerate}
+		\item $e_1,e_2,\cdots,e_n$生成$R^{(n)}$，即
+		$$R^{(n)}=Re_1+Re_2+\cdots+Re_n.$$
+		\item 任意$x\in R^{(n)}$，$x=\sum_{i=1}^{n}x_ie_i$的表示法唯一，即
+		$$\sum_{i=1}^{n}x_ie_i=0\iff x_i=0,\ 1\leqslant i\leqslant n.$$
+	\end{enumerate}
+	\begin{definition}[自由模]
+		幺环$R$上的模$M$若与$R^{(n)}$同构，则称为\textbf{秩}$\boldsymbol{n}$\textbf{的自由模}.
+	\end{definition}
+	\begin{definition}[基]
+		设$M$是$R$-模，$u_1,u_2,\cdots,u_n\in M$，满足
+		\begin{enumerate}
+			\item $u_1,u_2,\cdots,u_n$生成$M$，即
+			$$M=Ru_1+Ru_2+\cdots+Ru_n.$$
+			\item 任意$x\in M$，$x=\sum_{i=1}^{n}x_iu_i$的表示法唯一，即
+			$$\sum_{i=1}^{n}x_iu_i=0\iff x_i=0,\ 1\leqslant i\leqslant n.$$
+		\end{enumerate}
+		则称$u_1,u_2,\cdots,u_n$为$M$的一组\textbf{基}.
+	\end{definition}
+	\begin{remark}
+		立即可得$e_1,e_2,\cdots,e_n$是$R^{(n)}$的一组基.
+	\end{remark}
+	\begin{theorem}\label{basis}
+		$R$-模$M$是秩$n$的自由模当且仅当$M$存在一组基$u_1,u_2,\cdots,u_n$.
+	\end{theorem}
+	\begin{proof}
+		必要性：若$M$是秩$n$的自由模，则存在模同构$\varphi:R^{(n)}\to M$满足$u_i=\varphi(e_i)$.于是
+		$$\varphi\left(\sum_{i=1}^{n}x_ie_i\right)=\sum_{i=1}^{n}x_i\varphi(e_i)=\sum_{i=1}^{n}x_iu_i,$$
+		于是$u_1,u_2,\cdots,u_n$生成$M$.
+		
+		若$\sum_{i=1}^{n}x_iu_i=0$，则
+		$$\varphi\left(\sum_{i=1}^{n}x_iu_i\right)=\sum_{i=1}^{n}x_i\varphi(u_i)=\sum_{i=1}^{n}x_ie_i=0,$$
+		由于$e_1,e_2,\cdots,e_n$是$R^{(n)}$的一组基，于是$\sum_{i=1}^{n}x_ie_i=0\iff x_i=0$.于是$u_1,u_2,\cdots,u_n$是$M$的一组基.
+		
+		充分性：若$M$存在一组基$u_1,u_2,\cdots,u_n$，设$\eta:M\to R^{(n)}$满足
+		$$\eta\left(\sum_{i=1}^{n}x_iu_i\right)=\sum_{i=1}^{n}x_ie_i,$$
+		则对任意$x=\sum_{i=1}^{n}x_iu_i,y=\sum_{i=1}^{n}y_iu_i\in M$，
+		$$\begin{aligned}
+			\eta\left(x+y\right)&=\eta\left(\sum_{i=1}^{n}x_iu_i+\sum_{i=1}^{n}y_iu_i\right)=\eta\left(\sum_{i=1}^{n}(x_i+y_i)u_i\right)\\
+			&=\sum_{i=1}^{n}(x_i+y_i)e_i=\sum_{i=1}^{n}x_ie_i+\sum_{i=1}^{n}y_ie_i\\
+			&=\eta(x)+\eta(y).
+		\end{aligned}$$
+		对任意$x=\sum_{i=1}^{n}x_iu_i\in M$，$a\in R$，有
+		$$a\eta(x)=a\sum_{i=1}^{n}x_ie_i=\sum_{i=1}^{n}ax_ie_i=\eta(ax).$$
+		于是$\eta$是模同态.
+		
+		对任意$x=\sum_{i=1}^{n}x_iu_i,y=\sum_{i=1}^{n}y_iu_i\in M$，若$\eta(x)=\eta(y)$，则
+		$$\sum_{i=1}^{n}x_ie_i=\sum_{i=1}^{n}y_ie_i,$$
+		于是
+		$$\sum_{i=1}^{n}(x_i-y_i)e_i=0\iff x_i-y_i=0\iff x_i=y_i\ \forall 1\leqslant i\leqslant n.$$
+		于是$x=y$，因而$\eta$是单射.
+		
+		对任意$y\in R^{(n)}$，设$y=\sum_{i=1}^{n}x_ie_i$，则$x=\sum_{i=1}^{n}x_iu_i\in M$且$\eta(x)=y$.于是$\eta$是满射.
+		
+		综上，$\eta$是模同构，于是$M\cong R^{(n)}$，即$M$是秩$n$的自由模.
+	\end{proof}
+	下述定理是自由模更一般、更抽象的刻画.
+	\begin{theorem}
+		设$R$是幺环，$M$是$R$-模，$u_1,u_2,\cdots,u_n\in M$，则$M$是秩$n$的自由模且$u_1,u_2,\cdots,u_n$是$M$的一组基的充分必要条件是对任意$R$-模$M'$中的$n$个元素$v_1,v_2,\cdots,v_n$，存在唯一的模同态$\eta:M\to M'$使得$\eta(u_i)=v_i$.
+	\end{theorem}
+	\begin{proof}
+		必要性：设$u_1,u_2,\cdots,u_n$是$M$的一组基，对任意$x=\sum_{i=1}^{n}x_iu_i\in M$，定义
+		$$\eta\left(\sum_{i=1}^{n}x_iu_i\right)=\sum_{i=1}^{n}x_iv_i.$$
+		任意$x\in M$都能唯一地对应到$M'$中的一个元素，于是$\eta$是映射.
+		
+		参考定理\ref{basis}的证明，可以证明$\eta$是模同态.
+		
+		对$u_i=\sum_{i=1}^{n}x_iu_i\in M$，有$x_j=\delta_{ij}$，于是$\eta(u_i)=\sum_{i=1}^{n}x_iv_i=v_i$.
+		
+		上面证明了$\eta$的存在性，下证其唯一性.设同态$\eta':M\to M'$也使得$\eta(u_i)=v_i$，则
+		$$\eta'\left(x_iu_i\right)=\sum_{i=1}^{n}x_i\eta'(u_i)=\sum_{i=1}^{n}x_iv_i=\eta\left(\sum_{i=1}^{n}x_iu_i\right).$$
+		于是$\eta'=\eta$.
+		
+		充分性：设$M'=\langle u_1,u_2,\cdots,u_n\rangle$，因而有唯一的模同态$\eta:M\to M'$使得$\eta(u_i)=u_i$.设$\theta:M'\to M$是嵌入映射，即$\theta(x)=x,\forall x\in M'$.
+		则$\eta\cdot\theta:M\to M$满足$\eta\cdot\theta(u_i)=u_i$，而$\id:M\to M$也满足$\id(u_i)=u_i$.因而由唯一性有$\theta\cdot\eta=\id$.于是$\eta(M)=M'=M$，即$u_1,u_2,\cdots,u_n$生成$M$.
+		
+		设同态$\sigma:M\to R^{(n)}$满足$\sigma(u_i)=e_i$，若$\sum_{i=1}^{n}x_iu_i=0$，则
+		$$\sigma\left(\sum_{i=1}^{n}x_iu_i\right)=\sum_{i=1}^{n}x_i\sigma(u_i)=\sum_{i=1}^{n}x_ie_i=0\iff x_i=0,$$
+		于是$u_1,u_2,\cdots,u_n$是$M$的一组基，于是$M$是秩$n$的自由模.
+	\end{proof}
+	下面总假定$R$是交换幺环.
+	\begin{definition}[坐标]
+		设$M$是自由$R$模，$u_1,u_2,\cdots,u_n$是$M$的一组基.对任意$x\in M$，存在唯一的$x_1,x_2,\cdots,x_n$使得$x=\sum_{i=1}^{n}x_iu_i$，称$x_1,x_2,\cdots,x_n$是$x$在基$u_1,u_2,\cdots,u_n$下的\textbf{坐标}，记为
+		$$\mathrm{crd}(x;u_1,u_2,\cdots,u_n)=\begin{pmatrix}
+			x_1\\
+			x_2\\
+			\vdots\\
+			x_n
+		\end{pmatrix}$$
+		$x$可以写为
+		$$x=(u_1,u_2,\cdots,u_n)\begin{pmatrix}
+			x_1\\
+			x_2\\
+			\vdots\\
+			x_n
+		\end{pmatrix}=(u_1,u_2,\cdots,u_n)\mathrm{crd}(x;u_1,u_2,\cdots,u_n).$$
+	\end{definition}
+	\begin{theorem}
+		设$M$是自由$R$模，$u_1,u_2,\cdots,u_n$和$v_1,v_2,\cdots,v_n$是$M$的两组基，则$m=n$.
+	\end{theorem}
+	\begin{corollary}
+		$R^{(m)}\cong R^{(n)}\iff m=n$.
+	\end{corollary}
+	\begin{corollary}
+		$R$上两个自由模同构当且仅当它们的秩相同.
+	\end{corollary}
+	把线性空间中的基变换与坐标变换推广，得到以下推论.
+	\begin{corollary}
+		设$u_1,u_2,\cdots,u_n$与$v_1,v_2,\cdots,v_n$是自由$R$模$M$的两组基，则存在$n$阶方阵$\boldsymbol{A},\boldsymbol{B}$使得
+		$$(v_1,v_2,\cdots,v_n)=(u_1,u_2,\cdots,u_n)\boldsymbol{A},$$
+		$$(u_1,u_2,\cdots,u_n)=(v_1,v_2,\cdots,v_n)\boldsymbol{B},$$
+		且$\boldsymbol{A}\boldsymbol{B}=\boldsymbol{B}\boldsymbol{A}=\boldsymbol{I}_n$.对任意$x\in M$，有
+		$$\mathrm{crd}(x;v_1,v_2,\cdots,v_n)=\boldsymbol{B}\mathrm{crd}(x;u_1,u_2,\cdots,u_n),$$
+		$$\mathrm{crd}(x;u_1,u_2,\cdots,u_n)=\boldsymbol{A}\mathrm{crd}(x;v_1,v_2,\cdots,v_n).$$
+		$\boldsymbol{A}$称为从基$u_1,u_2,\cdots,u_n$到基$v_1,v_2,\cdots,v_n$的\textbf{过渡矩阵}，记作
+		$$\boldsymbol{A}=\boldsymbol{T}\begin{pmatrix}
+			u_1 & u_2 & \cdots & u_n\\
+			v_1 & v_2 & \cdots & v_n
+		\end{pmatrix}.$$
+	\end{corollary}
+	\begin{definition}[方阵环]
+		交换幺环$R$上的$n$阶方阵的集合$M_n(R)$关于方阵的加法和乘法作成环，称为$R$上的$\boldsymbol{n}$\textbf{阶方阵环}.
+	\end{definition}
+	\begin{theorem}
+		设$M$是交换幺环$R$上的自由模，则$\End_R M\cong M_n(R)$.
+	\end{theorem}
+	\begin{proof}
+		由于$M$是自由模，于是存在一组基$u_1,u_2,\cdots,u_n$.定义映射$\varphi:\End_RM\to M_n(R),\eta\mapsto \boldsymbol{M}(\eta)$.对$\eta\in\End_RM$，定义
+		$$\eta(u_j)=\sum_{i=1}^{n}a_{ij}u_i,\quad a_{ij}\in R.$$
+		定义$\varphi(\eta)=(a_{ij})_{n\times n}\in M_n(R)$.
+		
+		若$\varphi(\eta_1)=\varphi(\eta_2)=\boldsymbol{A}$，则对任意$x=\sum_{i=1}^{n}x_iu_i$，有
+		$$\eta_1\left(\sum_{i=1}^{n}x_iu_i\right)=\sum_{i=1}^{n}x_i\eta_1(u_i)=\sum_{i=1}^{n}x_i\sum_{k=1}^{n}a_{ik}u_i=\sum_{i=1}^{n}x_i\eta_2(u_i)=\eta_2\left(\sum_{i=1}^{n}x_iu_i\right),$$
+		于是$\eta_1=\eta_2$，$\varphi$是单射.
+		
+		对任意$\boldsymbol{A}=(a_{ij})\in M_n(R)$，存在$\eta$满足
+		$$\eta(u_j)=\sum_{i=1}^{n}a_{ij}u_i,$$
+		则$\varphi(\eta)=(a_{ij})=\boldsymbol{A}$，于是$\varphi$是满射.
+		
+		对任意$\eta_1,\eta_2\in\End_RM$，
+		$$(\eta_1+\eta_2)(u_j)=\eta_1(u_j)+\eta_2(u_j)=\sum_{i=1}^{n}a_{ij}u_i+\sum_{i=1}^{n}b_{ij}u_i=\sum_{i=1}^{n}(a_{ij}+b_{ij})u_i,$$
+		于是
+		$$\varphi(\eta_1+\eta_2)=(a_{ij}+b_{ij})=(a_{ij})+(b_{ij})=\varphi(\eta_1)+\varphi(\eta_2).$$
+		
+		$$(\eta_1\eta_2)(u_j)=\eta_1\left(\sum_{k=1}^{n}b_{kj}u_k\right)=\sum_{k=1}^{n}b_{kj}\eta_1(u_k)=\sum_{k=1}^{n}b_{kj}\left(\sum_{i=1}^{n}a_{ik}u_i\right)=\sum_{i=1}^{n}\left(\sum_{k=1}^{n}a_{ik}b_{kj}\right)u_i,$$
+		于是$\varphi(\eta_1\eta_2)=(c_{ij})$，其中$c_{ij}=\sum_{k=1}^{n}a_{ik}b_{kj}$.
+		
+		于是$\varphi$是环同构，$\End_RM\cong M_n(R)$.
+	\end{proof}
+	\begin{theorem}
+		设$M$是交换幺环$R$上的自由模，$u_1,u_2,\cdots,u_n$是$M$的一组基，$\eta\in\End_RM$，则下列条件等价.
+		\begin{enumerate}
+			\item $\eta$是可逆映射;
+			\item $\eta$是$M$的自同构;
+			\item $\eta(u_1),\eta(u_2),\cdots,\eta(u_n)$也是一组基;
+			\item $\boldsymbol{M}(\eta)$是$M_n(R)$中的可逆矩阵;
+			\item $\det(\boldsymbol{M}(\eta))$是$R$中可逆元素.
+		\end{enumerate}
+	\end{theorem}
+\end{document}
